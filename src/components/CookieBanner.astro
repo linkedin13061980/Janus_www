@@ -1,0 +1,50 @@
+---
+import type { Locale } from '../i18n/utils';
+import { t } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<div
+  id="cookie-banner"
+  class="fixed bottom-0 left-0 right-0 z-50 bg-anthracite-light border-t border-gold/30 px-4 py-4 hidden"
+>
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-white/70 text-sm">
+      {t(locale, 'cookies.message')}
+      <a href={`/${locale}/cookies`} class="text-gold hover:underline ml-1">{t(locale, 'cookies.learn_more')}</a>
+    </p>
+    <div class="flex gap-3 shrink-0">
+      <button id="cookie-decline" class="px-4 py-2 text-sm text-white/50 hover:text-white border border-white/20 hover:border-white/40 transition-colors">
+        {t(locale, 'cookies.decline')}
+      </button>
+      <button id="cookie-accept" class="px-4 py-2 text-sm bg-gold text-anthracite font-semibold hover:bg-gold-light transition-colors">
+        {t(locale, 'cookies.accept')}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('cookie-banner');
+  const consent = localStorage.getItem('cookie_consent');
+
+  if (!consent) {
+    banner?.classList.remove('hidden');
+  }
+
+  document.getElementById('cookie-accept')?.addEventListener('click', () => {
+    localStorage.setItem('cookie_consent', 'accepted');
+    banner?.classList.add('hidden');
+    window.dispatchEvent(new CustomEvent('cookie-accepted'));
+  });
+
+  document.getElementById('cookie-decline')?.addEventListener('click', () => {
+    localStorage.setItem('cookie_consent', 'declined');
+    banner?.classList.add('hidden');
+  });
+</script>

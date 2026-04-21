@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'en';
+const currentPath = '/cookies';
+---
+<Layout
+  title="Cookie Policy | JANUS Linguistic Agency Lyon"
+  description="Cookie management on agence-janus.fr — analytics, preferences and how to control them."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-20 px-4">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3"><span class="w-8 h-px bg-gold inline-block"></span>Transparency</p>
+      <h1 class="text-4xl font-serif font-light text-white mb-12">Cookie Policy</h1>
+
+      <div class="space-y-10 text-white/60 text-sm leading-relaxed">
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">What is a cookie?</h2>
+          <p>A cookie is a small text file placed on your browser when you visit a website. It allows information about your session or preferences to be remembered.</p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">Cookies used on this site</h2>
+          <div class="space-y-4">
+
+            <div class="border border-white/10 p-5">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <p class="text-white font-medium">Consent preference</p>
+                <span class="shrink-0 text-xs px-2 py-0.5 border border-emerald-500/40 text-emerald-400 uppercase">Functional</span>
+              </div>
+              <p><strong class="text-white">Key:</strong> <code class="text-gold bg-white/5 px-1">cookie_consent</code> (localStorage)<br/>
+              <strong class="text-white">Duration:</strong> Persistent (until manually deleted)<br/>
+              <strong class="text-white">Purpose:</strong> Remember your choice to accept or refuse analytics cookies.<br/>
+              <strong class="text-white">Third party:</strong> None — local storage only.<br/>
+              <em class="text-white/40">This storage is strictly necessary for the banner to function. No prior consent required.</em></p>
+            </div>
+
+            <div class="border border-white/10 p-5">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <p class="text-white font-medium">Google Analytics 4</p>
+                <span class="shrink-0 text-xs px-2 py-0.5 border border-gold/40 text-gold uppercase">Analytics</span>
+              </div>
+              <p><strong class="text-white">Cookies:</strong> <code class="text-gold bg-white/5 px-1">_ga</code>, <code class="text-gold bg-white/5 px-1">_ga_*</code><br/>
+              <strong class="text-white">Duration:</strong> 13 months (_ga) / 14 months (_ga_*)<br/>
+              <strong class="text-white">Purpose:</strong> Anonymised audience measurement — page views, session duration, traffic source.<br/>
+              <strong class="text-white">Third party:</strong> Google LLC — IP anonymisation enabled, aggregated data only.<br/>
+              <strong class="text-white">ID:</strong> G-YN6GZC4X94<br/>
+              <em class="text-white/40">These cookies are only set after your explicit consent.</em></p>
+            </div>
+
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">Manage your preferences</h2>
+          <p class="mb-4">You can change your choice at any time:</p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button
+              onclick="localStorage.removeItem('cookie_consent'); window.location.reload();"
+              class="px-6 py-3 border border-white/20 text-white text-sm uppercase tracking-wider hover:border-gold hover:text-gold transition-colors cursor-pointer"
+            >
+              Reset my preferences
+            </button>
+            <button
+              onclick="localStorage.setItem('cookie_consent','accepted'); window.location.reload();"
+              class="px-6 py-3 bg-gold text-anthracite font-semibold text-sm uppercase tracking-wider hover:bg-gold-light transition-colors cursor-pointer"
+            >
+              Accept all
+            </button>
+          </div>
+          <p class="mt-4 text-white/40 text-xs">You can also disable cookies directly in your browser settings. This does not affect your browsing on this site.</p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">Further information</h2>
+          <p>For more information on our personal data practices, see our <a href="/en/rgpd" class="text-gold hover:text-gold-light transition-colors">privacy policy</a>. To contact our DPO: <a href="mailto:contact@agence-janus.fr" class="text-gold hover:text-gold-light transition-colors">contact@agence-janus.fr</a></p>
+        </div>
+
+        <p class="text-white/30 text-xs border-t border-white/10 pt-6">Last updated: April 2025</p>
+      </div>
+    </div>
+  </section>
+</Layout>

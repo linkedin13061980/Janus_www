@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "langues": "Langues",
+    "financement": "Financement",
+    "about": "À propos",
+    "contact": "Contact",
+    "blog": "Blog",
+    "pologne": "Investir en Pologne",
+    "partenaires": "Partenaires",
+    "recrutement": "Recrutement"
+  },
+  "footer": {
+    "legal": "Mentions légales",
+    "cgv": "CGV",
+    "rgpd": "RGPD",
+    "cookies": "Cookies",
+    "siret": "SIRET : 90335843000010",
+    "nda": "NDA : 84692002569",
+    "rights": "Tous droits réservés"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "firstname": "Prénom",
+    "lastname": "Nom",
+    "email": "Email professionnel",
+    "phone": "Téléphone (optionnel)",
+    "company": "Entreprise",
+    "service": "Service concerné",
+    "service_options": {
+      "formation": "Formation",
+      "interpretation": "Interprétariat",
+      "accompagnement": "Accompagnement terrain",
+      "traduction": "Traduction"
+    },
+    "langue": "Langue concernée",
+    "langue_options": {
+      "anglais": "Anglais",
+      "polonais": "Polonais",
+      "fle": "Français FLE",
+      "allemand": "Allemand",
+      "espagnol": "Espagnol",
+      "italien": "Italien"
+    },
+    "message": "Message",
+    "rgpd_consent": "J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la politique de confidentialité.",
+    "submit": "Envoyer",
+    "success": "Votre message a bien été envoyé. Nous vous répondrons dans les meilleurs délais.",
+    "error": "Une erreur est survenue. Veuillez réessayer ou nous contacter directement."
+  },
+  "cookies": {
+    "message": "Nous utilisons des cookies pour améliorer votre expérience et analyser le trafic.",
+    "accept": "Accepter",
+    "decline": "Refuser",
+    "learn_more": "En savoir plus"
+  }
+}

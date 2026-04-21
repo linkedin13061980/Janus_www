@@ -1,0 +1,82 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'pl';
+const currentPath = '/rgpd';
+---
+<Layout
+  title="Polityka prywatności RODO | JANUS Agence Linguistique Lyon"
+  description="Polityka prywatności i przetwarzania danych osobowych w JANUS Agence Linguistique — zgodność z RODO."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-20 px-4">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3"><span class="w-8 h-px bg-gold inline-block"></span>Twoje dane, Twoje prawa</p>
+      <h1 class="text-4xl font-serif font-light text-white mb-12">Polityka prywatności</h1>
+
+      <div class="space-y-10 text-white/60 text-sm leading-relaxed">
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">1. Administrator danych</h2>
+          <p><strong class="text-white">JANUS Agence Linguistique</strong> — Agata Mich, jednoosobowa działalność gospodarcza, Lyon (69), Francja.<br/>
+          Kontakt IOD: <a href="mailto:contact@agence-janus.fr" class="text-gold hover:text-gold-light transition-colors">contact@agence-janus.fr</a></p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">2. Zbierane dane i cele</h2>
+          <div class="space-y-4">
+            <div class="border border-white/10 p-4">
+              <p class="text-white font-medium mb-2">Formularz kontaktowy</p>
+              <p>Dane: imię, nazwisko, email, telefon (opcjonalnie), firma, wiadomość, język, typ usługi.<br/>
+              Cel: odpowiedź na zapytanie ofertowe lub prośbę o informacje.<br/>
+              Podstawa prawna: prawnie uzasadniony interes (art. 6.1.f RODO).<br/>
+              Okres przechowywania: 3 lata od ostatniego kontaktu.</p>
+            </div>
+            <div class="border border-white/10 p-4">
+              <p class="text-white font-medium mb-2">Pomiar ruchu (Google Analytics 4)</p>
+              <p>Dane: anonimizowane dane przeglądania (odwiedzone strony, czas trwania, źródło).<br/>
+              Cel: ulepszanie strony, analiza ruchu.<br/>
+              Podstawa prawna: zgoda (art. 6.1.a RODO).<br/>
+              Okres przechowywania: 14 miesięcy (ustawienie GA4).<br/>
+              <em class="text-white/40">GA4 jest aktywowany wyłącznie po Twojej wyraźnej zgodzie za pośrednictwem banera cookies.</em></p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">3. Odbiorcy danych</h2>
+          <p>Twoje dane nie są nigdy sprzedawane ani przekazywane osobom trzecim. Mogą być udostępniane następującym podmiotom przetwarzającym wyłącznie w ramach świadczenia usług:</p>
+          <ul class="mt-3 space-y-2 list-none">
+            <li class="flex gap-3"><span class="text-gold shrink-0">◆</span><span><strong class="text-white">Resend</strong> (wysyłka e-maili) — przetwarzanie w UE (eu-west-1) — <a href="https://resend.com/privacy" class="text-gold hover:text-gold-light transition-colors" target="_blank" rel="noopener">polityka Resend</a></span></li>
+            <li class="flex gap-3"><span class="text-gold shrink-0">◆</span><span><strong class="text-white">Google Analytics 4</strong> (jeśli wyrażono zgodę) — anonimizacja IP włączona</span></li>
+            <li class="flex gap-3"><span class="text-gold shrink-0">◆</span><span><strong class="text-white">Vercel</strong> (hosting) — anonimizowane logi serwera</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">4. Twoje prawa</h2>
+          <p>Zgodnie z RODO (art. 15–22) przysługują Ci następujące prawa:</p>
+          <ul class="mt-3 space-y-2 list-none">
+            {['Prawo dostępu do danych','Prawo do sprostowania','Prawo do usunięcia danych („prawo do bycia zapomnianym")','Prawo do ograniczenia przetwarzania','Prawo do sprzeciwu','Prawo do przenoszenia danych'].map(r => (
+              <li class="flex gap-3"><span class="text-gold shrink-0">◆</span><span>{r}</span></li>
+            ))}
+          </ul>
+          <p class="mt-4">Aby skorzystać z tych praw: <a href="mailto:contact@agence-janus.fr" class="text-gold hover:text-gold-light transition-colors">contact@agence-janus.fr</a>. Odpowiedź w ciągu 30 dni.<br/>
+          W przypadku nierozwiązanego sporu możesz skontaktować się z organem nadzorczym: <strong class="text-white">CNIL</strong> (Francja) — <a href="https://www.cnil.fr" class="text-gold hover:text-gold-light transition-colors" target="_blank" rel="noopener">cnil.fr</a></p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">5. Bezpieczeństwo</h2>
+          <p>Dane przesyłane przez formularz kontaktowy są szyfrowane podczas przesyłania (HTTPS/TLS). Dostęp do danych po stronie serwera jest ograniczony do upoważnionych osób. Żadne hasła nie są przechowywane.</p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">6. Cookies</h2>
+          <p>Szczegółowe informacje na temat plików cookie używanych na tej stronie znajdziesz w naszej <a href="/pl/cookies" class="text-gold hover:text-gold-light transition-colors">polityce cookies</a>.</p>
+        </div>
+
+        <p class="text-white/30 text-xs border-t border-white/10 pt-6">Ostatnia aktualizacja: kwiecień 2025</p>
+      </div>
+    </div>
+  </section>
+</Layout>

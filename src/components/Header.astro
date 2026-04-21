@@ -1,0 +1,88 @@
+---
+import type { Locale } from '../i18n/utils';
+import { t, localePath, localeNames } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+const locales: Locale[] = ['fr', 'en', 'pl'];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-anthracite/95 backdrop-blur border-b border-gold/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a href={localePath(locale, '/')} class="flex items-center gap-3 group">
+        <span class="text-2xl font-serif font-bold text-gold tracking-widest group-hover:text-gold-light transition-colors">
+          JANUS
+        </span>
+        <span class="hidden sm:block text-xs text-white/50 uppercase tracking-widest border-l border-gold/30 pl-3">
+          Agence Linguistique
+        </span>
+      </a>
+
+      <!-- Navigation desktop -->
+      <nav class="hidden lg:flex items-center gap-6">
+        <a href={localePath(locale, '/')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.home')}</a>
+        <a href={localePath(locale, '/services')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.services')}</a>
+        <a href={localePath(locale, '/langues')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.langues')}</a>
+        <a href={localePath(locale, '/financement')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.financement')}</a>
+        <a href={localePath(locale, '/a-propos')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.about')}</a>
+        <a href={localePath(locale, '/contact')} class="px-4 py-2 bg-gold text-anthracite text-sm font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors">
+          {t(locale, 'nav.contact')}
+        </a>
+      </nav>
+
+      <!-- Switcher de langue -->
+      <div class="flex items-center gap-1 ml-4">
+        {locales.map((loc) => (
+          <a
+            href={`/${loc}${currentPath}`}
+            class={`px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors ${
+              loc === locale
+                ? 'text-gold border-b border-gold'
+                : 'text-white/50 hover:text-white'
+            }`}
+          >
+            {localeNames[loc]}
+          </a>
+        ))}
+      </div>
+
+      <!-- Burger mobile -->
+      <button
+        id="menu-toggle"
+        class="lg:hidden text-white/70 hover:text-white ml-3"
+        aria-label="Menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Menu mobile -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-gold/20 bg-anthracite">
+    <nav class="px-4 py-4 flex flex-col gap-3">
+      <a href={localePath(locale, '/')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.home')}</a>
+      <a href={localePath(locale, '/services')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.services')}</a>
+      <a href={localePath(locale, '/langues')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.langues')}</a>
+      <a href={localePath(locale, '/financement')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.financement')}</a>
+      <a href={localePath(locale, '/a-propos')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.about')}</a>
+      <a href={localePath(locale, '/contact')} class="text-sm text-gold hover:text-gold-light transition-colors uppercase tracking-wider">{t(locale, 'nav.contact')}</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>
+

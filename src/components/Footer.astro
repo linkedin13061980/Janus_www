@@ -1,0 +1,65 @@
+---
+import type { Locale } from '../i18n/utils';
+import { t, localePath } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-anthracite-light border-t border-gold/20 mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Identité -->
+      <div>
+        <span class="text-2xl font-serif font-bold text-gold tracking-widest">JANUS</span>
+        <p class="text-white/50 text-sm mt-2 uppercase tracking-widest">Agence Linguistique</p>
+        <p class="text-white/40 text-xs mt-4 leading-relaxed">
+          20 ter rue Julien<br/>
+          69003 Lyon, France<br/>
+          <a href="tel:+33967056831" class="hover:text-gold transition-colors">+33 9 67 05 68 31</a><br/>
+          <a href="mailto:contact@agence-janus.fr" class="hover:text-gold transition-colors">contact@agence-janus.fr</a>
+        </p>
+      </div>
+
+      <!-- Liens -->
+      <div>
+        <h3 class="text-white/60 text-xs uppercase tracking-widest mb-4">Navigation</h3>
+        <nav class="flex flex-col gap-2">
+          <a href={localePath(locale, '/services')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'nav.services')}</a>
+          <a href={localePath(locale, '/langues')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'nav.langues')}</a>
+          <a href={localePath(locale, '/financement')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'nav.financement')}</a>
+          <a href={localePath(locale, '/pologne-investir')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'nav.pologne')}</a>
+          <a href={localePath(locale, '/a-propos')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'nav.about')}</a>
+          <a href={localePath(locale, '/contact')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'nav.contact')}</a>
+        </nav>
+      </div>
+
+      <!-- Légal -->
+      <div>
+        <h3 class="text-white/60 text-xs uppercase tracking-widest mb-4">Informations</h3>
+        <nav class="flex flex-col gap-2 mb-4">
+          <a href={localePath(locale, '/mentions-legales')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'footer.legal')}</a>
+          <a href={localePath(locale, '/cgv')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'footer.cgv')}</a>
+          <a href={localePath(locale, '/rgpd')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'footer.rgpd')}</a>
+          <a href={localePath(locale, '/cookies')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'footer.cookies')}</a>
+        </nav>
+        <p class="text-white/30 text-xs">{t(locale, 'footer.siret')}</p>
+        <p class="text-white/30 text-xs">{t(locale, 'footer.nda')}</p>
+        <a href="https://www.linkedin.com/company/janus-agence-linguistique" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-3 text-white/40 hover:text-gold transition-colors text-xs">
+          LinkedIn
+        </a>
+      </div>
+
+    </div>
+
+    <div class="border-t border-gold/10 mt-8 pt-6 text-center text-white/30 text-xs">
+      © {year} JANUS Agence Linguistique — {t(locale, 'footer.rights')}
+    </div>
+  </div>
+</footer>
+

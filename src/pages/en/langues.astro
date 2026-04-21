@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'en';
+const currentPath = '/langues';
+---
+<Layout
+  title="Our Languages | JANUS Linguistic Agency Lyon"
+  description="6 languages, native trainers: English, Polish, FFL, German, Spanish, Italian. Professional training, interpreting and translation in Lyon."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
+        <span class="w-8 h-px bg-gold inline-block"></span>6 languages · Native trainers · Lyon
+      </p>
+      <h1 class="text-5xl md:text-6xl font-serif font-light text-white mb-5">Our <em class="italic text-gold">languages</em></h1>
+      <p class="text-white/50 text-base max-w-xl leading-relaxed">
+        Native experts selected for their mastery of the business world and professional interpreting. Training, interpreting, on-site support — in the language of your partners.
+      </p>
+    </div>
+  </section>
+
+  <div class="bg-anthracite-light border-y border-gold/10 py-10 px-4">
+    <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      {[{ num:'6', label:'Languages' },{ num:'100%', label:'Native trainers' },{ num:'+200', label:'Missions / year' },{ num:'2019', label:'Expertise since' }].map(c => (
+        <div><p class="text-3xl font-serif font-bold text-gold">{c.num}</p><p class="text-white/40 text-xs uppercase tracking-widest mt-1">{c.label}</p></div>
+      ))}
+    </div>
+  </div>
+
+  {[
+    { id:'english', flag:'🇬🇧', eyebrow:'Language of international business', titre:'Professional English',
+      sous:'British and American certified trainers. From level assessment to TOEIC, through technical English and international negotiations.',
+      corps:["Professional English has been at the core of our expertise since our inception. Our bespoke programmes adapt to all levels — from beginner A1 to advanced C1 — with an approach focused on your sector and real objectives: meetings, emails, negotiations, client presentations.","Our native English-speaking trainers — British and American — are selected for their concrete business experience and teaching expertise. Each programme starts with a language audit to accurately assess your level and build a perfectly tailored programme.","For interpreting, our English-French interpreters work consecutively or as liaison interpreters for your meetings, negotiations, audits, in-house training with English-speaking partners, or professional events in Lyon and across France."],
+      prestations:["Business English — meetings, negotiations, presentations, professional emails","Individual coaching for executives and managers — preparation for international roles","TOEIC and TOEFL preparation — certifications recognised by employers","Technical English by sector — industry, healthcare, finance, logistics, legal","English-French interpreting — meetings, negotiations, conferences, factory visits","Translation of commercial and technical documents English ↔ French"],
+      sidebar:[{ label:'Funding available', content:'CPF up to €1,500 · OPCO · Skills Development Plan · Company funding', featured:true },{ label:'Levels covered', content:'A1 to C2 — all levels. Level assessment included and programme personalisation.' },{ label:'Format', content:'In-person Lyon · Video conference · In-house · Individual or group · Hybrid' },{ label:'Indicative price', content:'From €800 for a 20-hour package. Free personalised quote within 24h.' }],
+      cta:{ label:'Request a quote →', href:'/en/contact' } },
+    { id:'polish', flag:'🇵🇱', eyebrow:'Exclusive speciality in Lyon', titre:'Professional Polish',
+      sous:'The only agency specialised in Polish in Lyon. Active Franco-Polish consular network. For companies working with Poland.',
+      corps:["Polish is our specialist language — and our absolute differentiator on the Lyon market. No other agency in Lyon offers the same level of expertise in this language and on French-Polish markets. Since 2019, we have been supporting companies from Lyon and the Auvergne-Rhône-Alpes region in their professional exchanges with Poland.","Our in-depth knowledge of the Polish business environment — its professional codes, corporate culture and regional specificities (Warsaw, Kraków, Katowice, Wrocław) — allows us to go far beyond simple language training.","Our on-site support in Poland is unique: we intervene physically during your meetings in Warsaw, your supplier audits in Katowice or your negotiations in Kraków."],
+      prestations:["Business Polish training — commercial communication, meetings, professional trips to Poland","Polish-French interpreting — meetings, negotiations, supplier audits in France and Poland","On-site support in Poland — physical presence during your appointments in Warsaw, Kraków, Wrocław…","Reception of Polish delegations in Lyon — full logistics, interpreting and cultural mediation","Translation of commercial documents Polish ↔ French (contracts, tenders, correspondence)","Franco-Polish intercultural consulting — professional and cultural codes, protocols, relationship management"],
+      sidebar:[{ label:'Our unique advantage', content:'Franco-Polish consular network and CCI France-Poland. In-depth knowledge of the Polish market. Only specialist in Lyon.', featured:true },{ label:'Funding', content:'OPCO · Skills Development Plan · Company funding' },{ label:'Coverage area', content:'Lyon · All of France · All of Poland (Warsaw, Kraków, Wrocław, Katowice, Łódź…)' },{ label:'Indicative price', content:'From €900. Free personalised quote within 24h. On-site mission quoted separately.' }],
+      cta:{ label:'Discover our Poland services →', href:'/en/pologne-investir' } },
+  ].map((lang, i) => (
+    <section id={lang.id} class={`py-20 px-4 ${i % 2 === 0 ? 'bg-anthracite' : 'bg-anthracite-light'}`}>
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col sm:flex-row gap-6 items-start mb-10 pb-10 border-b border-gold/10">
+          <span class="text-7xl leading-none">{lang.flag}</span>
+          <div>
+            <p class="text-gold text-xs uppercase tracking-widest mb-2">{lang.eyebrow}</p>
+            <h2 class="text-3xl font-serif font-light text-white mb-3">{lang.titre}</h2>
+            <p class="text-white/50 text-sm leading-relaxed max-w-2xl">{lang.sous}</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
+          <div>
+            {lang.corps.map(p => <p class="text-white/60 text-sm leading-relaxed mb-5">{p}</p>)}
+            <p class="text-gold text-xs uppercase tracking-widest mb-4 mt-8 flex items-center gap-3">What we offer <span class="flex-1 h-px bg-gold/20"></span></p>
+            <ul class="space-y-3">
+              {lang.prestations.map(p => (
+                <li class="flex gap-3 text-sm text-white/60 leading-relaxed">
+                  <span class="text-gold text-xs mt-1 shrink-0">◆</span><span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <aside class="flex flex-col gap-3">
+            {lang.sidebar.map(card => (
+              <div class={`p-4 border ${card.featured ? 'border-emerald-600/50 bg-emerald-950/20' : 'border-gold/20 bg-white/[0.02]'}`}>
+                <p class={`text-xs uppercase tracking-widest mb-2 font-medium ${card.featured ? 'text-emerald-500' : 'text-gold'}`}>{card.label}</p>
+                <p class="text-xs text-white/55 leading-relaxed">{card.content}</p>
+              </div>
+            ))}
+            <a href={lang.cta.href} class="block text-center bg-anthracite border border-gold/40 text-white/80 hover:bg-gold hover:text-anthracite px-4 py-3 text-xs uppercase tracking-widest transition-all">{lang.cta.label}</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="bg-anthracite py-20 px-4 text-center border-t border-gold/10">
+    <h2 class="text-3xl font-serif font-light text-white mb-4">Your language not listed?</h2>
+    <p class="text-white/45 text-sm max-w-md mx-auto mb-8">Contact us — our partner network covers many other European and world languages.</p>
+    <a href="/en/contact" class="inline-block px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Contact us</a>
+  </section>
+</Layout>

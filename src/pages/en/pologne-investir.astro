@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'en';
+const currentPath = '/pologne-investir';
+---
+<Layout
+  title="Invest in Poland | JANUS Linguistic Agency Lyon"
+  description="Poland, 6th European economy, €35bn Franco-Polish trade, 1,200 French companies already established. JANUS supports your projects in Poland."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-16 px-4 relative overflow-hidden">
+    <div class="absolute top-20 right-8 text-[8rem] opacity-10 pointer-events-none select-none">🇵🇱</div>
+    <div class="max-w-4xl mx-auto relative">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3"><span class="w-8 h-px bg-gold inline-block"></span>Invest in Poland</p>
+      <h1 class="text-4xl md:text-6xl font-serif font-light text-white mb-6 leading-tight">Poland, the engine<br/>of Central Europe.<br/><em class="italic text-gold">Your next opportunity.</em></h1>
+      <p class="text-white/50 text-base max-w-2xl leading-relaxed">Poland is today one of Europe's most dynamic economies. With over 1,200 French companies already established and €35 billion in bilateral trade in 2023, the Polish market is the obvious next step for ambitious French companies.</p>
+    </div>
+  </section>
+
+  <div class="bg-anthracite-light border-y border-gold/10 py-12 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4">
+      {[{num:'35',unite:' bn €',label:'Franco-Polish bilateral trade',source:'2023 — French Treasury'},{num:'1,200',unite:'',label:'French companies in Poland',source:'2023 — CCIFP'},{num:'227,000',unite:'',label:'Direct jobs created by French companies',source:'2022 — French Treasury'},{num:'27',unite:' bn €',label:'French FDI stock in Poland',source:'2023 +5% vs 2022 — Banque de France'},{num:'3rd',unite:'',label:'Largest foreign employer in Poland (after Germany & USA)',source:'French Treasury · 2024'}].map(c => (
+        <div class="border border-gold/20 p-4 text-center">
+          <p class="text-2xl font-serif font-bold text-gold">{c.num}<span class="text-lg">{c.unite}</span></p>
+          <p class="text-white/60 text-xs mt-2 leading-tight">{c.label}</p>
+          <p class="text-white/25 text-xs mt-1">{c.source}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <section class="py-20 px-4 bg-anthracite">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-widest mb-3">Why Poland</p>
+      <h2 class="text-3xl font-serif font-light text-white mb-12">6 reasons to invest in Poland right now.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          {icon:'📈',titre:'Sustained economic growth',desc:"Poland is one of the few European economies that did not experience recession during the 2008 crisis. Its GDP has doubled in 20 years, from €200bn to over €750bn.",stat:'GDP 2023: +2.9% · GDP per capita: €22,300 (+180% in 20 years)'},
+          {icon:'👷',titre:'Qualified and competitive workforce',desc:"Poland trains more engineers per year than Germany. Labour costs remain 40–50% lower than in France, but productivity and qualification levels are among the highest in Central Europe.",stat:'Unemployment 2024: 2.9% · 500,000 graduates/year'},
+          {icon:'🚄',titre:'Strategic geographic location',desc:"At the crossroads of Europe, Poland gives access to a market of 450 million consumers. Its transport infrastructure, modernised with European funds, is now among the best on the continent.",stat:"38 million inhabitants · Access EU + Eastern Europe"},
+          {icon:'🏛️',titre:'Institutional and legal stability',desc:"An EU member since 2004, Poland applies Community law. The legal framework for foreign investors is clear, protective and aligned with European standards.",stat:'EU member since 2004 · Schengen area'},
+          {icon:'💡',titre:'Innovation dynamism',desc:"48% of French companies in Poland increased their investments in 2023. 41% conduct R&D activities, and 43% of innovations developed in Poland have been deployed in other group countries.",stat:"48% investment increase in 2023 · CCIFP"},
+          {icon:'🌱',titre:'Accelerating ecological transition',desc:"78% of French companies in Poland conduct environmental protection activities. Poland is in full energy transition, creating immense opportunities in renewables, mobility and energy efficiency.",stat:"78% of French companies active in CSR · CCIFP"},
+        ].map(r => (
+          <div class="border border-gold/15 p-6 bg-white/[0.02]">
+            <p class="text-3xl mb-4">{r.icon}</p>
+            <h3 class="text-white font-serif text-lg mb-3">{r.titre}</h3>
+            <p class="text-white/50 text-sm leading-relaxed mb-4">{r.desc}</p>
+            <p class="text-gold/60 text-xs border-t border-gold/15 pt-3">{r.stat}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-gold text-center">
+    <h2 class="text-3xl font-serif font-light text-anthracite mb-4">A project in Poland? <em class="italic">Let's talk.</em></h2>
+    <p class="text-anthracite/60 text-sm max-w-md mx-auto mb-10">We can support you from the exploration phase through to establishment. First discussion free and confidential.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/en/contact" class="px-8 py-4 bg-anthracite text-white font-semibold uppercase tracking-wider hover:bg-anthracite-light transition-colors text-sm">Discuss my project</a>
+      <a href="/en/services" class="px-8 py-4 border-2 border-anthracite text-anthracite font-semibold uppercase tracking-wider hover:bg-anthracite hover:text-white transition-colors text-sm">Our Poland services</a>
+    </div>
+  </section>
+</Layout>

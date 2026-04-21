@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'en';
+const currentPath = '/financement';
+---
+<Layout
+  title="Training Funding | JANUS Linguistic Agency Lyon"
+  description="CPF, OPCO, PDC, France Travail — JANUS handles your funding applications from A to Z. Language training covered up to 100% thanks to Qualiopi certification."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3"><span class="w-8 h-px bg-gold inline-block"></span>CPF · OPCO · PDC · France Travail</p>
+      <h1 class="text-5xl font-serif font-light text-white mb-5 leading-tight">Your training,<br/><em class="italic text-gold">funded.</em></h1>
+      <p class="text-white/50 text-base max-w-xl leading-relaxed">Qualiopi certification gives access to all public funding schemes. In most cases, your language training is 100% covered. JANUS handles your applications from A to Z.</p>
+    </div>
+  </section>
+
+  <div class="bg-emerald-950/40 border-y border-emerald-600/30 px-4 py-5">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <span class="shrink-0 px-3 py-1 border border-emerald-500 text-emerald-400 text-xs uppercase tracking-widest font-semibold">✓ Qualiopi Certified</span>
+      <p class="text-white/60 text-sm leading-relaxed"><strong class="text-white">Qualiopi certification is mandatory</strong> to access public and pooled funding. Certification number: <strong class="text-gold">#84692002569</strong></p>
+    </div>
+  </div>
+
+  <section class="py-20 px-4 bg-anthracite">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-widest mb-3">Funding schemes</p>
+      <h2 class="text-3xl font-serif font-light text-white mb-12">Which funding for your project?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[
+          { sigle:'CPF', nom:'Personal Training Account', montant:'Up to €1,500 per year', color:'text-blue-400', border:'border-blue-500/40 bg-blue-950/20', desc:"The CPF can fund your certified language training with no upfront payment or remaining cost in most cases.", items:["Available to all employees and job seekers","Eligible certifications: TOEIC, TOEFL, DELE, Goethe, DELF, TCF","Check your balance on moncompteformation.gouv.fr","JANUS guides you through registration and the application","FFL: CPF fully funded for allophone employees with CIR"], who:"Private sector employees, self-employed, job seekers." },
+          { sigle:'OPCO', nom:'Skills Operator (OPCO)', montant:'Coverage up to 100%', color:'text-emerald-400', border:'border-emerald-500/40 bg-emerald-950/20', desc:"OPCOs collect company training contributions and redistribute them to fund vocational training. Coverage can be total.", items:["Coverage based on your OPCO and sector rules","All JANUS training is eligible (Qualiopi certified)","JANUS identifies your OPCO and handles the application","Typical processing time: 2 to 4 weeks","Direct invoicing to OPCO possible in some cases"], who:"Companies of all sizes (Atlas, Constructys, Akto, Opco EP, Uniformation…)." },
+          { sigle:'PDC', nom:'Company Skills Development Plan', montant:'Company training budget', color:'text-gold', border:'border-gold/40 bg-gold/5', desc:"The PDC allows employers to fund employee training during working hours with salary maintained.", items:["Training during working hours, salary maintained","100% employer funded (recoverable via OPCO)","Ideal for in-company group training","Can be supplemented by OPCO funding","JANUS provides all required administrative documents"], who:"Employers wishing to train their employees." },
+          { sigle:'France Travail', nom:'Job seekers', montant:'Variable coverage', color:'text-purple-400', border:'border-purple-500/40 bg-purple-950/20', desc:"France Travail can fund language training for job seekers as part of their professional reintegration project.", items:["Subject to validation by your France Travail adviser","Must fit within a defined professional project","Certified training preferred","JANUS helps prepare the file with you","Allowances maintained during training"], who:"Job seekers registered with France Travail." },
+        ].map(d => (
+          <div class={`border p-8 ${d.border}`}>
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <p class={`text-2xl font-serif font-bold mb-1 ${d.color}`}>{d.sigle}</p>
+                <p class="text-white/60 text-sm">{d.nom}</p>
+              </div>
+              <span class={`text-xs px-3 py-1 border ${d.border} ${d.color} uppercase tracking-wider shrink-0`}>{d.montant}</span>
+            </div>
+            <p class="text-white/55 text-sm leading-relaxed mb-5">{d.desc}</p>
+            <ul class="space-y-2 mb-5">
+              {d.items.map(item => <li class="flex gap-3 text-xs text-white/50 leading-relaxed"><span class={`${d.color} shrink-0 mt-0.5`}>◆</span><span>{item}</span></li>)}
+            </ul>
+            <p class="text-xs text-white/40 border-t border-white/10 pt-4"><strong class="text-white/60">For:</strong> {d.who}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-gold text-center">
+    <h2 class="text-3xl font-serif font-light text-anthracite mb-4">Your training could be <em class="italic">fully funded.</em></h2>
+    <p class="text-anthracite/60 text-sm max-w-md mx-auto mb-10">Contact us — we check your eligibility for free and handle the application. Reply within 24h.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/en/contact" class="px-8 py-4 bg-anthracite text-white font-semibold uppercase tracking-wider hover:bg-anthracite-light transition-colors text-sm">Check my funding</a>
+      <a href="/en/services" class="px-8 py-4 border-2 border-anthracite text-anthracite font-semibold uppercase tracking-wider hover:bg-anthracite hover:text-white transition-colors text-sm">See our training</a>
+    </div>
+  </section>
+</Layout>

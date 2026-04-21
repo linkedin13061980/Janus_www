@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'pl';
+const currentPath = '/cookies';
+---
+<Layout
+  title="Polityka cookies | JANUS Agence Linguistique Lyon"
+  description="Zarządzanie plikami cookie na agence-janus.fr — analityczne, preferencje i sposób ich kontrolowania."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-20 px-4">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3"><span class="w-8 h-px bg-gold inline-block"></span>Przejrzystość</p>
+      <h1 class="text-4xl font-serif font-light text-white mb-12">Polityka cookies</h1>
+
+      <div class="space-y-10 text-white/60 text-sm leading-relaxed">
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">Czym jest plik cookie?</h2>
+          <p>Plik cookie to mały plik tekstowy umieszczany w Twojej przeglądarce podczas odwiedzania strony. Pozwala on zapamiętać informacje o Twojej sesji lub preferencjach.</p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">Pliki cookie używane na tej stronie</h2>
+          <div class="space-y-4">
+
+            <div class="border border-white/10 p-5">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <p class="text-white font-medium">Preferencja zgody</p>
+                <span class="shrink-0 text-xs px-2 py-0.5 border border-emerald-500/40 text-emerald-400 uppercase">Funkcjonalny</span>
+              </div>
+              <p><strong class="text-white">Klucz:</strong> <code class="text-gold bg-white/5 px-1">cookie_consent</code> (localStorage)<br/>
+              <strong class="text-white">Czas trwania:</strong> Stały (do ręcznego usunięcia)<br/>
+              <strong class="text-white">Cel:</strong> Zapamiętanie Twojego wyboru akceptacji lub odrzucenia analitycznych plików cookie.<br/>
+              <strong class="text-white">Strona trzecia:</strong> Brak — wyłącznie lokalne przechowywanie.<br/>
+              <em class="text-white/40">To przechowywanie jest niezbędne do działania banera. Nie wymaga uprzedniej zgody.</em></p>
+            </div>
+
+            <div class="border border-white/10 p-5">
+              <div class="flex items-start justify-between gap-4 mb-3">
+                <p class="text-white font-medium">Google Analytics 4</p>
+                <span class="shrink-0 text-xs px-2 py-0.5 border border-gold/40 text-gold uppercase">Analityczny</span>
+              </div>
+              <p><strong class="text-white">Pliki cookie:</strong> <code class="text-gold bg-white/5 px-1">_ga</code>, <code class="text-gold bg-white/5 px-1">_ga_*</code><br/>
+              <strong class="text-white">Czas trwania:</strong> 13 miesięcy (_ga) / 14 miesięcy (_ga_*)<br/>
+              <strong class="text-white">Cel:</strong> Anonimizowany pomiar ruchu — odsłony stron, czas sesji, źródło ruchu.<br/>
+              <strong class="text-white">Strona trzecia:</strong> Google LLC — anonimizacja IP włączona, wyłącznie dane zagregowane.<br/>
+              <strong class="text-white">ID:</strong> G-YN6GZC4X94<br/>
+              <em class="text-white/40">Te pliki cookie są ustawiane wyłącznie po Twojej wyraźnej zgodzie.</em></p>
+            </div>
+
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">Zarządzaj swoimi preferencjami</h2>
+          <p class="mb-4">Możesz zmienić swój wybór w dowolnym momencie:</p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button
+              onclick="localStorage.removeItem('cookie_consent'); window.location.reload();"
+              class="px-6 py-3 border border-white/20 text-white text-sm uppercase tracking-wider hover:border-gold hover:text-gold transition-colors cursor-pointer"
+            >
+              Zresetuj moje preferencje
+            </button>
+            <button
+              onclick="localStorage.setItem('cookie_consent','accepted'); window.location.reload();"
+              class="px-6 py-3 bg-gold text-anthracite font-semibold text-sm uppercase tracking-wider hover:bg-gold-light transition-colors cursor-pointer"
+            >
+              Akceptuj wszystkie
+            </button>
+          </div>
+          <p class="mt-4 text-white/40 text-xs">Możesz również wyłączyć pliki cookie bezpośrednio w ustawieniach swojej przeglądarki. Nie wpływa to na przeglądanie tej strony.</p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">Więcej informacji</h2>
+          <p>Więcej informacji na temat naszych praktyk dotyczących danych osobowych znajdziesz w naszej <a href="/pl/rgpd" class="text-gold hover:text-gold-light transition-colors">polityce prywatności</a>. Aby skontaktować się z naszym IOD: <a href="mailto:contact@agence-janus.fr" class="text-gold hover:text-gold-light transition-colors">contact@agence-janus.fr</a></p>
+        </div>
+
+        <p class="text-white/30 text-xs border-t border-white/10 pt-6">Ostatnia aktualizacja: kwiecień 2025</p>
+      </div>
+    </div>
+  </section>
+</Layout>

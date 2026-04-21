@@ -1,0 +1,224 @@
+---
+import { actions, isInputError } from 'astro:actions';
+import type { Locale } from '../i18n/utils';
+import { t } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const result = Astro.getActionResult(actions.sendContact);
+const inputErrors = isInputError(result?.error) ? result.error.fields : {};
+const success = result?.data?.success === true;
+---
+
+{success ? (
+  <div class="max-w-xl mx-auto text-center py-16">
+    <div class="w-16 h-16 bg-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
+      <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+      </svg>
+    </div>
+    <h2 class="text-2xl font-serif font-bold text-white mb-4">{t(locale, 'contact.success').split('.')[0]}</h2>
+    <p class="text-white/60">{t(locale, 'contact.success')}</p>
+    <a href={`/${locale}/`} class="inline-block mt-8 px-6 py-3 border border-gold/40 text-gold hover:bg-gold hover:text-anthracite transition-colors text-sm uppercase tracking-wider">
+      {t(locale, 'nav.home')}
+    </a>
+  </div>
+) : (
+  <form
+    method="POST"
+    action={actions.sendContact}
+    class="max-w-2xl mx-auto space-y-6"
+    novalidate
+  >
+    <!-- Honeypot anti-spam (caché) -->
+    <div class="hidden" aria-hidden="true">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <!-- Prénom / Nom -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="firstname" class="field-label">{t(locale, 'contact.firstname')} *</label>
+        <input
+          id="firstname"
+          name="firstname"
+          type="text"
+          required
+          autocomplete="given-name"
+          class={`field-input ${inputErrors.firstname ? 'border-red-400' : ''}`}
+        />
+        {inputErrors.firstname && <p class="field-error">{inputErrors.firstname}</p>}
+      </div>
+      <div>
+        <label for="lastname" class="field-label">{t(locale, 'contact.lastname')} *</label>
+        <input
+          id="lastname"
+          name="lastname"
+          type="text"
+          required
+          autocomplete="family-name"
+          class={`field-input ${inputErrors.lastname ? 'border-red-400' : ''}`}
+        />
+        {inputErrors.lastname && <p class="field-error">{inputErrors.lastname}</p>}
+      </div>
+    </div>
+
+    <!-- Email / Téléphone -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="email" class="field-label">{t(locale, 'contact.email')} *</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          autocomplete="email"
+          class={`field-input ${inputErrors.email ? 'border-red-400' : ''}`}
+        />
+        {inputErrors.email && <p class="field-error">{inputErrors.email}</p>}
+      </div>
+      <div>
+        <label for="phone" class="field-label">{t(locale, 'contact.phone')}</label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          autocomplete="tel"
+          class="field-input"
+        />
+      </div>
+    </div>
+
+    <!-- Entreprise -->
+    <div>
+      <label for="company" class="field-label">{t(locale, 'contact.company')} *</label>
+      <input
+        id="company"
+        name="company"
+        type="text"
+        required
+        autocomplete="organization"
+        class={`field-input ${inputErrors.company ? 'border-red-400' : ''}`}
+      />
+      {inputErrors.company && <p class="field-error">{inputErrors.company}</p>}
+    </div>
+
+    <!-- Service / Langue -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="service" class="field-label">{t(locale, 'contact.service')} *</label>
+        <select
+          id="service"
+          name="service"
+          required
+          class={`field-input ${inputErrors.service ? 'border-red-400' : ''}`}
+        >
+          <option value="">—</option>
+          <option value="formation">{t(locale, 'contact.service_options.formation')}</option>
+          <option value="interpretation">{t(locale, 'contact.service_options.interpretation')}</option>
+          <option value="accompagnement">{t(locale, 'contact.service_options.accompagnement')}</option>
+          <option value="traduction">{t(locale, 'contact.service_options.traduction')}</option>
+        </select>
+        {inputErrors.service && <p class="field-error">{inputErrors.service}</p>}
+      </div>
+      <div>
+        <label for="langue" class="field-label">{t(locale, 'contact.langue')} *</label>
+        <select
+          id="langue"
+          name="langue"
+          required
+          class={`field-input ${inputErrors.langue ? 'border-red-400' : ''}`}
+        >
+          <option value="">—</option>
+          <option value="anglais">{t(locale, 'contact.langue_options.anglais')}</option>
+          <option value="polonais">{t(locale, 'contact.langue_options.polonais')}</option>
+          <option value="fle">{t(locale, 'contact.langue_options.fle')}</option>
+          <option value="allemand">{t(locale, 'contact.langue_options.allemand')}</option>
+          <option value="espagnol">{t(locale, 'contact.langue_options.espagnol')}</option>
+          <option value="italien">{t(locale, 'contact.langue_options.italien')}</option>
+        </select>
+        {inputErrors.langue && <p class="field-error">{inputErrors.langue}</p>}
+      </div>
+    </div>
+
+    <!-- Message -->
+    <div>
+      <label for="message" class="field-label">{t(locale, 'contact.message')} *</label>
+      <textarea
+        id="message"
+        name="message"
+        rows={5}
+        required
+        class={`field-input resize-none ${inputErrors.message ? 'border-red-400' : ''}`}
+      ></textarea>
+      {inputErrors.message && <p class="field-error">{inputErrors.message}</p>}
+    </div>
+
+    <!-- RGPD -->
+    <div class="flex items-start gap-3">
+      <input
+        id="rgpd"
+        name="rgpd"
+        type="checkbox"
+        required
+        class="mt-1 w-4 h-4 accent-gold shrink-0"
+      />
+      <label for="rgpd" class="text-white/60 text-sm leading-relaxed cursor-pointer">
+        {t(locale, 'contact.rgpd_consent')}
+        <a href={`/${locale}/rgpd`} class="text-gold hover:underline ml-1">
+          {t(locale, 'footer.rgpd')}
+        </a>
+      </label>
+    </div>
+    {inputErrors.rgpd && <p class="field-error">{inputErrors.rgpd}</p>}
+
+    {result?.error && !isInputError(result.error) && (
+      <p class="text-red-400 text-sm">{t(locale, 'contact.error')}</p>
+    )}
+
+    <!-- Submit -->
+    <button
+      type="submit"
+      class="w-full sm:w-auto px-10 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors"
+    >
+      {t(locale, 'contact.submit')}
+    </button>
+  </form>
+)}
+
+<style>
+  .field-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgb(255 255 255 / 0.5);
+    margin-bottom: 0.5rem;
+  }
+  .field-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: #2d3238;
+    border: 1px solid rgb(201 168 76 / 0.2);
+    color: #f5f5f0;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .field-input:focus {
+    border-color: #c9a84c;
+  }
+  .field-error {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: #f87171;
+  }
+  select.field-input option {
+    background: #2d3238;
+  }
+</style>

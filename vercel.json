@@ -1,0 +1,38 @@
+{
+  "redirects": [
+    { "source": "/index.html", "destination": "/fr/", "permanent": true },
+    { "source": "/contact.html", "destination": "/fr/contact", "permanent": true },
+    { "source": "/services.html", "destination": "/fr/services", "permanent": true },
+    { "source": "/langues.html", "destination": "/fr/langues", "permanent": true },
+    { "source": "/financement.html", "destination": "/fr/financement", "permanent": true },
+    { "source": "/a-propos.html", "destination": "/fr/a-propos", "permanent": true },
+    { "source": "/pologne-investir.html", "destination": "/fr/pologne-investir", "permanent": true },
+    { "source": "/mentions-legales.html", "destination": "/fr/mentions-legales", "permanent": true },
+    { "source": "/cgv.html", "destination": "/fr/cgv", "permanent": true },
+    { "source": "/rgpd.html", "destination": "/fr/rgpd", "permanent": true },
+    { "source": "/cookies.html", "destination": "/fr/cookies", "permanent": true },
+    { "source": "/formations", "destination": "/fr/services", "permanent": true },
+    { "source": "/formation-linguistique", "destination": "/fr/services", "permanent": true },
+    { "source": "/interpretation", "destination": "/fr/services", "permanent": true },
+    { "source": "/traduction", "destination": "/fr/services", "permanent": true },
+    { "source": "/en", "destination": "/en/", "permanent": false },
+    { "source": "/pl", "destination": "/pl/", "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    }
+  ]
+}

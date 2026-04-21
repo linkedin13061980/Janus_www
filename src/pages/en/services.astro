@@ -1,0 +1,238 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const locale = 'en';
+const currentPath = '/services';
+
+const services = [
+  {
+    num: '01', id: 'training',
+    eyebrow: 'Language training',
+    titre: 'Tailored programmes for your teams',
+    accroche: "Programmes of 20 to 60 hours built around your sector, your professional vocabulary and your concrete operational objectives. No off-the-shelf courses.",
+    badges: [
+      { label: 'Qualiopi certified', color: 'green' },
+      { label: 'OPCO / CPF eligible', color: 'gold' },
+      { label: 'Native speakers only', color: 'dark' },
+      { label: 'In-person & remote', color: 'gold' },
+    ],
+    usages: [
+      { icon: '🏭', title: 'Industry & export', desc: "English and Polish for supplier negotiations, factory visits, quality audits and international trade shows." },
+      { icon: '💼', title: 'Business & management', desc: "Business English for executives and sales teams. TOEIC preparation and leadership coaching for international roles." },
+      { icon: '🌍', title: 'FLE — Foreign employees', desc: "French as a Foreign Language for non-French-speaking staff. CPF-funded with no remaining charge." },
+      { icon: '📊', title: 'Finance & legal', desc: "English and Polish legal and financial terminology for CFO, legal and compliance teams dealing with foreign counterparts." },
+    ],
+    prestations: [
+      { nom: 'Individual coaching', detail: "1-to-1 with your native trainer. Rapid progress. Ideal for executives with limited availability." },
+      { nom: 'Group training (2–8 people)', detail: "Sales teams, export departments, management. Homogeneous level groups and professional role-play." },
+      { nom: 'Intensive & immersive training', detail: "1–5 day intensive modules for rapid skill-building before a mission, negotiation or business trip." },
+      { nom: 'Online training (blended learning)', detail: "Combination of trainer sessions and e-learning modules between sessions. Optimal for busy schedules." },
+    ],
+    sidebar: [
+      { label: 'Languages available', content: '🇬🇧 English · 🇵🇱 Polish · 🇫🇷 French (FLE) · 🇩🇪 German · 🇪🇸 Spanish · 🇮🇹 Italian' },
+      { label: 'Funding', content: 'OPCO, CPF, Skills Development Plan. We handle the full application process for you.', featured: true },
+      { label: 'Formats', content: 'Individual · Group · Intensive · Blended learning · On-site · Online' },
+      { label: 'Price', content: 'Quoted on request by format, duration and language. Free audit and quote within 24h.' },
+    ],
+    cta: 'Request a quote →',
+  },
+  {
+    num: '02', id: 'interpreting',
+    eyebrow: 'Professional interpreting',
+    titre: 'Certified interpreters for your sensitive missions',
+    accroche: "Experienced native interpreters selected according to your sector. NDA signed systematically before every mission. Available on-site (travel included) or by video conference.",
+    badges: [
+      { label: 'Systematic NDA', color: 'green' },
+      { label: 'Certified natives', color: 'gold' },
+      { label: 'Consecutive · Liaison · Video', color: 'dark' },
+    ],
+    usages: [
+      { icon: '🤝', title: 'Business negotiations', desc: "Strategic discussions, pricing, contract reviews. The interpreter masters commercial terminology and cultural codes." },
+      { icon: '🏭', title: 'Audits & site visits', desc: "Quality audits, supplier visits, technical inspections. Industry-specialist interpreters available." },
+      { icon: '⚖️', title: 'Legal meetings', desc: "Contract signings, due diligence, disputes. Interpreters with legal training or business law experience." },
+      { icon: '📡', title: 'Conferences & seminars', desc: "Consecutive interpreting for conferences, company seminars, multilingual in-house training." },
+    ],
+    prestations: [
+      { nom: 'Consecutive interpreting', detail: "The interpreter renders speech after each utterance. Ideal for working meetings and small-group negotiations." },
+      { nom: 'Liaison interpreting', detail: "Continuous translation during site visits, round-tables and business trips. Smooth communication guaranteed." },
+      { nom: 'Video conference interpreting', detail: "Available on all platforms (Teams, Zoom, Google Meet). The interpreter joins the virtual meeting." },
+    ],
+    citation: '"Our interpreters do not merely translate words — they convey meaning, tone and cultural nuances that make the difference in an international negotiation."',
+    sidebar: [
+      { label: 'Language pairs', content: 'FR ↔ EN · FR ↔ PL · FR ↔ DE · FR ↔ ES · FR ↔ IT · EN ↔ PL' },
+      { label: 'Confidentiality', content: 'NDA signed before every mission without exception. Your contacts and information are protected.', featured: true },
+      { label: 'Coverage area', content: 'All of France · Poland · United Kingdom · Belgium · Other destinations on request' },
+      { label: 'Booking lead time', content: 'Standard: 72h · Urgent: contact us directly' },
+    ],
+    cta: 'Book an interpreter →',
+  },
+  {
+    num: '03', id: 'onsite',
+    eyebrow: 'On-site support',
+    titre: 'Physical presence during your critical missions',
+    accroche: "Beyond translation, our expert accompanies you in the field — to negotiate, decode cultural signals and maximise your chances of success. A unique speciality in Lyon on the French-Polish corridor.",
+    badges: [
+      { label: 'Exclusive to Lyon', color: 'gold' },
+      { label: 'French-Polish', color: 'dark' },
+      { label: 'Intercultural advice included', color: 'green' },
+    ],
+    usages: [
+      { icon: '🏭', title: 'Site visits & due diligence', desc: "Factory visits, supplier audits, quality inspections in Poland or France. Mission report available on completion." },
+      { icon: '📋', title: 'Tenders & negotiations', desc: "Bid presentations, contract negotiations, partner meetings. The expert understands Polish and French business codes." },
+      { icon: '🤝', title: 'Trade shows', desc: "Accompaniment at trade shows in France and Poland. Facilitation of B2B meetings with local prospects and partners." },
+      { icon: '🏗️', title: 'Set-up & establishment', desc: "Support during the initial phases of market entry: recruitment, local authorities, institutional partners." },
+    ],
+    prestations: [
+      { nom: 'Decoding non-verbal signals', detail: "A Polish 'yes' does not always mean 'yes'. Our expert identifies hesitations, implicit reservations and negotiation opportunities." },
+      { nom: 'Intercultural preparation', detail: "Before your mission, briefing on codes of conduct, cultural expectations and pitfalls to avoid with your counterparts." },
+      { nom: 'Active CCIFP network', detail: "Members of the France-Poland Chamber of Commerce and Industry in Lyon. Access to a network of Franco-Polish companies and institutions." },
+    ],
+    sidebar: [
+      { label: 'Coverage', content: 'France (Lyon, Paris, regions) · Poland (Warsaw, Kraków, Wrocław, Katowice…) · United Kingdom' },
+      { label: 'Exclusive expertise', content: 'Only player in Lyon with Franco-Polish on-site expertise and an active CCIFP network.', featured: true },
+      { label: 'Deliverable', content: 'Mission report available after each trip. Negotiation summary on request.' },
+    ],
+    cta: 'Discuss your mission →',
+  },
+  {
+    num: '04', id: 'translation',
+    eyebrow: 'Professional translation',
+    titre: 'Translation by native specialists in your field',
+    accroche: "6 languages. Native translators assigned by area of expertise. Systematic revision before delivery. Quote within 2 hours on submission of your document.",
+    badges: [
+      { label: '6 languages', color: 'gold' },
+      { label: 'Specialist natives', color: 'dark' },
+      { label: 'Systematic revision', color: 'green' },
+      { label: 'Express 24h', color: 'gold' },
+    ],
+    usages: [
+      { icon: '⚖️', title: 'Legal & contractual documents', desc: "Commercial contracts, T&Cs, partnership agreements, articles of association. Translators with legal training." },
+      { icon: '📊', title: 'Financial documents', desc: "Annual reports, business plans, investor presentations. Rigorous accounting and financial terminology." },
+      { icon: '🏭', title: 'Technical documentation', desc: "Technical manuals, product data sheets, specifications. Translators specialised by industrial sector." },
+      { icon: '📢', title: 'Marketing & communications', desc: "Brochures, websites, press releases, newsletters. Cultural and stylistic adaptation for each target market." },
+    ],
+    prestations: [
+      { nom: 'Native translators only', detail: "Our translators translate exclusively into their mother tongue — the only way to guarantee the naturalness and fluency of the final text." },
+      { nom: 'Sector specialisation', detail: "Each translator is assigned according to their area of expertise. A legal expert does not translate a technical manual." },
+      { nom: 'Systematic revision', detail: "Each important translation is proofread by a second translator before delivery. Double-checking and terminological consistency guaranteed." },
+      { nom: 'Deadlines met & confidentiality', detail: "Standard 48-72h, express 24h. Your documents remain confidential. NDA available before submission for sensitive documents." },
+    ],
+    sidebar: [
+      { label: 'Languages available', content: '🇬🇧 English · 🇵🇱 Polish · 🇫🇷 French · 🇩🇪 German · 🇪🇸 Spanish · 🇮🇹 Italian' },
+      { label: 'Delivery times', content: 'Standard: 48-72h · Express: 24h · Urgent: contact us directly', featured: true },
+      { label: 'Areas of expertise', content: 'Legal · Commercial · Technical · Marketing · Finance · Regulatory' },
+      { label: 'Price', content: 'Quoted on request by volume and language. Send your document for a quote within 2h.' },
+    ],
+    cta: 'Send my document →',
+  },
+];
+
+const badgeClass: Record<string, string> = {
+  green: 'border border-emerald-600 text-emerald-600 bg-emerald-950/40',
+  gold: 'border border-gold/60 text-gold',
+  dark: 'bg-anthracite text-gold border border-anthracite',
+};
+---
+
+<Layout
+  title="Our Services | JANUS Linguistic Agency Lyon"
+  description="Language training, professional interpreting, on-site support and translation. JANUS supports your teams end-to-end in your international projects in Lyon."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-16 px-4 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto relative">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
+        <span class="w-8 h-px bg-gold inline-block"></span>Our services
+      </p>
+      <h1 class="text-5xl md:text-6xl font-serif font-light text-white mb-5 leading-tight">
+        Four services.<br/><em class="italic text-gold">One partner.</em>
+      </h1>
+      <p class="text-white/50 text-base max-w-xl leading-relaxed">
+        Language training, professional interpreting, on-site support and translation — a unique integrated offer on the Lyon market.
+      </p>
+    </div>
+  </section>
+
+  <nav class="bg-white/5 backdrop-blur border-b border-gold/10 sticky top-16 z-40 overflow-x-auto">
+    <div class="max-w-6xl mx-auto px-4 flex gap-6 py-3">
+      {services.map(s => (
+        <a href={`#${s.id}`} class="text-xs uppercase tracking-widest text-white/50 hover:text-gold transition-colors whitespace-nowrap pb-1 border-b-2 border-transparent hover:border-gold">{s.eyebrow.split(' ')[0]}</a>
+      ))}
+    </div>
+  </nav>
+
+  {services.map((s, i) => (
+    <section id={s.id} class={`py-20 px-4 ${i % 2 === 0 ? 'bg-anthracite' : 'bg-anthracite-light'}`}>
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-[auto_1fr] gap-10 items-start mb-12 pb-10 border-b border-gold/10">
+          <span class="text-[5rem] font-serif font-bold text-gold/10 leading-none select-none">{s.num}</span>
+          <div>
+            <p class="text-gold text-xs uppercase tracking-widest mb-2">{s.eyebrow}</p>
+            <h2 class="text-3xl md:text-4xl font-serif font-light text-white mb-4">{s.titre}</h2>
+            <p class="text-white/50 text-sm leading-relaxed max-w-2xl mb-5">{s.accroche}</p>
+            <div class="flex flex-wrap gap-2">
+              {s.badges.map(b => (
+                <span class={`text-xs px-3 py-1 uppercase tracking-wider font-medium ${badgeClass[b.color]}`}>{b.label}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-10">
+          <div>
+            <p class="text-gold text-xs uppercase tracking-widest mb-4 flex items-center gap-3">Use cases <span class="flex-1 h-px bg-gold/20"></span></p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+              {s.usages.map(u => (
+                <div class="p-5 border border-gold/10 bg-white/[0.02]">
+                  <p class="text-sm font-medium text-white mb-2">{u.icon} {u.title}</p>
+                  <p class="text-xs text-white/45 leading-relaxed">{u.desc}</p>
+                </div>
+              ))}
+            </div>
+            <p class="text-gold text-xs uppercase tracking-widest mb-4 flex items-center gap-3">Our services <span class="flex-1 h-px bg-gold/20"></span></p>
+            <div class="divide-y divide-gold/10 mb-10">
+              {s.prestations.map(p => (
+                <div class="grid grid-cols-[16px_1fr] gap-4 py-5">
+                  <span class="text-gold text-xs mt-1">◆</span>
+                  <div>
+                    <p class="text-sm font-medium text-white mb-1">{p.nom}</p>
+                    <p class="text-xs text-white/45 leading-relaxed">{p.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {s.citation && (
+              <blockquote class="border-l-2 border-gold pl-6 py-3 my-8 font-serif italic text-base text-white/80 leading-relaxed bg-gold/5">
+                {s.citation}
+              </blockquote>
+            )}
+          </div>
+          <aside class="flex flex-col gap-3">
+            {s.sidebar.map(card => (
+              <div class={`p-5 border ${card.featured ? 'border-emerald-600/50 bg-emerald-950/20' : 'border-gold/20 bg-white/[0.02]'}`}>
+                <p class={`text-xs uppercase tracking-widest mb-2 font-medium ${card.featured ? 'text-emerald-500' : 'text-gold'}`}>{card.label}</p>
+                <p class="text-xs text-white/55 leading-relaxed">{card.content}</p>
+              </div>
+            ))}
+            <a href="/en/contact" class="block text-center bg-anthracite border border-gold/40 text-white/80 hover:bg-gold hover:text-anthracite hover:border-gold px-4 py-3 text-xs uppercase tracking-widest transition-all">
+              {s.cta}
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="bg-anthracite py-20 px-4 text-center border-t border-gold/10">
+    <h2 class="text-3xl md:text-4xl font-serif font-light text-white mb-4">
+      Which service fits your <em class="italic text-gold">mission</em>?
+    </h2>
+    <p class="text-white/45 text-sm max-w-md mx-auto mb-10 leading-relaxed">
+      Free audit. Personalised quote within 24h. Guaranteed confidential exchange from first contact.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/en/contact" class="px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Request a free quote</a>
+      <a href="/en/langues" class="px-8 py-4 border border-white/20 text-white uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-sm">See our languages</a>
+    </div>
+  </section>
+</Layout>

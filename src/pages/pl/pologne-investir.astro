@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'pl';
+const currentPath = '/pologne-investir';
+---
+<Layout
+  title="Inwestuj w Polsce | JANUS Agence Linguistique Lyon"
+  description="Polska, 6. gospodarka europejska, 35 mld € wymiany handlowej z Francją, 1200 firm francuskich już obecnych. JANUS wspiera Twoje projekty w Polsce."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-16 px-4 relative overflow-hidden">
+    <div class="absolute top-20 right-8 text-[8rem] opacity-10 pointer-events-none select-none">🇵🇱</div>
+    <div class="max-w-4xl mx-auto relative">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3"><span class="w-8 h-px bg-gold inline-block"></span>Inwestuj w Polsce</p>
+      <h1 class="text-4xl md:text-6xl font-serif font-light text-white mb-6 leading-tight">Polska, motor<br/>Europy Środkowej.<br/><em class="italic text-gold">Twoja kolejna szansa.</em></h1>
+      <p class="text-white/50 text-base max-w-2xl leading-relaxed mb-4">Polska jest dziś jedną z najbardziej dynamicznych gospodarek Europy. Z ponad 1200 firmami francuskimi już obecnymi i 35 miliardami euro wymiany dwustronnej w 2023 roku, polski rynek jest naturalnym kolejnym krokiem dla ambitnych firm z Francji.</p>
+      <p class="text-white/25 text-xs">Źródła: Direction générale du Trésor · CCIFP · Banque de France · GUS</p>
+    </div>
+  </section>
+
+  <div class="bg-anthracite-light border-y border-gold/10 py-12 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4">
+      {[
+        {num:'35',unite:' mld €',label:'Wymiana dwustronna Francja–Polska',source:'2023 — Trésor français'},
+        {num:'1 200',unite:'',label:'Firm francuskich w Polsce',source:'2023 — CCIFP'},
+        {num:'227 000',unite:'',label:'Bezpośrednich miejsc pracy stworzonych przez firmy francuskie',source:'2022 — Trésor français'},
+        {num:'27',unite:' mld €',label:'Fransuckie bezpośrednie inwestycje zagraniczne w Polsce',source:'2023 +5% vs 2022 — Banque de France'},
+        {num:'3.',unite:'',label:'Największy zagraniczny pracodawca w Polsce (po Niemczech i USA)',source:'Trésor français · 2024'},
+      ].map(c => (
+        <div class="border border-gold/20 p-4 text-center">
+          <p class="text-2xl font-serif font-bold text-gold">{c.num}<span class="text-lg">{c.unite}</span></p>
+          <p class="text-white/60 text-xs mt-2 leading-tight">{c.label}</p>
+          <p class="text-white/25 text-xs mt-1">{c.source}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <section class="py-20 px-4 bg-anthracite">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-widest mb-3">Dlaczego Polska</p>
+      <h2 class="text-3xl font-serif font-light text-white mb-3">6 powodów, by inwestować w Polsce już teraz.</h2>
+      <p class="text-white/45 text-sm mb-12 max-w-2xl">Polska nie jest już rynkiem wschodzącym — to dojrzała, stabilna gospodarka głęboko zintegrowana z europejską tkanką przemysłową.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          {icon:'📈',titre:'Trwały wzrost gospodarczy',desc:"Polska jest jedną z niewielu europejskich gospodarek, które nie doświadczyły recesji podczas kryzysu 2008 roku. Jej PKB podwoiło się w ciągu 20 lat, z 200 do ponad 750 miliardów euro.",stat:'PKB 2023: +2,9% · PKB/mieszkańca: 22 300 € (+180% w 20 lat)'},
+          {icon:'👷',titre:'Wykwalifikowana i konkurencyjna siła robocza',desc:"Polska kształci więcej inżynierów rocznie niż Niemcy. Koszty pracy pozostają o 40–50% niższe niż we Francji, ale produktywność i poziom kwalifikacji są wśród najwyższych w Europie Środkowej.",stat:'Bezrobocie 2024: 2,9% · 500 000 absolwentów/rok'},
+          {icon:'🚄',titre:'Strategiczne położenie geograficzne',desc:"Na skrzyżowaniu Europy, Polska daje dostęp do rynku 450 milionów konsumentów. Jej infrastruktura transportowa, zmodernizowana dzięki funduszom europejskim, jest jedną z najlepszych na kontynencie.",stat:'38 milionów mieszkańców · Dostęp UE + Europa Wschodnia'},
+          {icon:'🏛️',titre:'Stabilność instytucjonalna i prawna',desc:"Członek UE od 2004 roku, Polska stosuje prawo wspólnotowe. Ramy prawne dla zagranicznych inwestorów są jasne, chroniące i zgodne z europejskimi standardami.",stat:'Członek UE od 2004 · Strefa Schengen'},
+          {icon:'💡',titre:'Dynamizm innowacji',desc:"48% firm francuskich w Polsce zwiększyło swoje inwestycje w 2023 roku. 41% prowadzi działalność B+R, a 43% innowacji opracowanych w Polsce zostało wdrożonych w innych krajach grupy.",stat:'48% wzrost inwestycji w 2023 · CCIFP'},
+          {icon:'🌱',titre:'Przyspieszająca transformacja ekologiczna',desc:"78% firm francuskich w Polsce prowadzi działania na rzecz ochrony środowiska. Polska jest w pełnej transformacji energetycznej, tworząc ogromne możliwości w OZE, mobilności i efektywności energetycznej.",stat:'78% firm francuskich aktywnych w CSR · CCIFP'},
+        ].map(r => (
+          <div class="border border-gold/15 p-6 bg-white/[0.02]">
+            <p class="text-3xl mb-4">{r.icon}</p>
+            <h3 class="text-white font-serif text-lg mb-3">{r.titre}</h3>
+            <p class="text-white/50 text-sm leading-relaxed mb-4">{r.desc}</p>
+            <p class="text-gold/60 text-xs border-t border-gold/15 pt-3">{r.stat}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-anthracite-light border-y border-gold/10">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-widest mb-3">Wskaźniki gospodarcze</p>
+      <h2 class="text-3xl font-serif font-light text-white mb-3">Dane, które liczą się dla Twojej decyzji.</h2>
+      <p class="text-white/35 text-xs mb-12">Źródła: GUS, Bank Światowy, Direction générale du Trésor, Eurostat — 2023–2024</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {[
+          {
+            icon:'🏦', cat:'Makroekonomia',
+            items:[
+              {label:'PKB nominalny',value:'750 mld €',note:'6. gospodarka UE · 2023',good:true},
+              {label:'Wzrost PKB',value:'+2,9%',note:'2023 · Prognoza 2024: +3,1%',good:true},
+              {label:'PKB na mieszkańca',value:'22 300 €',note:'+180% w 20 lat',or:true},
+              {label:'Inflacja',value:'3,8%',note:'2024 · Malejąca'},
+              {label:'Dług publiczny / PKB',value:'49%',note:'Wśród najniższych w Europie',good:true},
+            ],
+          },
+          {
+            icon:'👥', cat:'Rynek pracy',
+            items:[
+              {label:'Stopa bezrobocia',value:'2,9%',note:'2024 · Prawie pełne zatrudnienie',good:true},
+              {label:'Średnie wynagrodzenie brutto',value:'1 850 €/mies.',note:'vs ~3 600 € we Francji',or:true},
+              {label:'Aktywna zawodowo ludność',value:'16,8 M',note:'W tym 500 000 dyplomantów/rok'},
+              {label:'Dyplomowani inżynierowie',value:'110 000/rok',note:'Więcej niż w Niemczech',good:true},
+              {label:'Poziom angielskiego',value:'Top 10 świat',note:'EF English Proficiency Index',good:true},
+            ],
+          },
+          {
+            icon:'🤝', cat:'Wymiana Francja–Polska',
+            items:[
+              {label:'Łączna wymiana dwustronna',value:'35 mld €',note:'2023 · Historyczny rekord',or:true},
+              {label:'Eksport FR do PL',value:'+4,5%',note:'14,5 → 15,2 mld € w 2024',good:true},
+              {label:'Pozycja PL dla Francji',value:'10. klient',note:'2,6% eksportu francuskiego'},
+              {label:'Pozycja FR dla Polski',value:'3. klient',note:'6,1% eksportu polskiego',good:true},
+              {label:'Nadwyżka handlowa PL',value:'8,4 mld €',note:'2023'},
+            ],
+          },
+          {
+            icon:'🏭', cat:'Bezpośrednie inwestycje',
+            items:[
+              {label:'BIZ francuskie w PL',value:'27 mld €',note:'2023 · +5% vs 2022',or:true},
+              {label:'Udział w BIZ ogółem PL',value:'8,4%',note:'2. inwestor po Niemczech',good:true},
+              {label:'Aktywnych firm francuskich',value:'1 200',note:'2023 · CCIFP'},
+              {label:'Firmy zwiększające inwestycje',value:'48%',note:'W 2023 · Badanie CCIFP',good:true},
+              {label:'Średnie zatrudnienie w fr. firmie',value:'~500 os.',note:'vs 300 śr. zagranicznych w PL',good:true},
+            ],
+          },
+        ].map(card => (
+          <div class="border border-gold/15 bg-anthracite p-5">
+            <div class="flex items-center gap-2 mb-4 pb-3 border-b border-gold/10">
+              <span class="text-xl">{card.icon}</span>
+              <p class="text-gold text-xs uppercase tracking-wider font-medium">{card.cat}</p>
+            </div>
+            <div class="space-y-3">
+              {card.items.map(item => (
+                <div class="flex items-start justify-between gap-2">
+                  <p class="text-white/45 text-xs shrink-0">{item.label}</p>
+                  <div class="text-right">
+                    <p class={`text-xs font-bold ${item.good ? 'text-emerald-400' : item.or ? 'text-gold' : 'text-white/70'}`}>{item.value}</p>
+                    <p class="text-white/25 text-xs">{item.note}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-anthracite">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <div>
+        <p class="text-gold text-xs uppercase tracking-widest mb-4">Rola JANUS</p>
+        <h2 class="text-3xl font-serif font-light text-white mb-6 leading-tight">Twój partner<br/><em class="italic text-gold">polsko-francuski w Lyonie.</em></h2>
+        <p class="text-white/55 text-sm leading-relaxed mb-8">JANUS to jedyny podmiot w Lyonie łączący ekspertyzę językową polsko-francuską, dogłębną znajomość rynku polskiego i aktywną sieć CCIFP. Nie jesteśmy tylko tłumaczami — jesteśmy Twoim kulturowym i komercyjnym interfejsem z Polską.</p>
+        <blockquote class="border-l-2 border-gold pl-6 py-3 font-serif italic text-base text-white/80 leading-relaxed bg-gold/5 mb-8">
+          "Różnica między udaną a nieudaną transakcją w Polsce często tkwi w tym, co nie zostało powiedziane — i co tylko ekspert interkulturowy może rozszyfrować."
+        </blockquote>
+        <div class="flex flex-wrap gap-2">
+          {['Sieć CCIFP Lyon','Wsparcie na miejscu','Tłumaczenie ustne native','Doradztwo interkulturowe'].map(b => (
+            <span class="text-xs px-3 py-1 border border-gold/30 text-gold/70 uppercase tracking-wider">{b}</span>
+          ))}
+        </div>
+      </div>
+      <div class="space-y-0">
+        {[
+          {n:1,titre:'Przygotowanie interkulturowe',desc:"Przed wyjazdem lub spotkaniem: briefing o kodach zachowania, polskich oczekiwaniach kulturowych i pułapkach, których należy unikać."},
+          {n:2,titre:'Fizyczne wsparcie w Polsce',desc:"Warszawa, Kraków, Wrocław, Katowice, Łódź — ekspert JANUS towarzyszy Ci na miejscu podczas negocjacji, audytów dostawców i spotkań strategicznych."},
+          {n:3,titre:'Profesjonalne tłumaczenie ustne',desc:"Natywni tłumacze polsko-francuscy dostępni w trybie konsekutywnym lub łącznikowym. NDA podpisywane systematycznie przed każdą misją."},
+          {n:4,titre:'Przyjmowanie delegacji polskich',desc:"Pełna logistyka przyjęcia Twoich polskich partnerów w Lyonie: tłumaczenie ustne, mediacja kulturowa, wsparcie na miejscu."},
+          {n:5,titre:'Sieć i wprowadzenia',desc:"Dostęp do sieci Izby Handlowej Francja-Polska (CCIFP) w Lyonie. Kwalifikowane wprowadzenia do firm i instytucji polsko-francuskich."},
+        ].map(s => (
+          <div class="grid grid-cols-[40px_1fr] gap-4 py-5 border-b border-gold/10">
+            <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center font-serif font-bold text-anthracite text-sm shrink-0">{s.n}</div>
+            <div class="pt-1">
+              <p class="text-white font-medium text-sm mb-1">{s.titre}</p>
+              <p class="text-white/45 text-xs leading-relaxed">{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-gold text-center">
+    <h2 class="text-3xl font-serif font-light text-anthracite mb-4">Projekt w Polsce?<br/><em class="italic">Porozmawiajmy.</em></h2>
+    <p class="text-anthracite/60 text-sm max-w-md mx-auto mb-10">Możemy Ci towarzyszyć od fazy eksploracji aż do implantacji. Pierwsza rozmowa bezpłatna i poufna.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/pl/contact" class="px-8 py-4 bg-anthracite text-white font-semibold uppercase tracking-wider hover:bg-anthracite-light transition-colors text-sm">Omów mój projekt</a>
+      <a href="/pl/services" class="px-8 py-4 border-2 border-anthracite text-anthracite font-semibold uppercase tracking-wider hover:bg-anthracite hover:text-white transition-colors text-sm">Nasze usługi Polska</a>
+    </div>
+    <p class="text-anthracite/40 text-xs mt-6">Źródła: Direction générale du Trésor · CCIFP · Banque de France · GUS · Eurostat · 2023–2024</p>
+  </section>
+</Layout>

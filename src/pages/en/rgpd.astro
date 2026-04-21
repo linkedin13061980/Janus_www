@@ -1,0 +1,82 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'en';
+const currentPath = '/rgpd';
+---
+<Layout
+  title="Privacy Policy | JANUS Linguistic Agency Lyon"
+  description="Privacy policy and personal data processing at JANUS Linguistic Agency — GDPR compliance."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-20 px-4">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3"><span class="w-8 h-px bg-gold inline-block"></span>Your data, your rights</p>
+      <h1 class="text-4xl font-serif font-light text-white mb-12">Privacy Policy</h1>
+
+      <div class="space-y-10 text-white/60 text-sm leading-relaxed">
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">1. Data Controller</h2>
+          <p><strong class="text-white">JANUS Agence Linguistique</strong> — Agata Mich, sole trader, Lyon (69), France.<br/>
+          DPO contact: <a href="mailto:contact@agence-janus.fr" class="text-gold hover:text-gold-light transition-colors">contact@agence-janus.fr</a></p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">2. Data Collected and Purposes</h2>
+          <div class="space-y-4">
+            <div class="border border-white/10 p-4">
+              <p class="text-white font-medium mb-2">Contact form</p>
+              <p>Data: first name, last name, email, phone (optional), company, message, language, service type.<br/>
+              Purpose: responding to your quote or information request.<br/>
+              Legal basis: legitimate interest (Art. 6.1.f GDPR).<br/>
+              Retention: 3 years from last contact.</p>
+            </div>
+            <div class="border border-white/10 p-4">
+              <p class="text-white font-medium mb-2">Audience measurement (Google Analytics 4)</p>
+              <p>Data: anonymised browsing data (pages visited, duration, source).<br/>
+              Purpose: site improvement, traffic analysis.<br/>
+              Legal basis: consent (Art. 6.1.a GDPR).<br/>
+              Retention: 14 months (GA4 setting).<br/>
+              <em class="text-white/40">GA4 is only activated after your explicit consent via the cookie banner.</em></p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">3. Data Recipients</h2>
+          <p>Your data is never sold or transferred to third parties. It may be shared with the following processors strictly for service delivery:</p>
+          <ul class="mt-3 space-y-2 list-none">
+            <li class="flex gap-3"><span class="text-gold shrink-0">◆</span><span><strong class="text-white">Resend</strong> (email delivery) — processed in the EU (eu-west-1) — <a href="https://resend.com/privacy" class="text-gold hover:text-gold-light transition-colors" target="_blank" rel="noopener">Resend privacy policy</a></span></li>
+            <li class="flex gap-3"><span class="text-gold shrink-0">◆</span><span><strong class="text-white">Google Analytics 4</strong> (if consented) — IP anonymisation enabled</span></li>
+            <li class="flex gap-3"><span class="text-gold shrink-0">◆</span><span><strong class="text-white">Vercel</strong> (hosting) — anonymised server logs</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">4. Your Rights</h2>
+          <p>Under the GDPR (Art. 15–22), you have the following rights:</p>
+          <ul class="mt-3 space-y-2 list-none">
+            {['Right of access to your data','Right to rectification','Right to erasure ("right to be forgotten")','Right to restriction of processing','Right to object','Right to data portability'].map(r => (
+              <li class="flex gap-3"><span class="text-gold shrink-0">◆</span><span>{r}</span></li>
+            ))}
+          </ul>
+          <p class="mt-4">To exercise these rights: <a href="mailto:contact@agence-janus.fr" class="text-gold hover:text-gold-light transition-colors">contact@agence-janus.fr</a>. Response within 30 days.<br/>
+          If a dispute remains unresolved, you may contact the French data protection authority: <strong class="text-white">CNIL</strong> at <a href="https://www.cnil.fr" class="text-gold hover:text-gold-light transition-colors" target="_blank" rel="noopener">cnil.fr</a></p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">5. Security</h2>
+          <p>Data transmitted via the contact form is encrypted in transit (HTTPS/TLS). Server-side access to data is restricted to authorised personnel. No passwords are stored.</p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">6. Cookies</h2>
+          <p>For details on cookies used by this site, see our <a href="/en/cookies" class="text-gold hover:text-gold-light transition-colors">cookie policy</a>.</p>
+        </div>
+
+        <p class="text-white/30 text-xs border-t border-white/10 pt-6">Last updated: April 2025</p>
+      </div>
+    </div>
+  </section>
+</Layout>

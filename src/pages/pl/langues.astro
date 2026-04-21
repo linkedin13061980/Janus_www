@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'pl';
+const currentPath = '/langues';
+---
+<Layout
+  title="Nasze Języki | JANUS Agence Linguistique Lyon"
+  description="6 języków, natywni trenerzy: angielski, polski, FFL, niemiecki, hiszpański, włoski. Szkolenia zawodowe, tłumaczenia ustne i pisemne w Lyonie."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
+        <span class="w-8 h-px bg-gold inline-block"></span>6 języków · Natywni trenerzy · Lyon
+      </p>
+      <h1 class="text-5xl font-serif font-light text-white mb-5">Nasze <em class="italic text-gold">języki</em></h1>
+      <p class="text-white/50 text-base max-w-xl leading-relaxed">
+        Eksperci natywni dobierani pod kątem znajomości świata biznesu i profesjonalnych tłumaczeń ustnych. Szkolenia, tłumaczenia, wsparcie w terenie — w języku Twoich partnerów.
+      </p>
+    </div>
+  </section>
+
+  <div class="bg-anthracite-light border-y border-gold/10 py-10 px-4">
+    <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      {[{ num:'6', label:'Języki' },{ num:'100%', label:'Natywni trenerzy' },{ num:'+200', label:'Misji / rok' },{ num:'2019', label:'Ekspertyza od' }].map(c => (
+        <div><p class="text-3xl font-serif font-bold text-gold">{c.num}</p><p class="text-white/40 text-xs uppercase tracking-widest mt-1">{c.label}</p></div>
+      ))}
+    </div>
+  </div>
+
+  {[
+    { id:'angielski', flag:'🇬🇧', titre:'Angielski zawodowy', sous:'Certyfikowani trenerzy brytyjscy i amerykańscy. Szkolenia dostosowane do Twojego sektora.',
+      corps:'Angielski zawodowy to podstawa naszej ekspertyzy. Nasze programy na miarę dostosowują się do wszystkich poziomów — od A1 do C1 — z podejściem skupionym na Twoim sektorze: spotkania, e-maile, negocjacje, prezentacje dla klientów.',
+      items:['Angielski biznesowy — spotkania, negocjacje, prezentacje, e-maile','Coaching indywidualny dla kadry kierowniczej i menedżerów','Przygotowanie do TOEIC i TOEFL','Angielski techniczny według sektora','Tłumaczenia ustne angielski-francuski','Tłumaczenia dokumentów handlowych i technicznych angielski ↔ francuski'],
+      cta:'/pl/contact' },
+    { id:'polski', flag:'🇵🇱', titre:'Polski zawodowy', sous:'Jedyna agencja wyspecjalizowana w języku polskim w Lyonie. Aktywna sieć konsularna.',
+      corps:'Polski to nasz język specjalizacji — i nasza absolutna przewaga na rynku lyońskim. Żadna inna agencja w Lyonie nie oferuje takiego samego poziomu ekspertyzy. Od 2019 roku wspieramy firmy lyońskie i roniańskie w ich profesjonalnych kontaktach z Polską.',
+      items:['Szkolenie z polskiego biznesowego','Tłumaczenia ustne polsko-francuskie — spotkania, negocjacje, audyty dostawców','Wsparcie w terenie w Polsce — fizyczna obecność w Warszawie, Krakowie, Wrocławiu…','Przyjęcie delegacji polskich w Lyonie','Tłumaczenia dokumentów handlowych polsko-francuskich','Doradztwo międzykulturowe francusko-polskie'],
+      cta:'/pl/pologne-investir' },
+  ].map((lang, i) => (
+    <section id={lang.id} class={`py-20 px-4 ${i % 2 === 0 ? 'bg-anthracite' : 'bg-anthracite-light'}`}>
+      <div class="max-w-6xl mx-auto">
+        <div class="flex gap-6 items-start mb-10 pb-10 border-b border-gold/10">
+          <span class="text-7xl leading-none">{lang.flag}</span>
+          <div>
+            <h2 class="text-3xl font-serif font-light text-white mb-3">{lang.titre}</h2>
+            <p class="text-white/50 text-sm leading-relaxed max-w-2xl mb-4">{lang.sous}</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
+          <div>
+            <p class="text-white/60 text-sm leading-relaxed mb-8">{lang.corps}</p>
+            <ul class="space-y-3">
+              {lang.items.map(p => (
+                <li class="flex gap-3 text-sm text-white/60 leading-relaxed">
+                  <span class="text-gold text-xs mt-1 shrink-0">◆</span><span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <aside>
+            <a href={lang.cta} class="block text-center bg-anthracite border border-gold/40 text-white/80 hover:bg-gold hover:text-anthracite px-4 py-3 text-xs uppercase tracking-widest transition-all mt-4">
+              Skontaktuj się →
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="bg-anthracite py-20 px-4 text-center border-t border-gold/10">
+    <h2 class="text-3xl font-serif font-light text-white mb-4">Twojego języka nie ma na liście?</h2>
+    <p class="text-white/45 text-sm max-w-md mx-auto mb-8">Skontaktuj się z nami — nasza sieć partnerów obejmuje wiele innych języków europejskich i światowych.</p>
+    <a href="/pl/contact" class="inline-block px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Skontaktuj się</a>
+  </section>
+</Layout>

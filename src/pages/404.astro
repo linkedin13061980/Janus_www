@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Page introuvable | JANUS Agence Linguistique"
+  description="La page que vous recherchez n'existe pas ou a été déplacée."
+  locale="fr"
+  currentPath="/404"
+>
+  <section class="bg-anthracite min-h-screen flex items-center justify-center px-4">
+    <div class="max-w-xl mx-auto text-center">
+      <p class="text-gold text-[6rem] font-serif font-bold leading-none mb-6 opacity-20">404</p>
+      <h1 class="text-3xl font-serif font-light text-white mb-4">Page introuvable.</h1>
+      <p class="text-white/50 text-sm leading-relaxed mb-10">La page que vous recherchez n'existe pas ou a été déplacée. Utilisez la navigation ci-dessous pour retrouver votre chemin.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/fr/" class="px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Accueil FR</a>
+        <a href="/en/" class="px-8 py-4 border border-white/20 text-white uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-sm">Home EN</a>
+        <a href="/pl/" class="px-8 py-4 border border-white/20 text-white uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-sm">Strona PL</a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "home": "Strona główna",
+    "services": "Usługi",
+    "langues": "Języki",
+    "financement": "Finansowanie",
+    "about": "O nas",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "pologne": "Inwestuj w Polsce",
+    "partenaires": "Partnerzy",
+    "recrutement": "Rekrutacja"
+  },
+  "footer": {
+    "legal": "Informacje prawne",
+    "cgv": "Warunki ogólne",
+    "rgpd": "Polityka prywatności",
+    "cookies": "Pliki cookie",
+    "siret": "SIRET: 90335843000010",
+    "nda": "NDA: 84692002569",
+    "rights": "Wszelkie prawa zastrzeżone"
+  },
+  "contact": {
+    "title": "Skontaktuj się z nami",
+    "firstname": "Imię",
+    "lastname": "Nazwisko",
+    "email": "Email służbowy",
+    "phone": "Telefon (opcjonalnie)",
+    "company": "Firma",
+    "service": "Usługa",
+    "service_options": {
+      "formation": "Szkolenia",
+      "interpretation": "Tłumaczenia ustne",
+      "accompagnement": "Wsparcie na miejscu",
+      "traduction": "Tłumaczenia pisemne"
+    },
+    "langue": "Język",
+    "langue_options": {
+      "anglais": "Angielski",
+      "polonais": "Polski",
+      "fle": "Francuski FLE",
+      "allemand": "Niemiecki",
+      "espagnol": "Hiszpański",
+      "italien": "Włoski"
+    },
+    "message": "Wiadomość",
+    "rgpd_consent": "Wyrażam zgodę na przetwarzanie moich danych w celu obsługi mojego zapytania, zgodnie z polityką prywatności.",
+    "submit": "Wyślij",
+    "success": "Twoja wiadomość została wysłana. Odpowiemy jak najszybciej.",
+    "error": "Wystąpił błąd. Spróbuj ponownie lub skontaktuj się z nami bezpośrednio."
+  },
+  "cookies": {
+    "message": "Używamy plików cookie, aby poprawić Twoje doświadczenie i analizować ruch.",
+    "accept": "Akceptuj",
+    "decline": "Odmów",
+    "learn_more": "Dowiedz się więcej"
+  }
+}

@@ -1,0 +1,51 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'pl';
+const currentPath = '/financement';
+---
+<Layout
+  title="Finansowanie szkoleń | JANUS Agence Linguistique Lyon"
+  description="CPF, OPCO, PDC, France Travail — JANUS obsługuje Twoje wnioski o dofinansowanie od A do Z. Szkolenia językowe pokryte w 100% dzięki certyfikatowi Qualiopi."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3"><span class="w-8 h-px bg-gold inline-block"></span>CPF · OPCO · PDC · France Travail</p>
+      <h1 class="text-5xl font-serif font-light text-white mb-5 leading-tight">Twoje szkolenia,<br/><em class="italic text-gold">sfinansowane.</em></h1>
+      <p class="text-white/50 text-base max-w-xl leading-relaxed">Certyfikat Qualiopi otwiera dostęp do wszystkich systemów finansowania publicznego. W większości przypadków szkolenia językowe są pokryte w 100%. JANUS zarządza Twoimi wnioskami od A do Z.</p>
+    </div>
+  </section>
+  <div class="bg-emerald-950/40 border-y border-emerald-600/30 px-4 py-5">
+    <div class="max-w-4xl mx-auto flex items-center gap-4">
+      <span class="shrink-0 px-3 py-1 border border-emerald-500 text-emerald-400 text-xs uppercase tracking-widest">✓ Certyfikat Qualiopi</span>
+      <p class="text-white/60 text-sm"><strong class="text-white">Certyfikat Qualiopi jest obowiązkowy</strong> dla dostępu do finansowania publicznego. Numer: <strong class="text-gold">#84692002569</strong></p>
+    </div>
+  </div>
+  <section class="py-20 px-4 bg-anthracite">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-serif font-light text-white mb-12">Jakie finansowanie dla Twojego projektu?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[
+          {sigle:'CPF',nom:'Osobiste Konto Szkoleniowe',montant:'Do 1 500 € rocznie',color:'text-blue-400',border:'border-blue-500/40 bg-blue-950/20',desc:'CPF może finansować certyfikowane szkolenia językowe bez zaliczki i bez kosztów własnych.',items:['Dostępny dla wszystkich pracowników i bezrobotnych','Kwalifikowane certyfikaty: TOEIC, TOEFL, DELE, Goethe, DELF, TCF','JANUS prowadzi Cię przez rejestrację i wniosek'],who:'Pracownicy sektora prywatnego, samozatrudnieni, osoby poszukujące pracy.'},
+          {sigle:'OPCO',nom:'Operator Kompetencji',montant:'Dofinansowanie do 100%',color:'text-emerald-400',border:'border-emerald-500/40 bg-emerald-950/20',desc:'OPCO finansują szkolenia zawodowe. W zależności od sektora, dofinansowanie może być całkowite.',items:['Dofinansowanie zgodnie z zasadami Twojego OPCO','Wszystkie szkolenia JANUS kwalifikują się (Qualiopi)','JANUS identyfikuje Twój OPCO i zarządza wnioskiem'],who:'Firmy wszystkich rozmiarów.'},
+          {sigle:'PDC',nom:'Firmowy Plan Rozwoju Kompetencji',montant:'Budżet szkoleniowy firmy',color:'text-gold',border:'border-gold/40 bg-gold/5',desc:'PDC pozwala pracodawcy finansować szkolenia pracowników w godzinach pracy z zachowaniem wynagrodzenia.',items:['Szkolenie w godzinach pracy, wynagrodzenie zachowane','100% finansowane przez pracodawcę (odzyskiwalne przez OPCO)','Idealne do szkoleń grupowych w firmie'],who:'Pracodawcy chcący szkolić swoich pracowników.'},
+          {sigle:'France Travail',nom:'Osoby poszukujące pracy',montant:'Dofinansowanie zmienne',color:'text-purple-400',border:'border-purple-500/40 bg-purple-950/20',desc:'France Travail może finansować szkolenia językowe dla osób poszukujących pracy.',items:['Po zatwierdzeniu przez doradcę France Travail','Musi wpisywać się w określony projekt zawodowy','Preferowane szkolenia certyfikowane'],who:'Osoby zarejestrowane w France Travail.'},
+        ].map(d => (
+          <div class={`border p-8 ${d.border}`}>
+            <p class={`text-2xl font-serif font-bold mb-1 ${d.color}`}>{d.sigle}</p>
+            <p class="text-white/60 text-sm mb-2">{d.nom}</p>
+            <p class="text-white/55 text-sm leading-relaxed mb-4">{d.desc}</p>
+            <ul class="space-y-2 mb-4">{d.items.map(i => <li class="flex gap-3 text-xs text-white/50"><span class={`${d.color} shrink-0`}>◆</span>{i}</li>)}</ul>
+            <p class="text-xs text-white/40 border-t border-white/10 pt-3"><strong class="text-white/60">Dla kogo:</strong> {d.who}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="py-20 px-4 bg-gold text-center">
+    <h2 class="text-3xl font-serif font-light text-anthracite mb-4">Twoje szkolenie może być <em class="italic">w pełni sfinansowane.</em></h2>
+    <p class="text-anthracite/60 text-sm max-w-md mx-auto mb-10">Skontaktuj się z nami — bezpłatnie sprawdzamy Twoją kwalifikowalność i składamy wniosek za Ciebie.</p>
+    <a href="/pl/contact" class="inline-block px-8 py-4 bg-anthracite text-white font-semibold uppercase tracking-wider hover:bg-anthracite-light transition-colors text-sm">Sprawdź moje finansowanie</a>
+  </section>
+</Layout>

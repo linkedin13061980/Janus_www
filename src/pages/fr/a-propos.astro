@@ -1,0 +1,215 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'fr';
+const currentPath = '/a-propos';
+---
+
+<Layout
+  title="À propos | JANUS Agence Linguistique Lyon — Agata Mich"
+  description="JANUS Agence Linguistique, fondée par Agata Mich, quadrilingue, ancienne VP Credit Suisse et analyste SG CIB. Spécialiste franco-polonais à Lyon depuis 2021."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <!-- Hero -->
+  <section class="bg-anthracite pt-32 pb-16 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 flex items-center justify-end pointer-events-none select-none pr-10">
+      <span class="text-[20rem] font-serif font-bold text-gold/[0.03] leading-none">J</span>
+    </div>
+    <div class="max-w-6xl mx-auto relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
+          <span class="w-8 h-px bg-gold inline-block"></span>Fondée à Lyon · 2021
+        </p>
+        <h1 class="text-5xl md:text-6xl font-serif font-light text-white mb-6 leading-tight">
+          L'agence qui parle<br/>le <em class="italic text-gold">même langage</em><br/>que vous.
+        </h1>
+        <p class="text-white/55 text-base leading-relaxed">
+          JANUS est une agence linguistique et interculturelle lyonnaise, fondée par <strong class="text-white">Agata Mich</strong> — quadrilingue (français, polonais, anglais, russe), ancienne de Credit Suisse et SG CIB. Une expertise financière et internationale rare, au service de la communication d'entreprise.
+        </p>
+      </div>
+      <div>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          {[{ n:'2021', l:'Fondation JANUS' },{ n:'2016', l:'English Academy' },{ n:'6', l:'Langues' },{ n:'100%', l:'Natifs' }].map(s => (
+            <div class="border border-gold/20 p-5 text-center">
+              <p class="text-3xl font-serif font-bold text-gold">{s.n}</p>
+              <p class="text-white/40 text-xs uppercase tracking-wider mt-1">{s.l}</p>
+            </div>
+          ))}
+        </div>
+        <div class="border border-emerald-600/30 bg-emerald-950/20 p-5 flex gap-4 items-start">
+          <span class="text-gold text-lg shrink-0">✦</span>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Certifiée <strong class="text-white">Qualiopi</strong> — certification nationale de qualité des organismes de formation. Numéro <strong class="text-gold">#84692002569</strong>. Obligatoire pour accéder aux financements publics (CPF, OPCO, PDC).
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Histoire + Timeline -->
+  <section class="py-20 px-4 bg-anthracite-light border-y border-gold/10">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div>
+        <p class="text-gold text-xs uppercase tracking-widest mb-4">Notre histoire</p>
+        <h2 class="text-3xl font-serif font-light text-white mb-8 leading-tight">
+          20 ans au service<br/>des <em class="italic text-gold">projets internationaux.</em>
+        </h2>
+        <div class="space-y-5">
+          <p class="text-white/60 text-sm leading-relaxed">J'ai eu la chance de travailler dans des environnements très différents — institutionnel, financier, entrepreneurial — en France, en Pologne et en Suisse, toujours dans des contextes internationaux et multiculturels. Ce contact régulier avec des interlocuteurs de cultures et de langues différentes m'a appris que la communication est souvent le vrai enjeu derrière les projets.</p>
+          <p class="text-white/60 text-sm leading-relaxed">C'est ce constat qui m'a amenée à créer d'abord une école de langues (<strong class="text-white">English Academy</strong>, 2016), puis <strong class="text-white">JANUS Agence Linguistique</strong> en 2021 — pour répondre à un besoin concret : les entreprises qui s'internationalisent ont besoin d'un accompagnement qui va au-delà de la simple traduction ou du cours de langue standard.</p>
+          <p class="text-white/60 text-sm leading-relaxed">Nous avons choisi le nom <strong class="text-white">JANUS</strong> — le dieu romain aux deux visages, gardien des passages — parce qu'il incarne exactement ce que nous faisons : ouvrir des portes entre deux mondes, regarder dans les deux directions.</p>
+        </div>
+      </div>
+      <div>
+        <p class="text-gold text-xs uppercase tracking-widest mb-6">Parcours fondatrice</p>
+        <div class="space-y-0">
+          {[
+            { years:'2002–2007', titre:'SG CIB — Analyste financier, Paris', desc:"Analyse M&A franco-polonaise, investment banking, stratégie groupe. Première exposition concrète aux enjeux de travailler entre deux marchés, deux cultures, deux façons de négocier." },
+            { years:'2007–2014', titre:'Credit Suisse — VP, Suisse', desc:"Gestion de patrimoine privé international (clientèle russophone & israélienne). Rigueur technique, discrétion absolue, sens de la relation — des exigences qui restent au cœur de JANUS." },
+            { years:'2014–2016', titre:'Family Office — Suisse', desc:"Gestion globale de patrimoine privé international, multi-juridictions. Exigence de confidentialité et de coordination en environnement multiculturel." },
+            { years:'2016', titre:'Création English Academy, Lyon', desc:"Fondation d'une école de langue anglaise pour particuliers et professionnels, développée progressivement en structure multilingue." },
+            { years:'2021 — auj.', titre:'Création JANUS Agence Linguistique', desc:"Formation linguistique sur mesure, interprétariat, accompagnement terrain, conseil interculturel. Certification Qualiopi obtenue." },
+          ].map((tl, i, arr) => (
+            <div class="grid grid-cols-[16px_1fr] gap-4 pb-8 relative">
+              {i < arr.length - 1 && <div class="absolute left-2 top-3 bottom-0 w-px bg-gold/20"></div>}
+              <div class="w-4 h-4 rounded-full bg-gold shrink-0 mt-0.5 border-2 border-anthracite-light"></div>
+              <div>
+                <p class="text-gold text-xs uppercase tracking-wider mb-1">{tl.years}</p>
+                <p class="text-white font-medium text-sm mb-2">{tl.titre}</p>
+                <p class="text-white/45 text-xs leading-relaxed">{tl.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Valeurs -->
+  <section class="py-20 px-4 bg-anthracite">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-widest mb-4">Ce qui nous guide</p>
+      <h2 class="text-3xl font-serif font-light text-white mb-3">Nos valeurs, <em class="italic text-gold">sans slogan.</em></h2>
+      <p class="text-white/45 text-sm mb-12">Ce que nous faisons concrètement, chaque jour, pour chaque client.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          { n:'01', titre:"L'expertise native, pas la compétence", desc:"Tous nos formateurs et interprètes sont natifs de la langue dans laquelle ils travaillent. Ce n'est pas une option — c'est un prérequis non négociable. La nuance, le registre, l'humour, les sous-entendus : seul un natif les maîtrise vraiment." },
+          { n:'02', titre:'La culture avant la grammaire', desc:"Une traduction correcte peut tout de même rater une négociation. Nous formons nos clients à comprendre comment leurs interlocuteurs pensent, pas seulement ce qu'ils disent. L'interculturel n'est pas un bonus — c'est le cœur de notre métier." },
+          { n:'03', titre:'La discrétion comme engagement', desc:"Nous intervenons souvent dans des contextes sensibles — négociations, audits, restructurations. La confidentialité est systématique, formalisée et non négociable pour chaque mission." },
+          { n:'04', titre:'Des résultats mesurables', desc:"Chaque formation a des objectifs définis et évaluables. Nous mesurons la progression de nos apprenants. Nous ne vendons pas des heures — nous vendons des compétences." },
+          { n:'05', titre:'La réactivité sans compromis', desc:"Réponse dans les 24h, interprètes mobilisés en urgence, programmes adaptés en cours de route. La flexibilité est une compétence, pas un hasard." },
+          { n:'06', titre:"L'honnêteté sur nos limites", desc:"Si un besoin dépasse notre périmètre, nous le disons et orientons vers la bonne ressource. Nous préférons perdre une mission que créer une déception. C'est pour cela que 70% de nos clients reviennent." },
+        ].map(v => (
+          <div class="border border-gold/15 p-6 bg-white/[0.02]">
+            <p class="text-gold/30 text-3xl font-serif font-bold mb-4">{v.n}</p>
+            <p class="text-white font-medium text-sm mb-3">{v.titre}</p>
+            <p class="text-white/45 text-xs leading-relaxed">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Différence -->
+  <section class="py-20 px-4 bg-anthracite-light border-y border-gold/10">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div>
+        <p class="text-gold text-xs uppercase tracking-widest mb-4">Notre différence</p>
+        <h2 class="text-3xl font-serif font-light text-white mb-6 leading-tight">
+          Pourquoi JANUS<br/>et pas <em class="italic text-gold">une autre agence ?</em>
+        </h2>
+        <p class="text-white/55 text-sm leading-relaxed mb-4">Il existe beaucoup d'agences linguistiques. Mais peu combinent l'expertise langue, la compréhension business, la connaissance interculturelle fine et l'agilité d'une structure à taille humaine.</p>
+        <p class="text-white/55 text-sm leading-relaxed mb-8">JANUS est spécialiste, pas généraliste. Notre focus franco-polonais nous permet d'aller beaucoup plus loin qu'une agence qui fait tout dans toutes les langues.</p>
+        <div class="flex flex-wrap gap-2">
+          {['Qualiopi #84692002569','SASU Lyon · SIRET 90335843000010','100% intervenants natifs'].map(t => (
+            <span class="text-xs px-3 py-1 border border-gold/30 text-gold/70 uppercase tracking-wider">{t}</span>
+          ))}
+        </div>
+      </div>
+      <div class="space-y-6">
+        {[
+          { icon:'🎯', titre:'Spécialiste franco-polonais', desc:"La paire français-polonais est notre ADN. Nous la connaissons dans les deux sens, dans tous les contextes business — industrie, droit, commerce, RH, terrain." },
+          { icon:'🧠', titre:'Conseil interculturel intégré', desc:"Au-delà de la langue, nous vous aidons à comprendre comment pensent vos partenaires polonais — leurs codes de négociation, leur rapport à la hiérarchie, leurs attentes implicites." },
+          { icon:'⚡', titre:'Réactivité & terrain', desc:"Interprète mobilisé en moins de 24h, accompagnement en Pologne, gestion complète de vos dossiers de financement. Opérationnels, pas seulement consultatifs." },
+          { icon:'📋', titre:'Gestion administrative complète', desc:"CPF, OPCO, PDC, France Travail — nous gérons vos dossiers de financement de A à Z. Vous vous concentrez sur votre cœur de métier." },
+          { icon:'🤝', titre:'Taille humaine, niveau professionnel', desc:"Vous travaillez avec des personnes, pas des process. Interlocuteur dédié, réponse directe, connaissance de vos dossiers. Sans la lenteur des grandes structures." },
+        ].map(d => (
+          <div class="flex gap-4">
+            <span class="text-2xl shrink-0">{d.icon}</span>
+            <div>
+              <p class="text-white font-medium text-sm mb-1">{d.titre}</p>
+              <p class="text-white/45 text-xs leading-relaxed">{d.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Équipe -->
+  <section class="py-20 px-4 bg-anthracite">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-end mb-12">
+        <div>
+          <p class="text-gold text-xs uppercase tracking-widest mb-4">Notre réseau</p>
+          <h2 class="text-3xl font-serif font-light text-white">La fondatrice &amp; <em class="italic text-gold">l'équipe.</em></h2>
+        </div>
+        <p class="text-white/50 text-sm leading-relaxed">JANUS travaille avec un réseau sélectionné de formateurs et interprètes natifs, tous professionnels aguerris. Chaque intervenant est choisi pour son expertise à la fois linguistique et sectorielle.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { initiales:'AM', flags:'🇵🇱🇫🇷🇬🇧🇷🇺', nom:'Agata Mich', role:'Fondatrice — JANUS Agence Linguistique', desc:"Quadrilingue native (français, polonais, anglais, russe). Ancienne VP Credit Suisse et analyste SG CIB. ESCP Business School. Expertise M&A franco-polonaise et conseil interculturel.", tags:['4 langues natives','ESCP','Finance & business'], bg:'bg-gradient-to-br from-anthracite to-anthracite-light' },
+          { initiales:'J', flags:'🇬🇧', nom:'James T.', role:'Formateur — Anglais des affaires', desc:"Britannique, ancien cadre commercial en France, certifié CELTA. 8 ans de formation professionnelle auprès de cadres et managers.", tags:['Anglais natif','Business','CELTA'], bg:'bg-emerald-900/40' },
+          { initiales:'A', flags:'🇵🇱🇫🇷', nom:'Anna K.', role:'Formatrice FLE — Publics polonais', desc:"Bilingue français-polonais, Master FLE Université Lyon 2, spécialiste de l'intégration linguistique des salariés allophones en entreprise.", tags:['Bilingue PL-FR','FLE','Master Lyon 2'], bg:'bg-blue-900/30' },
+        ].map(p => (
+          <div class="border border-gold/15">
+            <div class={`relative h-28 flex items-center justify-center ${p.bg}`}>
+              <span class="text-3xl font-serif font-bold text-white/30">{p.initiales}</span>
+              <span class="absolute bottom-3 right-3 text-2xl">{p.flags}</span>
+            </div>
+            <div class="p-5">
+              <p class="text-white font-semibold text-sm mb-1">{p.nom}</p>
+              <p class="text-gold text-xs uppercase tracking-wider mb-3">{p.role}</p>
+              <p class="text-white/50 text-xs leading-relaxed mb-3">{p.desc}</p>
+              <div class="flex flex-wrap gap-1">
+                {p.tags.map(t => <span class="text-xs px-2 py-0.5 border border-white/15 text-white/35">{t}</span>)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagements -->
+  <section class="py-16 px-4 bg-gold/10 border-y border-gold/20">
+    <div class="max-w-5xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-widest mb-4">Nos engagements</p>
+      <h2 class="text-2xl font-serif font-light text-white mb-10">Ce à quoi vous pouvez vous attendre.</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {[
+          { icon:'⏱️', titre:'Réponse sous 24h', desc:"Tout devis, toute demande — réponse garantie le jour ouvré suivant." },
+          { icon:'🔒', titre:'Confidentialité totale', desc:"NDA systématique. Vos informations ne quittent jamais notre périmètre." },
+          { icon:'📊', titre:'Reporting & bilan', desc:"Compte-rendu de chaque formation, bilan de progression, évaluation des acquis." },
+          { icon:'💶', titre:'Financement géré', desc:"CPF, OPCO, PDC — nous montons vos dossiers sans démarche de votre côté." },
+        ].map(e => (
+          <div class="text-center">
+            <p class="text-3xl mb-3">{e.icon}</p>
+            <p class="text-white font-medium text-sm mb-2">{e.titre}</p>
+            <p class="text-white/45 text-xs leading-relaxed">{e.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-4 bg-anthracite text-center">
+    <h2 class="text-3xl font-serif font-light text-white mb-4">Travaillons ensemble.</h2>
+    <p class="text-white/45 text-sm max-w-md mx-auto mb-10">Devis gratuit sous 24h. Échange confidentiel garanti dès le premier contact.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/fr/contact" class="px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Nous contacter</a>
+      <a href="/fr/services" class="px-8 py-4 border border-white/20 text-white uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-sm">Nos services</a>
+    </div>
+  </section>
+</Layout>

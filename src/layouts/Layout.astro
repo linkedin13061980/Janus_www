@@ -1,0 +1,106 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: Locale;
+  currentPath?: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const {
+  title,
+  description,
+  locale,
+  currentPath = '/',
+  ogImage = 'https://agence-janus.fr/og-image.jpg',
+  canonical,
+} = Astro.props;
+
+const locales: Locale[] = ['fr', 'en', 'pl'];
+const canonicalUrl = canonical ?? `https://agence-janus.fr/${locale}${currentPath}`;
+const GA_ID = import.meta.env.PUBLIC_GA_ID;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- hreflang -->
+    {locales.map((loc) => (
+      <link rel="alternate" hreflang={loc} href={`https://agence-janus.fr/${loc}${currentPath}`} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`https://agence-janus.fr/fr${currentPath}`} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="JANUS Agence Linguistique" />
+    <meta property="og:locale" content={locale === 'fr' ? 'fr_FR' : locale === 'en' ? 'en_GB' : 'pl_PL'} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Google Fonts — préchargement -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col bg-anthracite text-white">
+    <Header locale={locale} currentPath={currentPath} />
+    <main class="flex-1 pt-16">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+    <CookieBanner locale={locale} />
+
+    <!-- Google Analytics 4 — chargé uniquement après consentement -->
+    {GA_ID && (
+      <script define:vars={{ GA_ID }}>
+        function loadGA() {
+          const s = document.createElement('script');
+          s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+          s.async = true;
+          document.head.appendChild(s);
+          window.dataLayer = window.dataLayer || [];
+          function gtag(...args) { window.dataLayer.push(args); }
+          gtag('js', new Date());
+          gtag('config', GA_ID);
+        }
+
+        if (localStorage.getItem('cookie_consent') === 'accepted') {
+          loadGA();
+        } else {
+          window.addEventListener('cookie-accepted', loadGA, { once: true });
+        }
+      </script>
+    )}
+  </body>
+</html>

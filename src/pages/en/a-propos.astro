@@ -1,0 +1,97 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'en';
+const currentPath = '/a-propos';
+---
+<Layout
+  title="About | JANUS Linguistic Agency Lyon — Agata Mich"
+  description="JANUS Linguistic Agency, founded by Agata Mich, multilingual, former VP Credit Suisse and SG CIB analyst. French-Polish specialist in Lyon since 2021."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-16 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3"><span class="w-8 h-px bg-gold inline-block"></span>Founded in Lyon · 2021</p>
+        <h1 class="text-5xl font-serif font-light text-white mb-6 leading-tight">The agency that speaks<br/>your <em class="italic text-gold">language.</em></h1>
+        <p class="text-white/55 text-base leading-relaxed">JANUS is a Lyon-based language and intercultural agency founded by <strong class="text-white">Agata Mich</strong> — quadrilingual (French, Polish, English, Russian), former VP at Credit Suisse and analyst at SG CIB. Rare financial and international expertise in service of business communication.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        {[{n:'2021',l:'JANUS founded'},{n:'2016',l:'English Academy'},{n:'6',l:'Languages'},{n:'100%',l:'Native speakers'}].map(s => (
+          <div class="border border-gold/20 p-5 text-center">
+            <p class="text-3xl font-serif font-bold text-gold">{s.n}</p>
+            <p class="text-white/40 text-xs uppercase tracking-wider mt-1">{s.l}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-anthracite-light border-y border-gold/10">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div>
+        <p class="text-gold text-xs uppercase tracking-widest mb-4">Our story</p>
+        <h2 class="text-3xl font-serif font-light text-white mb-8">20 years in service<br/>of <em class="italic text-gold">international projects.</em></h2>
+        <div class="space-y-5">
+          <p class="text-white/60 text-sm leading-relaxed">I had the opportunity to work in very different environments — institutional, financial, entrepreneurial — in France, Poland and Switzerland, always in international and multicultural contexts. Regular contact with counterparts from different cultures and languages taught me that communication is often the real challenge behind projects.</p>
+          <p class="text-white/60 text-sm leading-relaxed">This observation led me to first create a language school (<strong class="text-white">English Academy</strong>, 2016), then <strong class="text-white">JANUS Agence Linguistique</strong> in 2021 — to meet a concrete need: companies going international need support that goes beyond simple translation or standard language lessons.</p>
+          <p class="text-white/60 text-sm leading-relaxed">We chose the name <strong class="text-white">JANUS</strong> — the Roman god with two faces, guardian of passages — because it embodies exactly what we do: open doors between two worlds, look in both directions.</p>
+        </div>
+      </div>
+      <div>
+        <p class="text-gold text-xs uppercase tracking-widest mb-6">Founder's career</p>
+        <div class="space-y-0">
+          {[
+            {years:'2002–2007',titre:'SG CIB — Financial Analyst, Paris',desc:'French-Polish M&A analysis, investment banking, group strategy.'},
+            {years:'2007–2014',titre:'Credit Suisse — VP, Switzerland',desc:'International private wealth management (Russian-speaking & Israeli clients). Technical rigour, absolute discretion, relationship skills.'},
+            {years:'2014–2016',titre:'Family Office — Switzerland',desc:'Global multi-jurisdiction private wealth management. Confidentiality and coordination in a multicultural environment.'},
+            {years:'2016',titre:'Founded English Academy, Lyon',desc:'English language school for individuals and professionals, progressively developed into a multilingual structure.'},
+            {years:'2021 — present',titre:'Founded JANUS Agence Linguistique',desc:'Bespoke language training, interpreting, on-site support, intercultural consulting. Qualiopi certification obtained.'},
+          ].map((tl, i, arr) => (
+            <div class="grid grid-cols-[16px_1fr] gap-4 pb-8 relative">
+              {i < arr.length - 1 && <div class="absolute left-2 top-3 bottom-0 w-px bg-gold/20"></div>}
+              <div class="w-4 h-4 rounded-full bg-gold shrink-0 mt-0.5 border-2 border-anthracite-light"></div>
+              <div>
+                <p class="text-gold text-xs uppercase tracking-wider mb-1">{tl.years}</p>
+                <p class="text-white font-medium text-sm mb-1">{tl.titre}</p>
+                <p class="text-white/45 text-xs leading-relaxed">{tl.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-anthracite">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-widest mb-4">What guides us</p>
+      <h2 class="text-3xl font-serif font-light text-white mb-12">Our values, <em class="italic text-gold">no slogans.</em></h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          {n:'01',titre:'Native expertise, not competence',desc:"All our trainers and interpreters are native speakers of the language they work in. Nuance, register, humour, subtext — only a native truly masters these."},
+          {n:'02',titre:'Culture before grammar',desc:"A correct translation can still fail a negotiation. We train clients to understand how their counterparts think, not just what they say. Intercultural knowledge is the core of our work."},
+          {n:'03',titre:'Confidentiality as commitment',desc:"We often work in sensitive contexts — negotiations, audits, restructuring. Confidentiality is systematic, formalised and non-negotiable for every mission."},
+          {n:'04',titre:'Measurable results',desc:"Every training programme has defined, measurable objectives. We track learner progress. We don't sell hours — we sell skills you'll have at the end of the programme."},
+          {n:'05',titre:'Responsiveness without compromise',desc:"We respond within 24 hours, mobilise interpreters at short notice, and adapt programmes on the fly. Flexibility is a skill, not an accident."},
+          {n:'06',titre:'Honesty about our limits',desc:"If a need falls outside our expertise, we say so and direct you to the right resource. We prefer to lose a contract than to disappoint. That's why 70% of our clients come back."},
+        ].map(v => (
+          <div class="border border-gold/15 p-6 bg-white/[0.02]">
+            <p class="text-gold/30 text-3xl font-serif font-bold mb-4">{v.n}</p>
+            <p class="text-white font-medium text-sm mb-3">{v.titre}</p>
+            <p class="text-white/45 text-xs leading-relaxed">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-anthracite text-center">
+    <h2 class="text-3xl font-serif font-light text-white mb-4">Let's work together.</h2>
+    <p class="text-white/45 text-sm max-w-md mx-auto mb-10">Free quote within 24h. Confidential exchange guaranteed from the first contact.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/en/contact" class="px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Contact us</a>
+      <a href="/en/services" class="px-8 py-4 border border-white/20 text-white uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-sm">Our services</a>
+    </div>
+  </section>
+</Layout>

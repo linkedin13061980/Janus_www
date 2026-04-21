@@ -1,0 +1,68 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'en';
+const currentPath = '/mentions-legales';
+---
+<Layout
+  title="Legal Notice | JANUS Linguistic Agency Lyon"
+  description="Legal notice for JANUS Linguistic Agency — publisher, hosting, intellectual property and liability."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-20 px-4">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3"><span class="w-8 h-px bg-gold inline-block"></span>Legal information</p>
+      <h1 class="text-4xl font-serif font-light text-white mb-12">Legal Notice</h1>
+
+      <div class="space-y-10 text-white/60 text-sm leading-relaxed">
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">1. Publisher</h2>
+          <p><strong class="text-white">JANUS Agence Linguistique</strong><br/>
+          Sole trader: Agata Mich<br/>
+          Registered office: Lyon (69), France<br/>
+          SIRET: <strong class="text-gold">90335843000010</strong><br/>
+          Qualiopi number: <strong class="text-gold">84692002569</strong><br/>
+          Email: <a href="mailto:contact@agence-janus.fr" class="text-gold hover:text-gold-light transition-colors">contact@agence-janus.fr</a><br/>
+          Website: <span class="text-white">agence-janus.fr</span></p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">2. Publication Director</h2>
+          <p>Agata Mich, in her capacity as sole trader.</p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">3. Hosting</h2>
+          <p><strong class="text-white">Vercel Inc.</strong><br/>
+          440 N Barranca Ave #4133<br/>
+          Covina, CA 91723, United States<br/>
+          <a href="https://vercel.com" class="text-gold hover:text-gold-light transition-colors" target="_blank" rel="noopener">vercel.com</a></p>
+          <p class="mt-3">European visitor data is processed in datacentres located within the European Union in accordance with Vercel's GDPR commitments.</p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">4. Intellectual Property</h2>
+          <p>All content on this website (text, visuals, logo, structure) is the exclusive property of JANUS Agence Linguistique and is protected by copyright. Any reproduction, in whole or in part, is prohibited without prior written authorisation.</p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">5. Limitation of Liability</h2>
+          <p>JANUS Agence Linguistique endeavours to keep the information published on this site accurate and up to date, but cannot guarantee its completeness or accuracy. JANUS shall not be liable for any direct or indirect damages resulting from the use of this site or the inability to access it.</p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">6. Hyperlinks</h2>
+          <p>This site may contain links to third-party websites. JANUS exercises no control over these sites and accepts no responsibility for their content or data practices.</p>
+        </div>
+
+        <div>
+          <h2 class="text-white font-serif text-xl mb-4">7. Applicable Law</h2>
+          <p>This website and its legal notice are governed by French law. Any dispute relating to the use of this site falls under the exclusive jurisdiction of the courts of Lyon, France.</p>
+        </div>
+
+        <p class="text-white/30 text-xs border-t border-white/10 pt-6">Last updated: April 2025</p>
+      </div>
+    </div>
+  </section>
+</Layout>

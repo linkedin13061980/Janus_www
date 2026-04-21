@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'pl';
+const currentPath = '/services';
+---
+<Layout
+  title="Nasze Usługi | JANUS Agence Linguistique Lyon"
+  description="Szkolenia językowe, tłumaczenia ustne, wsparcie w terenie i tłumaczenia pisemne. JANUS wspiera Twoje zespoły w projektach międzynarodowych w Lyonie."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <section class="bg-anthracite pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
+        <span class="w-8 h-px bg-gold inline-block"></span>Nasze usługi
+      </p>
+      <h1 class="text-5xl md:text-6xl font-serif font-light text-white mb-5 leading-tight">
+        Cztery usługi.<br/><em class="italic text-gold">Jeden partner.</em>
+      </h1>
+      <p class="text-white/50 text-base max-w-xl leading-relaxed">
+        Szkolenia językowe, tłumaczenia ustne, wsparcie w terenie i tłumaczenia pisemne — zintegrowana oferta unikalna na rynku lyońskim.
+      </p>
+    </div>
+  </section>
+
+  {[
+    { num:'01', id:'szkolenia', eyebrow:'Szkolenia językowe', titre:'Programy szkoleniowe dopasowane do Twoich zespołów',
+      accroche:'Programy 20–60 godzinne, budowane wokół Twojego sektora, słownictwa branżowego i konkretnych celów operacyjnych.',
+      items:[
+        { nom:'Coaching indywidualny', detail:'1 na 1 z natywnym trenerem. Szybki postęp. Idealne dla kadry zarządzającej.' },
+        { nom:'Szkolenie grupowe (2–8 osób)', detail:'Działy handlowe, eksportowe, kadra kierownicza. Grupy jednorodne poziomowo.' },
+        { nom:'Szkolenie intensywne', detail:'Moduły 1–5 dniowe do szybkiego podnoszenia kwalifikacji przed misją lub wyjazdem.' },
+        { nom:'Blended learning', detail:'Połączenie sesji z trenerem i modułów e-learningowych. Optymalne przy napiętym harmonogramie.' },
+      ] },
+    { num:'02', id:'tlumaczenia-ustne', eyebrow:'Tłumaczenia ustne', titre:'Certyfikowani tłumacze do delikatnych misji',
+      accroche:'Doświadczeni natywni tłumacze dobierani według Twojego sektora. NDA podpisywane systematycznie przed każdą misją.',
+      items:[
+        { nom:'Tłumaczenie konsekutywne', detail:'Tłumacz restytuje po każdej wypowiedzi. Idealne do spotkań roboczych i negocjacji.' },
+        { nom:'Tłumaczenie łącznikowe', detail:'Ciągłe tłumaczenie podczas wizyt na miejscu, objazdów, wyjazdów służbowych.' },
+        { nom:'Tłumaczenie przez wideokonferencję', detail:'Dostępne na wszystkich platformach: Teams, Zoom, Google Meet.' },
+      ] },
+    { num:'03', id:'wsparcie-terenowe', eyebrow:'Wsparcie w terenie', titre:'Fizyczna obecność podczas krytycznych misji',
+      accroche:'Nasz ekspert towarzyszy Ci na miejscu — negocjuje, dekoduje sygnały kulturowe i maksymalizuje szanse na sukces.',
+      items:[
+        { nom:'Dekodowanie sygnałów niewerbalnych', detail:'Polskie „tak" nie zawsze oznacza „tak". Nasz ekspert identyfikuje zastrzeżenia i szanse negocjacyjne.' },
+        { nom:'Przygotowanie międzykulturowe', detail:'Przed misją: briefing o kodach zachowania i oczekiwaniach kulturowych.' },
+        { nom:'Aktywna sieć CCIFP', detail:'Dostęp do sieci Izby Handlowo-Przemysłowej Francja-Polska w Lyonie.' },
+      ] },
+    { num:'04', id:'tlumaczenia-pisemne', eyebrow:'Tłumaczenia pisemne', titre:'Tłumaczenia przez natywnych specjalistów',
+      accroche:'6 języków. Tłumacze natywni dobierani według specjalizacji. Systematyczna weryfikacja przed dostarczeniem.',
+      items:[
+        { nom:'Wyłącznie tłumacze natywni', detail:'Tłumaczą wyłącznie na swój język ojczysty — jedyny sposób na gwarantowaną naturalność.' },
+        { nom:'Specjalizacja sektorowa', detail:'Każdy tłumacz jest przydzielany zgodnie ze swoją specjalizacją.' },
+        { nom:'Systematyczna weryfikacja', detail:'Każde ważne tłumaczenie jest sprawdzane przez drugiego tłumacza przed dostarczeniem.' },
+        { nom:'Dotrzymane terminy i poufność', detail:'Standard 48-72h, ekspres 24h. NDA dostępne przed przesłaniem wrażliwych dokumentów.' },
+      ] },
+  ].map((s, i) => (
+    <section id={s.id} class={`py-20 px-4 ${i % 2 === 0 ? 'bg-anthracite' : 'bg-anthracite-light'}`}>
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-[auto_1fr] gap-10 items-start mb-12 pb-10 border-b border-gold/10">
+          <span class="text-[5rem] font-serif font-bold text-gold/10 leading-none select-none">{s.num}</span>
+          <div>
+            <p class="text-gold text-xs uppercase tracking-widest mb-2">{s.eyebrow}</p>
+            <h2 class="text-3xl font-serif font-light text-white mb-4">{s.titre}</h2>
+            <p class="text-white/50 text-sm leading-relaxed max-w-2xl">{s.accroche}</p>
+          </div>
+        </div>
+        <div class="divide-y divide-gold/10">
+          {s.items.map(p => (
+            <div class="grid grid-cols-[16px_1fr] gap-4 py-5">
+              <span class="text-gold text-xs mt-1">◆</span>
+              <div>
+                <p class="text-sm font-medium text-white mb-1">{p.nom}</p>
+                <p class="text-xs text-white/45 leading-relaxed">{p.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="mt-8">
+          <a href="/pl/contact" class="inline-block px-6 py-3 border border-gold/40 text-gold hover:bg-gold hover:text-anthracite transition-all text-xs uppercase tracking-widest">
+            Skontaktuj się →
+          </a>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="bg-anthracite py-20 px-4 text-center border-t border-gold/10">
+    <h2 class="text-3xl font-serif font-light text-white mb-4">Która usługa odpowiada Twojej <em class="italic text-gold">misji</em>?</h2>
+    <p class="text-white/45 text-sm max-w-md mx-auto mb-10">Bezpłatny audyt. Spersonalizowana wycena w 24h. Poufna wymiana od pierwszego kontaktu.</p>
+    <a href="/pl/contact" class="inline-block px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">
+      Poproś o bezpłatną wycenę
+    </a>
+  </section>
+</Layout>
