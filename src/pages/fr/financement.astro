@@ -2,258 +2,149 @@
 import Layout from '../../layouts/Layout.astro';
 const locale = 'fr';
 const currentPath = '/financement';
-
-const dispositifs = [
-  {
-    sigle: 'CPF',
-    nom: 'Compte Personnel de Formation',
-    montant: "Jusqu'à 1 500 € par an",
-    color: 'blue',
-    desc: "Le CPF peut financer vos formations linguistiques certifiantes (TOEIC, TOEFL, DELE, Goethe, DELF, TCF…) sans avance de frais ni reste à charge dans la plupart des cas.",
-    items: [
-      "Accessible à tout salarié ou demandeur d'emploi",
-      "Formations certifiantes éligibles : TOEIC, TOEFL, DELE, Goethe, DELF, TCF",
-      "Consultation du solde sur moncompteformation.gouv.fr",
-      "JANUS vous guide dans l'inscription et le montage du dossier",
-      "FLE : CPF sans reste à charge pour les salariés allophones avec CIR",
-    ],
-    who: "Salariés du secteur privé, indépendants, demandeurs d'emploi.",
-  },
-  {
-    sigle: 'OPCO',
-    nom: 'Opérateur de Compétences',
-    montant: "Prise en charge jusqu'à 100%",
-    color: 'green',
-    desc: "Les OPCO collectent les contributions formation des entreprises et les redistribuent. Selon votre secteur et votre OPCO, la prise en charge peut être totale, sans reste à charge pour l'entreprise.",
-    items: [
-      "Prise en charge selon les règles de votre OPCO et branche professionnelle",
-      "Toutes les formations linguistiques JANUS sont éligibles (Qualiopi)",
-      "JANUS identifie votre OPCO et monte le dossier de prise en charge",
-      "Délai de traitement habituel : 2 à 4 semaines",
-      "Facturation directe à l'OPCO possible selon les cas",
-    ],
-    who: "Entreprises de toute taille (Atlas, Constructys, Akto, Opco EP, Uniformation…).",
-  },
-  {
-    sigle: 'PDC',
-    nom: 'Plan de Développement des Compétences',
-    montant: "Budget formation entreprise",
-    color: 'gold',
-    desc: "Le PDC permet à l'employeur de financer les formations de ses salariés. La formation se déroule sur le temps de travail, avec maintien du salaire.",
-    items: [
-      "Formation sur le temps de travail, salaire maintenu",
-      "Financement 100% employeur (récupérable via OPCO)",
-      "Idéal pour les formations collectives intra-entreprise",
-      "Peut être complété par une prise en charge OPCO",
-      "JANUS fournit tous les documents administratifs requis",
-    ],
-    who: "Employeurs souhaitant former leurs salariés dans le cadre de la politique RH.",
-  },
-  {
-    sigle: 'France Travail',
-    nom: "Ex-Pôle Emploi — Demandeurs d'emploi",
-    montant: "Prise en charge variable",
-    color: 'purple',
-    desc: "France Travail peut financer des formations linguistiques pour les demandeurs d'emploi dans le cadre de leur projet de retour à l'emploi.",
-    items: [
-      "Sur validation du conseiller France Travail référent",
-      "Doit s'inscrire dans un projet professionnel défini",
-      "Formations certifiantes privilégiées (TOEIC, DELE…)",
-      "JANUS prépare le dossier de financement avec vous",
-      "Maintien des allocations pendant la formation",
-    ],
-    who: "Demandeurs d'emploi inscrits à France Travail avec un projet professionnel.",
-  },
-];
-
-const colorMap: Record<string, string> = {
-  blue: 'border-blue-500/40 bg-blue-950/20',
-  green: 'border-emerald-500/40 bg-emerald-950/20',
-  gold: 'border-gold/40 bg-gold/5',
-  purple: 'border-purple-500/40 bg-purple-950/20',
-};
-const sigleColorMap: Record<string, string> = {
-  blue: 'text-blue-400',
-  green: 'text-emerald-400',
-  gold: 'text-gold',
-  purple: 'text-purple-400',
-};
 ---
-
 <Layout
   title="Financement des formations | JANUS Agence Linguistique Lyon"
-  description="CPF, OPCO, PDC, France Travail — JANUS gère vos dossiers de financement de A à Z. Formations linguistiques prises en charge à 100% grâce à la certification Qualiopi."
+  description="CPF, OPCO, PDC, France Travail — JANUS gère vos demandes de financement de A à Z. Formations linguistiques couvertes à 100% grâce au certificat Qualiopi."
   locale={locale}
   currentPath={currentPath}
 >
+
   <!-- Hero -->
-  <section class="bg-anthracite pt-32 pb-16 px-4 relative overflow-hidden">
-    <div class="max-w-4xl mx-auto relative">
-      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
-        <span class="w-8 h-px bg-gold inline-block"></span>CPF · OPCO · PDC · France Travail
-      </p>
-      <h1 class="text-5xl md:text-6xl font-serif font-light text-white mb-5 leading-tight">
-        Vos formations,<br/><em class="italic text-gold">financées.</em>
+  <section class="bg-anthracite pt-36 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">CPF · OPCO · PDC · France Travail</p>
+      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
+        Votre formation,<br/><em class="italic text-gold">financée.</em>
       </h1>
-      <p class="text-white/50 text-base max-w-xl leading-relaxed">
-        La certification Qualiopi ouvre l'accès à tous les dispositifs de financement public. Dans la plupart des cas, vos formations linguistiques sont prises en charge à 100%. JANUS gère vos dossiers de financement de A à Z.
+      <p class="text-white/50 text-lg max-w-lg leading-relaxed mb-10">
+        Dans la plupart des cas, votre formation linguistique est couverte à 100%. JANUS gère vos demandes de A à Z.
       </p>
+      <div class="flex items-center gap-4">
+        <span class="px-3 py-1 border border-emerald-500 text-emerald-400 text-xs uppercase tracking-widest">✓ Qualiopi</span>
+        <span class="text-white/40 text-sm">N° <strong class="text-white/60">84692002569</strong></span>
+      </div>
     </div>
   </section>
 
-  <!-- Bandeau Qualiopi -->
-  <div class="bg-emerald-950/40 border-y border-emerald-600/30 px-4 py-5">
-    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-4">
-      <span class="shrink-0 px-3 py-1 border border-emerald-500 text-emerald-400 text-xs uppercase tracking-widest font-semibold">✓ Certifié Qualiopi</span>
-      <p class="text-white/60 text-sm leading-relaxed">
-        <strong class="text-white">La certification Qualiopi est obligatoire</strong> pour accéder aux financements publics et mutualisés. Elle garantit la qualité de nos processus pédagogiques. Numéro : <strong class="text-gold">#84692002569</strong>
+  <!-- CPF -->
+  <section class="py-24 px-6 border-t border-gold/10">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-blue-400 text-xs uppercase tracking-widest mb-2">Pour les salariés et demandeurs d'emploi</p>
+      <h2 class="text-4xl font-serif font-light text-white mb-6">
+        CPF<span class="text-white/30 font-light"> — Compte Personnel de Formation</span>
+      </h2>
+      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
+        Jusqu'à 1 500 € par an. Sans avance de frais, sans reste à charge dans la plupart des cas.
       </p>
-    </div>
-  </div>
-
-  <!-- Dispositifs -->
-  <section class="py-20 px-4 bg-anthracite">
-    <div class="max-w-6xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-widest mb-3">Dispositifs de financement</p>
-      <h2 class="text-3xl font-serif font-light text-white mb-12">Quel financement pour votre projet ?</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {dispositifs.map(d => (
-          <div class={`border rounded-none p-8 ${colorMap[d.color]}`}>
-            <div class="flex items-start justify-between mb-4">
-              <div>
-                <p class={`text-2xl font-serif font-bold mb-1 ${sigleColorMap[d.color]}`}>{d.sigle}</p>
-                <p class="text-white/60 text-sm">{d.nom}</p>
-              </div>
-              <span class={`text-xs px-3 py-1 border ${colorMap[d.color]} ${sigleColorMap[d.color]} uppercase tracking-wider shrink-0`}>{d.montant}</span>
-            </div>
-            <p class="text-white/55 text-sm leading-relaxed mb-5">{d.desc}</p>
-            <ul class="space-y-2 mb-5">
-              {d.items.map(item => (
-                <li class="flex gap-3 text-xs text-white/50 leading-relaxed">
-                  <span class={`${sigleColorMap[d.color]} shrink-0 mt-0.5`}>◆</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <p class="text-xs text-white/40 border-t border-white/10 pt-4">
-              <strong class="text-white/60">Pour qui :</strong> {d.who}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Processus -->
-  <section class="py-20 px-4 bg-anthracite-light border-y border-gold/10">
-    <div class="max-w-4xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-widest mb-3">Notre accompagnement</p>
-      <h2 class="text-3xl font-serif font-light text-white mb-3">JANUS gère tout pour vous.</h2>
-      <p class="text-white/50 text-sm mb-12">De l'identification du bon dispositif à la clôture du dossier — sans démarche de votre côté.</p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <ul class="space-y-4 mb-12">
         {[
-          { n:'1', titre:'Audit & diagnostic', desc:"Nous analysons votre situation (statut, secteur, OPCO, solde CPF) pour identifier le meilleur dispositif." },
-          { n:'2', titre:'Dossier de financement', desc:"JANUS monte et soumet le dossier auprès de l'organisme concerné. Vous ne faites rien." },
-          { n:'3', titre:'Validation & démarrage', desc:"Dès accord de financement, nous planifions votre formation avec votre formateur natif dédié." },
-          { n:'4', titre:'Clôture du dossier', desc:"JANUS transmet tous les justificatifs requis pour le remboursement ou la facturation directe." },
-        ].map(s => (
-          <div class="text-center">
-            <div class="w-12 h-12 rounded-full bg-gold text-anthracite font-serif font-bold text-lg flex items-center justify-center mx-auto mb-4">{s.n}</div>
-            <p class="text-white font-medium text-sm mb-2">{s.titre}</p>
-            <p class="text-white/45 text-xs leading-relaxed">{s.desc}</p>
-          </div>
+          'Disponible pour tous les salariés et demandeurs d\'emploi',
+          'Certifications éligibles : TOEIC, TOEFL, DELE, Goethe, DELF, TCF',
+          'Vérifiez votre solde sur moncompteformation.gouv.fr',
+          'JANUS vous guide dans l\'inscription et le dossier',
+          'FLE : CPF intégralement pris en charge pour salariés allophones bénéficiaires du CIR',
+        ].map(item => (
+          <li class="flex gap-4 text-white/55 text-sm">
+            <span class="text-blue-400 shrink-0 mt-0.5">◆</span>{item}
+          </li>
         ))}
-      </div>
+      </ul>
+      <a href="/fr/contact" class="inline-block px-8 py-4 border border-blue-500/40 text-blue-400 uppercase tracking-wider hover:bg-blue-500/10 transition-colors text-sm">Vérifier mon éligibilité CPF</a>
     </div>
   </section>
 
-  <!-- Tableau comparatif -->
-  <section class="py-20 px-4 bg-anthracite">
-    <div class="max-w-5xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-widest mb-3">Comparatif</p>
-      <h2 class="text-3xl font-serif font-light text-white mb-8">Quel dispositif pour quel profil ?</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm border-collapse">
-          <thead>
-            <tr class="border-b border-gold/20">
-              <th class="text-left py-3 pr-4 text-white/40 text-xs uppercase tracking-wider font-medium w-48">Critère</th>
-              <th class="py-3 px-4 text-blue-400 text-xs uppercase tracking-wider font-medium">CPF</th>
-              <th class="py-3 px-4 text-emerald-400 text-xs uppercase tracking-wider font-medium">OPCO</th>
-              <th class="py-3 px-4 text-gold text-xs uppercase tracking-wider font-medium">PDC</th>
-              <th class="py-3 px-4 text-purple-400 text-xs uppercase tracking-wider font-medium">France Travail</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-white/5">
-            {[
-              ['Salarié en poste','✓','✓','✓','—'],
-              ["Demandeur d'emploi",'✓','—','—','✓'],
-              ['Indépendant / TNS','✓','Partiel','—','—'],
-              ['Formation certifiante','✓','✓','✓','✓ Préféré'],
-              ['Formation non certifiante','—','✓','✓','Selon projet'],
-              ['Groupe / Intra-entreprise','—','✓','✓','—'],
-              ["Délai d'obtention",'Immédiat','2–4 sem.','Selon budget','2–6 sem.'],
-              ['Reste à charge habituel','0 €','0 €','Variable','0 €'],
-            ].map(row => (
-              <tr>
-                <td class="py-3 pr-4 text-white/60 text-xs">{row[0]}</td>
-                {row.slice(1).map((cell, i) => (
-                  <td class={`py-3 px-4 text-center text-xs font-medium ${
-                    cell === '✓' || cell === '0 €' ? 'text-emerald-400' :
-                    cell === '—' ? 'text-white/20' :
-                    cell === 'Immédiat' ? 'text-emerald-400' :
-                    'text-white/50'
-                  }`}>{cell}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- FLE spécial -->
-  <section class="py-20 px-4 bg-anthracite-light border-y border-gold/10">
-    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div>
-        <p class="text-white/40 text-xs uppercase tracking-widest mb-4">Cas particulier</p>
-        <h2 class="text-3xl font-serif font-light text-white mb-6 leading-tight">
-          FLE : le CPF<br/><em class="italic text-gold">sans reste à charge.</em>
-        </h2>
-        <p class="text-white/55 text-sm leading-relaxed mb-6">
-          Depuis la loi immigration de 2024, les salariés allophones signataires d'un Contrat d'Intégration Républicaine (CIR) ont droit à 28h de formation en français langue étrangère sur leur temps de travail. Cette formation est financée via le CPF <strong class="text-white">sans aucun reste à charge</strong> — ni pour l'employeur, ni pour le salarié.
-        </p>
-        <span class="text-xs px-4 py-2 border border-emerald-500/50 text-emerald-400 uppercase tracking-wider">JANUS gère l'intégralité du dossier CPF</span>
-      </div>
-      <div class="grid grid-cols-2 gap-4">
+  <!-- OPCO -->
+  <section class="py-24 px-6 bg-anthracite-light border-t border-gold/10">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-emerald-400 text-xs uppercase tracking-widest mb-2">Pour les entreprises</p>
+      <h2 class="text-4xl font-serif font-light text-white mb-6">
+        OPCO<span class="text-white/30 font-light"> — Opérateur de Compétences</span>
+      </h2>
+      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
+        Prise en charge jusqu'à 100%. JANUS identifie votre OPCO et gère l'intégralité du dossier.
+      </p>
+      <ul class="space-y-4 mb-12">
         {[
-          { num:'28h', label:'Formation obligatoire' },
-          { num:'0 €', label:'Reste à charge' },
-          { num:'CPF', label:'Dispositif mobilisé' },
-          { num:'2024', label:'Loi immigration' },
-        ].map(s => (
-          <div class="border border-gold/20 p-6 text-center">
-            <p class="text-3xl font-serif font-bold text-gold mb-2">{s.num}</p>
-            <p class="text-white/40 text-xs uppercase tracking-wider">{s.label}</p>
-          </div>
+          'Prise en charge selon les règles de votre OPCO et secteur',
+          'Toutes les formations JANUS sont éligibles (Qualiopi)',
+          'JANUS identifie votre OPCO et gère la demande',
+          'Délai habituel : 2 à 4 semaines',
+          'Facturation directe à l\'OPCO possible dans certains cas',
+        ].map(item => (
+          <li class="flex gap-4 text-white/55 text-sm">
+            <span class="text-emerald-400 shrink-0 mt-0.5">◆</span>{item}
+          </li>
         ))}
-      </div>
+      </ul>
+      <a href="/fr/contact" class="inline-block px-8 py-4 border border-emerald-600/40 text-emerald-400 uppercase tracking-wider hover:bg-emerald-500/10 transition-colors text-sm">Financer via mon OPCO</a>
+    </div>
+  </section>
+
+  <!-- PDC -->
+  <section class="py-24 px-6 border-t border-gold/10">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-widest mb-2">Pour les employeurs</p>
+      <h2 class="text-4xl font-serif font-light text-white mb-6">
+        PDC<span class="text-white/30 font-light"> — Plan de Développement des Compétences</span>
+      </h2>
+      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
+        L'employeur finance la formation de ses salariés en heures de travail, salaire maintenu. Idéal pour les formations collectives en entreprise.
+      </p>
+      <ul class="space-y-4 mb-12">
+        {[
+          'Formation en heures de travail, salaire maintenu',
+          '100% financé par l\'employeur (récupérable via OPCO)',
+          'Idéal pour les formations groupe intra-entreprise',
+          'JANUS fournit tous les documents administratifs',
+        ].map(item => (
+          <li class="flex gap-4 text-white/55 text-sm">
+            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
+          </li>
+        ))}
+      </ul>
+      <a href="/fr/contact" class="inline-block px-8 py-4 border border-gold/40 text-gold uppercase tracking-wider hover:bg-gold hover:text-anthracite transition-colors text-sm">Former mes équipes</a>
+    </div>
+  </section>
+
+  <!-- France Travail -->
+  <section class="py-24 px-6 bg-anthracite-light border-t border-gold/10">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-purple-400 text-xs uppercase tracking-widest mb-2">Pour les demandeurs d'emploi</p>
+      <h2 class="text-4xl font-serif font-light text-white mb-6">
+        France Travail
+      </h2>
+      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
+        Financement possible dans le cadre d'un projet professionnel défini avec votre conseiller.
+      </p>
+      <ul class="space-y-4 mb-12">
+        {[
+          'Sur validation de votre conseiller France Travail',
+          'Doit s\'inscrire dans un projet professionnel défini',
+          'Formations certifiantes privilégiées',
+          'JANUS vous aide à préparer le dossier',
+          'Allocations maintenues pendant la formation',
+        ].map(item => (
+          <li class="flex gap-4 text-white/55 text-sm">
+            <span class="text-purple-400 shrink-0 mt-0.5">◆</span>{item}
+          </li>
+        ))}
+      </ul>
+      <a href="/fr/contact" class="inline-block px-8 py-4 border border-purple-500/40 text-purple-400 uppercase tracking-wider hover:bg-purple-500/10 transition-colors text-sm">Préparer mon dossier</a>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-20 px-4 bg-gold text-center">
-    <h2 class="text-3xl font-serif font-light text-anthracite mb-4">
-      Votre formation peut être <em class="italic">entièrement financée.</em>
-    </h2>
-    <p class="text-anthracite/60 text-sm max-w-md mx-auto mb-10">
-      Contactez-nous — nous vérifions votre éligibilité gratuitement et montons le dossier pour vous. Réponse sous 24h.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="/fr/contact" class="px-8 py-4 bg-anthracite text-white font-semibold uppercase tracking-wider hover:bg-anthracite-light transition-colors text-sm">Vérifier mon financement</a>
-      <a href="/fr/services" class="px-8 py-4 border-2 border-anthracite text-anthracite font-semibold uppercase tracking-wider hover:bg-anthracite hover:text-white transition-colors text-sm">Voir nos formations</a>
+  <section class="py-40 px-6 bg-gold text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-6">
+        Votre formation peut être<br/><em class="italic">intégralement financée.</em>
+      </h2>
+      <p class="text-anthracite/60 text-base mb-12">Nous vérifions votre éligibilité gratuitement et constituons le dossier à votre place.</p>
+      <a href="/fr/contact" class="inline-block px-10 py-5 bg-anthracite text-white font-semibold uppercase tracking-wider hover:bg-anthracite-light transition-colors text-sm">
+        Vérifier mon financement
+      </a>
     </div>
   </section>
+
 </Layout>

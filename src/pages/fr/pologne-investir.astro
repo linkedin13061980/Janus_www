@@ -3,141 +3,64 @@ import Layout from '../../layouts/Layout.astro';
 const locale = 'fr';
 const currentPath = '/pologne-investir';
 ---
-
 <Layout
   title="Investir en Pologne | JANUS Agence Linguistique Lyon"
   description="La Pologne, 6e économie européenne, 35 Mds € d'échanges franco-polonais, 1 200 entreprises françaises déjà implantées. JANUS vous accompagne dans vos projets en Pologne."
   locale={locale}
   currentPath={currentPath}
 >
+
   <!-- Hero -->
-  <section class="bg-anthracite pt-32 pb-16 px-4 relative overflow-hidden">
-    <div class="absolute top-20 right-8 text-[8rem] opacity-10 pointer-events-none select-none">🇵🇱</div>
-    <div class="max-w-4xl mx-auto relative">
-      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
-        <span class="w-8 h-px bg-gold inline-block"></span>Investir en Pologne
-      </p>
-      <h1 class="text-4xl md:text-6xl font-serif font-light text-white mb-6 leading-tight">
+  <section class="bg-anthracite pt-36 pb-24 px-6 relative overflow-hidden">
+    <div class="absolute top-16 right-8 text-[10rem] opacity-[0.06] pointer-events-none select-none leading-none">🇵🇱</div>
+    <div class="max-w-3xl mx-auto relative">
+      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Investir en Pologne</p>
+      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
         La Pologne, moteur<br/>de l'Europe centrale.<br/><em class="italic text-gold">Votre prochaine opportunité.</em>
       </h1>
-      <p class="text-white/50 text-base max-w-2xl leading-relaxed mb-4">
-        La Pologne est aujourd'hui l'une des économies les plus dynamiques d'Europe. Avec plus de 1 200 entreprises françaises déjà implantées et 35 milliards d'euros d'échanges bilatéraux en 2023, le marché polonais est une évidence pour les entreprises françaises ambitieuses.
+      <p class="text-white/50 text-lg max-w-lg leading-relaxed">
+        35 milliards d'euros d'échanges bilatéraux en 2023. 1 200 entreprises françaises déjà implantées. Le marché polonais est une évidence pour les entreprises françaises ambitieuses.
       </p>
-      <p class="text-white/25 text-xs">Sources : Direction générale du Trésor · CCIFP · Banque de France · GUS</p>
     </div>
   </section>
 
-  <!-- Chiffres clés -->
-  <div class="bg-anthracite-light border-y border-gold/10 py-12 px-4">
-    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4">
-      {[
-        { num:'35', unite:' Mds €', label:'Échanges bilatéraux franco-polonais', source:'2023 — Trésor français' },
-        { num:'1 200', unite:'', label:'Entreprises françaises en Pologne', source:'2023 — CCIFP' },
-        { num:'227 000', unite:'', label:'Emplois directs créés par les entreprises françaises', source:'2022 — Trésor français' },
-        { num:'27', unite:' Mds €', label:"Stock d'IDE français en Pologne", source:'2023 +5% vs 2022 — Banque de France' },
-        { num:'3', unite:'e', label:'Employeur étranger en Pologne (après All. & USA)', source:'Trésor français · 2024' },
-      ].map(c => (
-        <div class="border border-gold/20 p-4 text-center">
-          <p class="text-2xl font-serif font-bold text-gold">{c.num}<span class="text-lg">{c.unite}</span></p>
-          <p class="text-white/60 text-xs mt-2 leading-tight">{c.label}</p>
-          <p class="text-white/25 text-xs mt-1">{c.source}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-
-  <!-- Pourquoi la Pologne -->
-  <section class="py-20 px-4 bg-anthracite">
-    <div class="max-w-6xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-widest mb-3">Pourquoi la Pologne</p>
-      <h2 class="text-3xl font-serif font-light text-white mb-3">6 raisons d'investir en Pologne dès maintenant.</h2>
-      <p class="text-white/45 text-sm mb-12 max-w-2xl">La Pologne n'est plus un marché émergent — c'est une économie mature, stable et profondément intégrée dans le tissu industriel européen.</p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+  <!-- 3 chiffres clés -->
+  <section class="py-16 px-6 border-t border-gold/10">
+    <div class="max-w-3xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
         {[
-          { icon:'📈', titre:'Croissance économique soutenue', desc:"La Pologne est l'une des rares économies européennes à n'avoir pas connu de récession lors de la crise de 2008. Son PIB a doublé en 20 ans, passant de 200 à plus de 750 milliards d'euros.", stat:'PIB 2023 : +2,9 % · PIB/hab. : 22 300 € (+180 % en 20 ans)' },
-          { icon:'👷', titre:"Main-d'œuvre qualifiée et compétitive", desc:"La Pologne forme chaque année plus d'ingénieurs que l'Allemagne. Le coût du travail reste 40 à 50 % inférieur à la France, mais la productivité et le niveau de qualification sont parmi les plus élevés d'Europe centrale.", stat:'Taux de chômage 2024 : 2,9 % · 500 000 diplômés/an' },
-          { icon:'🚄', titre:'Position géographique stratégique', desc:"Au carrefour de l'Europe, la Pologne donne accès à un marché de 450 millions de consommateurs. Ses infrastructures de transport, modernisées grâce aux fonds européens, sont parmi les meilleures du continent.", stat:'38 millions d\'habitants · Accès UE + Europe de l\'Est' },
-          { icon:'🏛️', titre:'Stabilité institutionnelle et juridique', desc:"Membre de l'Union européenne depuis 2004, la Pologne applique le droit communautaire. Le cadre juridique pour les investisseurs étrangers est clair, protecteur et aligné sur les standards européens.", stat:'Membre UE depuis 2004 · Zone Schengen' },
-          { icon:'💡', titre:"Dynamisme de l'innovation", desc:"48 % des entreprises françaises présentes en Pologne ont augmenté leurs investissements en 2023. 41 % mènent des activités de R&D, et 43 % des innovations développées en Pologne ont été déployées dans d'autres pays du groupe.", stat:"48 % d'augmentation d'investissements en 2023 · CCIFP" },
-          { icon:'🌱', titre:'Transition écologique en accélération', desc:"78 % des entreprises françaises en Pologne mènent des activités de protection de l'environnement. La Pologne est en pleine transition énergétique, créant d'immenses opportunités dans les renouvelables.", stat:"78 % des entreprises françaises actives en RSE · CCIFP" },
+          { num: '35 Mds €', label: 'Échanges bilatéraux franco-polonais', source: '2023' },
+          { num: '1 200', label: 'Entreprises françaises en Pologne', source: 'CCIFP 2023' },
+          { num: '3e', label: 'Employeur étranger en Pologne', source: 'après All. & USA' },
+        ].map(c => (
+          <div class="py-8 px-6 first:pl-0 last:pr-0">
+            <p class="text-3xl font-serif font-bold text-gold mb-2">{c.num}</p>
+            <p class="text-white/60 text-sm leading-tight mb-1">{c.label}</p>
+            <p class="text-white/25 text-xs">{c.source}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 raisons -->
+  <section class="py-24 px-6 bg-anthracite-light border-t border-gold/10">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-widest mb-6">Pourquoi la Pologne</p>
+      <h2 class="text-4xl font-serif font-light text-white mb-16 leading-tight">
+        Trois raisons d'investir<br/>en Pologne dès maintenant.
+      </h2>
+      <div class="divide-y divide-white/10">
+        {[
+          { num: '01', titre: 'Croissance économique soutenue', desc: 'PIB doublé en 20 ans. +2,9% en 2023. L\'une des rares économies européennes sans récession depuis 2004. 6e économie de l\'UE.' },
+          { num: '02', titre: 'Main-d\'œuvre qualifiée et compétitive', desc: 'Plus d\'ingénieurs diplômés par an qu\'en Allemagne. Coût du travail 40-50% inférieur à la France. Taux de chômage : 2,9% en 2024.' },
+          { num: '03', titre: 'Stabilité et intégration européenne', desc: 'Membre de l\'UE depuis 2004, zone Schengen. Droit communautaire appliqué. 48% des entreprises françaises ont augmenté leurs investissements en 2023.' },
         ].map(r => (
-          <div class="border border-gold/15 p-6 bg-white/[0.02]">
-            <p class="text-3xl mb-4">{r.icon}</p>
-            <h3 class="text-white font-serif text-lg mb-3">{r.titre}</h3>
-            <p class="text-white/50 text-sm leading-relaxed mb-4">{r.desc}</p>
-            <p class="text-gold/60 text-xs border-t border-gold/15 pt-3">{r.stat}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Indicateurs économiques -->
-  <section class="py-20 px-4 bg-anthracite-light border-y border-gold/10">
-    <div class="max-w-6xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-widest mb-3">Indicateurs économiques</p>
-      <h2 class="text-3xl font-serif font-light text-white mb-3">Les données qui comptent pour votre décision.</h2>
-      <p class="text-white/35 text-xs mb-12">Sources : GUS, Banque Mondiale, Direction générale du Trésor français, Eurostat — 2023-2024</p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {[
-          {
-            icon:'🏦', cat:'Macroéconomie',
-            items:[
-              { label:'PIB nominal', value:'750 Mds €', note:"6e économie de l'UE · 2023", good:true },
-              { label:'Croissance PIB', value:'+2,9 %', note:'2023 · Prévision 2024 : +3,1 %', good:true },
-              { label:'PIB par habitant', value:'22 300 €', note:'+180 % en 20 ans', or:true },
-              { label:'Inflation', value:'3,8 %', note:'2024 · En baisse' },
-              { label:'Dette publique / PIB', value:'49 %', note:"Parmi les plus faibles d'Europe", good:true },
-            ],
-          },
-          {
-            icon:'👥', cat:'Marché du travail',
-            items:[
-              { label:'Taux de chômage', value:'2,9 %', note:'2024 · Quasi plein emploi', good:true },
-              { label:'Salaire moyen brut', value:'1 850 €/mois', note:'vs ~3 600 € en France', or:true },
-              { label:'Population active', value:'16,8 M', note:'Dont 500 000 diplômés/an' },
-              { label:'Ingénieurs diplômés', value:'110 000/an', note:"Supérieur à l'Allemagne", good:true },
-              { label:"Niveau d'anglais", value:'Top 10 mondial', note:'EF English Proficiency Index', good:true },
-            ],
-          },
-          {
-            icon:'🤝', cat:'Échanges franco-polonais',
-            items:[
-              { label:'Échanges bilatéraux totaux', value:'35 Mds €', note:'2023 · Record historique', or:true },
-              { label:'Exportations FR vers PL', value:'+4,5 %', note:'14,5 → 15,2 Mds € en 2024', good:true },
-              { label:'Rang PL pour la France', value:'10e client', note:"2,6 % des export. françaises" },
-              { label:'Rang FR pour la Pologne', value:'3e client', note:"6,1 % des export. polonaises", good:true },
-              { label:'Excédent commercial PL', value:'8,4 Mds €', note:'2023' },
-            ],
-          },
-          {
-            icon:'🏭', cat:'Investissements directs',
-            items:[
-              { label:'Stock IDE français en PL', value:'27 Mds €', note:'2023 · +5 % vs 2022', or:true },
-              { label:"Part dans l'IDE total PL", value:'8,4 %', note:"2e invest. derrière l'Allemagne", good:true },
-              { label:'Entreprises françaises actives', value:'1 200', note:'2023 · CCIFP' },
-              { label:'Entreprises augmentant invest.', value:'48 %', note:'En 2023 · Enquête CCIFP', good:true },
-              { label:'Emploi moyen par ent. FR', value:'~500 pers.', note:'vs 300 moy. étrangères en PL', good:true },
-            ],
-          },
-        ].map(card => (
-          <div class="border border-gold/15 bg-anthracite p-5">
-            <div class="flex items-center gap-2 mb-4 pb-3 border-b border-gold/10">
-              <span class="text-xl">{card.icon}</span>
-              <p class="text-gold text-xs uppercase tracking-wider font-medium">{card.cat}</p>
-            </div>
-            <div class="space-y-3">
-              {card.items.map(item => (
-                <div class="flex items-start justify-between gap-2">
-                  <p class="text-white/45 text-xs shrink-0">{item.label}</p>
-                  <div class="text-right">
-                    <p class={`text-xs font-bold ${item.good ? 'text-emerald-400' : item.or ? 'text-gold' : 'text-white/70'}`}>{item.value}</p>
-                    <p class="text-white/25 text-xs">{item.note}</p>
-                  </div>
-                </div>
-              ))}
+          <div class="py-10 flex gap-8 items-start">
+            <span class="text-gold/25 font-serif text-sm w-6 shrink-0 pt-0.5">{r.num}</span>
+            <div>
+              <p class="text-white font-medium text-lg mb-3">{r.titre}</p>
+              <p class="text-white/45 text-sm leading-relaxed max-w-lg">{r.desc}</p>
             </div>
           </div>
         ))}
@@ -145,40 +68,26 @@ const currentPath = '/pologne-investir';
     </div>
   </section>
 
-  <!-- Rôle de JANUS -->
-  <section class="py-20 px-4 bg-anthracite">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-      <div>
-        <p class="text-gold text-xs uppercase tracking-widest mb-4">Le rôle de JANUS</p>
-        <h2 class="text-3xl font-serif font-light text-white mb-6 leading-tight">
-          Votre partenaire<br/><em class="italic text-gold">franco-polonais à Lyon.</em>
-        </h2>
-        <p class="text-white/55 text-sm leading-relaxed mb-8">
-          JANUS est le seul acteur à Lyon combinant expertise linguistique franco-polonaise, connaissance approfondie du marché polonais et réseau CCIFP actif. Nous ne sommes pas seulement des traducteurs — nous sommes votre interface culturelle et commerciale avec la Pologne.
-        </p>
-        <blockquote class="border-l-2 border-gold pl-6 py-3 font-serif italic text-base text-white/80 leading-relaxed bg-gold/5 mb-8">
-          "La différence entre un deal qui réussit et un deal qui échoue en Pologne tient souvent à ce qui n'est pas dit — et que seul un expert interculturel peut décoder."
-        </blockquote>
-        <div class="flex flex-wrap gap-2">
-          {['Réseau CCIFP Lyon','Accompagnement terrain','Interprétariat natif','Conseil interculturel'].map(b => (
-            <span class="text-xs px-3 py-1 border border-gold/30 text-gold/70 uppercase tracking-wider">{b}</span>
-          ))}
-        </div>
-      </div>
-      <div class="space-y-0">
+  <!-- Rôle JANUS -->
+  <section class="py-24 px-6 border-t border-gold/10">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-widest mb-6">Le rôle de JANUS</p>
+      <h2 class="text-4xl font-serif font-light text-white mb-6 leading-tight">
+        Votre partenaire<br/><em class="italic text-gold">franco-polonais à Lyon.</em>
+      </h2>
+      <p class="text-white/55 text-lg leading-relaxed mb-16 max-w-xl">
+        Seul acteur à Lyon combinant expertise linguistique franco-polonaise, connaissance approfondie du marché polonais et réseau CCIFP actif.
+      </p>
+      <div class="divide-y divide-white/10">
         {[
-          { n:1, titre:'Préparation interculturelle', desc:"Avant votre déplacement ou votre réunion : briefing sur les codes de conduite, les attentes culturelles polonaises et les pièges à éviter." },
-          { n:2, titre:'Accompagnement physique en Pologne', desc:"Varsovie, Cracovie, Wrocław, Katowice, Łódź — votre expert JANUS vous accompagne sur site pour vos négociations, audits fournisseurs et réunions stratégiques." },
-          { n:3, titre:'Interprétariat professionnel', desc:"Interprètes natifs polonais-français disponibles en consécutif ou de liaison. NDA signé systématiquement avant chaque mission." },
-          { n:4, titre:'Accueil de délégations polonaises', desc:"Logistique complète pour l'accueil de vos partenaires polonais à Lyon : interprétariat, médiation culturelle, accompagnement sur site." },
-          { n:5, titre:'Réseau & introductions', desc:"Accès au réseau de la Chambre de Commerce et d'Industrie France-Pologne (CCIFP) à Lyon. Introductions qualifiées auprès d'entreprises et d'institutions franco-polonaises." },
-        ].map((s, i, arr) => (
-          <div class="grid grid-cols-[40px_1fr] gap-4 py-5 border-b border-gold/10 relative">
-            <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center font-serif font-bold text-anthracite text-sm shrink-0">{s.n}</div>
-            <div class="pt-1">
-              <p class="text-white font-medium text-sm mb-1">{s.titre}</p>
-              <p class="text-white/45 text-xs leading-relaxed">{s.desc}</p>
-            </div>
+          { titre: 'Préparation interculturelle', desc: 'Briefing avant votre déplacement ou réunion : codes de conduite, attentes culturelles polonaises, pièges à éviter.' },
+          { titre: 'Accompagnement physique en Pologne', desc: 'Varsovie, Cracovie, Wrocław, Katowice, Łódź — votre expert JANUS sur site pour vos négociations et audits.' },
+          { titre: 'Interprétariat professionnel', desc: 'Interprètes natifs polonais-français. NDA signé systématiquement avant chaque mission.' },
+          { titre: 'Réseau et introductions', desc: 'Accès au réseau CCIFP Lyon. Introductions qualifiées auprès d\'entreprises et d\'institutions franco-polonaises.' },
+        ].map(s => (
+          <div class="py-8">
+            <p class="text-white font-medium text-base mb-2">{s.titre}</p>
+            <p class="text-white/45 text-sm leading-relaxed max-w-lg">{s.desc}</p>
           </div>
         ))}
       </div>
@@ -186,17 +95,18 @@ const currentPath = '/pologne-investir';
   </section>
 
   <!-- CTA -->
-  <section class="py-20 px-4 bg-gold text-center">
-    <h2 class="text-3xl font-serif font-light text-anthracite mb-4">
-      Un projet en Pologne ?<br/><em class="italic">Parlons-en.</em>
-    </h2>
-    <p class="text-anthracite/60 text-sm max-w-md mx-auto mb-10">
-      Nous pouvons vous accompagner dès la phase d'exploration jusqu'à l'implantation. Premier échange gratuit et confidentiel.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="/fr/contact" class="px-8 py-4 bg-anthracite text-white font-semibold uppercase tracking-wider hover:bg-anthracite-light transition-colors text-sm">Discuter de mon projet</a>
-      <a href="/fr/services" class="px-8 py-4 border-2 border-anthracite text-anthracite font-semibold uppercase tracking-wider hover:bg-anthracite hover:text-white transition-colors text-sm">Nos services Pologne</a>
+  <section class="py-40 px-6 bg-gold text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-6">
+        Un projet en Pologne ?<br/><em class="italic">Parlons-en.</em>
+      </h2>
+      <p class="text-anthracite/60 text-base mb-12">Premier échange gratuit et confidentiel. De l'exploration à l'implantation.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/fr/contact" class="px-10 py-5 bg-anthracite text-white font-semibold uppercase tracking-wider hover:bg-anthracite-light transition-colors text-sm">Discuter de mon projet</a>
+        <a href="/fr/services" class="px-10 py-5 border-2 border-anthracite text-anthracite font-semibold uppercase tracking-wider hover:bg-anthracite hover:text-white transition-colors text-sm">Nos services Pologne</a>
+      </div>
+      <p class="text-anthracite/35 text-xs mt-8">Sources : Direction générale du Trésor · CCIFP · Banque de France · GUS · 2023-2024</p>
     </div>
-    <p class="text-anthracite/40 text-xs mt-6">Sources : Direction générale du Trésor · CCIFP · Banque de France · GUS · Eurostat · 2023-2024</p>
   </section>
+
 </Layout>

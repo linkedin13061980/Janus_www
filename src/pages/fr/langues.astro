@@ -1,291 +1,150 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
 const locale = 'fr';
 const currentPath = '/langues';
-
-const langues = [
-  {
-    id: 'anglais',
-    flag: '🇬🇧',
-    eyebrow: 'Langue des affaires internationales',
-    titre: 'Anglais professionnel',
-    sous: 'Formateurs britanniques et américains certifiés. De l\'audit de positionnement au TOEIC, en passant par l\'anglais technique et les négociations internationales.',
-    badges: ['CPF', 'OPCO', 'TOEIC / TOEFL', 'Interprétariat'],
-    corps: [
-      "L'anglais professionnel est au cœur de notre expertise depuis la création de notre activité. Nos formations sur mesure s'adaptent à tous les niveaux — du débutant A1 au perfectionnement C1 — avec une approche centrée sur votre secteur d'activité et vos objectifs réels : réunions, emails, négociations, présentations clients.",
-      "Nos formateurs natifs anglophones — britanniques et américains — sont sélectionnés pour leur expérience concrète du monde des affaires et leur expertise pédagogique. Chaque parcours débute par un audit linguistique pour évaluer précisément votre niveau et construire un programme parfaitement adapté. La certification Qualiopi garantit la qualité et ouvre le droit au financement.",
-      "Pour l'interprétariat, nos interprètes anglais-français interviennent en consécutif ou de liaison pour vos réunions, négociations, audits, formations intra-entreprise avec partenaires anglophones, ou événements professionnels à Lyon et partout en France.",
-    ],
-    prestations: [
-      "Anglais des affaires — réunions, négociations, présentations, emails professionnels",
-      "Coaching individuel pour cadres et managers — préparation prise de poste internationale",
-      "Préparation TOEIC et TOEFL — certifications reconnues par les employeurs",
-      "Anglais technique selon votre secteur — industrie, santé, finance, logistique, juridique",
-      "Interprétariat anglais-français — réunions, négociations, conférences, visites d'usines",
-      "Traduction de documents commerciaux et techniques anglais ↔ français",
-    ],
-    sidebar: [
-      { label: 'Financement disponible', content: 'CPF jusqu\'à 1 500 € · OPCO · Plan de développement des compétences · Prise en charge entreprise', featured: true },
-      { label: 'Niveaux couverts', content: 'A1 à C2 — tous niveaux. Audit de positionnement inclus et personnalisation du programme.' },
-      { label: 'Format', content: 'Présentiel Lyon · Visioconférence · Intra-entreprise · Individuel ou groupe · Hybride' },
-      { label: 'Tarif indicatif', content: 'À partir de 800 € pour un forfait 20h. Devis gratuit et personnalisé sous 24h.' },
-    ],
-    cta: { label: 'Demander un devis →', href: '/fr/contact' },
-  },
-  {
-    id: 'polonais',
-    flag: '🇵🇱',
-    eyebrow: 'Spécialité exclusive à Lyon',
-    titre: 'Polonais professionnel',
-    sous: 'Seule agence spécialisée polonais à Lyon. Réseau consulaire franco-polonais actif. Pour les entreprises qui travaillent avec la Pologne.',
-    badges: ['Exclusif Lyon', 'OPCO', 'Réseau consulaire', 'Terrain Pologne'],
-    badgeExclu: true,
-    corps: [
-      "Le polonais est notre langue de spécialité — et notre différence absolue sur le marché lyonnais. Aucune autre agence à Lyon ne propose le même niveau d'expertise sur cette langue et sur les marchés franco-polonais. Depuis 2019, nous accompagnons des entreprises lyonnaises et rhônalpines dans leurs échanges professionnels avec la Pologne.",
-      "Notre connaissance approfondie du tissu économique polonais — ses codes professionnels, sa culture d'entreprise, ses spécificités régionales (Varsovie, Cracovie, Katowice, Wrocław) — nous permet d'aller bien au-delà de la simple formation linguistique. Nous sommes connectés au réseau de la Chambre de Commerce et d'Industrie France-Pologne et aux structures consulaires franco-polonaises.",
-      "Notre accompagnement terrain en Pologne est unique : nous intervenons physiquement lors de vos réunions à Varsovie, de vos audits fournisseurs à Katowice ou de vos négociations à Cracovie. Un interprète-conseil capable de vous alerter sur les sous-entendus culturels, pas seulement de traduire les mots.",
-    ],
-    prestations: [
-      "Formation polonais des affaires — communication commerciale, réunions, déplacements professionnels en Pologne",
-      "Interprétariat polonais-français — réunions, négociations, audits fournisseurs en France et en Pologne",
-      "Accompagnement terrain en Pologne — présence physique lors de vos rendez-vous à Varsovie, Cracovie, Wrocław, Łódź…",
-      "Accueil de délégations polonaises à Lyon — logistique complète, interprétariat et médiation culturelle",
-      "Traduction de documents commerciaux polonais ↔ français (contrats, appels d'offres, correspondances)",
-      "Conseil interculturel franco-polonais — codes professionnels et culturels, protocoles, gestion des relations",
-    ],
-    sidebar: [
-      { label: 'Notre avantage unique', content: 'Réseau consulaire franco-polonais et CCI France-Pologne. Connaissance approfondie du marché polonais. Seul spécialiste à Lyon.', featured: true },
-      { label: 'Financement', content: 'OPCO · Plan de développement des compétences · Prise en charge entreprise' },
-      { label: "Zone d'intervention", content: 'Lyon · France entière · Toute la Pologne (Varsovie, Cracovie, Wrocław, Katowice, Łódź…)' },
-      { label: 'Tarif indicatif', content: 'À partir de 900 €. Devis gratuit et personnalisé sous 24h. Mission terrain sur devis.' },
-    ],
-    cta: { label: 'Découvrir nos services Pologne →', href: '/fr/pologne-investir' },
-  },
-  {
-    id: 'fle',
-    flag: '🇫🇷',
-    eyebrow: 'Français langue étrangère',
-    titre: 'FLE — Français pour salariés allophones',
-    sous: 'Obligation légale depuis la loi immigration 2024. CPF sans reste à charge pour ces publics. Pour vos salariés étrangers travaillant en France.',
-    badges: ['CPF sans reste à charge', 'Obligation légale 2024', 'OPCO', 'Qualiopi'],
-    badgeGreen: [0, 1],
-    corps: [
-      "Depuis la loi immigration de 2024, les entreprises ont l'obligation de former leurs salariés allophones signataires d'un contrat d'intégration républicaine (CIR). Cette formation en français langue étrangère peut être intégralement financée via le CPF pour ces publics, sans reste à charge — une opportunité que toutes les entreprises concernées doivent saisir.",
-      "Notre expertise en FLE est particulièrement développée pour les salariés polonais et d'Europe centrale et orientale. Nos formateurs bilingues comprennent les spécificités linguistiques de ces publics — les interférences entre le polonais et le français, les difficultés grammaticales récurrentes — et adaptent leur pédagogie pour une progression rapide et efficace.",
-      "Les formations FLE peuvent se dérouler en présentiel sur votre site ou en visioconférence, en individuel ou en petits groupes homogènes. Nous prenons en charge l'intégralité du dossier de financement CPF ou OPCO, de la demande à la justification.",
-    ],
-    prestations: [
-      "FLE professionnel — vocabulaire du monde du travail, communication en entreprise, compréhension des consignes",
-      "FLE général — vie quotidienne en France, démarches administratives, intégration sociale",
-      "Préparation aux certifications — DILF (A1.1), DELF, TCF pour titre de séjour",
-      "FLE spécifique pour salariés polonais — formateurs bilingues français-polonais disponibles",
-      "Formations intra-entreprise ou cours individuels selon le niveau et les objectifs",
-      "Gestion complète du dossier CPF — prise en charge administrative totale par JANUS",
-    ],
-    sidebar: [
-      { label: 'CPF sans reste à charge', content: "Pour les salariés allophones signataires d'un CIR. Nous prenons en charge l'intégralité du dossier CPF.", featured: true },
-      { label: 'Obligation légale', content: 'Loi immigration 2024 — vos salariés allophones ont droit à 28h de FLE sur leur temps de travail.' },
-      { label: 'Financement', content: "CPF exonéré · OPCO · Plan de compétences · France Travail (demandeurs d'emploi)" },
-      { label: 'Tarif indicatif', content: "À partir de 1 000 € pour un groupe. Souvent 100% financé. Devis gratuit sous 24h." },
-    ],
-    cta: { label: 'Vérifier mon éligibilité →', href: '/fr/contact' },
-  },
-  {
-    id: 'allemand',
-    flag: '🇩🇪',
-    eyebrow: '1er partenaire commercial de la France',
-    titre: 'Allemand professionnel',
-    sous: "L'Allemagne est le premier partenaire commercial de la France. Formateurs natifs certifiés, interprétariat et traduction disponibles à Lyon.",
-    badges: ['OPCO', 'Goethe-Institut', 'Allemagne · Autriche · Suisse'],
-    corps: [
-      "L'Allemagne est le premier partenaire commercial de la France avec des échanges de plus de 170 milliards d'euros par an. Pour les entreprises lyonnaises actives dans l'industrie, la mécanique, la chimie ou la logistique, l'allemand des affaires est souvent une compétence clé insuffisamment valorisée.",
-      "Nos formateurs allemands natifs apportent une maîtrise parfaite des nuances de la communication professionnelle germanique — le formalisme des échanges commerciaux, la rigueur des contrats, les spécificités régionales entre Allemagne du Nord et du Sud, l'Autriche et la Suisse alémanique. La langue allemande des affaires ne s'improvise pas : elle s'apprend avec un expert.",
-    ],
-    prestations: [
-      "Formation allemand des affaires — communication professionnelle, réunions, négociations, correspondance",
-      "Préparation aux certifications — Goethe-Zertifikat, telc Deutsch, ÖSD",
-      "Interprétariat allemand-français pour vos réunions, audits et négociations",
-      "Traduction de documents commerciaux et techniques allemand ↔ français",
-      "Accompagnement terrain en Allemagne, Autriche ou Suisse sur demande",
-    ],
-    sidebar: [
-      { label: 'Financement', content: 'OPCO · Plan de développement des compétences · CPF selon certification visée', featured: false },
-      { label: 'Disponibilité', content: "Sur demande — réseau de formateurs et interprètes natifs disponibles à Lyon et en région." },
-      { label: 'Tarif', content: 'Sur devis personnalisé selon prestation. Réponse sous 24h.' },
-    ],
-    cta: { label: 'Demander un devis →', href: '/fr/contact' },
-  },
-  {
-    id: 'espagnol',
-    flag: '🇪🇸',
-    eyebrow: 'Marchés hispanophones',
-    titre: 'Espagnol professionnel',
-    sous: "Pour vos échanges avec l'Espagne et l'Amérique latine. Formateurs natifs certifiés, interprétariat disponible sur l'ensemble du territoire.",
-    badges: ['OPCO', 'Espagne · Amérique latine', 'DELE'],
-    corps: [
-      "Avec plus de 500 millions de locuteurs natifs répartis sur 20 pays, l'espagnol est la deuxième langue la plus parlée dans le monde des affaires. Maîtriser l'espagnol professionnel ouvre des opportunités considérables en Espagne — 5e économie européenne — mais aussi dans les marchés en forte croissance d'Amérique latine.",
-      "Nos formateurs espagnols et hispano-américains natifs adaptent leur enseignement aux spécificités culturelles et linguistiques du marché cible. L'espagnol d'affaires utilisé à Madrid diffère sensiblement de celui de Mexico ou Buenos Aires — une nuance que seul un formateur expert peut vous transmettre efficacement.",
-    ],
-    prestations: [
-      "Formation espagnol des affaires — communication commerciale, emails, réunions, présentations",
-      "Préparation DELE — certification officielle reconnue par les employeurs",
-      "Interprétariat espagnol-français pour vos réunions et événements professionnels",
-      "Traduction de documents commerciaux et marketing espagnol ↔ français",
-      "Adaptation culturelle selon le marché cible — Espagne, Mexique, Colombie, Argentine, Chili…",
-    ],
-    sidebar: [
-      { label: 'Financement', content: 'OPCO · Plan de développement des compétences · CPF selon certification DELE' },
-      { label: 'Disponibilité', content: 'Sur demande — formateurs et interprètes natifs disponibles à Lyon et en région.' },
-      { label: 'Tarif', content: 'Sur devis personnalisé selon prestation. Réponse sous 24h.' },
-    ],
-    cta: { label: 'Demander un devis →', href: '/fr/contact' },
-  },
-  {
-    id: 'italien',
-    flag: '🇮🇹',
-    eyebrow: '4e économie européenne',
-    titre: 'Italien professionnel',
-    sous: "Pour vos partenariats avec l'Italie — 4e économie de l'UE et voisin direct de Lyon. Formateurs natifs, interprétariat et traduction disponibles.",
-    badges: ['OPCO', 'Italie · Suisse italophone', 'CELI / CILS'],
-    corps: [
-      "L'Italie est le 4e partenaire commercial de la France et le premier voisin direct de Lyon. De nombreuses entreprises lyonnaises entretiennent des relations d'affaires étroites avec des partenaires italiens dans les secteurs de la mode, de l'agroalimentaire, de la mécanique de précision et du luxe.",
-      "Nos formateurs italiens natifs maîtrisent les spécificités du monde des affaires transalpin — les différences régionales entre le nord industriel (Milan, Turin) et le reste du pays, le registre formel des contrats et des correspondances professionnelles, et les codes culturels italiens qui influencent les négociations.",
-    ],
-    prestations: [
-      "Formation italien des affaires — communication professionnelle, réunions, correspondances",
-      "Préparation aux certifications — CELI, CILS, PLIDA",
-      "Interprétariat italien-français pour vos réunions, salons et négociations",
-      "Traduction de documents commerciaux et techniques italien ↔ français",
-      "Accompagnement terrain en Italie sur demande",
-    ],
-    sidebar: [
-      { label: 'Financement', content: 'OPCO · Plan de développement des compétences · CPF selon certification visée' },
-      { label: 'Disponibilité', content: "Sur demande — formateurs et interprètes natifs disponibles à Lyon et en région." },
-      { label: 'Tarif', content: 'Sur devis personnalisé selon prestation. Réponse sous 24h.' },
-    ],
-    cta: { label: 'Demander un devis →', href: '/fr/contact' },
-  },
-];
 ---
-
 <Layout
   title="Nos Langues | JANUS Agence Linguistique Lyon"
-  description="6 langues, formateurs natifs : anglais, polonais, FLE, allemand, espagnol, italien. Formation professionnelle, interprétariat et traduction à Lyon."
+  description="Anglais, polonais, français FLE, allemand, espagnol, italien — formation, interprétariat et traduction par des natifs à Lyon."
   locale={locale}
   currentPath={currentPath}
 >
+
   <!-- Hero -->
-  <section class="bg-anthracite pt-32 pb-16 px-4 relative overflow-hidden">
-    <div class="max-w-4xl mx-auto relative">
-      <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
-        <span class="w-8 h-px bg-gold inline-block"></span>6 langues · Formateurs natifs · Lyon
-      </p>
-      <h1 class="text-5xl md:text-6xl font-serif font-light text-white mb-5 leading-tight">
-        Nos <em class="italic text-gold">langues</em>
+  <section class="bg-anthracite pt-36 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Nos langues</p>
+      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
+        Six langues.<br/><em class="italic text-gold">100% natifs.</em>
       </h1>
-      <p class="text-white/50 text-base max-w-xl leading-relaxed">
-        Des experts natifs sélectionnés pour leur maîtrise du monde des affaires et de l'interprétariat professionnel. Formation, interprétariat, accompagnement terrain — dans la langue de vos partenaires.
+      <p class="text-white/50 text-lg max-w-lg leading-relaxed">
+        Chaque langue est portée par des formateurs et interprètes natifs, sélectionnés pour leur expertise métier.
       </p>
     </div>
   </section>
 
-  <!-- Nav langues -->
-  <nav class="bg-white/5 backdrop-blur border-b border-gold/10 sticky top-16 z-40 overflow-x-auto">
-    <div class="max-w-6xl mx-auto px-4 flex gap-2 py-2">
-      {langues.map(l => (
-        <a href={`#${l.id}`} class="flex items-center gap-2 px-3 py-2 text-xs uppercase tracking-wider text-white/50 hover:text-gold transition-colors whitespace-nowrap">
-          <span>{l.flag}</span><span>{l.titre.split(' ')[0]}</span>
-        </a>
-      ))}
+  <!-- Anglais -->
+  <section class="py-24 px-6 border-t border-gold/10">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-3xl mb-6">🇬🇧</p>
+      <p class="text-gold/50 text-xs uppercase tracking-widest mb-2">Langue des affaires</p>
+      <h2 class="text-4xl font-serif font-light text-white mb-6">Anglais professionnel</h2>
+      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
+        Notre cœur de métier depuis 2016. Formateurs britanniques et américains. De A1 au TOEIC, centré sur votre secteur et vos objectifs réels.
+      </p>
+      <ul class="space-y-4 mb-12">
+        {[
+          'Business English — réunions, négociations, emails, présentations',
+          'Coaching individuel cadres et managers',
+          'Préparation TOEIC / TOEFL / IELTS',
+          'Anglais technique : industrie, santé, finance, juridique',
+          'Interprétariat EN ↔ FR · Traduction documents',
+          'Financement CPF jusqu\'à 1 500 € · OPCO · PDC',
+        ].map(item => (
+          <li class="flex gap-4 text-white/55 text-sm">
+            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
+          </li>
+        ))}
+      </ul>
+      <a href="/fr/contact" class="inline-block px-8 py-4 border border-gold/40 text-gold uppercase tracking-wider hover:bg-gold hover:text-anthracite transition-colors text-sm">Demander un devis anglais</a>
     </div>
-  </nav>
+  </section>
 
-  <!-- Chiffres clés -->
-  <div class="bg-anthracite-light border-y border-gold/10 py-10 px-4">
-    <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      {[
-        { num: '6', label: 'Langues maîtrisées' },
-        { num: '100%', label: 'Formateurs natifs' },
-        { num: '+200', label: 'Missions / an' },
-        { num: '2019', label: 'Expertise depuis' },
-      ].map(c => (
-        <div>
-          <p class="text-3xl font-serif font-bold text-gold">{c.num}</p>
-          <p class="text-white/40 text-xs uppercase tracking-widest mt-1">{c.label}</p>
-        </div>
-      ))}
+  <!-- Polonais -->
+  <section class="py-24 px-6 bg-anthracite-light border-t border-gold/10">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-3xl mb-6">🇵🇱</p>
+      <p class="text-gold text-xs uppercase tracking-widest mb-2">Spécialité exclusive à Lyon</p>
+      <h2 class="text-4xl font-serif font-light text-white mb-6">Polonais professionnel</h2>
+      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
+        Seule agence spécialisée polonais à Lyon. Réseau CCIFP actif. Accompagnement physique en Pologne disponible.
+      </p>
+      <ul class="space-y-4 mb-12">
+        {[
+          'Polonais des affaires — communication, déplacements en Pologne',
+          'Interprétariat PL ↔ FR en France et sur site en Pologne',
+          'Accompagnement terrain : Varsovie, Cracovie, Wrocław, Katowice…',
+          'Accueil de délégations polonaises à Lyon',
+          'Traduction contrats, appels d\'offre, correspondances',
+          'Conseil interculturel franco-polonais',
+        ].map(item => (
+          <li class="flex gap-4 text-white/55 text-sm">
+            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
+          </li>
+        ))}
+      </ul>
+      <div class="flex gap-4">
+        <a href="/fr/contact" class="inline-block px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Contacter notre équipe</a>
+        <a href="/fr/pologne-investir" class="inline-block px-8 py-4 border border-white/15 text-white/50 uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-sm">Investir en Pologne</a>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Sections langues -->
-  {langues.map((lang, i) => (
-    <section id={lang.id} class={`py-20 px-4 ${i % 2 === 0 ? 'bg-anthracite' : 'bg-anthracite-light'}`}>
-      <div class="max-w-6xl mx-auto">
-        <!-- Header langue -->
-        <div class="flex flex-col sm:flex-row gap-6 items-start mb-10 pb-10 border-b border-gold/10">
-          <span class="text-7xl leading-none">{lang.flag}</span>
-          <div>
-            <p class="text-gold text-xs uppercase tracking-widest mb-2">{lang.eyebrow}</p>
-            <h2 class="text-3xl md:text-4xl font-serif font-light text-white mb-3">{lang.titre}</h2>
-            <p class="text-white/50 text-sm leading-relaxed max-w-2xl mb-4">{lang.sous}</p>
-            <div class="flex flex-wrap gap-2">
-              {lang.badges.map((b, bi) => (
-                <span class={`text-xs px-3 py-1 uppercase tracking-wider font-medium ${
-                  lang.badgeGreen?.includes(bi)
-                    ? 'border border-emerald-600 text-emerald-600 bg-emerald-950/40'
-                    : bi === 0 && lang.badgeExclu
-                    ? 'bg-anthracite text-gold border border-anthracite'
-                    : 'border border-gold/60 text-gold'
-                }`}>{b}</span>
-              ))}
+  <!-- FLE -->
+  <section class="py-24 px-6 border-t border-gold/10">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-3xl mb-6">🇫🇷</p>
+      <p class="text-gold/50 text-xs uppercase tracking-widest mb-2">Intégration professionnelle</p>
+      <h2 class="text-4xl font-serif font-light text-white mb-6">Français Langue Étrangère</h2>
+      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
+        Pour vos salariés non francophones. Financement CPF sans reste à charge pour les bénéficiaires du CIR. TCF et DELF inclus.
+      </p>
+      <ul class="space-y-4 mb-12">
+        {[
+          'Français professionnel adapté à votre secteur',
+          'Préparation TCF / DELF / DALF',
+          'CPF sans reste à charge pour bénéficiaires CIR',
+          'Présentiel Lyon ou visioconférence',
+        ].map(item => (
+          <li class="flex gap-4 text-white/55 text-sm">
+            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
+          </li>
+        ))}
+      </ul>
+      <a href="/fr/contact" class="inline-block px-8 py-4 border border-gold/40 text-gold uppercase tracking-wider hover:bg-gold hover:text-anthracite transition-colors text-sm">Renseignements FLE</a>
+    </div>
+  </section>
+
+  <!-- Autres langues -->
+  <section class="py-24 px-6 bg-anthracite-light border-t border-gold/10">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Aussi disponibles</p>
+      <h2 class="text-4xl font-serif font-light text-white mb-16 leading-tight">
+        Allemand, espagnol,<br/>italien.
+      </h2>
+      <div class="divide-y divide-white/10">
+        {[
+          { flag: '🇩🇪', lang: 'Allemand', detail: 'Formation B2B · Interprétariat · Traduction · Secteurs industrie et automobile' },
+          { flag: '🇪🇸', lang: 'Espagnol', detail: 'Formation professionnelle · Marchés LATAM et Espagne · Interprétariat' },
+          { flag: '🇮🇹', lang: 'Italien', detail: 'Formation et traduction · Secteurs mode, luxe, industrie, juridique' },
+        ].map(l => (
+          <div class="py-8 flex items-start gap-6">
+            <span class="text-3xl shrink-0">{l.flag}</span>
+            <div>
+              <p class="text-white font-medium text-lg mb-1">{l.lang}</p>
+              <p class="text-white/40 text-sm">{l.detail}</p>
             </div>
           </div>
-        </div>
-
-        <!-- Corps -->
-        <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-10">
-          <div>
-            {lang.corps.map(p => (
-              <p class="text-white/60 text-sm leading-relaxed mb-5">{p}</p>
-            ))}
-
-            <p class="text-gold text-xs uppercase tracking-widest mb-4 mt-8 flex items-center gap-3">
-              Ce que nous proposons <span class="flex-1 h-px bg-gold/20"></span>
-            </p>
-            <ul class="space-y-3">
-              {lang.prestations.map(p => (
-                <li class="flex gap-3 text-sm text-white/60 leading-relaxed">
-                  <span class="text-gold text-xs mt-1 shrink-0">◆</span>
-                  <span>{p}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <!-- Sidebar -->
-          <aside class="flex flex-col gap-3">
-            {lang.sidebar.map(card => (
-              <div class={`p-4 border ${card.featured ? 'border-emerald-600/50 bg-emerald-950/20' : 'border-gold/20 bg-white/[0.02]'}`}>
-                <p class={`text-xs uppercase tracking-widest mb-2 font-medium ${card.featured ? 'text-emerald-500' : 'text-gold'}`}>{card.label}</p>
-                <p class="text-xs text-white/55 leading-relaxed">{card.content}</p>
-              </div>
-            ))}
-            <a href={lang.cta.href} class="block text-center bg-anthracite border border-gold/40 text-white/80 hover:bg-gold hover:text-anthracite hover:border-gold px-4 py-3 text-xs uppercase tracking-widest transition-all">
-              {lang.cta.label}
-            </a>
-          </aside>
-        </div>
+        ))}
       </div>
-    </section>
-  ))}
-
-  <!-- CTA -->
-  <section class="bg-anthracite py-20 px-4 text-center border-t border-gold/10">
-    <h2 class="text-3xl font-serif font-light text-white mb-4">Votre langue n'est pas listée ?</h2>
-    <p class="text-white/45 text-sm max-w-md mx-auto mb-8">Contactez-nous — notre réseau de partenaires couvre de nombreuses autres langues européennes et mondiales.</p>
-    <a href="/fr/contact" class="inline-block px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">
-      Nous contacter
-    </a>
+      <div class="mt-12">
+        <a href="/fr/contact" class="inline-block px-8 py-4 border border-gold/40 text-gold uppercase tracking-wider hover:bg-gold hover:text-anthracite transition-colors text-sm">Demander un devis</a>
+      </div>
+    </div>
   </section>
+
+  <!-- CTA financement -->
+  <section class="py-40 px-6 bg-anthracite border-t border-gold/10 text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-4xl font-serif font-light text-white mb-6">
+        Votre formation peut être<br/><em class="italic text-gold">financée à 100%.</em>
+      </h2>
+      <p class="text-white/40 text-base mb-12">CPF, OPCO, PDC — JANUS gère le dossier pour vous.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/fr/contact" class="px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Vérifier mon financement</a>
+        <a href="/fr/financement" class="px-10 py-5 border border-white/15 text-white/60 uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-sm">En savoir plus</a>
+      </div>
+    </div>
+  </section>
+
 </Layout>
