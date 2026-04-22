@@ -1,0 +1,111 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const locale = 'fr';
+const currentPath = '/cas-pratiques/industrie-pologne';
+---
+<Layout
+  title="PME lyonnaise cherche fournisseur industriel en Pologne | JANUS"
+  description="Comment JANUS a accompagné une PME lyonnaise dans l'identification, la visite et la négociation avec un fournisseur industriel polonais."
+  locale={locale}
+  currentPath={currentPath}
+>
+
+  <!-- Hero -->
+  <section class="bg-anthracite pt-36 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Cas pratique · Industrie</p>
+      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
+        PME lyonnaise cherche<br/>fournisseur industriel<br/><em class="italic text-gold">en Pologne.</em>
+      </h1>
+      <p class="text-white/50 text-lg max-w-lg leading-relaxed">
+        Un fabricant de pièces mécaniques de la région lyonnaise souhaite diversifier ses fournisseurs. La Pologne s'impose comme marché cible. Problème : aucune ressource interne pour identifier, visiter et négocier sur place.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contexte -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">Le contexte</p>
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-8 leading-tight">
+        Une opportunité réelle,<br/>un blocage linguistique.
+      </h2>
+      <div class="space-y-4 text-anthracite/60 text-base leading-relaxed max-w-xl">
+        <p>L'entreprise a identifié 3 fournisseurs potentiels en Silésie via des salons professionnels. Les échanges par email en anglais approximatif n'avancent pas. Une visite d'usine est nécessaire — mais personne dans l'équipe ne parle polonais ni ne connaît les codes professionnels locaux.</p>
+        <p>Le directeur achats contacte JANUS pour une mission complète : préparation, déplacement, négociation, suivi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Défi -->
+  <section class="bg-[#f5f5f3] py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-12">Le défi</p>
+      <div class="divide-y divide-anthracite/10">
+        {[
+          { n: '01', titre: 'Barrière linguistique totale', desc: 'Les interlocuteurs polonais ne parlent pas français. L\'anglais technique est limité des deux côtés. Sans interprète natif, les réunions techniques sont impossibles.' },
+          { n: '02', titre: 'Codes culturels inconnus', desc: 'La négociation polonaise suit ses propres règles : rythme, hiérarchie, importance du protocole. Une erreur culturelle peut faire capoter un deal techniquement viable.' },
+          { n: '03', titre: 'Documentation juridique bilingue', desc: 'Contrats de fourniture, cahiers des charges techniques, conditions de paiement — tous les documents doivent être traduits et adaptés aux standards juridiques polonais.' },
+        ].map(r => (
+          <div class="py-8 flex gap-8">
+            <span class="text-gold/25 font-serif text-sm w-6 shrink-0 pt-1">{r.n}</span>
+            <div>
+              <p class="text-anthracite font-serif text-lg mb-2">{r.titre}</p>
+              <p class="text-anthracite/55 text-sm leading-relaxed max-w-lg">{r.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution JANUS -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">La solution JANUS</p>
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-12 leading-tight">
+        Trois services mobilisés,<br/>une seule mission.
+      </h2>
+      <div class="divide-y divide-anthracite/10">
+        {[
+          { service: 'Accompagnement terrain', desc: 'Chef de projet JANUS présent lors des 3 visites d\'usine à Katowice. Interprétariat consécutif pendant les réunions techniques. Décodage en temps réel des réticences et signaux non-verbaux des interlocuteurs polonais.' },
+          { service: 'Interprétariat professionnel', desc: 'Séances de négociation sur les prix, délais et conditions contractuelles. NDA signé avant la mission. Compte-rendu détaillé après chaque réunion.' },
+          { service: 'Traduction de documents', desc: 'Traduction du cahier des charges technique (FR → PL), des conditions générales d\'achat et du contrat de fourniture final (PL → FR). Terminologie industrielle validée.' },
+        ].map(s => (
+          <div class="py-8">
+            <p class="text-gold text-xs uppercase tracking-wider mb-2">{s.service}</p>
+            <p class="text-anthracite/60 text-sm leading-relaxed max-w-lg">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Résultat -->
+  <section class="bg-[#f5f5f3] py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">Le résultat</p>
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-10 leading-tight">
+        Contrat signé.<br/>Fournisseur retenu.
+      </h2>
+      <div class="space-y-4 text-anthracite/60 text-base leading-relaxed max-w-xl">
+        <p>Sur les 3 fournisseurs visités, 1 a été retenu. Le contrat de fourniture a été signé 6 semaines après la première visite. Le directeur achats a obtenu des conditions 18% inférieures à son fournisseur actuel français, avec des délais équivalents.</p>
+        <p>La relation commerciale est toujours active. JANUS assure les échanges courants et les réunions de suivi trimestrielles.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-anthracite py-40 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-4xl font-serif font-light text-white mb-6">
+        Vous avez<br/><em class="italic text-gold">un projet similaire ?</em>
+      </h2>
+      <p class="text-white/40 text-base mb-12">Premier échange gratuit. Devis sous 24h.</p>
+      <a href="/fr/contact?ref=cas-industrie" class="inline-block px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">
+        Nous contacter
+      </a>
+    </div>
+  </section>
+
+</Layout>

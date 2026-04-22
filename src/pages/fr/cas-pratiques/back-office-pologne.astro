@@ -1,0 +1,112 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const locale = 'fr';
+const currentPath = '/cas-pratiques/back-office-pologne';
+---
+<Layout
+  title="Entreprise lyonnaise ouvre un centre de back office en Pologne | JANUS"
+  description="Comment JANUS a accompagné une entreprise lyonnaise de l'étude de faisabilité à l'ouverture complète d'un centre de back office en Pologne."
+  locale={locale}
+  currentPath={currentPath}
+>
+
+  <!-- Hero -->
+  <section class="bg-anthracite pt-36 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Cas pratique · Back Office</p>
+      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
+        Entreprise lyonnaise ouvre<br/>un centre de back office<br/><em class="italic text-gold">en Pologne.</em>
+      </h1>
+      <p class="text-white/50 text-lg max-w-lg leading-relaxed">
+        Une entreprise de services financiers basée à Lyon décide de transférer ses opérations de back office (comptabilité, conformité, support client) vers Wrocław. Budget maîtrisé, expertise locale introuvable en interne. JANUS prend en charge l'ensemble de la dimension linguistique et interculturelle du projet.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contexte -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">Le contexte</p>
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-8 leading-tight">
+        Un projet à 18 mois.<br/>Toutes les phases couvertes.
+      </h2>
+      <div class="space-y-4 text-anthracite/60 text-base leading-relaxed max-w-xl">
+        <p>Le projet est ambitieux : ouvrir un centre de 25 personnes à Wrocław d'ici 18 mois. Étude de faisabilité, choix du site, recrutement, formation des équipes locales, transfert des process — chaque phase implique des interactions bilingues intensives.</p>
+        <p>La direction de projet contacte JANUS dès la phase d'exploration, avant même la décision finale d'implantation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Défi -->
+  <section class="bg-[#f5f5f3] py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-12">Le défi</p>
+      <div class="divide-y divide-anthracite/10">
+        {[
+          { n: '01', titre: 'Étude de faisabilité sur le terrain', desc: 'Rencontres avec des partenaires locaux, avocats, agences immobilières, institutions. Tous les interlocuteurs sont polonais. Impossible sans interprète expert en droit des affaires franco-polonais.' },
+          { n: '02', titre: 'Recrutement et onboarding bilingue', desc: '25 recrutements sur 12 mois. Entretiens bilingues, traduction des fiches de poste, adaptation des process RH aux standards polonais, onboarding d\'équipes qui ne parlent pas français.' },
+          { n: '03', titre: 'Transfert des process métier', desc: 'Toute la documentation opérationnelle — procédures comptables, protocoles conformité, scripts support client — doit être traduite, adaptée et apprise par des équipes dont la langue de travail sera le polonais.' },
+        ].map(r => (
+          <div class="py-8 flex gap-8">
+            <span class="text-gold/25 font-serif text-sm w-6 shrink-0 pt-1">{r.n}</span>
+            <div>
+              <p class="text-anthracite font-serif text-lg mb-2">{r.titre}</p>
+              <p class="text-anthracite/55 text-sm leading-relaxed max-w-lg">{r.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution JANUS -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">La solution JANUS</p>
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-12 leading-tight">
+        Le package complet.<br/>18 mois d'accompagnement.
+      </h2>
+      <div class="divide-y divide-anthracite/10">
+        {[
+          { service: 'Chef de projet terrain', desc: 'Un expert JANUS dédié au projet pendant 18 mois : présence lors des phases clés à Wrocław, coordination des prestataires locaux, remontée hebdomadaire au directeur de projet lyonnais.' },
+          { service: 'Interprétariat professionnel', desc: 'Toutes les réunions stratégiques avec les autorités locales, les avocats, les agences de recrutement et les partenaires institutionnels. NDA signé, comptes-rendus systématiques.' },
+          { service: 'Formation linguistique', desc: 'Programme de français des affaires pour les 25 collaborateurs polonais recrutés : vocabulaire métier finance/conformité, communication avec le siège lyonnais, réunions hybrides.' },
+          { service: 'Traduction de documents', desc: 'Plus de 200 documents traduits sur 18 mois : procédures opérationnelles, contrats de travail, supports de formation, documentation réglementaire.' },
+        ].map(s => (
+          <div class="py-8">
+            <p class="text-gold text-xs uppercase tracking-wider mb-2">{s.service}</p>
+            <p class="text-anthracite/60 text-sm leading-relaxed max-w-lg">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Résultat -->
+  <section class="bg-[#f5f5f3] py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">Le résultat</p>
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-10 leading-tight">
+        Ouverture dans les délais.<br/>Équipe opérationnelle dès le jour 1.
+      </h2>
+      <div class="space-y-4 text-anthracite/60 text-base leading-relaxed max-w-xl">
+        <p>Le centre de Wrocław a ouvert avec 3 semaines d'avance sur le calendrier initial. Les 25 collaborateurs polonais étaient opérationnels dès leur premier jour grâce à la documentation bilingue et aux formations préalables.</p>
+        <p>Le coût total des opérations back office a été réduit de 35% par rapport à la configuration initiale en France. JANUS assure aujourd'hui les formations continues et les besoins de traduction courants du centre.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-anthracite py-40 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-4xl font-serif font-light text-white mb-6">
+        Vous avez<br/><em class="italic text-gold">un projet similaire ?</em>
+      </h2>
+      <p class="text-white/40 text-base mb-12">Premier échange gratuit. Devis sous 24h.</p>
+      <a href="/fr/contact?ref=cas-backoffice" class="inline-block px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">
+        Nous contacter
+      </a>
+    </div>
+  </section>
+
+</Layout>

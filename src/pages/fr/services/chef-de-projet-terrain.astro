@@ -1,0 +1,121 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const locale = 'fr';
+const currentPath = '/services/chef-de-projet-terrain';
+---
+<Layout
+  title="Chef de projet terrain | JANUS Agence Linguistique Lyon"
+  description="Un interlocuteur dédié sur place pendant vos phases critiques — due diligence, implantation, négociation en Pologne. Service exclusif JANUS à Lyon."
+  locale={locale}
+  currentPath={currentPath}
+>
+
+  <!-- Hero -->
+  <section class="bg-anthracite pt-36 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Nouveau service · Exclusif Lyon</p>
+      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
+        Chef de projet<br/><em class="italic text-gold">terrain.</em>
+      </h1>
+      <p class="text-white/50 text-lg max-w-lg leading-relaxed">
+        Un expert JANUS dédié à votre mission pendant toute sa durée critique. Pas un interprète poncutuel — un interlocuteur unique, présent de bout en bout.
+      </p>
+    </div>
+  </section>
+
+  <!-- Ce que c'est -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">Le service</p>
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-6 leading-tight">
+        Personne ne propose ça<br/>à Lyon.
+      </h2>
+      <p class="text-anthracite/60 text-lg leading-relaxed max-w-xl">
+        La plupart des agences vous envoient un interprète le jour J. JANUS va plus loin : votre chef de projet terrain est présent dès la préparation, pendant toute la mission, et assure le suivi jusqu'à la conclusion.
+      </p>
+    </div>
+  </section>
+
+  <!-- Cas d'usage -->
+  <section class="bg-[#f5f5f3] py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-12">Cas d'usage typiques</p>
+      <div class="divide-y divide-anthracite/10">
+        {[
+          {
+            n: '01',
+            titre: 'Acquisition d\'entreprise en Pologne',
+            desc: 'Présence pendant toute la due diligence — documents, réunions, échanges avec les dirigeants locaux, coordination avec vos avocats et auditeurs. De la première visite à la signature.',
+          },
+          {
+            n: '02',
+            titre: 'Ouverture d\'un bureau à l\'étranger',
+            desc: 'Accompagnement sur 3 à 6 mois : recrutement local, onboarding interculturel des équipes, coordination avec les autorités et partenaires locaux, formation des managers.',
+          },
+          {
+            n: '03',
+            titre: 'Négociation d\'un contrat industriel',
+            desc: 'Présence à toutes les réunions clés : préparation, séances de négociation, lectures de signaux culturels en temps réel, compte-rendu et recommandations après chaque session.',
+          },
+        ].map(r => (
+          <div class="py-10 flex gap-8">
+            <span class="text-gold/25 font-serif text-sm w-6 shrink-0 pt-1">{r.n}</span>
+            <div>
+              <p class="text-anthracite font-serif text-xl mb-3">{r.titre}</p>
+              <p class="text-anthracite/55 text-sm leading-relaxed max-w-lg">{r.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Processus -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-12">Comment ça se passe</p>
+      <div class="space-y-0">
+        {[
+          { n: '1', titre: 'Briefing initial', desc: 'Compréhension de votre projet, enjeux, interlocuteurs locaux, objectifs de la mission. Définition du périmètre d\'intervention.' },
+          { n: '2', titre: 'Préparation de mission', desc: 'Recherche documentaire, préparation des supports bilingues, briefing interculturel sur mesure, identification des points de friction potentiels.' },
+          { n: '3', titre: 'Présence terrain', desc: 'Votre chef de projet vous accompagne physiquement sur tous les rendez-vous critiques. Interprétariat, décodage culturel et conseil en temps réel.' },
+          { n: '4', titre: 'Suivi et compte-rendu', desc: 'Rapport de mission détaillé, recommandations pour la suite, coordination des actions post-réunion avec vos équipes et les partenaires locaux.' },
+        ].map((s, i, arr) => (
+          <div class="grid grid-cols-[40px_1fr] gap-6 pb-10 relative">
+            {i < arr.length - 1 && <div class="absolute left-5 top-12 bottom-0 w-px bg-gold/20"></div>}
+            <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center font-serif font-bold text-anthracite text-sm shrink-0">{s.n}</div>
+            <div class="pt-2">
+              <p class="text-anthracite font-medium text-base mb-2">{s.titre}</p>
+              <p class="text-anthracite/50 text-sm leading-relaxed max-w-lg">{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tarif -->
+  <section class="bg-[#f5f5f3] py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">Tarification</p>
+      <h2 class="text-3xl font-serif font-light text-anthracite mb-6">Sur devis, à la journée ou au forfait.</h2>
+      <p class="text-anthracite/55 text-base leading-relaxed max-w-xl">
+        Chaque mission est unique. Le tarif dépend de la durée, de la destination, du niveau d'expertise requis et du périmètre de services. Nous établissons un devis précis après un premier échange gratuit.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-anthracite py-40 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-4xl font-serif font-light text-white mb-6">
+        Une mission critique<br/><em class="italic text-gold">à préparer ?</em>
+      </h2>
+      <p class="text-white/40 text-base mb-12">Décrivez-nous votre projet. Premier échange gratuit et confidentiel.</p>
+      <a href="/fr/contact?service=chef-de-projet-terrain" class="inline-block px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">
+        Discuter de ma mission
+      </a>
+    </div>
+  </section>
+
+</Layout>

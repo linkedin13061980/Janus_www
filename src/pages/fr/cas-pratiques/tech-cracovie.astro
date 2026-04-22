@@ -1,0 +1,111 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const locale = 'fr';
+const currentPath = '/cas-pratiques/tech-cracovie';
+---
+<Layout
+  title="Scale-up tech recrute une équipe de développeurs à Cracovie | JANUS"
+  description="Comment JANUS a accompagné une scale-up lyonnaise dans le recrutement et l'onboarding interculturel d'une équipe tech polonaise."
+  locale={locale}
+  currentPath={currentPath}
+>
+
+  <!-- Hero -->
+  <section class="bg-anthracite pt-36 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Cas pratique · Tech & Innovation</p>
+      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
+        Scale-up tech recrute<br/>une équipe dev<br/><em class="italic text-gold">à Cracovie.</em>
+      </h1>
+      <p class="text-white/50 text-lg max-w-lg leading-relaxed">
+        Une scale-up lyonnaise de 80 personnes décide d'ouvrir un centre de développement à Cracovie pour accélérer sa roadmap produit. Le défi : intégrer une équipe polonaise de 12 personnes dans une culture d'entreprise 100% française.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contexte -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">Le contexte</p>
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-8 leading-tight">
+        Les développeurs recrutés.<br/>L'intégration, pas encore.
+      </h2>
+      <div class="space-y-4 text-anthracite/60 text-base leading-relaxed max-w-xl">
+        <p>Le recrutement s'est bien passé — Cracovie est l'une des capitales tech de l'Europe centrale, avec un vivier d'ingénieurs excellents. Mais une fois embauchés, les frictions apparaissent : communication asynchrone difficile, réunions de sprint tendues, malentendus récurrents entre les PMs français et les développeurs polonais.</p>
+        <p>Le CTO contacte JANUS : il faut créer un pont entre les deux équipes, vite.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Défi -->
+  <section class="bg-[#f5f5f3] py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-12">Le défi</p>
+      <div class="divide-y divide-anthracite/10">
+        {[
+          { n: '01', titre: 'Communication technique bilingue', desc: 'Les specs produit, tickets Jira et docs techniques sont en français. Les développeurs polonais les lisent — mais les malentendus sur les exigences génèrent des retours en arrière coûteux.' },
+          { n: '02', titre: 'Décalage culturel dans la gestion de projet', desc: 'Le management à la française (direct, parfois abrupt) est mal perçu par des développeurs polonais habitués à plus de formalisme. La motivation de l\'équipe polonaise chute.' },
+          { n: '03', titre: 'Onboarding sans structure bilingue', desc: 'Aucun processus d\'onboarding en polonais. Les nouveaux arrivants passent leurs premières semaines à déchiffrer des docs internes plutôt qu\'à coder.' },
+        ].map(r => (
+          <div class="py-8 flex gap-8">
+            <span class="text-gold/25 font-serif text-sm w-6 shrink-0 pt-1">{r.n}</span>
+            <div>
+              <p class="text-anthracite font-serif text-lg mb-2">{r.titre}</p>
+              <p class="text-anthracite/55 text-sm leading-relaxed max-w-lg">{r.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution JANUS -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">La solution JANUS</p>
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-12 leading-tight">
+        Formation + Chef de projet terrain.
+      </h2>
+      <div class="divide-y divide-anthracite/10">
+        {[
+          { service: 'Formation interculturelle franco-polonaise', desc: 'Deux sessions pour les PMs et team leads français : comprendre les codes professionnels polonais, adapter leur communication de management, désamorcer les sources de friction identifiées.' },
+          { service: 'Chef de projet terrain à Cracovie', desc: 'Un expert JANUS présent 2 jours par mois à Cracovie pendant 4 mois : facilitation des réunions de sprint bilingues, médiation culturelle, remontée d\'alertes au CTO.' },
+          { service: 'Traduction des docs internes clés', desc: 'Traduction du handbook RH, des processus d\'onboarding et des templates de specs techniques (FR → PL). Base documentaire bilingue créée une fois, réutilisée à l\'infini.' },
+        ].map(s => (
+          <div class="py-8">
+            <p class="text-gold text-xs uppercase tracking-wider mb-2">{s.service}</p>
+            <p class="text-anthracite/60 text-sm leading-relaxed max-w-lg">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Résultat -->
+  <section class="bg-[#f5f5f3] py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">Le résultat</p>
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-10 leading-tight">
+        Vélocité retrouvée.<br/>Turnover stoppé.
+      </h2>
+      <div class="space-y-4 text-anthracite/60 text-base leading-relaxed max-w-xl">
+        <p>Au bout de 3 mois, les retours en arrière liés aux malentendus de specs ont diminué de 70%. Deux développeurs qui envisageaient de quitter l'entreprise sont restés. L'équipe polonaise est aujourd'hui l'une des plus productives du groupe.</p>
+        <p>JANUS intervient maintenant ponctuellement pour les nouvelles recrues polonaises et pour les formations de management cross-culturel des équipes françaises.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-anthracite py-40 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-4xl font-serif font-light text-white mb-6">
+        Vous avez<br/><em class="italic text-gold">un projet similaire ?</em>
+      </h2>
+      <p class="text-white/40 text-base mb-12">Premier échange gratuit. Devis sous 24h.</p>
+      <a href="/fr/contact?ref=cas-tech" class="inline-block px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">
+        Nous contacter
+      </a>
+    </div>
+  </section>
+
+</Layout>
