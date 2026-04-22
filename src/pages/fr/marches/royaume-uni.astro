@@ -1,0 +1,107 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const locale = 'fr';
+const currentPath = '/marches/royaume-uni';
+---
+<Layout
+  title="S'implanter au Royaume-Uni | JANUS Agence Linguistique Lyon"
+  description="Royaume-Uni, 2e économie européenne, hub mondial de la finance et de la tech. JANUS vous accompagne dans vos projets post-Brexit."
+  locale={locale}
+  currentPath={currentPath}
+>
+
+  <!-- Hero -->
+  <section class="bg-anthracite pt-36 pb-24 px-6 relative overflow-hidden">
+    <div class="absolute top-16 right-8 text-[10rem] opacity-[0.06] pointer-events-none select-none leading-none">🇬🇧</div>
+    <div class="max-w-3xl mx-auto relative">
+      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Marché britannique</p>
+      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
+        S'implanter au<br/><em class="italic text-gold">Royaume-Uni.</em>
+      </h1>
+      <p class="text-white/50 text-lg max-w-lg leading-relaxed">
+        Malgré le Brexit, le Royaume-Uni reste le premier marché anglophone d'Europe et un hub mondial incontournable pour la finance, la tech et les services.
+      </p>
+    </div>
+  </section>
+
+  <!-- Chiffres clés -->
+  <section class="bg-white py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-anthracite/10">
+        {[
+          { num: '2 800 Mds €', label: 'PIB — 2e économie européenne', source: '2023' },
+          { num: '50 Mds €', label: 'Échanges franco-britanniques', source: '2023' },
+          { num: '2 000+', label: 'Entreprises françaises présentes', source: 'Direction du Trésor' },
+        ].map(c => (
+          <div class="py-8 px-6 first:pl-0 last:pr-0">
+            <p class="text-4xl font-serif font-bold text-gold mb-2">{c.num}</p>
+            <p class="text-anthracite/70 text-sm leading-tight mb-1">{c.label}</p>
+            <p class="text-anthracite/30 text-xs">{c.source}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi le Royaume-Uni -->
+  <section class="bg-[#f5f5f3] py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-12">Pourquoi le Royaume-Uni</p>
+      <div class="divide-y divide-anthracite/10">
+        {[
+          { n: '01', titre: 'Premier hub fintech et tech d\'Europe', desc: 'Londres concentre plus de capitaux risque tech que Paris et Berlin réunis. Ecosystème startup, fintech et services financiers sans équivalent en Europe.' },
+          { n: '02', titre: 'Le Business English dans son contexte', desc: 'Maîtriser l\'anglais des affaires dans les codes britanniques est une compétence à part entière. Registres, humour, understatement — les malentendus culturels coûtent cher.' },
+          { n: '03', titre: 'Post-Brexit : nouvelles opportunités', desc: 'Le Brexit a créé des niches : conformité réglementaire, doublons documentaires, besoins de traduction juridique franco-britannique en forte hausse depuis 2021.' },
+        ].map(r => (
+          <div class="py-10 flex gap-8">
+            <span class="text-gold/25 font-serif text-sm w-6 shrink-0 pt-1">{r.n}</span>
+            <div>
+              <p class="text-anthracite font-serif text-xl mb-3">{r.titre}</p>
+              <p class="text-anthracite/55 text-sm leading-relaxed max-w-lg">{r.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Rôle JANUS -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">Le rôle de JANUS</p>
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-4 leading-tight">
+        Votre partenaire<br/>pour le marché britannique.
+      </h2>
+      <p class="text-anthracite/55 text-lg leading-relaxed mb-16 max-w-xl">
+        Formateurs natifs britanniques et américains. Expertise post-Brexit pour la documentation juridique et contractuelle franco-britannique.
+      </p>
+      <div class="divide-y divide-anthracite/10">
+        {[
+          { titre: 'Business English natif', desc: 'Formation par des Britanniques et Américains sélectionnés pour leur expérience concrète du monde des affaires, pas de l\'enseignement général.' },
+          { titre: 'Préparation TOEIC / TOEFL / IELTS', desc: 'Certifications reconnues par les employeurs britanniques. Programmes intensifs avec passages blancs. Éligibles CPF.' },
+          { titre: 'Traduction juridique post-Brexit', desc: 'Contrats, CGV, conformité réglementaire franco-britannique. Traducteurs natifs spécialisés droit des affaires.' },
+          { titre: 'Interprétariat EN ↔ FR', desc: 'Réunions, négociations, visioconférences avec partenaires britanniques. Disponible en présentiel et à distance.' },
+        ].map(s => (
+          <div class="py-8">
+            <p class="text-anthracite font-medium text-base mb-2">{s.titre}</p>
+            <p class="text-anthracite/50 text-sm leading-relaxed max-w-lg">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-anthracite py-40 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-4xl font-serif font-light text-white mb-6">
+        Un projet au Royaume-Uni ?<br/><em class="italic text-gold">Parlons-en.</em>
+      </h2>
+      <p class="text-white/40 text-base mb-12">Premier échange gratuit et confidentiel.</p>
+      <a href="/fr/contact?marche=royaume-uni" class="inline-block px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">
+        Discuter de mon projet
+      </a>
+    </div>
+  </section>
+
+</Layout>

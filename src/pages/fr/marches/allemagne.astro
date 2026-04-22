@@ -1,0 +1,107 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const locale = 'fr';
+const currentPath = '/marches/allemagne';
+---
+<Layout
+  title="S'implanter en Allemagne | JANUS Agence Linguistique Lyon"
+  description="Allemagne, 1re économie européenne, 1er partenaire commercial de la France. JANUS vous accompagne sur la zone DACH avec des experts natifs."
+  locale={locale}
+  currentPath={currentPath}
+>
+
+  <!-- Hero -->
+  <section class="bg-anthracite pt-36 pb-24 px-6 relative overflow-hidden">
+    <div class="absolute top-16 right-8 text-[10rem] opacity-[0.06] pointer-events-none select-none leading-none">🇩🇪</div>
+    <div class="max-w-3xl mx-auto relative">
+      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Marché allemand · Zone DACH</p>
+      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
+        S'implanter en<br/><em class="italic text-gold">Allemagne.</em>
+      </h1>
+      <p class="text-white/50 text-lg max-w-lg leading-relaxed">
+        L'Allemagne est le premier partenaire commercial de la France depuis des décennies. 170 milliards d'euros d'échanges annuels. Un marché que chaque entreprise française ambitieuse doit maîtriser.
+      </p>
+    </div>
+  </section>
+
+  <!-- Chiffres clés -->
+  <section class="bg-white py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-anthracite/10">
+        {[
+          { num: '3 900 Mds €', label: 'PIB — 1re économie de l\'UE', source: '2023' },
+          { num: '170 Mds €', label: 'Échanges franco-allemands', source: '1er partenaire · 2023' },
+          { num: '4 500+', label: 'Entreprises françaises en Allemagne', source: 'Direction du Trésor' },
+        ].map(c => (
+          <div class="py-8 px-6 first:pl-0 last:pr-0">
+            <p class="text-4xl font-serif font-bold text-gold mb-2">{c.num}</p>
+            <p class="text-anthracite/70 text-sm leading-tight mb-1">{c.label}</p>
+            <p class="text-anthracite/30 text-xs">{c.source}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi l'Allemagne -->
+  <section class="bg-[#f5f5f3] py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-12">Pourquoi l'Allemagne</p>
+      <div class="divide-y divide-anthracite/10">
+        {[
+          { n: '01', titre: 'Premier marché industriel d\'Europe', desc: 'Le Mittelstand allemand — ces 3,5 millions de PME familiales ultraspécialisées — est le moteur industriel de l\'Europe. Partenaires, sous-traitants, clients : ils sont incontournables.' },
+          { n: '02', titre: 'Les codes culturels font la différence', desc: 'Ponctualité, précision contractuelle, hiérarchie implicite, réunions préparées — les Allemands ne négocient pas comme les Français. Comprendre leurs codes, c\'est sécuriser le deal.' },
+          { n: '03', titre: 'Zone DACH : un marché de 100 millions', desc: 'Allemagne + Autriche + Suisse alémanique = 100 millions de germanophones. Un seul interlocuteur JANUS pour couvrir toute la zone.' },
+        ].map(r => (
+          <div class="py-10 flex gap-8">
+            <span class="text-gold/25 font-serif text-sm w-6 shrink-0 pt-1">{r.n}</span>
+            <div>
+              <p class="text-anthracite font-serif text-xl mb-3">{r.titre}</p>
+              <p class="text-anthracite/55 text-sm leading-relaxed max-w-lg">{r.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Rôle JANUS -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">Le rôle de JANUS</p>
+      <h2 class="text-4xl font-serif font-light text-anthracite mb-4 leading-tight">
+        Votre partenaire<br/>pour la zone DACH.
+      </h2>
+      <p class="text-anthracite/55 text-lg leading-relaxed mb-16 max-w-xl">
+        Formateurs et interprètes natifs allemands. Expertise sectorielle industrie, automobile, chimie et services financiers.
+      </p>
+      <div class="divide-y divide-anthracite/10">
+        {[
+          { titre: 'Allemand des affaires sur mesure', desc: 'Formation centée sur votre secteur : industrie, automobile, chimie, finance, logistique. Niveaux A1 à C1. Qualiopi, éligible OPCO/CPF.' },
+          { titre: 'Interprétariat DE ↔ FR', desc: 'Réunions techniques, négociations commerciales, audits, salons. Interprètes natifs avec expérience sectorielle.' },
+          { titre: 'Préparation interculturelle DACH', desc: 'Briefing avant vos déplacements : codes professionnels allemands, suisses et autrichiens. Les nuances qui changent tout en négociation.' },
+          { titre: 'Traduction DE ↔ FR', desc: 'Contrats, documentation technique, appels d\'offre. Traducteurs natifs spécialisés par secteur.' },
+        ].map(s => (
+          <div class="py-8">
+            <p class="text-anthracite font-medium text-base mb-2">{s.titre}</p>
+            <p class="text-anthracite/50 text-sm leading-relaxed max-w-lg">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-anthracite py-40 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-4xl font-serif font-light text-white mb-6">
+        Un projet en Allemagne ?<br/><em class="italic text-gold">Parlons-en.</em>
+      </h2>
+      <p class="text-white/40 text-base mb-12">Premier échange gratuit et confidentiel.</p>
+      <a href="/fr/contact?marche=allemagne" class="inline-block px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">
+        Discuter de mon projet
+      </a>
+    </div>
+  </section>
+
+</Layout>
