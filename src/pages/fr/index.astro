@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 
 const locale = 'fr';
 const currentPath = '/';
-// v2.1
 
 const schemaOrg = {
   "@context": "https://schema.org",
@@ -24,216 +23,256 @@ const schemaOrg = {
   "foundingDate": "2021",
   "sameAs": ["https://www.linkedin.com/company/janus-agence-linguistique"]
 };
-
-const marches = [
-  {
-    flag: '🇵🇱',
-    pays: 'Pologne',
-    label: 'Prioritaire',
-    href: '/fr/pologne-investir',
-    featured: true,
-  },
-  {
-    flag: '🇬🇧',
-    pays: 'Royaume-Uni',
-    label: 'Business',
-    href: '/fr/marches/royaume-uni',
-    featured: false,
-  },
-  {
-    flag: '🇩🇪',
-    pays: 'Allemagne',
-    label: 'Zone DACH',
-    href: '/fr/marches/allemagne',
-    featured: false,
-  },
-  {
-    flag: '🇪🇸',
-    pays: 'Espagne',
-    label: 'Hispanophone',
-    href: '/fr/marches/espagne',
-    featured: false,
-  },
-  {
-    flag: '🇮🇹',
-    pays: 'Italie',
-    label: 'Franco-italien',
-    href: '/fr/marches/italie',
-    featured: false,
-  },
-  {
-    flag: '🇫🇷',
-    pays: 'France',
-    label: 'FLE · Allophones',
-    href: '/fr/langues#fle',
-    featured: false,
-  },
-];
 ---
 
 <Layout
-  title="JANUS Agence Linguistique | Formation, Interprétariat, Traduction | Lyon"
-  description="Un seul partenaire. Plusieurs services. Pour lancer ou développer votre business à l'étranger — formation, interprétariat, accompagnement terrain, traduction."
+  title="JANUS — Vos échanges internationaux, sécurisés | Lyon"
+  description="Expert linguistique et interculturel pour vos négociations internationales. Formation, interprétariat, accompagnement terrain. Certifié Qualiopi. Lyon."
   locale={locale}
   currentPath={currentPath}
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
 
-  <!-- Hero + Sélecteur pays -->
-  <section class="bg-anthracite pt-36 pb-24 px-6">
-    <div class="max-w-4xl mx-auto">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
 
-      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Lyon · Depuis 2021 · Qualiopi</p>
+  <style is:global>
+    .hp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .hp-sans  { font-family: 'DM Sans', system-ui, sans-serif; }
 
-      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-4">
-        Où souhaitez-vous<br/><em class="italic text-gold">vous développer ?</em>
-      </h1>
-      <p class="text-white/45 text-lg mb-16 max-w-lg leading-relaxed">
-        Choisissez votre marché cible.
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <!-- ① HERO -->
+  <section style="background:#f7f5f2" class="min-h-[94vh] flex flex-col justify-center px-6 py-28">
+    <div class="max-w-3xl mx-auto w-full">
+      <p class="hp-sans text-[#b5936b] text-xs uppercase tracking-[0.45em] mb-10 fade-up">
+        Lyon · Négociation internationale · Qualiopi
       </p>
-
-      <!-- Tuiles pays -->
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-        {marches.map(m => (
-          <a
-            href={m.href}
-            class={`group block p-6 md:p-8 border transition-all duration-200 ${
-              m.featured
-                ? 'border-gold bg-anthracite-light hover:border-gold hover:bg-gold/10'
-                : 'border-white/10 bg-white/[0.02] hover:border-gold/60 hover:bg-white/[0.05]'
-            }`}
-          >
-            <p class="text-4xl mb-4 leading-none">{m.flag}</p>
-            <p class={`font-serif text-lg font-light mb-1 ${m.featured ? 'text-gold' : 'text-white group-hover:text-gold transition-colors'}`}>
-              {m.pays}
-            </p>
-            <p class={`text-xs uppercase tracking-wider ${m.featured ? 'text-gold/60' : 'text-white/35'}`}>
-              {m.label}
-            </p>
-          </a>
-        ))}
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Baseline -->
-  <section class="bg-white py-20 px-6">
-    <div class="max-w-3xl mx-auto text-center">
-      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">Notre promesse</p>
-      <h2 class="text-3xl md:text-4xl font-serif font-light text-anthracite leading-snug">
-        Un seul partenaire. Plusieurs services.<br/>Pour lancer ou développer votre business à l'étranger.
-      </h2>
-    </div>
-  </section>
-
-  <!-- 4 Services -->
-  <section class="bg-[#f5f5f3] py-24 px-6">
-    <div class="max-w-4xl mx-auto">
-      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-16 text-center">Ce que nous faisons</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-anthracite/10">
-        {[
-          {
-            icon: '🎓',
-            titre: 'Formation linguistique',
-            desc: 'Sur mesure, Qualiopi, finançable CPF/OPCO.',
-            href: '/fr/services',
-          },
-          {
-            icon: '🎙️',
-            titre: 'Interprétariat',
-            desc: 'Natifs, NDA systématique, déplacement inclus.',
-            href: '/fr/services',
-          },
-          {
-            icon: '🤝',
-            titre: 'Accompagnement terrain',
-            desc: 'Présence physique sur site en France et en Pologne.',
-            href: '/fr/services',
-          },
-          {
-            icon: '📄',
-            titre: 'Traduction',
-            desc: 'Juridique, technique, commercial. Natifs spécialisés.',
-            href: '/fr/services',
-          },
-        ].map(s => (
-          <a href={s.href} class="group bg-white p-8 md:p-10 flex flex-col gap-4 hover:bg-anthracite transition-colors duration-200">
-            <span class="text-3xl">{s.icon}</span>
-            <div>
-              <p class="text-anthracite font-serif text-xl mb-2 group-hover:text-gold transition-colors">{s.titre}</p>
-              <p class="text-anthracite/55 text-sm leading-relaxed group-hover:text-white/50 transition-colors">{s.desc}</p>
-            </div>
-            <span class="text-anthracite/25 text-sm group-hover:text-gold transition-colors mt-auto">En savoir plus →</span>
-          </a>
-        ))}
+      <h1 class="hp-serif text-5xl md:text-7xl font-light text-[#1a1a1a] leading-[1.05] mb-10 fade-up">
+        Vos échanges<br/>internationaux,<br/><em class="italic" style="color:#b5936b">sécurisés.</em>
+      </h1>
+      <p class="hp-sans text-[#1a1a1a]/50 text-lg max-w-md leading-[1.8] mb-14 fade-up">
+        Un expert linguistique et interculturel à vos côtés pendant vos négociations critiques — pour que rien ne se perde en route.
+      </p>
+      <div class="flex flex-wrap gap-4 fade-up">
+        <a
+          href="mailto:contact@agence-janus.fr"
+          class="hp-sans inline-block px-10 py-5 text-[#f7f5f2] font-medium uppercase tracking-widest text-sm transition-opacity hover:opacity-80"
+          style="background:#b5936b"
+        >
+          Réserver un call
+        </a>
+        <a
+          href="/fr/services"
+          class="hp-sans inline-block px-10 py-5 border text-[#1a1a1a]/60 font-medium uppercase tracking-widest text-sm hover:border-[#b5936b] hover:text-[#b5936b] transition-colors"
+          style="border-color:#1a1a1a30"
+        >
+          Nos services
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Pourquoi JANUS -->
-  <section class="bg-white py-24 px-6">
+  <!-- ② PROBLÈMES — 4 cartes -->
+  <section class="bg-white py-28 px-6">
     <div class="max-w-3xl mx-auto">
-      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-16 text-center">Pourquoi JANUS</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center">
+      <p class="hp-sans text-[#1a1a1a]/35 text-xs uppercase tracking-[0.35em] mb-14 fade-up">Le problème</p>
+      <div class="divide-y" style="border-color:#1a1a1a15">
         {[
           {
-            num: '01',
-            titre: 'Un seul interlocuteur',
-            desc: 'Formation, interprétariat, terrain, traduction — une seule agence pour toute votre mission.',
+            n: '01',
+            titre: 'Un terme mal traduit dans un contrat',
+            desc: 'Clause de pénalité, condition de livraison, définition du périmètre — un mot ambigu dans la langue de l\'autre partie peut invalider des mois de négociation.',
           },
           {
-            num: '02',
-            titre: 'Présence physique',
-            desc: 'Nos experts se déplacent sur site en France et en Pologne.',
+            n: '02',
+            titre: 'Un silence mal interprété',
+            desc: 'En Pologne, en Allemagne, au Royaume-Uni — le silence ne signifie pas la même chose. Sans décodeur culturel, vous prenez une réserve pour un accord.',
           },
           {
-            num: '03',
-            titre: 'NDA systématique',
-            desc: 'Confidentialité formalisée avant chaque mission, sans exception.',
+            n: '03',
+            titre: 'Une relation commerciale qui démarre mal',
+            desc: 'Les premières réunions fondent la confiance. Une maladresse protocolaire ou un registre de langue inadapté crée une distance qui prend des mois à combler.',
           },
-        ].map(r => (
-          <div>
-            <p class="text-gold/30 font-serif text-4xl font-bold mb-4">{r.num}</p>
-            <p class="text-anthracite font-serif text-lg mb-3">{r.titre}</p>
-            <p class="text-anthracite/50 text-sm leading-relaxed">{r.desc}</p>
+          {
+            n: '04',
+            titre: 'Des documents signés sans garantie de compréhension',
+            desc: 'Vos partenaires ont-ils vraiment compris les obligations qu\'ils acceptent ? Un contrat validé dans une langue étrangère sans interprète expert reste un risque ouvert.',
+          },
+        ].map(p => (
+          <div class="py-10 flex gap-8 fade-up">
+            <span class="hp-serif text-[#b5936b]/30 text-sm w-6 shrink-0 pt-1">{p.n}</span>
+            <div>
+              <p class="hp-serif text-[#1a1a1a] text-xl mb-3">{p.titre}</p>
+              <p class="hp-sans text-[#1a1a1a]/50 text-sm leading-[1.8] max-w-lg">{p.desc}</p>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Certifications -->
-  <section class="bg-[#f5f5f3] py-12 px-6 border-y border-anthracite/8">
-    <div class="max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-8 text-center">
-      <div>
-        <p class="text-2xl font-serif font-bold text-anthracite">Qualiopi</p>
-        <p class="text-anthracite/40 text-xs uppercase tracking-wider mt-1">Certifiée · N° 84692002569</p>
+  <!-- ③ SOLUTION -->
+  <section style="background:#f7f5f2" class="py-28 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="hp-sans text-[#1a1a1a]/35 text-xs uppercase tracking-[0.35em] mb-6 fade-up">La solution</p>
+      <h2 class="hp-serif text-4xl md:text-5xl font-light text-[#1a1a1a] leading-tight mb-6 fade-up">
+        Un expert à vos côtés,<br/>pas seulement un interprète.
+      </h2>
+      <p class="hp-sans text-[#1a1a1a]/55 text-lg leading-[1.8] max-w-xl mb-16 fade-up">
+        JANUS ne traduit pas les mots — JANUS sécurise la communication dans sa globalité. Avant, pendant et après chaque échange critique.
+      </p>
+      <ul class="space-y-5 fade-up">
+        {[
+          'Préparation interculturelle ciblée avant chaque réunion',
+          'Présence physique sur site — France, Pologne, Europe',
+          'Interprétariat consécutif ou de liaison par des natifs spécialisés',
+          'Lecture des signaux non-verbaux et décodage culturel en temps réel',
+          'Compte-rendu détaillé et recommandations post-réunion',
+          'NDA signé avant chaque mission, sans exception',
+        ].map(item => (
+          <li class="flex gap-4 hp-sans text-sm text-[#1a1a1a]/60 leading-[1.8]">
+            <span style="color:#b5936b" class="shrink-0 mt-0.5">→</span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ④ DEAL SPRINT -->
+  <section style="background:#1a1a1a" class="py-28 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="hp-sans text-[#b5936b] text-xs uppercase tracking-[0.35em] mb-6 fade-up">L'offre</p>
+      <h2 class="hp-serif text-4xl md:text-5xl font-light text-white leading-tight mb-4 fade-up">
+        Deal Sprint
+      </h2>
+      <p class="hp-serif text-[#b5936b] text-3xl font-light mb-10 fade-up">
+        À partir de 800 € / jour
+      </p>
+      <p class="hp-sans text-white/45 text-lg leading-[1.8] max-w-xl mb-14 fade-up">
+        Un forfait clair pour vos missions de négociation. Tout inclus : préparation, présence terrain, compte-rendu. NDA signé avant la mission.
+      </p>
+      <div class="divide-y mb-14 fade-up" style="border-color:#ffffff15">
+        {[
+          { item: 'Briefing de mission', detail: 'Analyse de votre contexte, de vos interlocuteurs et de vos objectifs. Préparation interculturelle ciblée.' },
+          { item: 'Présence physique sur site', detail: 'Votre expert JANUS à vos côtés lors de chaque réunion. France, Pologne, Europe.' },
+          { item: 'Interprétariat professionnel', detail: 'Consécutif ou liaison. FR ↔ PL · FR ↔ EN · FR ↔ DE et autres langues.' },
+          { item: 'Compte-rendu de mission', detail: 'Rapport détaillé après chaque journée : points discutés, positions des parties, recommandations.' },
+          { item: 'NDA systématique', detail: 'Accord de confidentialité signé avant chaque mission, sans exception.' },
+        ].map(s => (
+          <div class="py-6 flex gap-6">
+            <span style="color:#b5936b" class="hp-sans text-sm shrink-0 mt-0.5">→</span>
+            <div>
+              <p class="hp-sans text-white text-sm font-medium mb-1">{s.item}</p>
+              <p class="hp-sans text-white/35 text-sm leading-relaxed">{s.detail}</p>
+            </div>
+          </div>
+        ))}
       </div>
-      <div class="w-px h-8 bg-anthracite/15 hidden sm:block"></div>
-      <div>
-        <p class="text-2xl font-serif font-bold text-anthracite">CPF · OPCO · PDC</p>
-        <p class="text-anthracite/40 text-xs uppercase tracking-wider mt-1">Financement formations</p>
+      <a
+        href="mailto:contact@agence-janus.fr"
+        class="hp-sans inline-block px-10 py-5 text-[#1a1a1a] font-medium uppercase tracking-widest text-sm hover:opacity-80 transition-opacity fade-up"
+        style="background:#b5936b"
+      >
+        Demander un devis Deal Sprint
+      </a>
+    </div>
+  </section>
+
+  <!-- ⑤ PREUVE 40H -->
+  <section style="background:#f7f5f2" class="py-28 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="hp-sans text-[#1a1a1a]/35 text-xs uppercase tracking-[0.35em] mb-12 fade-up">Mission récente</p>
+      <h2 class="hp-serif text-4xl font-light text-[#1a1a1a] leading-tight mb-10 fade-up">
+        40 heures.<br/>Un contrat signé.
+      </h2>
+      <div class="border-l-2 pl-8 py-2 mb-14 fade-up" style="border-color:#b5936b">
+        <p class="hp-sans text-[#1a1a1a]/55 text-base leading-[1.8] max-w-lg">
+          Une PME lyonnaise du secteur industriel souhaitait sécuriser un contrat de fourniture avec un partenaire polonais. Après deux échanges email infructueux, elle a fait appel à JANUS pour une mission de 5 jours : préparation interculturelle, 3 réunions à Katowice, traduction et validation du contrat final.
+        </p>
       </div>
-      <div class="w-px h-8 bg-anthracite/15 hidden sm:block"></div>
-      <div>
-        <p class="text-2xl font-serif font-bold text-anthracite">6 langues</p>
-        <p class="text-anthracite/40 text-xs uppercase tracking-wider mt-1">100% natifs</p>
+      <div class="grid grid-cols-3 gap-8 fade-up">
+        {[
+          { num: '40h', label: 'D\'accompagnement total' },
+          { num: '3', label: 'Réunions négociées sur site' },
+          { num: '−18%', label: 'Sur le prix initial fournisseur' },
+        ].map(s => (
+          <div>
+            <p class="hp-serif text-4xl font-light mb-2" style="color:#b5936b">{s.num}</p>
+            <p class="hp-sans text-[#1a1a1a]/45 text-xs leading-tight">{s.label}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA final -->
-  <section class="bg-anthracite py-40 px-6 text-center">
-    <div class="max-w-xl mx-auto">
-      <h2 class="text-4xl md:text-5xl font-serif font-light text-white mb-6 leading-tight">
-        Parlons de<br/><em class="italic text-gold">votre projet.</em>
+  <!-- ⑥ DIFFÉRENCIATION -->
+  <section class="bg-white py-28 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="hp-sans text-[#1a1a1a]/35 text-xs uppercase tracking-[0.35em] mb-6 fade-up">Pourquoi JANUS</p>
+      <h2 class="hp-serif text-4xl md:text-5xl font-light text-[#1a1a1a] leading-tight mb-10 fade-up">
+        13 ans en finance<br/>internationale.
       </h2>
-      <p class="text-white/40 text-base mb-12">Réponse sous 24h. Premier échange gratuit et confidentiel.</p>
-      <a href="/fr/contact" class="inline-block px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">
-        Nous contacter
-      </a>
+      <p class="hp-sans text-[#1a1a1a]/55 text-lg leading-[1.8] max-w-xl mb-14 fade-up">
+        Avant de fonder JANUS, Agata Mich a passé 13 ans dans des salles de négociation — SG CIB à Paris, Credit Suisse à Genève, Family Office en Suisse. Elle sait ce qui se joue quand les enjeux financiers sont élevés et les cultures, différentes.
+      </p>
+      <div class="divide-y fade-up" style="border-color:#1a1a1a10">
+        {[
+          { titre: 'Pas une agence de traduction', desc: 'JANUS ne livre pas des mots — JANUS vous aide à atteindre vos objectifs de négociation. La différence est fondamentale.' },
+          { titre: 'Pas un interprète généraliste', desc: 'Nos experts comprennent la terminologie financière, juridique et industrielle. Ils ont travaillé dans ces secteurs avant d\'interpréter pour eux.' },
+          { titre: 'Confidentialité absolue', desc: 'NDA signé avant chaque mission. Vos informations commerciales, vos chiffres et vos stratégies restent confidentiels.' },
+        ].map(d => (
+          <div class="py-8">
+            <p class="hp-serif text-[#1a1a1a] text-lg mb-2">{d.titre}</p>
+            <p class="hp-sans text-[#1a1a1a]/45 text-sm leading-[1.8] max-w-lg">{d.desc}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
+
+  <!-- ⑦ CTA -->
+  <section style="background:#1a1a1a" class="py-40 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <p class="hp-sans text-[#b5936b] text-xs uppercase tracking-[0.45em] mb-10 fade-up">Contact</p>
+      <h2 class="hp-serif text-5xl md:text-6xl font-light text-white leading-[1.05] mb-8 fade-up">
+        Une négociation<br/><em class="italic" style="color:#b5936b">à préparer ?</em>
+      </h2>
+      <p class="hp-sans text-white/35 text-base leading-[1.8] mb-14 max-w-md mx-auto fade-up">
+        Décrivez votre mission en quelques lignes. Nous revenons vers vous sous 24h avec une proposition adaptée.
+      </p>
+      <a
+        href="mailto:contact@agence-janus.fr"
+        class="hp-sans inline-block px-12 py-6 text-[#1a1a1a] font-medium uppercase tracking-widest text-sm hover:opacity-80 transition-opacity mb-6 fade-up"
+        style="background:#b5936b"
+      >
+        contact@agence-janus.fr
+      </a>
+      <p class="hp-sans text-white/20 text-xs mt-6 fade-up">Premier échange gratuit · NDA disponible avant toute discussion</p>
+    </div>
+  </section>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+  </script>
 
 </Layout>
