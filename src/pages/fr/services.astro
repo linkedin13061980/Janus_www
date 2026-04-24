@@ -15,10 +15,10 @@ const currentPath = '/services';
     <div class="max-w-3xl mx-auto">
       <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Nos services</p>
       <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
-        Quatre services.<br/><em class="italic text-gold">Un seul partenaire.</em>
+        Cinq services.<br/><em class="italic text-gold">Un seul partenaire.</em>
       </h1>
       <p class="text-white/50 text-lg max-w-lg leading-relaxed">
-        Une offre intégrée — formation, interprétariat, terrain, traduction — portée par des natifs spécialisés dans votre secteur.
+        Formation, interprétariat, terrain, traduction, chef de projet — chaque service seul ou en package complet. Vous choisissez.
       </p>
     </div>
   </section>
@@ -131,6 +131,39 @@ const currentPath = '/services';
         ))}
       </ul>
       <a href="/fr/contact" class="inline-block px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Envoyer mon document</a>
+    </div>
+  </section>
+
+  <!-- Service 05 — Chef de projet terrain -->
+  <section class="py-24 px-6 border-t border-gold/10">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gold/50 text-xs uppercase tracking-widest mb-2">05</p>
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <h2 class="text-4xl font-serif font-light text-white leading-tight">
+          Chef de projet terrain
+        </h2>
+        <span class="text-xs px-3 py-1 border border-gold/40 text-gold uppercase tracking-wider">Nouveau</span>
+      </div>
+      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
+        Un expert JANUS dédié à votre mission pendant toute sa durée critique. Pas un interprète ponctuel — un interlocuteur unique, présent de bout en bout.
+      </p>
+      <ul class="space-y-4 mb-12">
+        {[
+          'Due diligence, acquisition, ouverture de bureau à l\'étranger',
+          'Négociations industrielles sur plusieurs séances',
+          'Préparation + présence terrain + compte-rendu',
+          'Décodage culturel et conseil en temps réel',
+          'Tarif à la journée ou au forfait mission',
+        ].map(item => (
+          <li class="flex gap-4 text-white/55 text-sm">
+            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
+          </li>
+        ))}
+      </ul>
+      <div class="flex flex-wrap gap-4">
+        <a href="/fr/services/chef-de-projet-terrain" class="px-8 py-4 border border-gold/40 text-gold uppercase tracking-wider hover:bg-gold hover:text-anthracite transition-colors text-sm">En savoir plus</a>
+        <a href="/fr/contact?service=chef-de-projet-terrain" class="px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Discuter de ma mission</a>
+      </div>
     </div>
   </section>
 
