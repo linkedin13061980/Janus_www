@@ -1,0 +1,208 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const locale = 'fr';
+const currentPath = '/janus-negociation';
+---
+<Layout
+  title="Vos échanges internationaux, sécurisés | JANUS Agence Linguistique Lyon"
+  description="Deal Sprint JANUS — accompagnement linguistique et interculturel pour vos négociations internationales. À partir de 800€/jour. 13 ans de finance internationale."
+  locale={locale}
+  currentPath={currentPath}
+>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+
+  <style is:global>
+    .lp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .lp-sans  { font-family: 'DM Sans', system-ui, sans-serif; }
+  </style>
+
+  <!-- ① HERO -->
+  <section style="background:#0d0d0d" class="min-h-[92vh] flex flex-col justify-center px-6 py-24">
+    <div class="max-w-3xl mx-auto w-full">
+      <p class="lp-sans text-[#c9a84c] text-xs uppercase tracking-[0.4em] mb-10">
+        Lyon · Négociation internationale · Deal Sprint
+      </p>
+      <h1 class="lp-serif text-5xl md:text-7xl font-light text-white leading-[1.05] mb-10">
+        Vos échanges<br/>internationaux,<br/><em class="italic text-[#c9a84c]">sécurisés.</em>
+      </h1>
+      <p class="lp-sans text-white/50 text-lg max-w-md leading-[1.8] mb-14">
+        Un expert linguistique et interculturel à vos côtés pendant vos négociations critiques — pour que rien ne se perde en route.
+      </p>
+      <a
+        href="mailto:contact@agence-janus.fr"
+        class="lp-sans inline-block px-10 py-5 bg-[#c9a84c] text-[#0d0d0d] font-medium uppercase tracking-widest text-sm hover:bg-[#e2c47a] transition-colors"
+      >
+        Discuter de ma mission
+      </a>
+    </div>
+  </section>
+
+  <!-- ② PROBLÈMES -->
+  <section style="background:#f7f3ec" class="py-28 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="lp-sans text-[#0d0d0d]/40 text-xs uppercase tracking-[0.3em] mb-12">Le problème</p>
+      <h2 class="lp-serif text-4xl md:text-5xl font-light text-[#0d0d0d] leading-tight mb-16">
+        Ce qui coûte cher quand on négocie<br/>sans appui linguistique.
+      </h2>
+      <div class="divide-y divide-[#0d0d0d]/10">
+        {[
+          {
+            titre: 'Un terme mal traduit dans un contrat',
+            desc: 'Clause de pénalité, condition de livraison, définition du périmètre — un mot ambigu dans la langue de l\'autre partie peut invalider des mois de négociation.',
+          },
+          {
+            titre: 'Un silence mal interprété',
+            desc: 'En Pologne, en Allemagne, au Royaume-Uni — le silence ne signifie pas la même chose. Sans décodeur culturel, vous prenez une réserve pour un accord.',
+          },
+          {
+            titre: 'Une relation commerciale qui démarre mal',
+            desc: 'Les premières réunions fondent la confiance. Une maladresse protocolaire ou un registre de langue inadapté crée une distance qui prend des mois à combler.',
+          },
+        ].map(p => (
+          <div class="py-10">
+            <p class="lp-serif text-[#0d0d0d] text-xl mb-3">{p.titre}</p>
+            <p class="lp-sans text-[#0d0d0d]/55 text-sm leading-[1.8] max-w-lg">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ SOLUTION -->
+  <section class="bg-white py-28 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="lp-sans text-[#0d0d0d]/40 text-xs uppercase tracking-[0.3em] mb-6">La solution</p>
+      <h2 class="lp-serif text-4xl md:text-5xl font-light text-[#0d0d0d] leading-tight mb-6">
+        Un expert à vos côtés,<br/>pas seulement un interprète.
+      </h2>
+      <p class="lp-sans text-[#0d0d0d]/60 text-lg leading-[1.8] max-w-xl mb-16">
+        JANUS ne traduit pas les mots — JANUS sécurise la communication dans sa globalité. Avant, pendant et après chaque échange critique.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-[#0d0d0d]/10">
+        {[
+          { phase: 'Avant', desc: 'Préparation interculturelle, briefing sur les codes de votre interlocuteur, anticipation des points de friction.' },
+          { phase: 'Pendant', desc: 'Présence physique, interprétariat consécutif ou de liaison, lecture des signaux non-verbaux en temps réel.' },
+          { phase: 'Après', desc: 'Compte-rendu détaillé, recommandations pour la suite, coordination des actions post-réunion.' },
+        ].map(s => (
+          <div class="py-8 px-6 first:pl-0 last:pr-0">
+            <p class="lp-serif text-[#c9a84c] text-2xl mb-4">{s.phase}</p>
+            <p class="lp-sans text-[#0d0d0d]/55 text-sm leading-[1.8]">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ OFFRE DEAL SPRINT -->
+  <section style="background:#0d0d0d" class="py-28 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="lp-sans text-[#c9a84c] text-xs uppercase tracking-[0.3em] mb-6">L'offre</p>
+      <h2 class="lp-serif text-4xl md:text-5xl font-light text-white leading-tight mb-4">
+        Deal Sprint
+      </h2>
+      <p class="lp-serif text-[#c9a84c] text-3xl font-light mb-10">
+        À partir de 800 € / jour
+      </p>
+      <p class="lp-sans text-white/50 text-lg leading-[1.8] max-w-xl mb-14">
+        Un forfait clair pour vos missions de négociation. Tout inclus : préparation, présence terrain, compte-rendu. NDA signé avant la mission.
+      </p>
+      <div class="divide-y divide-white/10 mb-14">
+        {[
+          { item: 'Briefing de mission', detail: 'Analyse de votre contexte, de vos interlocuteurs et de vos objectifs. Préparation interculturelle ciblée.' },
+          { item: 'Présence physique sur site', detail: 'Votre expert JANUS à vos côtés lors de chaque réunion. France, Pologne, Europe.' },
+          { item: 'Interprétariat professionnel', detail: 'Consécutif ou liaison. FR ↔ PL · FR ↔ EN · FR ↔ DE et autres langues.' },
+          { item: 'Compte-rendu de mission', detail: 'Rapport détaillé après chaque journée : points discutés, positions des parties, recommandations.' },
+          { item: 'NDA systématique', detail: 'Accord de confidentialité signé avant chaque mission, sans exception.' },
+        ].map(s => (
+          <div class="py-6 flex gap-6">
+            <span class="text-[#c9a84c] lp-sans text-sm shrink-0 mt-0.5">→</span>
+            <div>
+              <p class="lp-sans text-white text-sm font-medium mb-1">{s.item}</p>
+              <p class="lp-sans text-white/40 text-sm leading-relaxed">{s.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <a
+        href="mailto:contact@agence-janus.fr"
+        class="lp-sans inline-block px-10 py-5 bg-[#c9a84c] text-[#0d0d0d] font-medium uppercase tracking-widest text-sm hover:bg-[#e2c47a] transition-colors"
+      >
+        Demander un devis Deal Sprint
+      </a>
+    </div>
+  </section>
+
+  <!-- ⑤ PREUVE — MISSION RÉCENTE 40H -->
+  <section style="background:#f7f3ec" class="py-28 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="lp-sans text-[#0d0d0d]/40 text-xs uppercase tracking-[0.3em] mb-12">Mission récente</p>
+      <h2 class="lp-serif text-4xl font-light text-[#0d0d0d] leading-tight mb-10">
+        40 heures.<br/>Un contrat signé.
+      </h2>
+      <div class="border-l-2 border-[#c9a84c] pl-8 py-2 mb-14">
+        <p class="lp-sans text-[#0d0d0d]/60 text-base leading-[1.8] max-w-lg">
+          Une PME lyonnaise du secteur industriel souhaitait sécuriser un contrat de fourniture avec un partenaire polonais. Après deux échanges email infructueux, elle a fait appel à JANUS pour une mission de 5 jours : préparation interculturelle, 3 réunions à Katowice, traduction et validation du contrat final.
+        </p>
+      </div>
+      <div class="grid grid-cols-3 gap-8">
+        {[
+          { num: '40h', label: 'D\'accompagnement total' },
+          { num: '3', label: 'Réunions négociées sur site' },
+          { num: '−18%', label: 'Sur le prix initial fournisseur' },
+        ].map(s => (
+          <div>
+            <p class="lp-serif text-4xl font-light text-[#c9a84c] mb-2">{s.num}</p>
+            <p class="lp-sans text-[#0d0d0d]/50 text-xs leading-tight">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ DIFFÉRENCIATION — 13 ANS FINANCE -->
+  <section class="bg-white py-28 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="lp-sans text-[#0d0d0d]/40 text-xs uppercase tracking-[0.3em] mb-6">Pourquoi JANUS</p>
+      <h2 class="lp-serif text-4xl md:text-5xl font-light text-[#0d0d0d] leading-tight mb-10">
+        13 ans en finance<br/>internationale.
+      </h2>
+      <p class="lp-sans text-[#0d0d0d]/60 text-lg leading-[1.8] max-w-xl mb-14">
+        Avant de fonder JANUS, Agata Mich a passé 13 ans dans des salles de négociation — SG CIB à Paris, Credit Suisse à Genève, Family Office en Suisse. Elle sait ce qui se joue quand les enjeux financiers sont élevés et les cultures, différentes.
+      </p>
+      <div class="divide-y divide-[#0d0d0d]/10">
+        {[
+          { titre: 'Pas une agence de traduction', desc: 'JANUS ne livre pas des mots — JANUS vous aide à atteindre vos objectifs de négociation. La différence est fondamentale.' },
+          { titre: 'Pas un interprète généraliste', desc: 'Nos experts comprennent la terminologie financière, juridique et industrielle. Ils ont travaillé dans ces secteurs avant d\'interpréter pour eux.' },
+          { titre: 'Confidentialité absolue', desc: 'NDA signé avant chaque mission. Vos informations commerciales, vos chiffres et vos stratégies restent confidentiels.' },
+        ].map(d => (
+          <div class="py-8">
+            <p class="lp-serif text-[#0d0d0d] text-lg mb-2">{d.titre}</p>
+            <p class="lp-sans text-[#0d0d0d]/50 text-sm leading-[1.8] max-w-lg">{d.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑦ CTA FINAL -->
+  <section style="background:#0d0d0d" class="py-40 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <p class="lp-sans text-[#c9a84c] text-xs uppercase tracking-[0.4em] mb-10">Contact</p>
+      <h2 class="lp-serif text-5xl md:text-6xl font-light text-white leading-[1.05] mb-8">
+        Une négociation<br/><em class="italic text-[#c9a84c]">à préparer ?</em>
+      </h2>
+      <p class="lp-sans text-white/40 text-base leading-[1.8] mb-14 max-w-md mx-auto">
+        Décrivez votre mission en quelques lignes. Nous revenons vers vous sous 24h avec une proposition adaptée.
+      </p>
+      <a
+        href="mailto:contact@agence-janus.fr"
+        class="lp-sans inline-block px-12 py-6 bg-[#c9a84c] text-[#0d0d0d] font-medium uppercase tracking-widest text-sm hover:bg-[#e2c47a] transition-colors mb-6"
+      >
+        contact@agence-janus.fr
+      </a>
+      <p class="lp-sans text-white/20 text-xs mt-6">Premier échange gratuit · NDA disponible avant toute discussion</p>
+    </div>
+  </section>
+
+</Layout>
