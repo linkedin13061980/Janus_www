@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "Nasze usługi | JANUS Agencja Językowa Lyon",
+    "description": "Szkolenia językowe, tłumaczenia ustne, wsparcie na miejscu i tłumaczenia pisemne. JANUS — Twój partner językowy B2B w Lyonie."
+  },
+  "hero": {
+    "label": "Nasze usługi",
+    "title": "Pięć usług. Jeden partner.",
+    "subtitle": "Każda usługa osobno lub jako kompletny pakiet. Szkolenia, tłumaczenia ustne, wsparcie terenowe, tłumaczenia pisemne — Ty decydujesz."
+  },
+  "services": [
+    {
+      "order": 1,
+      "slug": "szkolenia",
+      "titre": "Szkolenia językowe",
+      "desc": "Programy szyte na miarę dla Twoich zespołów. Certyfikat Qualiopi — możliwość dofinansowania z CPF, OPCO lub PDC.",
+      "items": [
+        "Angielski, polski, FLE i 3 inne języki",
+        "Indywidualne, grupowe, intensywne, blended learning",
+        "Lektorzy native speaker dobierani według branży",
+        "Przygotowanie do certyfikatów TOEIC, TOEFL, DELF",
+        "JANUS zarządza Twoim wnioskiem o dofinansowanie"
+      ],
+      "cta": "Zapytaj o wycenę",
+      "href": "/contact"
+    },
+    {
+      "order": 2,
+      "slug": "tlumaczenia-ustne",
+      "titre": "Profesjonalne tłumaczenia ustne",
+      "desc": "Tłumacze native speaker na Twoje negocjacje, audyty i ważne spotkania. NDA podpisywane przed każdą misją.",
+      "items": [
+        "Konsekutywne, środowiskowe, wideokonferencje",
+        "FR ↔ EN · FR ↔ PL · FR ↔ DE · FR ↔ ES",
+        "Dojazd wliczony: Francja, Polska, UK",
+        "Tłumacze wyspecjalizowani branżowo (przemysł, prawo, finanse)",
+        "Dostępność 72h, pilne zlecenia akceptowane"
+      ],
+      "cta": "Zarezerwuj tłumacza",
+      "href": "/contact"
+    },
+    {
+      "order": 3,
+      "slug": "wsparcie-terenowe",
+      "titre": "Wsparcie terenowe",
+      "desc": "Fizyczna obecność podczas kluczowych misji. Nie tylko tłumaczenie — dekodowanie kulturowe i doradztwo w czasie rzeczywistym.",
+      "items": [
+        "Audyty dostawców, wizyty w fabrykach, due diligence",
+        "Negocjacje, przetargi, spotkania z partnerami",
+        "Targi branżowe we Francji i w Polsce",
+        "Aktywna sieć CCIFP Lyon",
+        "Raport z misji dostępny"
+      ],
+      "cta": "Omów moją misję",
+      "href": "/contact"
+    },
+    {
+      "order": 4,
+      "slug": "tlumaczenia-pisemne",
+      "titre": "Profesjonalne tłumaczenia pisemne",
+      "desc": "6 języków. Tłumacze native speaker przydzielani według specjalizacji. Wycena w ciągu 2h po przesłaniu dokumentu.",
+      "items": [
+        "Prawnicze, techniczne, handlowe, marketingowe",
+        "Wyłącznie tłumacze native speaker, na swój język ojczysty",
+        "Systematyczna korekta przed oddaniem",
+        "Standardowy termin 48-72h · Ekspres 24h",
+        "NDA dostępne przed wysyłką dokumentów"
+      ],
+      "cta": "Prześlij dokument",
+      "href": "/contact"
+    },
+    {
+      "order": 5,
+      "slug": "kierownik-projektu",
+      "titre": "Kierownik projektu terenowego",
+      "desc": "Dedykowany ekspert JANUS przez cały czas trwania Twojej misji. Nie doraźny tłumacz — jeden punkt kontaktu, obecny od początku do końca.",
+      "badge": "Nowość",
+      "items": [
+        "Due diligence, akwizycje, otwieranie biura za granicą",
+        "Wieloetapowe negocjacje przemysłowe",
+        "Przygotowanie + obecność terenowa + raport",
+        "Dekodowanie kulturowe i doradztwo w czasie rzeczywistym",
+        "Stawka dzienna lub ryczałt za misję"
+      ],
+      "cta": "Omów moją misję",
+      "href": "/contact"
+    }
+  ],
+  "cta": {
+    "title": "Która usługa odpowiada Twoim potrzebom?",
+    "subtitle": "Bezpłatna wycena w ciągu 24h. Pierwsza rozmowa jest poufna.",
+    "btn": "Skontaktuj się",
+    "href": "/contact"
+  }
+}

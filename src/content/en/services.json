@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "Our Services | JANUS Linguistic Agency Lyon",
+    "description": "Language training, interpreting, on-site support and translation. JANUS, your B2B linguistic partner in Lyon."
+  },
+  "hero": {
+    "label": "Our services",
+    "title": "Five services. One partner.",
+    "subtitle": "Each service standalone or as a complete package. Training, interpreting, on-site, translation — you choose."
+  },
+  "services": [
+    {
+      "order": 1,
+      "slug": "training",
+      "titre": "Language training",
+      "desc": "Bespoke programmes for your teams. Qualiopi-certified — eligible for CPF, OPCO or PDC funding.",
+      "items": [
+        "English, Polish, FLE and 3 other languages",
+        "Individual, group, intensive, blended learning",
+        "Native trainers selected by sector",
+        "TOEIC, TOEFL, DELF exam preparation",
+        "JANUS manages your funding application"
+      ],
+      "cta": "Request a quote",
+      "href": "/contact"
+    },
+    {
+      "order": 2,
+      "slug": "interpreting",
+      "titre": "Professional interpreting",
+      "desc": "Native interpreters for your negotiations, audits and sensitive meetings. NDA signed before every assignment.",
+      "items": [
+        "Consecutive, liaison, video conference",
+        "FR ↔ EN · FR ↔ PL · FR ↔ DE · FR ↔ ES",
+        "Travel included: France, Poland, UK",
+        "Sector-specialist interpreters (industry, legal, finance)",
+        "72h availability, urgent assignments accepted"
+      ],
+      "cta": "Book an interpreter",
+      "href": "/contact"
+    },
+    {
+      "order": 3,
+      "slug": "on-site",
+      "titre": "On-site support",
+      "desc": "Physical presence during your critical missions. Beyond translation: real-time cultural decoding and strategic advice.",
+      "items": [
+        "Supplier audits, factory visits, due diligence",
+        "Negotiations, tenders, partner meetings",
+        "Trade shows in France and Poland",
+        "Active CCIFP Lyon network",
+        "Mission report available"
+      ],
+      "cta": "Discuss my mission",
+      "href": "/contact"
+    },
+    {
+      "order": 4,
+      "slug": "translation",
+      "titre": "Professional translation",
+      "desc": "6 languages. Native translators assigned by area of expertise. Quote within 2h on document submission.",
+      "items": [
+        "Legal, technical, commercial, marketing",
+        "Native translators only, into their mother tongue",
+        "Systematic review before delivery",
+        "Standard 48-72h · Express 24h",
+        "NDA available before submission"
+      ],
+      "cta": "Submit my document",
+      "href": "/contact"
+    },
+    {
+      "order": 5,
+      "slug": "project-manager",
+      "titre": "On-site project manager",
+      "desc": "A dedicated JANUS expert for the full duration of your critical mission. Not a one-off interpreter — a single point of contact, present from start to finish.",
+      "badge": "New",
+      "items": [
+        "Due diligence, acquisition, opening an overseas office",
+        "Multi-session industrial negotiations",
+        "Preparation + on-site presence + debrief report",
+        "Cultural decoding and real-time advice",
+        "Day rate or fixed-price mission"
+      ],
+      "cta": "Discuss my mission",
+      "href": "/contact"
+    }
+  ],
+  "cta": {
+    "title": "Which service fits your need?",
+    "subtitle": "Free quote within 24h. First conversation is confidential.",
+    "btn": "Contact us",
+    "href": "/contact"
+  }
+}

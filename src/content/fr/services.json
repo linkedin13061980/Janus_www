@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "Nos Services | JANUS Agence Linguistique Lyon",
+    "description": "Formation linguistique, interprétariat, accompagnement terrain et traduction. JANUS, votre partenaire linguistique B2B à Lyon."
+  },
+  "hero": {
+    "label": "Nos services",
+    "title": "Cinq services. Un seul partenaire.",
+    "subtitle": "Chaque service seul ou en package complet. Formation, interprétariat, terrain, traduction — vous choisissez."
+  },
+  "services": [
+    {
+      "order": 1,
+      "slug": "formation",
+      "titre": "Formation linguistique",
+      "desc": "Programmes sur mesure pour vos équipes. Certifié Qualiopi — finançable CPF, OPCO ou PDC.",
+      "items": [
+        "Anglais, polonais, FLE et 3 autres langues",
+        "Individuel, groupe, intensif, blended learning",
+        "Formateurs natifs sélectionnés par secteur",
+        "Préparation aux certifications TOEIC, TOEFL, DELF",
+        "JANUS gère votre dossier de financement"
+      ],
+      "cta": "Demander un devis",
+      "href": "/contact"
+    },
+    {
+      "order": 2,
+      "slug": "interpretariat",
+      "titre": "Interprétariat professionnel",
+      "desc": "Interprètes natifs pour vos négociations, audits et réunions sensibles. NDA signé avant chaque mission.",
+      "items": [
+        "Consécutif, liaison, visioconférence",
+        "FR ↔ EN · FR ↔ PL · FR ↔ DE · FR ↔ ES",
+        "Déplacement inclus : France, Pologne, UK",
+        "Interprètes spécialisés par secteur (industrie, juridique, finance)",
+        "Disponibilité 72h, urgences en direct"
+      ],
+      "cta": "Réserver un interprète",
+      "href": "/contact"
+    },
+    {
+      "order": 3,
+      "slug": "terrain",
+      "titre": "Accompagnement terrain",
+      "desc": "Présence physique sur site lors de vos missions critiques. Au-delà de la traduction : décodage culturel et conseil en temps réel.",
+      "items": [
+        "Audits fournisseurs, visites d'usine, due diligence",
+        "Négociations, appels d'offre, rencontres partenaires",
+        "Salons professionnels en France et en Pologne",
+        "Réseau CCIFP Lyon actif",
+        "Rapport de mission disponible"
+      ],
+      "cta": "Discuter de ma mission",
+      "href": "/contact"
+    },
+    {
+      "order": 4,
+      "slug": "traduction",
+      "titre": "Traduction professionnelle",
+      "desc": "6 langues. Traducteurs natifs affectés selon leur domaine de spécialité. Devis sous 2h sur envoi de votre document.",
+      "items": [
+        "Juridique, technique, commercial, marketing",
+        "Traducteurs natifs uniquement, vers leur langue maternelle",
+        "Révision systématique avant livraison",
+        "Standard 48-72h · Express 24h",
+        "NDA disponible avant envoi"
+      ],
+      "cta": "Envoyer mon document",
+      "href": "/contact"
+    },
+    {
+      "order": 5,
+      "slug": "chef-de-projet",
+      "titre": "Chef de projet terrain",
+      "desc": "Un expert JANUS dédié à votre mission pendant toute sa durée critique. Pas un interprète ponctuel — un interlocuteur unique, présent de bout en bout.",
+      "badge": "Nouveau",
+      "items": [
+        "Due diligence, acquisition, ouverture de bureau à l'étranger",
+        "Négociations industrielles sur plusieurs séances",
+        "Préparation + présence terrain + compte-rendu",
+        "Décodage culturel et conseil en temps réel",
+        "Tarif à la journée ou au forfait mission"
+      ],
+      "cta": "Discuter de ma mission",
+      "href": "/contact"
+    }
+  ],
+  "cta": {
+    "title": "Quel service correspond à votre besoin ?",
+    "subtitle": "Devis gratuit sous 24h. Premier échange confidentiel.",
+    "btn": "Nous contacter",
+    "href": "/contact"
+  }
+}

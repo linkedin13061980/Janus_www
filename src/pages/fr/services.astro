@@ -1,183 +1,55 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/layout/PageHero.astro';
+import ServiceCard from '../../components/ui/ServiceCard.astro';
+import { localePath } from '../../i18n/utils';
+import content from '../../content/fr/services.json';
+
 const locale = 'fr';
 const currentPath = '/services';
 ---
+
 <Layout
-  title="Nos Services | JANUS Agence Linguistique Lyon"
-  description="Formation linguistique, interprétariat, accompagnement terrain et traduction. JANUS, votre partenaire linguistique B2B à Lyon."
+  title={content.meta.title}
+  description={content.meta.description}
   locale={locale}
   currentPath={currentPath}
 >
+  <PageHero
+    label={content.hero.label}
+    title={content.hero.title}
+    subtitle={content.hero.subtitle}
+  />
 
-  <!-- Hero -->
-  <section class="bg-anthracite pt-36 pb-24 px-6">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Nos services</p>
-      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
-        Cinq services.<br/><em class="italic text-gold">Un seul partenaire.</em>
-      </h1>
-      <p class="text-white/50 text-lg max-w-lg leading-relaxed">
-        Formation, interprétariat, terrain, traduction, chef de projet — chaque service seul ou en package complet. Vous choisissez.
-      </p>
-    </div>
-  </section>
+  {content.services
+    .sort((a, b) => a.order - b.order)
+    .map((service, index) => (
+      <ServiceCard
+        locale={locale}
+        order={service.order}
+        titre={service.titre}
+        desc={service.desc}
+        items={service.items}
+        cta={service.cta}
+        href={service.href}
+        badge={service.badge}
+        alternate={index % 2 !== 0}
+      />
+    ))
+  }
 
-  <!-- Service 01 — Formation -->
-  <section class="py-24 px-6 border-t border-gold/10">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold/50 text-xs uppercase tracking-widest mb-2">01</p>
-      <h2 class="text-4xl font-serif font-light text-white mb-6 leading-tight">
-        Formation linguistique
-      </h2>
-      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
-        Programmes sur mesure pour vos équipes. Certifié Qualiopi — finançable CPF, OPCO ou PDC. Pas de catalogue, pas de format standard.
-      </p>
-      <ul class="space-y-4 mb-12">
-        {[
-          'Anglais, polonais, FLE et 3 autres langues',
-          'Individuel, groupe, intensif, blended learning',
-          'Formateurs natifs sélectionnés par secteur',
-          'TOEIC, TOEFL, DELF : préparation certifications',
-          'JANUS gère votre dossier de financement',
-        ].map(item => (
-          <li class="flex gap-4 text-white/55 text-sm">
-            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
-          </li>
-        ))}
-      </ul>
-      <div class="flex gap-4">
-        <a href="/fr/contact" class="px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Demander un devis</a>
-        <a href="/fr/financement" class="px-8 py-4 border border-white/15 text-white/60 uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-sm">Financement</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Service 02 — Interprétariat -->
-  <section class="py-24 px-6 bg-anthracite-light border-t border-gold/10">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold/50 text-xs uppercase tracking-widest mb-2">02</p>
-      <h2 class="text-4xl font-serif font-light text-white mb-6 leading-tight">
-        Interprétariat professionnel
-      </h2>
-      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
-        Interprètes natifs pour vos négociations, audits et réunions sensibles. NDA signé avant chaque mission, sans exception.
-      </p>
-      <ul class="space-y-4 mb-12">
-        {[
-          'Consécutif, liaison, visioconférence',
-          'FR ↔ EN · FR ↔ PL · FR ↔ DE · FR ↔ ES',
-          'Déplacement inclus : France, Pologne, UK',
-          'Interprètes spécialisés par secteur (industrie, juridique, finance)',
-          'Disponibilité 72h, urgences en direct',
-        ].map(item => (
-          <li class="flex gap-4 text-white/55 text-sm">
-            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
-          </li>
-        ))}
-      </ul>
-      <a href="/fr/contact" class="inline-block px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Réserver un interprète</a>
-    </div>
-  </section>
-
-  <!-- Service 03 — Terrain -->
-  <section class="py-24 px-6 border-t border-gold/10">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold/50 text-xs uppercase tracking-widest mb-2">03</p>
-      <h2 class="text-4xl font-serif font-light text-white mb-6 leading-tight">
-        Accompagnement terrain
-      </h2>
-      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
-        Présence physique sur site lors de vos missions critiques en France et en Pologne. Au-delà de la traduction : décodage culturel et conseil en temps réel.
-      </p>
-      <ul class="space-y-4 mb-12">
-        {[
-          'Audits fournisseurs, visites d\'usine, due diligence',
-          'Négociations, appels d\'offre, rencontres partenaires',
-          'Salons professionnels en France et en Pologne',
-          'Réseau CCIFP Lyon actif',
-          'Rapport de mission disponible',
-        ].map(item => (
-          <li class="flex gap-4 text-white/55 text-sm">
-            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
-          </li>
-        ))}
-      </ul>
-      <a href="/fr/contact" class="inline-block px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Discuter de ma mission</a>
-    </div>
-  </section>
-
-  <!-- Service 04 — Traduction -->
-  <section class="py-24 px-6 bg-anthracite-light border-t border-gold/10">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold/50 text-xs uppercase tracking-widest mb-2">04</p>
-      <h2 class="text-4xl font-serif font-light text-white mb-6 leading-tight">
-        Traduction professionnelle
-      </h2>
-      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
-        6 langues. Traducteurs natifs affectés selon leur domaine de spécialité. Devis sous 2h sur envoi de votre document.
-      </p>
-      <ul class="space-y-4 mb-12">
-        {[
-          'Juridique, technique, commercial, marketing',
-          'Traducteurs natifs uniquement, vers leur langue maternelle',
-          'Révision systématique avant livraison',
-          'Standard 48-72h · Express 24h',
-          'NDA disponible avant envoi',
-        ].map(item => (
-          <li class="flex gap-4 text-white/55 text-sm">
-            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
-          </li>
-        ))}
-      </ul>
-      <a href="/fr/contact" class="inline-block px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Envoyer mon document</a>
-    </div>
-  </section>
-
-  <!-- Service 05 — Chef de projet terrain -->
-  <section class="py-24 px-6 border-t border-gold/10">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold/50 text-xs uppercase tracking-widest mb-2">05</p>
-      <div class="flex flex-wrap items-center gap-3 mb-6">
-        <h2 class="text-4xl font-serif font-light text-white leading-tight">
-          Chef de projet terrain
-        </h2>
-        <span class="text-xs px-3 py-1 border border-gold/40 text-gold uppercase tracking-wider">Nouveau</span>
-      </div>
-      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
-        Un expert JANUS dédié à votre mission pendant toute sa durée critique. Pas un interprète ponctuel — un interlocuteur unique, présent de bout en bout.
-      </p>
-      <ul class="space-y-4 mb-12">
-        {[
-          'Due diligence, acquisition, ouverture de bureau à l\'étranger',
-          'Négociations industrielles sur plusieurs séances',
-          'Préparation + présence terrain + compte-rendu',
-          'Décodage culturel et conseil en temps réel',
-          'Tarif à la journée ou au forfait mission',
-        ].map(item => (
-          <li class="flex gap-4 text-white/55 text-sm">
-            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
-          </li>
-        ))}
-      </ul>
-      <div class="flex flex-wrap gap-4">
-        <a href="/fr/services/chef-de-projet-terrain" class="px-8 py-4 border border-gold/40 text-gold uppercase tracking-wider hover:bg-gold hover:text-anthracite transition-colors text-sm">En savoir plus</a>
-        <a href="/fr/contact?service=chef-de-projet-terrain" class="px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Discuter de ma mission</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA final -->
   <section class="py-40 px-6 bg-anthracite border-t border-gold/10 text-center">
     <div class="max-w-xl mx-auto">
       <h2 class="text-4xl font-serif font-light text-white mb-6">
-        Quel service correspond<br/>à <em class="italic text-gold">votre besoin ?</em>
+        {content.cta.title}
       </h2>
-      <p class="text-white/40 text-base mb-12">Devis gratuit sous 24h. Premier échange confidentiel.</p>
-      <a href="/fr/contact" class="inline-block px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">
-        Nous contacter
+      <p class="text-white/40 text-base mb-12">{content.cta.subtitle}</p>
+      <a
+        href={localePath(locale, content.cta.href)}
+        class="inline-block px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm"
+      >
+        {content.cta.btn}
       </a>
     </div>
   </section>
-
 </Layout>
