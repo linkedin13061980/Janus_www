@@ -182,7 +182,7 @@ const stats = [
               <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">Qualiopi</span>
             </div>
           </div>
-          <a href="/fr/services" class="hp-sans text-xs sit-arrow" style="color:#b5936b">Voir ce service →</a>
+          <p class="hp-sans text-xs sit-arrow" style="color:#b5936b">Voir ce service →</p>
         </div>
 
         <!-- Situation 02 -->
@@ -202,7 +202,7 @@ const stats = [
               <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">Déplacement possible</span>
             </div>
           </div>
-          <a href="/fr/services" class="hp-sans text-xs sit-arrow" style="color:#b5936b">Voir ce service →</a>
+          <p class="hp-sans text-xs sit-arrow" style="color:#b5936b">Voir ce service →</p>
         </div>
 
       </div>
@@ -226,7 +226,7 @@ const stats = [
             </div>
           </div>
         </div>
-        <a href="/fr/services" class="hp-sans text-xs sit-arrow flex-shrink-0 mt-2" style="color:#b5936b">Voir ce service →</a>
+        <p class="hp-sans text-xs sit-arrow flex-shrink-0 mt-2" style="color:#b5936b">Voir ce service →</p>
       </div>
 
       <!-- CTA -->
@@ -319,27 +319,25 @@ const stats = [
   <script>
 
     // Situations client — toggle
-    document.querySelectorAll('.sit-tile').forEach(function(tile) {
-      tile.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A') return;
-        var wasOpen = tile.classList.contains('sit-open');
-        document.querySelectorAll('.sit-tile').forEach(function(t) {
+    document.querySelectorAll('.sit-tile').forEach(tile => {
+      tile.addEventListener('click', () => {
+        const wasOpen = tile.classList.contains('sit-open');
+        document.querySelectorAll('.sit-tile').forEach(t => {
           t.classList.remove('sit-open');
-          t.style.background = 'white';
-          t.style.borderColor = 'rgba(26,26,26,0.08)';
-          t.querySelectorAll('.sit-title').forEach(function(h) { h.style.color = '#1a1a1a'; });
-          t.querySelectorAll('.sit-detail').forEach(function(d) { d.classList.add('hidden'); });
+          (t as HTMLElement).style.background = 'white';
+          (t as HTMLElement).style.borderColor = 'rgba(26,26,26,0.08)';
+          t.querySelectorAll('.sit-title').forEach(h => (h as HTMLElement).style.color = '#1a1a1a');
+          t.querySelectorAll('.sit-detail').forEach(d => d.classList.add('hidden'));
         });
         if (!wasOpen) {
           tile.classList.add('sit-open');
-          tile.style.background = '#1a1a1a';
-          tile.style.borderColor = '#b5936b';
-          tile.querySelectorAll('.sit-title').forEach(function(h) { h.style.color = 'white'; });
-          tile.querySelectorAll('.sit-detail').forEach(function(d) { d.classList.remove('hidden'); });
+          (tile as HTMLElement).style.background = '#1a1a1a';
+          (tile as HTMLElement).style.borderColor = '#b5936b';
+          tile.querySelectorAll('.sit-title').forEach(h => (h as HTMLElement).style.color = 'white');
+          tile.querySelectorAll('.sit-detail').forEach(d => d.classList.remove('hidden'));
         }
       });
     });
-
     // Intersection Observer — reveal + stagger
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });

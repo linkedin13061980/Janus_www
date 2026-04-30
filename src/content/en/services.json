@@ -12,7 +12,7 @@
     {
       "order": 1,
       "slug": "training",
-      "titre": "Language training",
+      "title": "Language training",
       "desc": "Bespoke programmes for your teams. Qualiopi-certified — eligible for CPF, OPCO or PDC funding.",
       "items": [
         "English, Polish, FLE and 3 other languages",
@@ -27,7 +27,7 @@
     {
       "order": 2,
       "slug": "interpreting",
-      "titre": "Professional interpreting",
+      "title": "Professional interpreting",
       "desc": "Native interpreters for your negotiations, audits and sensitive meetings. NDA signed before every assignment.",
       "items": [
         "Consecutive, liaison, video conference",
@@ -42,7 +42,7 @@
     {
       "order": 3,
       "slug": "on-site",
-      "titre": "On-site support",
+      "title": "On-site support",
       "desc": "Physical presence during your critical missions. Beyond translation: real-time cultural decoding and strategic advice.",
       "items": [
         "Supplier audits, factory visits, due diligence",
@@ -57,7 +57,7 @@
     {
       "order": 4,
       "slug": "translation",
-      "titre": "Professional translation",
+      "title": "Professional translation",
       "desc": "6 languages. Native translators assigned by area of expertise. Quote within 2h on document submission.",
       "items": [
         "Legal, technical, commercial, marketing",
@@ -72,9 +72,9 @@
     {
       "order": 5,
       "slug": "project-manager",
-      "titre": "On-site project manager",
+      "title": "On-site project manager",
       "desc": "A dedicated JANUS expert for the full duration of your critical mission. Not a one-off interpreter — a single point of contact, present from start to finish.",
-      "badge": "New",
+ 
       "items": [
         "Due diligence, acquisition, opening an overseas office",
         "Multi-session industrial negotiations",

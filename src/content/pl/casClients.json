@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Realizacje — JANUS Interpretacja",
+    "description": "Reprezentatywne misje JANUS: interpretacja techniczna, strategiczna i stałe wsparcie dla firm działających na rynkach międzynarodowych."
+  },
+  "hero": {
+    "eyebrow": "Referencje",
+    "headline": "Realne misje, niezmienne standardy",
+    "subheadline": "Te reprezentatywne przypadki ilustrują nasze podejście: rzetelne przygotowanie, specjalistyczna wiedza branżowa i bezkompromisowe zaangażowanie w precyzję.",
+    "cta": {
+      "label": "Skontaktuj się",
+      "href": "/pl/kontakt"
+    }
+  },
+  "cases": [
+    {
+      "id": "szkolenie-techniczne-przemyslowe",
+      "tag": "Interpretacja techniczna",
+      "sector": "Przemysł i szkolenia terenowe",
+      "badge": "Przypadek reprezentatywny — profil zanonimizowany",
+      "client": {
+        "profile": "Europejskie przemysłowe MŚP wdrażające nową linię produkcyjną w kraju partnerskim. Intensywne szkolenie lokalnych zespołów na wysoce technicznym sprzęcie."
+      },
+      "challenge": {
+        "headline": "Kontekst i wyzwania",
+        "body": "Przeszkolenie lokalnych techników na specjalistycznym sprzęcie w ciągu kilku dni, bez wspólnego języka między szkoleniowcami a personelem. Omawiane zagadnienia — konfiguracja maszyn, protokoły bezpieczeństwa, konserwacja zapobiegawcza — nie dopuszczają żadnych nieścisłości terminologicznych. Błąd operacyjny może prowadzić do przestoju produkcji lub zagrożenia bezpieczeństwa."
+      },
+      "mission": {
+        "headline": "Rozwiązanie JANUS",
+        "body": "Oddelegowanie dwóch tłumaczy technicznych pracujących rotacyjnie na miejscu, uzasadnione intensywnością misji, koniecznością zachowania maksymalnej czujności i zapewnienia ciągłości przez cały dzień pracy. Przygotowanie z wyprzedzeniem: analiza dokumentacji technicznej dostarczonej przez klienta, opracowanie zatwierdzonego słownika dwujęzycznego, wcześniejsza wizyta na miejscu szkolenia. Na miejscu: tłumaczenie konsekutywne podczas sesji teoretycznych, tłumaczenie szeptane podczas obsługi maszyn. Codzienna koordynacja językowa między obydwoma tłumaczami.",
+        "tags": ["2 tłumaczy rotacyjnie", "Zatwierdzony słownik techniczny", "Pełna obecność na miejscu", "Koordynacja językowa"]
+      },
+      "impact": {
+        "headline": "Rezultaty",
+        "body": "Szkolenie zostało przeprowadzone zgodnie z harmonogramem, bez żadnych incydentów komunikacyjnych. Wszyscy uczestnicy osiągnęli poziom zrozumienia wymagany do wewnętrznej certyfikacji. Klient podkreślił techniczne przygotowanie tłumaczy jako kluczowy czynnik sukcesu misji."
+      }
+    },
+    {
+      "id": "negocjacje-przejecie",
+      "tag": "Interpretacja strategiczna",
+      "sector": "Fuzje i przejęcia — M&A",
+      "badge": "Przypadek reprezentatywny — profil zanonimizowany",
+      "client": {
+        "profile": "Francuska firma średniej wielkości w trakcie przejęcia spółki polskiej. Wielostronny proces obejmujący kadrę zarządzającą, doradców prawnych i przedstawicieli lokalnych interesariuszy."
+      },
+      "challenge": {
+        "headline": "Kontekst i wyzwania",
+        "body": "Negocjacje angażują jednocześnie wiele stron reprezentujących różne kultury zawodowe. Omawiane tematy — gwarancje umowne, klauzule o zakazie konkurencji, zobowiązania przejściowe — wymagają absolutnej precyzji w każdym sformułowaniu. Najmniejszy niuans źle oddany w tłumaczeniu może mieć poważne konsekwencje prawne i finansowe."
+      },
+      "mission": {
+        "headline": "Rozwiązanie JANUS",
+        "body": "Tłumaczenie łączone FR↔PL przez cały proces przejęcia: sesje robocze, spotkania negocjacyjne, audyty i sesje zamknięcia. Przygotowanie prawne przed każdym etapem: lektura dokumentów referencyjnych, identyfikacja wrażliwych terminów, wcześniejsze uzgodnienie terminologii. Sformalizowane zobowiązanie do zachowania poufności. Dostępność zapewniona przez cały czas trwania procesu w celu zagwarantowania ciągłości i spójności komunikacji między stronami.",
+        "tags": ["Tłumaczenie łączone FR ↔ PL", "Przygotowanie prawne", "Gwarantowana poufność", "Pełna dostępność procesowa"]
+      },
+      "impact": {
+        "headline": "Rezultaty",
+        "body": "Przejęcie zostało sfinalizowane zgodnie z pierwotnym harmonogramem. Płynność komunikacji między stronami została wskazana przez doradców prawnych jako czynnik stabilizujący negocjacje. Żaden poważny spór nie był wynikiem problemu ze zrozumieniem lub sformułowaniem."
+      }
+    },
+    {
+      "id": "regularne-wsparcie-wideo",
+      "tag": "Stałe wsparcie",
+      "sector": "Zarządzanie międzynarodowe — wideokonferencje",
+      "badge": "Przypadek reprezentatywny — profil zanonimizowany",
+      "client": {
+        "profile": "Francuska firma współpracująca z polskimi partnerami przy długoterminowych projektach. Regularne spotkania sterujące, przeglądy wyników, operacyjne punkty koordynacyjne."
+      },
+      "challenge": {
+        "headline": "Kontekst i wyzwania",
+        "body": "Bariera językowa powoduje powtarzające się tarcia podczas spotkań zdalnych: decyzje źle rozumiane, niekompletne działania następcze, utrata płynności w partnerstwie. Angielski jako język zastępczy nie zapewnia precyzji wymaganej w kwestiach technicznych i umownych."
+      },
+      "mission": {
+        "headline": "Rozwiązanie JANUS",
+        "body": "Dedykowany tłumacz JANUS FR↔PL dostępny na wszystkie wideokonferencje w ramach regularnego zobowiązania. Systematyczne przygotowanie przed każdą sesją: odbiór porządku obrad, zapoznanie się z bieżącymi tematami, identyfikacja wrażliwych punktów. Tłumaczenie symultaniczne za pośrednictwem standardowych platform (Teams, Zoom) z podwójnym kanałem audio. Notatka terminologiczna po spotkaniu przekazywana obu stronom w celu zapewnienia ciągłości między sesjami.",
+        "tags": ["Dedykowany tłumacz FR ↔ PL", "Regularne zobowiązanie", "Symultaniczne przez wideo", "Suivi terminologiczny"]
+      },
+      "impact": {
+        "headline": "Rezultaty",
+        "body": "Jakość komunikacji między zespołami znacznie się poprawiła. Decyzje są lepiej sformalizowane i rozumiane po obu stronach. Klient rozszerzył pierwotne porozumienie o szersze ramy wsparcia, integrując nowych rozmówców i dodatkowe języki robocze."
+      }
+    }
+  ],
+  "cta": {
+    "headline": "Twój kontekst zasługuje na odpowiedź szytą na miarę",
+    "subheadline": "Opisz nam swoją misję. Zaproponujemy dostosowane rozwiązanie w ciągu 24 godzin.",
+    "button": {
+      "label": "Omów swój projekt",
+      "href": "/pl/kontakt"
+    }
+  }
+}

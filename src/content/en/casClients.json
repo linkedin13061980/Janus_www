@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Case Studies — JANUS Interpretation",
+    "description": "Representative JANUS missions: technical and strategic interpretation, and ongoing support for internationally operating companies."
+  },
+  "hero": {
+    "eyebrow": "References",
+    "headline": "Real missions, an unwavering standard",
+    "subheadline": "These representative cases illustrate our approach: rigorous preparation, sector expertise and an uncompromising commitment to precision.",
+    "cta": {
+      "label": "Contact us",
+      "href": "/en/contact"
+    }
+  },
+  "cases": [
+    {
+      "id": "industrial-technical-training",
+      "tag": "Technical Interpretation",
+      "sector": "Industry & On-site Training",
+      "badge": "Representative case — anonymised profile",
+      "client": {
+        "profile": "European industrial SME deploying a new production line in a partner country. Intensive training of local teams on highly technical equipment."
+      },
+      "challenge": {
+        "headline": "Context and stakes",
+        "body": "Training local technicians on specialised equipment within a few days, with no shared language between trainers and staff. The areas covered — machine configuration, safety protocols, preventive maintenance — allow zero terminological imprecision. An operational misunderstanding can lead to a production stoppage or a safety risk."
+      },
+      "mission": {
+        "headline": "JANUS setup",
+        "body": "Deployment of two technical interpreters working in rotation on site, justified by the intensity of the mission, the need to maintain maximum vigilance and to ensure uninterrupted continuity throughout each working day. Upfront preparation: study of technical documentation provided by the client, creation of a validated bilingual glossary, prior visit to the training site. On site: consecutive interpretation during theory sessions, whispered interpretation during machine handling. Daily linguistic coordination between both interpreters.",
+        "tags": ["2 interpreters in rotation", "Validated technical glossary", "Full on-site presence", "Linguistic coordination"]
+      },
+      "impact": {
+        "headline": "Results",
+        "body": "The training was completed on schedule with no communication-related incidents. All participants reached the level of understanding required for internal certification. The client highlighted the technical preparation of the interpreters as a decisive factor in the success of the mission."
+      }
+    },
+    {
+      "id": "acquisition-negotiation",
+      "tag": "Strategic Interpretation",
+      "sector": "Mergers & Acquisitions — M&A",
+      "badge": "Representative case — anonymised profile",
+      "client": {
+        "profile": "French mid-sized company in the process of acquiring a Polish firm. Multi-party process involving executive management, legal counsel and local stakeholder representatives."
+      },
+      "challenge": {
+        "headline": "Context and stakes",
+        "body": "Negotiations simultaneously involve multiple parties from different professional cultures. Topics covered — contractual guarantees, non-compete clauses, transition commitments — require absolute precision in every formulation. The slightest nuance lost in translation can carry significant legal and financial consequences."
+      },
+      "mission": {
+        "headline": "JANUS setup",
+        "body": "Liaison interpretation FR↔PL throughout the entire acquisition process: working sessions, negotiation meetings, audits and closing sessions. Legal preparation ahead of each stage: reading of reference documents, identification of sensitive terms, prior terminological alignment. Formalised confidentiality commitment. Availability maintained throughout the process to ensure continuity and consistency of communication between parties.",
+        "tags": ["Liaison interpretation FR ↔ PL", "Legal preparation", "Guaranteed confidentiality", "Full process availability"]
+      },
+      "impact": {
+        "headline": "Results",
+        "body": "The acquisition was completed within the initial timeline. The fluidity of communication between parties was identified by legal advisors as a stabilising factor in the negotiations. No major disagreement was attributed to a comprehension or formulation issue."
+      }
+    },
+    {
+      "id": "regular-video-support",
+      "tag": "Ongoing Support",
+      "sector": "International Management — Video Conferencing",
+      "badge": "Representative case — anonymised profile",
+      "client": {
+        "profile": "French company working with Polish partners on long-term projects. Regular steering meetings, performance reviews, operational coordination calls."
+      },
+      "challenge": {
+        "headline": "Context and stakes",
+        "body": "The language barrier creates recurring friction during remote meetings: decisions poorly understood, incomplete follow-ups, loss of fluidity in the partnership. English as a substitute language is insufficient to guarantee the precision required on technical and contractual matters."
+      },
+      "mission": {
+        "headline": "JANUS setup",
+        "body": "A dedicated FR↔PL JANUS interpreter made available for all video conference meetings under a regular engagement. Systematic preparation before each session: receipt of the agenda, review of current items, identification of sensitive points. Simultaneous interpretation via standard platforms (Teams, Zoom) with dual audio channel. Post-meeting terminology note sent to both parties to ensure continuity between sessions.",
+        "tags": ["Dedicated FR ↔ PL interpreter", "Regular engagement", "Simultaneous via video", "Terminology follow-up"]
+      },
+      "impact": {
+        "headline": "Results",
+        "body": "The quality of communication between teams improved markedly. Decisions are better formalised and understood on both sides. The client expanded the initial arrangement to a broader support framework, integrating new contacts and additional working languages."
+      }
+    }
+  ],
+  "cta": {
+    "headline": "Your context deserves a tailored response",
+    "subheadline": "Describe your mission. We will propose an adapted solution within 24 hours.",
+    "button": {
+      "label": "Discuss your project",
+      "href": "/en/contact"
+    }
+  }
+}

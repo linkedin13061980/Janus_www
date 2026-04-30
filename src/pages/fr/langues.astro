@@ -2,149 +2,131 @@
 import Layout from '../../layouts/Layout.astro';
 const locale = 'fr';
 const currentPath = '/langues';
+
+const langues = [
+  {
+    flag: '🇬🇧',
+    nom: 'Anglais',
+    label: 'Langue des affaires',
+    desc: 'Formateurs britanniques et américains. Business English, TOEIC/TOEFL, anglais technique.',
+    tags: ['Business English', 'Coaching cadres', 'TOEIC / TOEFL', 'Industrie · Santé · Finance'],
+    featured: false,
+  },
+  {
+    flag: '🇵🇱',
+    nom: 'Polonais',
+    label: 'Spécialité exclusive Lyon',
+    desc: 'Seule agence lyonnaise spécialisée FR↔PL. Formation, interprétariat, réseau CCIFP actif.',
+    tags: ['Formation pro', 'Interprétariat', 'Réseau CCIFP', 'Accompagnement terrain'],
+    featured: true,
+  },
+  {
+    flag: '🇫🇷',
+    nom: 'Français FLE',
+    label: 'Pour salariés étrangers',
+    desc: 'Obligation légale 2024 pour les allophones. Financement CPF sans reste à charge. Attestation Qualiopi.',
+    tags: ['FLE pro', 'CPF sans reste à charge', 'Qualiopi', 'Allophones'],
+    featured: false,
+  },
+  {
+    flag: '🇩🇪',
+    nom: 'Allemand',
+    label: 'Zone DACH',
+    desc: 'Marchés allemand, autrichien, suisse. Formateurs natifs spécialisés industrie et commerce.',
+    tags: ['Allemand des affaires', 'Industrie', 'Zone DACH', 'Formateurs natifs'],
+    featured: false,
+  },
+  {
+    flag: '🇪🇸',
+    nom: 'Espagnol',
+    label: 'Hispanophone',
+    desc: 'Espagne et Amérique latine. Espagnol des affaires, interprétariat disponible.',
+    tags: ['Espagnol pro', 'Amérique latine', 'Interprétariat', 'Commerce international'],
+    featured: false,
+  },
+  {
+    flag: '🇮🇹',
+    nom: 'Italien',
+    label: 'Franco-italien',
+    desc: 'Relations commerciales franco-italiennes. Formateurs spécialisés luxe et industrie.',
+    tags: ['Italien des affaires', 'Luxe', 'Industrie', 'Traduction disponible'],
+    featured: false,
+  },
+];
 ---
+
 <Layout
   title="Nos Langues | JANUS Agence Linguistique Lyon"
   description="Anglais, polonais, français FLE, allemand, espagnol, italien — formation, interprétariat et traduction par des natifs à Lyon."
   locale={locale}
   currentPath={currentPath}
 >
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+  <style is:global>
+    .hp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .hp-sans  { font-family: 'DM Sans', system-ui, sans-serif; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .stagger > * { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+    .stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s }
+    .stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay:.15s }
+    .stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:.25s }
+    .stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:.35s }
+    .stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay:.45s }
+    .stagger.in > *:nth-child(6) { opacity:1; transform:none; transition-delay:.55s }
+  </style>
 
-  <!-- Hero -->
-  <section class="bg-anthracite pt-36 pb-24 px-6">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Nos langues</p>
-      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
-        Six langues.<br/><em class="italic text-gold">100% natifs.</em>
+  <!-- HERO -->
+  <section style="background:#f7f5f2" class="pt-36 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-8 reveal" style="color:#b5936b">Nos langues</p>
+      <h1 class="hp-serif text-5xl md:text-6xl font-light leading-[1.1] mb-6 reveal" style="color:#1a1a1a">
+        Six langues.<br/><em class="italic" style="color:#b5936b">100% natifs.</em>
       </h1>
-      <p class="text-white/50 text-lg max-w-lg leading-relaxed">
+      <p class="hp-sans text-lg max-w-lg leading-[1.8] reveal" style="color:rgba(26,26,26,0.5)">
         Chaque langue est portée par des formateurs et interprètes natifs, sélectionnés pour leur expertise métier.
       </p>
     </div>
   </section>
 
-  <!-- Anglais -->
-  <section class="py-24 px-6 border-t border-gold/10">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-3xl mb-6">🇬🇧</p>
-      <p class="text-gold/50 text-xs uppercase tracking-widest mb-2">Langue des affaires</p>
-      <h2 class="text-4xl font-serif font-light text-white mb-6">Anglais professionnel</h2>
-      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
-        Notre cœur de métier depuis 2016. Formateurs britanniques et américains. De A1 au TOEIC, centré sur votre secteur et vos objectifs réels.
-      </p>
-      <ul class="space-y-4 mb-12">
-        {[
-          'Business English — réunions, négociations, emails, présentations',
-          'Coaching individuel cadres et managers',
-          'Préparation TOEIC / TOEFL / IELTS',
-          'Anglais technique : industrie, santé, finance, juridique',
-          'Interprétariat EN ↔ FR · Traduction documents',
-          'Financement CPF jusqu\'à 1 500 € · OPCO · PDC',
-        ].map(item => (
-          <li class="flex gap-4 text-white/55 text-sm">
-            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
-          </li>
-        ))}
-      </ul>
-      <a href="/fr/contact" class="inline-block px-8 py-4 border border-gold/40 text-gold uppercase tracking-wider hover:bg-gold hover:text-anthracite transition-colors text-sm">Demander un devis anglais</a>
-    </div>
-  </section>
-
-  <!-- Polonais -->
-  <section class="py-24 px-6 bg-anthracite-light border-t border-gold/10">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-3xl mb-6">🇵🇱</p>
-      <p class="text-gold text-xs uppercase tracking-widest mb-2">Spécialité exclusive à Lyon</p>
-      <h2 class="text-4xl font-serif font-light text-white mb-6">Polonais professionnel</h2>
-      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
-        Seule agence spécialisée polonais à Lyon. Réseau CCIFP actif. Accompagnement physique en Pologne disponible.
-      </p>
-      <ul class="space-y-4 mb-12">
-        {[
-          'Polonais des affaires — communication, déplacements en Pologne',
-          'Interprétariat PL ↔ FR en France et sur site en Pologne',
-          'Accompagnement terrain : Varsovie, Cracovie, Wrocław, Katowice…',
-          'Accueil de délégations polonaises à Lyon',
-          'Traduction contrats, appels d\'offre, correspondances',
-          'Conseil interculturel franco-polonais',
-        ].map(item => (
-          <li class="flex gap-4 text-white/55 text-sm">
-            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
-          </li>
-        ))}
-      </ul>
-      <div class="flex gap-4">
-        <a href="/fr/contact" class="inline-block px-8 py-4 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Contacter notre équipe</a>
-        <a href="/fr/pologne-investir" class="inline-block px-8 py-4 border border-white/15 text-white/50 uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-sm">Investir en Pologne</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FLE -->
-  <section class="py-24 px-6 border-t border-gold/10">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-3xl mb-6">🇫🇷</p>
-      <p class="text-gold/50 text-xs uppercase tracking-widest mb-2">Intégration professionnelle</p>
-      <h2 class="text-4xl font-serif font-light text-white mb-6">Français Langue Étrangère</h2>
-      <p class="text-white/60 text-lg leading-relaxed mb-10 max-w-xl">
-        Pour vos salariés non francophones. Financement CPF sans reste à charge pour les bénéficiaires du CIR. TCF et DELF inclus.
-      </p>
-      <ul class="space-y-4 mb-12">
-        {[
-          'Français professionnel adapté à votre secteur',
-          'Préparation TCF / DELF / DALF',
-          'CPF sans reste à charge pour bénéficiaires CIR',
-          'Présentiel Lyon ou visioconférence',
-        ].map(item => (
-          <li class="flex gap-4 text-white/55 text-sm">
-            <span class="text-gold shrink-0 mt-0.5">◆</span>{item}
-          </li>
-        ))}
-      </ul>
-      <a href="/fr/contact" class="inline-block px-8 py-4 border border-gold/40 text-gold uppercase tracking-wider hover:bg-gold hover:text-anthracite transition-colors text-sm">Renseignements FLE</a>
-    </div>
-  </section>
-
-  <!-- Autres langues -->
-  <section class="py-24 px-6 bg-anthracite-light border-t border-gold/10">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Aussi disponibles</p>
-      <h2 class="text-4xl font-serif font-light text-white mb-16 leading-tight">
-        Allemand, espagnol,<br/>italien.
-      </h2>
-      <div class="divide-y divide-white/10">
-        {[
-          { flag: '🇩🇪', lang: 'Allemand', detail: 'Formation B2B · Interprétariat · Traduction · Secteurs industrie et automobile' },
-          { flag: '🇪🇸', lang: 'Espagnol', detail: 'Formation professionnelle · Marchés LATAM et Espagne · Interprétariat' },
-          { flag: '🇮🇹', lang: 'Italien', detail: 'Formation et traduction · Secteurs mode, luxe, industrie, juridique' },
-        ].map(l => (
-          <div class="py-8 flex items-start gap-6">
-            <span class="text-3xl shrink-0">{l.flag}</span>
+  <!-- GRILLE LANGUES -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px stagger" style="background:rgba(26,26,26,0.06)">
+        {langues.map(l => (
+          <div class={`p-10 flex flex-col gap-4 ${l.featured ? '' : 'bg-white'}`} style={l.featured ? 'background:#1a1a1a' : ''}>
+            <span class="text-4xl">{l.flag}</span>
             <div>
-              <p class="text-white font-medium text-lg mb-1">{l.lang}</p>
-              <p class="text-white/40 text-sm">{l.detail}</p>
+              <p class="hp-sans text-[9px] uppercase tracking-[0.25em] mb-2" style={`color:${l.featured ? 'rgba(181,147,107,0.7)' : 'rgba(181,147,107,0.8)'}`}>{l.label}</p>
+              <p class="hp-serif text-2xl font-light mb-3" style={`color:${l.featured ? '#b5936b' : '#1a1a1a'}`}>{l.nom}</p>
+              <p class="hp-sans text-sm leading-[1.7]" style={`color:${l.featured ? 'rgba(255,255,255,0.5)' : 'rgba(26,26,26,0.5)'}`}>{l.desc}</p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-auto pt-4">
+              {l.tags.map(tag => (
+                <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.25)">{tag}</span>
+              ))}
             </div>
           </div>
         ))}
       </div>
-      <div class="mt-12">
-        <a href="/fr/contact" class="inline-block px-8 py-4 border border-gold/40 text-gold uppercase tracking-wider hover:bg-gold hover:text-anthracite transition-colors text-sm">Demander un devis</a>
-      </div>
     </div>
   </section>
 
-  <!-- CTA financement -->
-  <section class="py-40 px-6 bg-anthracite border-t border-gold/10 text-center">
-    <div class="max-w-xl mx-auto">
-      <h2 class="text-4xl font-serif font-light text-white mb-6">
-        Votre formation peut être<br/><em class="italic text-gold">financée à 100%.</em>
+  <!-- CTA -->
+  <section style="background:#1a1a1a" class="py-32 px-6 text-center">
+    <div class="max-w-xl mx-auto reveal">
+      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-8" style="color:rgba(255,255,255,0.3)">Devis gratuit sous 24h</p>
+      <h2 class="hp-serif text-4xl md:text-5xl font-light text-white mb-6 leading-tight">
+        Quelle langue pour<br/><em class="italic" style="color:#b5936b">votre projet ?</em>
       </h2>
-      <p class="text-white/40 text-base mb-12">CPF, OPCO, PDC — JANUS gère le dossier pour vous.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/fr/contact" class="px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Vérifier mon financement</a>
-        <a href="/fr/financement" class="px-10 py-5 border border-white/15 text-white/60 uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-sm">En savoir plus</a>
-      </div>
+      <a href="/fr/contact" class="hp-sans inline-block px-10 py-5 text-xs uppercase tracking-widest hover:opacity-80 transition-opacity" style="background:#b5936b;color:#1a1a1a">
+        Nous contacter →
+      </a>
     </div>
   </section>
 
+  <script>
+    const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);} }), {threshold:0.1});
+    document.querySelectorAll('.reveal,.stagger').forEach(el => io.observe(el));
+  </script>
 </Layout>

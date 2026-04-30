@@ -1,7 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHero from '../../components/layout/PageHero.astro';
-import ServiceCard from '../../components/ui/ServiceCard.astro';
 import { localePath } from '../../i18n/utils';
 import content from '../../content/fr/services.json';
 
@@ -15,41 +13,82 @@ const currentPath = '/services';
   locale={locale}
   currentPath={currentPath}
 >
-  <PageHero
-    label={content.hero.label}
-    title={content.hero.title}
-    subtitle={content.hero.subtitle}
-  />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+  <style is:global>
+    .hp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .hp-sans  { font-family: 'DM Sans', system-ui, sans-serif; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .stagger > * { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+    .stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s }
+    .stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay:.15s }
+    .stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:.25s }
+    .stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:.35s }
+    .stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay:.45s }
+  </style>
 
-  {content.services
-    .sort((a, b) => a.order - b.order)
-    .map((service, index) => (
-      <ServiceCard
-        locale={locale}
-        order={service.order}
-        titre={service.titre}
-        desc={service.desc}
-        items={service.items}
-        cta={service.cta}
-        href={service.href}
-        badge={service.badge}
-        alternate={index % 2 !== 0}
-      />
-    ))
-  }
+  <!-- HERO -->
+  <section style="background:#f7f5f2" class="pt-36 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-8 reveal" style="color:#b5936b">{content.hero.label}</p>
+      <h1 class="hp-serif text-5xl md:text-6xl font-light leading-[1.1] mb-6 reveal" style="color:#1a1a1a">
+        {content.hero.title}
+      </h1>
+      <p class="hp-sans text-lg max-w-lg leading-[1.8] reveal" style="color:rgba(26,26,26,0.5)">
+        {content.hero.subtitle}
+      </p>
+    </div>
+  </section>
 
-  <section class="py-40 px-6 bg-anthracite border-t border-gold/10 text-center">
-    <div class="max-w-xl mx-auto">
-      <h2 class="text-4xl font-serif font-light text-white mb-6">
+  <!-- SERVICES -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex flex-col gap-px stagger" style="background:rgba(26,26,26,0.06)">
+        {content.services.sort((a,b) => a.order - b.order).map((s, i) => (
+          <div class="flex flex-col md:flex-row" style={i % 2 !== 0 ? 'background:#f7f5f2' : 'background:white'}>
+            <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+              {s.badge && (
+                <span class="hp-sans text-[9px] uppercase tracking-[0.2em] border px-3 py-1 rounded-full mb-6 self-start" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">{s.badge}</span>
+              )}
+              <p class="hp-sans text-[9px] uppercase tracking-[0.25em] mb-3" style="color:rgba(181,147,107,0.6)">0{s.order}</p>
+              <h2 class="hp-serif text-3xl md:text-4xl font-light mb-4 leading-tight" style="color:#1a1a1a">{s.title}</h2>
+              <p class="hp-sans text-base leading-[1.7] mb-8" style="color:rgba(26,26,26,0.5)">{s.desc}</p>
+              <a href={localePath(locale, s.href)} class="hp-sans text-xs uppercase tracking-widest hover:opacity-70 transition-opacity self-start" style="color:#b5936b">
+                {s.cta} →
+              </a>
+            </div>
+            <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center border-t md:border-t-0 md:border-l" style="border-color:rgba(26,26,26,0.06)">
+              <ul class="space-y-4">
+                {s.items.map(item => (
+                  <li class="flex items-start gap-3 hp-sans text-sm" style="color:rgba(26,26,26,0.6)">
+                    <span style="color:#b5936b;margin-top:2px">◆</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:#1a1a1a" class="py-32 px-6 text-center">
+    <div class="max-w-xl mx-auto reveal">
+      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-8" style="color:rgba(255,255,255,0.3)">Devis gratuit sous 24h</p>
+      <h2 class="hp-serif text-4xl md:text-5xl font-light text-white mb-6 leading-tight">
         {content.cta.title}
       </h2>
-      <p class="text-white/40 text-base mb-12">{content.cta.subtitle}</p>
-      <a
-        href={localePath(locale, content.cta.href)}
-        class="inline-block px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm"
-      >
-        {content.cta.btn}
+      <p class="hp-sans text-base mb-12" style="color:rgba(255,255,255,0.4)">{content.cta.subtitle}</p>
+      <a href={localePath(locale, content.cta.href)} class="hp-sans inline-block px-10 py-5 text-xs uppercase tracking-widest hover:opacity-80 transition-opacity" style="background:#b5936b;color:#1a1a1a">
+        {content.cta.btn} →
       </a>
     </div>
   </section>
+
+  <script>
+    const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);} }), {threshold:0.1});
+    document.querySelectorAll('.reveal,.stagger').forEach(el => io.observe(el));
+  </script>
 </Layout>

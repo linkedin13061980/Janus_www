@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CaseStudyHero from '../../components/ui/CaseStudyHero.astro';
+import CaseStudyCard from '../../components/ui/CaseStudyCard.astro';
+import { localePath } from '../../i18n/utils';
+import content from '../../content/en/casClients.json';
+
+const locale = 'en';
+const currentPath = '/case-studies';
+---
+
+<Layout
+  title={content.meta.title}
+  description={content.meta.description}
+  locale={locale}
+  currentPath={currentPath}
+>
+  <CaseStudyHero
+    eyebrow={content.hero.eyebrow}
+    headline={content.hero.headline}
+    subheadline={content.hero.subheadline}
+    cta={content.hero.cta}
+  />
+
+  {content.cases.map((cas, index) => (
+    <CaseStudyCard
+      cas={cas}
+      alternate={index % 2 !== 0}
+    />
+  ))}
+
+  <section class="py-40 px-6 bg-anthracite border-t border-gold/10 text-center">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-4xl font-serif font-light text-white mb-6">
+        {content.cta.headline}
+      </h2>
+      <p class="text-white/40 text-base mb-12">{content.cta.subheadline}</p>
+      <a
+        href={localePath(locale, content.cta.button.href)}
+        class="inline-block px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm"
+      >
+        {content.cta.button.label}
+      </a>
+    </div>
+  </section>
+</Layout>

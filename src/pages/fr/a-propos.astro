@@ -2,105 +2,33 @@
 import Layout from '../../layouts/Layout.astro';
 const locale = 'fr';
 const currentPath = '/a-propos';
+const valeurs = [
+  { n: '01', titre: 'Précision', desc: 'Chaque mot compte. Nos interprètes et formateurs sont sélectionnés pour leur rigueur terminologique.' },
+  { n: '02', titre: 'Confidentialité', desc: 'NDA signé avant chaque mission. Vos projets stratégiques ne sortent pas du périmètre de la mission.' },
+  { n: '03', titre: 'Engagement', desc: 'Un seul interlocuteur de bout en bout. Pas de sous-traitance opaque, pas de coordination perdue.' },
+];
 ---
-<Layout
-  title="À propos | JANUS Agence Linguistique Lyon — Agata Mich"
-  description="JANUS Agence Linguistique, fondée par Agata Mich, quadrilingue, ancienne VP Credit Suisse et analyste SG CIB. Spécialiste franco-polonais à Lyon depuis 2021."
-  locale={locale}
-  currentPath={currentPath}
->
-
-  <!-- Hero -->
-  <section class="bg-anthracite pt-36 pb-24 px-6">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Fondée à Lyon · 2021</p>
-      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
-        L'agence qui parle<br/><em class="italic text-gold">votre langue.</em>
-      </h1>
-      <p class="text-white/55 text-lg max-w-lg leading-relaxed">
-        JANUS est fondée par <strong class="text-white">Agata Mich</strong> — quadrilingue (français, polonais, anglais, russe), ancienne VP Credit Suisse et analyste SG CIB. Une expertise financière et internationale rare, au service de la communication d'entreprise.
-      </p>
-    </div>
-  </section>
-
-  <!-- Histoire -->
-  <section class="py-24 px-6 border-t border-gold/10">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-widest mb-6">Notre histoire</p>
-      <h2 class="text-4xl font-serif font-light text-white mb-10 leading-tight">
-        20 ans au service<br/>des projets internationaux.
-      </h2>
-      <div class="space-y-6 text-white/60 text-base leading-relaxed max-w-xl">
-        <p>Après 15 ans dans la finance internationale — SG CIB à Paris, Credit Suisse à Genève, Family Office en Suisse — j'ai créé une école de langues en 2016, puis JANUS en 2021 pour répondre à un besoin concret : les entreprises qui s'internationalisent ont besoin d'un partenaire qui va bien au-delà de la traduction.</p>
-        <p>Nous avons choisi le nom <strong class="text-white">JANUS</strong> — le dieu romain à deux visages, gardien des passages — parce qu'il incarne exactement ce que nous faisons : ouvrir des portes entre deux mondes, regarder dans les deux directions.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Parcours -->
-  <section class="py-24 px-6 bg-anthracite-light border-t border-gold/10">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-widest mb-12">Parcours de la fondatrice</p>
-      <div class="space-y-0">
-        {[
-          { years: '2002–2007', titre: 'SG CIB — Analyste financier, Paris', desc: 'Analyse M&A franco-polonaise, banque d\'investissement, stratégie groupe.' },
-          { years: '2007–2014', titre: 'Credit Suisse — VP, Suisse', desc: 'Gestion de patrimoine privé international. Rigueur technique, discrétion absolue.' },
-          { years: '2014–2016', titre: 'Family Office — Suisse', desc: 'Gestion de patrimoine privé multi-juridictions. Confidentialité et coordination multiculturelle.' },
-          { years: '2016', titre: 'Fondation English Academy, Lyon', desc: 'École de langue anglaise, progressivement élargie en structure multilingue.' },
-          { years: '2021 — aujourd\'hui', titre: 'Fondation JANUS Agence Linguistique', desc: 'Formation, interprétariat, accompagnement terrain, traduction. Certification Qualiopi obtenue.' },
-        ].map((tl, i, arr) => (
-          <div class="grid grid-cols-[16px_1fr] gap-6 pb-10 relative">
-            {i < arr.length - 1 && <div class="absolute left-2 top-3 bottom-0 w-px bg-gold/20"></div>}
-            <div class="w-4 h-4 rounded-full bg-gold shrink-0 mt-0.5 border-2 border-anthracite-light"></div>
-            <div>
-              <p class="text-gold text-xs uppercase tracking-wider mb-1">{tl.years}</p>
-              <p class="text-white font-medium text-sm mb-1">{tl.titre}</p>
-              <p class="text-white/45 text-xs leading-relaxed">{tl.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Valeurs -->
-  <section class="py-24 px-6 border-t border-gold/10">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-widest mb-6">Ce qui nous guide</p>
-      <h2 class="text-4xl font-serif font-light text-white mb-16 leading-tight">
-        Nos valeurs,<br/><em class="italic text-gold">sans slogan.</em>
-      </h2>
-      <div class="divide-y divide-white/10">
-        {[
-          { n: '01', titre: 'Natifs uniquement', desc: 'Tous nos formateurs et interprètes sont natifs de la langue dans laquelle ils exercent. Les nuances, le registre, l\'humour — seul un natif les maîtrise vraiment.' },
-          { n: '02', titre: 'Culture avant grammaire', desc: 'Une traduction correcte peut quand même faire rater une négociation. Nous formons nos clients à comprendre comment pensent leurs interlocuteurs, pas seulement ce qu\'ils disent.' },
-          { n: '03', titre: 'Confidentialité absolue', desc: 'Nous intervenons souvent dans des contextes sensibles. La confidentialité est systématique, formalisée et non négociable pour chaque mission.' },
-          { n: '04', titre: 'Résultats mesurables', desc: 'Chaque programme a des objectifs définis et mesurables. Nous ne vendons pas des heures — nous vendons des compétences.' },
-        ].map(v => (
-          <div class="py-8 flex gap-8 items-start">
-            <span class="text-gold/25 font-serif text-sm w-6 shrink-0 pt-0.5">{v.n}</span>
-            <div>
-              <p class="text-white font-medium text-base mb-2">{v.titre}</p>
-              <p class="text-white/45 text-sm leading-relaxed max-w-lg">{v.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-40 px-6 bg-anthracite border-t border-gold/10 text-center">
-    <div class="max-w-xl mx-auto">
-      <h2 class="text-4xl font-serif font-light text-white mb-6">
-        Travaillons<br/><em class="italic text-gold">ensemble.</em>
-      </h2>
-      <p class="text-white/40 text-base mb-12">Devis gratuit sous 24h. Premier échange confidentiel.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/fr/contact" class="px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">Nous contacter</a>
-        <a href="/fr/services" class="px-10 py-5 border border-white/15 text-white/60 uppercase tracking-wider hover:border-gold hover:text-gold transition-colors text-sm">Nos services</a>
-      </div>
-    </div>
-  </section>
-
+<Layout title="À propos | JANUS" description="JANUS fondée par Agata Mich." locale={locale} currentPath={currentPath}>
+<section style="background:#f7f5f2" class="pt-36 pb-20 px-6">
+<div class="max-w-4xl mx-auto">
+<p style="color:#b5936b;font-size:10px;text-transform:uppercase;letter-spacing:.35em;margin-bottom:2rem">Fondée à Lyon · 2021</p>
+<h1 style="font-family:Georgia,serif;font-size:3.5rem;font-weight:300;color:#1a1a1a;line-height:1.1;margin-bottom:1.5rem">L'agence qui parle<br/><em style="color:#b5936b">votre langue.</em></h1>
+<p style="font-size:1.1rem;color:rgba(26,26,26,0.5);max-width:500px;line-height:1.8">Fondée par <strong style="color:#1a1a1a">Agata Mich</strong> — quadrilingue, experte en finance internationale et en linguistique professionnelle.</p>
+</div>
+</section>
+<section style="background:white;padding:6rem 1.5rem">
+<div style="max-width:680px;margin:0 auto">
+<p style="color:rgba(26,26,26,0.35);font-size:10px;text-transform:uppercase;letter-spacing:.35em;margin-bottom:3rem">Son parcours</p>
+<p style="font-family:Georgia,serif;font-size:1.5rem;font-weight:300;color:#1a1a1a;line-height:1.6;margin-bottom:2rem">Avant de fonder JANUS, Agata Mich a passé plus de 15 ans dans la finance internationale. Un monde où la précision du langage n'est pas une qualité : c'est une exigence absolue.</p>
+<p style="font-size:1rem;color:rgba(26,26,26,0.55);line-height:1.9;margin-bottom:1.5rem">Dans ce secteur, elle a travaillé au cœur des transactions : aux côtés des entreprises qui cherchaient à acquérir, fusionner, s'implanter à l'international. Elle a vu de première main ce que coûte une mauvaise communication — et ce que permet une communication parfaite.</p>
+<p style="font-size:1rem;color:rgba(26,26,26,0.55);line-height:1.9;margin-bottom:1.5rem">Sa passion pour les langues — elle parle couramment français, polonais, anglais et russe — l'a naturellement conduite vers le secteur linguistique. En 2016, elle crée une première structure de formation. En 2021, elle fonde JANUS : une agence orientée entreprises et professionnels, construite sur ce qu'elle a appris des deux côtés de la table.</p>
+<p style="font-size:1rem;color:rgba(26,26,26,0.55);line-height:1.9">Depuis 2021, JANUS accompagne des acteurs des secteurs financier, pharmaceutique et énergétique — des missions exigeantes, qui demandent précision, confidentialité et engagement de bout en bout.</p>
+</div>
+</section>
+<section style="background:#1a1a1a;padding:6rem 1.5rem;text-align:center">
+<div style="max-width:500px;margin:0 auto">
+<h2 style="font-family:Georgia,serif;font-size:2.5rem;font-weight:300;color:white;margin-bottom:1.5rem">Un projet à nous<br/><em style="color:#b5936b">confier ?</em></h2>
+<a href="/fr/contact" style="display:inline-block;background:#b5936b;color:#1a1a1a;padding:1rem 2.5rem;font-size:11px;text-transform:uppercase;letter-spacing:.15em">Nous contacter →</a>
+</div>
+</section>
 </Layout>

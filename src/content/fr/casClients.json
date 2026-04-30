@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "title": "Cas clients — JANUS Interprétation",
+    "description": "Missions représentatives de JANUS : interprétation technique, stratégique et accompagnement régulier pour des entreprises opérant à l'international."
+  },
+  "hero": {
+    "eyebrow": "Références",
+    "headline": "Des missions concrètes, une exigence constante",
+    "subheadline": "Ces cas représentatifs illustrent notre approche : préparation rigoureuse, expertise sectorielle et engagement sans compromis sur la précision.",
+    "cta": {
+      "label": "Nous contacter",
+      "href": "/fr/contact"
+    }
+  },
+  "cases": [
+    {
+      "id": "formation-technique-industrielle",
+      "tag": "Interprétation technique",
+      "sector": "Industrie & Formation terrain",
+      "badge": "Cas représentatif — profil anonymisé",
+      "client": {
+        "profile": "PME industrielle européenne déployant une nouvelle ligne de production dans un pays partenaire. Formation intensive des équipes locales sur des équipements à haute technicité."
+      },
+      "challenge": {
+        "headline": "Contexte et enjeux",
+        "body": "Former des techniciens locaux sur des équipements spécialisés en quelques jours, sans langue commune avec les formateurs. Les domaines couverts — paramétrage machine, protocoles de sécurité, maintenance préventive — ne tolèrent aucune imprécision terminologique. Un contresens opérationnel peut entraîner un arrêt de production ou un risque pour la sécurité."
+      },
+      "mission": {
+        "headline": "Dispositif JANUS",
+        "body": "Déploiement de deux interprètes techniques en rotation sur site, justifié par l'intensité de la mission, la nécessité de maintenir une vigilance maximale et d'assurer une continuité sans rupture sur l'ensemble des journées. Préparation en amont : étude de la documentation technique fournie par le client, constitution d'un glossaire bilingue validé, visite préalable du site de formation. Sur site : interprétation consécutive en sessions théoriques, interprétation chuchotée lors des manipulations. Coordination linguistique quotidienne entre les deux interprètes.",
+        "tags": ["2 interprètes en rotation", "Glossaire technique validé", "Présence terrain complète", "Coordination linguistique"]
+      },
+      "impact": {
+        "headline": "Résultats",
+        "body": "La formation a été conduite dans les délais prévus, sans incident lié à la communication. L'ensemble des participants a atteint le niveau de compréhension requis pour la certification interne. Le client a souligné la qualité de la préparation technique des interprètes comme facteur déterminant de la réussite de la mission."
+      }
+    },
+    {
+      "id": "negociation-acquisition",
+      "tag": "Interprétation stratégique",
+      "sector": "Fusion-Acquisition — M&A",
+      "badge": "Cas représentatif — profil anonymisé",
+      "client": {
+        "profile": "ETI française en phase d'acquisition d'une société polonaise. Processus multipartite impliquant directions générales, conseils juridiques et représentants des parties prenantes locales."
+      },
+      "challenge": {
+        "headline": "Contexte et enjeux",
+        "body": "Les négociations mobilisent simultanément plusieurs interlocuteurs de cultures professionnelles différentes. Les sujets traités — garanties contractuelles, clauses de non-concurrence, engagements de transition — requièrent une précision absolue dans chaque formulation. La moindre nuance mal rendue peut avoir des conséquences juridiques et financières significatives."
+      },
+      "mission": {
+        "headline": "Dispositif JANUS",
+        "body": "Interprétation de liaison FR↔PL sur l'ensemble du processus : sessions de travail, réunions de négociation, audits et séances de finalisation. Préparation juridique en amont de chaque étape : lecture des documents de référence, identification des termes sensibles, alignement terminologique préalable. Engagement de confidentialité formalisé. Disponibilité assurée sur la durée du processus pour garantir la continuité et la cohérence du discours entre les parties.",
+        "tags": ["Interprétation de liaison FR ↔ PL", "Préparation juridique", "Confidentialité garantie", "Disponibilité processus complet"]
+      },
+      "impact": {
+        "headline": "Résultats",
+        "body": "L'acquisition a été finalisée dans les délais du calendrier initial. La fluidité de la communication entre les parties a été identifiée par les conseils juridiques comme un facteur de stabilisation des négociations. Aucun désaccord majeur n'a été attribué à un problème de compréhension ou de formulation."
+      }
+    },
+    {
+      "id": "accompagnement-visio-regulier",
+      "tag": "Accompagnement régulier",
+      "sector": "Management international — Visioconférence",
+      "badge": "Cas représentatif — profil anonymisé",
+      "client": {
+        "profile": "Entreprise française opérant avec des partenaires polonais sur des projets à long terme. Réunions de pilotage régulières, revues de performance, points de coordination opérationnelle."
+      },
+      "challenge": {
+        "headline": "Contexte et enjeux",
+        "body": "La barrière linguistique génère des frictions récurrentes lors des réunions à distance : décisions mal comprises, suivis incomplets, perte de fluidité dans la relation partenariale. L'anglais comme langue de substitution ne suffit pas à garantir la précision nécessaire sur les sujets techniques et contractuels."
+      },
+      "mission": {
+        "headline": "Dispositif JANUS",
+        "body": "Mise à disposition d'un interprète dédié FR↔PL pour l'ensemble des réunions en visioconférence, dans le cadre d'un engagement régulier. Préparation systématique avant chaque séance : réception de l'ordre du jour, prise de connaissance des éléments en cours, identification des points sensibles. Interprétation simultanée via les plateformes standard (Teams, Zoom) avec double canal audio. Transmission d'un relevé terminologique post-réunion pour assurer la continuité entre les sessions.",
+        "tags": ["Interprète dédié FR ↔ PL", "Engagement régulier", "Simultanée en visio", "Suivi terminologique"]
+      },
+      "impact": {
+        "headline": "Résultats",
+        "body": "La qualité de la communication entre les équipes s'est nettement améliorée. Les décisions sont mieux formalisées et comprises des deux côtés. Le client a fait évoluer le dispositif initial vers un accompagnement élargi, intégrant de nouveaux interlocuteurs et de nouvelles langues de travail."
+      }
+    }
+  ],
+  "cta": {
+    "headline": "Votre contexte mérite une réponse sur mesure",
+    "subheadline": "Décrivez-nous votre mission. Nous vous proposons un dispositif adapté sous 24 heures.",
+    "button": {
+      "label": "Discuter de votre projet",
+      "href": "/fr/contact"
+    }
+  }
+}

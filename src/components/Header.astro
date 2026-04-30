@@ -9,6 +9,12 @@ interface Props {
 
 const { locale, currentPath } = Astro.props;
 const locales: Locale[] = ['fr', 'en', 'pl'];
+
+const casesPath: Record<Locale, string> = {
+  fr: '/cas-clients',
+  en: '/case-studies',
+  pl: '/realizacje',
+};
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-anthracite/95 backdrop-blur border-b border-gold/20">
@@ -29,6 +35,7 @@ const locales: Locale[] = ['fr', 'en', 'pl'];
       <nav class="hidden lg:flex items-center gap-6">
         <a href={localePath(locale, '/')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.home')}</a>
         <a href={localePath(locale, '/services')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.services')}</a>
+        <a href={localePath(locale, casesPath[locale])} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.cases')}</a>
         <a href={localePath(locale, '/langues')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.langues')}</a>
         <a href={localePath(locale, '/financement')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.financement')}</a>
         <a href={localePath(locale, '/a-propos')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.about')}</a>
@@ -72,6 +79,7 @@ const locales: Locale[] = ['fr', 'en', 'pl'];
     <nav class="px-4 py-4 flex flex-col gap-3">
       <a href={localePath(locale, '/')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.home')}</a>
       <a href={localePath(locale, '/services')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.services')}</a>
+      <a href={localePath(locale, casesPath[locale])} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.cases')}</a>
       <a href={localePath(locale, '/langues')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.langues')}</a>
       <a href={localePath(locale, '/financement')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.financement')}</a>
       <a href={localePath(locale, '/a-propos')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.about')}</a>
@@ -85,4 +93,3 @@ const locales: Locale[] = ['fr', 'en', 'pl'];
   const menu = document.getElementById('mobile-menu');
   toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'));
 </script>
-

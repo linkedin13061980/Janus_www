@@ -12,7 +12,7 @@
     {
       "order": 1,
       "slug": "formation",
-      "titre": "Formation linguistique",
+      "title": "Formation linguistique",
       "desc": "Programmes sur mesure pour vos équipes. Certifié Qualiopi — finançable CPF, OPCO ou PDC.",
       "items": [
         "Anglais, polonais, FLE et 3 autres langues",
@@ -27,7 +27,7 @@
     {
       "order": 2,
       "slug": "interpretariat",
-      "titre": "Interprétariat professionnel",
+      "title": "Interprétariat professionnel",
       "desc": "Interprètes natifs pour vos négociations, audits et réunions sensibles. NDA signé avant chaque mission.",
       "items": [
         "Consécutif, liaison, visioconférence",
@@ -42,7 +42,7 @@
     {
       "order": 3,
       "slug": "terrain",
-      "titre": "Accompagnement terrain",
+      "title": "Accompagnement terrain",
       "desc": "Présence physique sur site lors de vos missions critiques. Au-delà de la traduction : décodage culturel et conseil en temps réel.",
       "items": [
         "Audits fournisseurs, visites d'usine, due diligence",
@@ -57,7 +57,7 @@
     {
       "order": 4,
       "slug": "traduction",
-      "titre": "Traduction professionnelle",
+      "title": "Traduction professionnelle",
       "desc": "6 langues. Traducteurs natifs affectés selon leur domaine de spécialité. Devis sous 2h sur envoi de votre document.",
       "items": [
         "Juridique, technique, commercial, marketing",
@@ -72,7 +72,7 @@
     {
       "order": 5,
       "slug": "chef-de-projet",
-      "titre": "Chef de projet terrain",
+      "title": "Chef de projet terrain",
       "desc": "Un expert JANUS dédié à votre mission pendant toute sa durée critique. Pas un interprète ponctuel — un interlocuteur unique, présent de bout en bout.",
       "badge": "Nouveau",
       "items": [

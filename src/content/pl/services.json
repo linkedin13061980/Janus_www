@@ -12,7 +12,7 @@
     {
       "order": 1,
       "slug": "szkolenia",
-      "titre": "Szkolenia językowe",
+      "title": "Szkolenia językowe",
       "desc": "Programy szyte na miarę dla Twoich zespołów. Certyfikat Qualiopi — możliwość dofinansowania z CPF, OPCO lub PDC.",
       "items": [
         "Angielski, polski, FLE i 3 inne języki",
@@ -27,7 +27,7 @@
     {
       "order": 2,
       "slug": "tlumaczenia-ustne",
-      "titre": "Profesjonalne tłumaczenia ustne",
+      "title": "Profesjonalne tłumaczenia ustne",
       "desc": "Tłumacze native speaker na Twoje negocjacje, audyty i ważne spotkania. NDA podpisywane przed każdą misją.",
       "items": [
         "Konsekutywne, środowiskowe, wideokonferencje",
@@ -42,7 +42,7 @@
     {
       "order": 3,
       "slug": "wsparcie-terenowe",
-      "titre": "Wsparcie terenowe",
+      "title": "Wsparcie terenowe",
       "desc": "Fizyczna obecność podczas kluczowych misji. Nie tylko tłumaczenie — dekodowanie kulturowe i doradztwo w czasie rzeczywistym.",
       "items": [
         "Audyty dostawców, wizyty w fabrykach, due diligence",
@@ -57,7 +57,7 @@
     {
       "order": 4,
       "slug": "tlumaczenia-pisemne",
-      "titre": "Profesjonalne tłumaczenia pisemne",
+      "title": "Profesjonalne tłumaczenia pisemne",
       "desc": "6 języków. Tłumacze native speaker przydzielani według specjalizacji. Wycena w ciągu 2h po przesłaniu dokumentu.",
       "items": [
         "Prawnicze, techniczne, handlowe, marketingowe",
@@ -72,7 +72,7 @@
     {
       "order": 5,
       "slug": "kierownik-projektu",
-      "titre": "Kierownik projektu terenowego",
+      "title": "Kierownik projektu terenowego",
       "desc": "Dedykowany ekspert JANUS przez cały czas trwania Twojej misji. Nie doraźny tłumacz — jeden punkt kontaktu, obecny od początku do końca.",
       "badge": "Nowość",
       "items": [

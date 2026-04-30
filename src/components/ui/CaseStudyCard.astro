@@ -1,0 +1,74 @@
+---
+interface CaseStudy {
+  id: string;
+  tag: string;
+  sector: string;
+  badge?: string;
+  client: { profile: string };
+  challenge: { headline: string; body: string };
+  mission: { headline: string; body: string; tags: string[] };
+  impact: { headline: string; body: string };
+}
+
+interface Props {
+  cas: CaseStudy;
+  alternate?: boolean;
+}
+
+const { cas, alternate = false } = Astro.props;
+---
+
+<section class={`py-24 px-6 border-t border-gold/10 ${alternate ? 'bg-anthracite-light' : ''}`}>
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Tag + Secteur -->
+    <div class="flex flex-wrap items-center gap-3 mb-8">
+      <span class="text-xs px-3 py-1 border border-gold/40 text-gold uppercase tracking-wider">
+        {cas.tag}
+      </span>
+      {cas.badge && (
+        <span class="text-xs text-white/30 uppercase tracking-wider">{cas.badge}</span>
+      )}
+    </div>
+
+    <p class="text-gold/50 text-xs uppercase tracking-widest mb-4">{cas.sector}</p>
+
+    <!-- Profil client -->
+    <p class="text-white/50 text-base leading-relaxed mb-12 max-w-xl border-l border-gold/20 pl-5 italic">
+      {cas.client.profile}
+    </p>
+
+    <!-- Contexte -->
+    <div class="mb-10">
+      <h3 class="text-xs uppercase tracking-widest text-gold/60 mb-3">
+        {cas.challenge.headline}
+      </h3>
+      <p class="text-white/70 text-base leading-relaxed">{cas.challenge.body}</p>
+    </div>
+
+    <!-- Dispositif -->
+    <div class="mb-8">
+      <h3 class="text-xs uppercase tracking-widest text-gold/60 mb-3">
+        {cas.mission.headline}
+      </h3>
+      <p class="text-white/70 text-base leading-relaxed mb-6">{cas.mission.body}</p>
+      <ul class="flex flex-wrap gap-3">
+        {cas.mission.tags.map(tag => (
+          <li class="flex items-center gap-2 text-white/55 text-xs">
+            <span class="text-gold">◆</span>
+            {tag}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Résultats -->
+    <div class="mt-10 pt-8 border-t border-gold/10">
+      <h3 class="text-xs uppercase tracking-widest text-gold/60 mb-3">
+        {cas.impact.headline}
+      </h3>
+      <p class="text-white/60 text-base leading-relaxed">{cas.impact.body}</p>
+    </div>
+
+  </div>
+</section>
