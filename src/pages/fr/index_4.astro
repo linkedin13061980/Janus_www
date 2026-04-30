@@ -38,7 +38,7 @@ const services = [
 const stats = [
   { num: '25', unit: 'ans',    label: 'en finance internationale' },
   { num: '6',  unit: 'langues', label: '100 % natifs spécialisés' },
-  { num: '+40', unit: '',      label: 'missions → contrat signé'  },
+  { num: '40', unit: 'h',      label: 'mission → contrat signé'   },
   { num: 'NDA', unit: '',      label: 'avant chaque mission'      },
 ];
 ---
@@ -76,12 +76,10 @@ const stats = [
       overflow: hidden;
       cursor: pointer;
       transition: transform .2s ease, box-shadow .2s ease;
-      text-decoration: none !important;
     }
     .tile:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.10); }
-    .tile .tile-flag { transition: transform .4s cubic-bezier(.34,1.56,.64,1); display: inline-block; }
-    .tile:hover .tile-flag { transform: scale(1.3) rotate(-5deg); }
-    .tile * { text-decoration: none !important; }
+    .tile .tile-flag { transition: transform .3s ease; display: inline-block; }
+    .tile:hover .tile-flag { transform: scale(1.15); }
 
     /* Compteur */
     .count-num { display: inline-block; }
