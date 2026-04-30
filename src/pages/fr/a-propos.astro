@@ -13,16 +13,30 @@ const valeurs = [
 <div class="max-w-4xl mx-auto">
 <p style="color:#b5936b;font-size:10px;text-transform:uppercase;letter-spacing:.35em;margin-bottom:2rem">Fondée à Lyon · 2021</p>
 <h1 style="font-family:Georgia,serif;font-size:3.5rem;font-weight:300;color:#1a1a1a;line-height:1.1;margin-bottom:1.5rem">L'agence qui parle<br/><em style="color:#b5936b">votre langue.</em></h1>
-<p style="font-size:1.1rem;color:rgba(26,26,26,0.5);max-width:500px;line-height:1.8">Fondée par <strong style="color:#1a1a1a">Agata Mich</strong> — quadrilingue, experte en finance internationale et en linguistique professionnelle.</p>
+<p style="font-size:1.1rem;color:rgba(26,26,26,0.5);max-width:500px;line-height:1.8">Fondée par <strong style="color:#1a1a1a">Agata Mich</strong> — quadrilingue, 25 ans d'expérience dans le secteur international.</p>
 </div>
 </section>
 <section style="background:white;padding:6rem 1.5rem">
 <div style="max-width:680px;margin:0 auto">
 <p style="color:rgba(26,26,26,0.35);font-size:10px;text-transform:uppercase;letter-spacing:.35em;margin-bottom:3rem">Son parcours</p>
-<p style="font-family:Georgia,serif;font-size:1.5rem;font-weight:300;color:#1a1a1a;line-height:1.6;margin-bottom:2rem">Avant de fonder JANUS, Agata Mich a passé plus de 15 ans dans la finance internationale. Un monde où la précision du langage n'est pas une qualité : c'est une exigence absolue.</p>
+<p style="font-family:Georgia,serif;font-size:1.5rem;font-weight:300;color:#1a1a1a;line-height:1.6;margin-bottom:2rem">Avant de fonder JANUS, Agata Mich a passé 25 ans dans le secteur international. Un monde où la précision du langage n'est pas une qualité : c'est une exigence absolue.</p>
 <p style="font-size:1rem;color:rgba(26,26,26,0.55);line-height:1.9;margin-bottom:1.5rem">Dans ce secteur, elle a travaillé au cœur des transactions : aux côtés des entreprises qui cherchaient à acquérir, fusionner, s'implanter à l'international. Elle a vu de première main ce que coûte une mauvaise communication — et ce que permet une communication parfaite.</p>
 <p style="font-size:1rem;color:rgba(26,26,26,0.55);line-height:1.9;margin-bottom:1.5rem">Sa passion pour les langues — elle parle couramment français, polonais, anglais et russe — l'a naturellement conduite vers le secteur linguistique. En 2016, elle crée une première structure de formation. En 2021, elle fonde JANUS : une agence orientée entreprises et professionnels, construite sur ce qu'elle a appris des deux côtés de la table.</p>
 <p style="font-size:1rem;color:rgba(26,26,26,0.55);line-height:1.9">Depuis 2021, JANUS accompagne des acteurs des secteurs financier, pharmaceutique et énergétique — des missions exigeantes, qui demandent précision, confidentialité et engagement de bout en bout.</p>
+</div>
+</section>
+<section style="background:#f7f5f2;padding:6rem 1.5rem">
+<div style="max-width:900px;margin:0 auto">
+<p style="color:rgba(26,26,26,0.35);font-size:10px;text-transform:uppercase;letter-spacing:.35em;margin-bottom:3rem;text-align:center">Nos engagements</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(26,26,26,0.06)">
+{valeurs.map(v => (
+<div style="background:white;padding:2.5rem">
+<p style="font-family:Georgia,serif;font-size:3rem;font-weight:300;color:rgba(181,147,107,0.12);margin-bottom:1.5rem">{v.n}</p>
+<p style="font-family:Georgia,serif;font-size:1.4rem;font-weight:300;color:#1a1a1a;margin-bottom:1rem">{v.titre}</p>
+<p style="font-size:.875rem;color:rgba(26,26,26,0.5);line-height:1.7">{v.desc}</p>
+</div>
+))}
+</div>
 </div>
 </section>
 <section style="background:#1a1a1a;padding:6rem 1.5rem;text-align:center">
