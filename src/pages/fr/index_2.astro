@@ -29,14 +29,14 @@ const marches = [
 ];
 
 const services = [
-  { icon: '🎓', titre: 'Formation', desc: 'Programmes sur mesure pour managers, commerciaux et techniciens. Finançable CPF, OPCO ou plan de développement des compétences.', href: '/fr/services/formation' },
-  { icon: '🎙️', titre: 'Interprétariat', desc: 'Interprètes natifs pour vos négociations, audits et réunions sensibles. NDA signé avant chaque intervention.', href: '/fr/services/interpretariat' },
-  { icon: '🤝', titre: 'Terrain', desc: 'Présence physique lors de vos missions critiques. Audits fournisseurs, négociations, salons. Décodage culturel inclus.', href: '/fr/services/terrain' },
-  { icon: '📄', titre: 'Traduction', desc: 'Juridique, technique, commercial, financier. Traducteurs natifs par domaine. Devis sous 2h, express 24h disponible.', href: '/fr/services/traduction' },
+  { icon: '🎓', titre: 'Formation',        desc: 'Sur mesure, finançable CPF/OPCO',   href: '/fr/services' },
+  { icon: '🎙️', titre: 'Interprétariat',   desc: 'Natifs, NDA, déplacement inclus',  href: '/fr/services' },
+  { icon: '🤝', titre: 'Terrain',          desc: 'Présence physique sur site',        href: '/fr/services' },
+  { icon: '📄', titre: 'Traduction',       desc: 'Juridique, technique, commercial', href: '/fr/services' },
 ];
 
 const stats = [
-  { num: '25', unit: 'ans',    label: 'en finance internationale' },
+  { num: '13', unit: 'ans',    label: 'en finance internationale' },
   { num: '6',  unit: 'langues', label: '100 % natifs spécialisés' },
   { num: '40', unit: 'h',      label: 'mission → contrat signé'   },
   { num: 'NDA', unit: '',      label: 'avant chaque mission'      },
@@ -143,11 +143,11 @@ const stats = [
       <p class="hp-sans text-[#1a1a1a]/35 text-xs uppercase tracking-[0.35em] mb-14 text-center reveal">Nos services</p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-px stagger" style="background:#1a1a1a10">
         {services.map(s => (
-          <a href={s.href} class="group bg-white p-8 flex flex-col gap-4 hover:bg-[#f7f5f2] transition-colors border-b md:border-b-0 md:border-r border-[#1a1a1a]/06 last:border-0">
+          <a href={s.href} class="group bg-white p-8 flex flex-col gap-3 hover:bg-[#f7f5f2] transition-colors">
             <span class="text-3xl">{s.icon}</span>
-            <p class="hp-serif text-[#1a1a1a] text-xl group-hover:text-[#b5936b] transition-colors">{s.titre}</p>
-            <p class="hp-sans text-[#1a1a1a]/50 text-sm leading-relaxed flex-1">{s.desc}</p>
-            <span class="hp-sans text-[#b5936b] text-xs mt-2 group-hover:underline">En savoir plus →</span>
+            <p class="hp-serif text-[#1a1a1a] text-lg group-hover:text-[#b5936b] transition-colors">{s.titre}</p>
+            <p class="hp-sans text-[#1a1a1a]/45 text-xs leading-relaxed">{s.desc}</p>
+            <span class="hp-sans text-[#b5936b]/0 group-hover:text-[#b5936b] text-xs mt-auto transition-colors">En savoir plus →</span>
           </a>
         ))}
       </div>
