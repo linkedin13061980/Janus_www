@@ -1,0 +1,370 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const locale = 'fr';
+const currentPath = '/';
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "JANUS Agence Linguistique",
+  "description": "Agence linguistique B2B multi-langues à Lyon. Formation, interprétariat, accompagnement terrain, traduction.",
+  "url": "https://agence-janus.fr",
+  "telephone": "+33967056831",
+  "email": "contact@agence-janus.fr",
+  "address": { "@type": "PostalAddress", "addressLocality": "Lyon", "postalCode": "69003", "addressCountry": "FR" },
+  "areaServed": ["France", "Pologne", "Royaume-Uni", "Allemagne", "Espagne", "Italie"],
+  "hasCredential": "Qualiopi",
+  "foundingDate": "2021",
+  "sameAs": ["https://www.linkedin.com/company/janus-agence-linguistique"]
+};
+
+const marches = [
+  { flag: '🇵🇱', pays: 'Pologne',      label: 'Prioritaire',    href: '/fr/pologne-investir',      featured: true  },
+  { flag: '🇬🇧', pays: 'Royaume-Uni', label: 'Business',        href: '/fr/marches/royaume-uni',   featured: false },
+  { flag: '🇩🇪', pays: 'Allemagne',   label: 'Zone DACH',       href: '/fr/marches/allemagne',     featured: false },
+  { flag: '🇪🇸', pays: 'Espagne',     label: 'Hispanophone',    href: '/fr/marches/espagne',       featured: false },
+  { flag: '🇮🇹', pays: 'Italie',      label: 'Franco-italien',  href: '/fr/marches/italie',        featured: false },
+  { flag: '🇫🇷', pays: 'France',      label: 'FLE · Allophones',href: '/fr/langues#fle',           featured: false },
+];
+
+const services = [
+  { icon: '🎓', titre: 'Formation', desc: 'Programmes sur mesure pour managers, commerciaux et techniciens. Finançable CPF, OPCO ou plan de développement des compétences.', href: '/fr/services/formation' },
+  { icon: '🎙️', titre: 'Interprétariat', desc: 'Interprètes natifs pour vos négociations, audits et réunions sensibles. NDA signé avant chaque intervention.', href: '/fr/services/interpretariat' },
+  { icon: '🤝', titre: 'Terrain', desc: 'Présence physique lors de vos missions critiques. Audits fournisseurs, négociations, salons. Décodage culturel inclus.', href: '/fr/services/terrain' },
+  { icon: '📄', titre: 'Traduction', desc: 'Juridique, technique, commercial, financier. Traducteurs natifs par domaine. Devis sous 2h, express 24h disponible.', href: '/fr/services/traduction' },
+];
+
+const stats = [
+  { num: '25', unit: 'ans',    label: 'en finance internationale' },
+  { num: '6',  unit: 'langues', label: '100 % natifs spécialisés' },
+  { num: '+40', unit: '',      label: 'missions → contrat signé'  },
+  { num: 'NDA', unit: '',      label: 'avant chaque mission'      },
+];
+---
+
+<Layout
+  title="JANUS — Vos échanges internationaux, sécurisés | Lyon"
+  description="Expert linguistique et interculturel pour vos échanges internationaux. Formation, interprétariat, accompagnement terrain, traduction. Certifié Qualiopi. Lyon."
+  locale={locale}
+  currentPath={currentPath}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+
+  <style is:global>
+    .hp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .hp-sans  { font-family: 'DM Sans', system-ui, sans-serif; }
+
+    /* Fade-in au scroll */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in  { opacity: 1; transform: translateY(0); }
+
+    /* Stagger enfants */
+    .stagger > * { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+    .stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s }
+    .stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay:.15s }
+    .stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:.25s }
+    .stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:.35s }
+    .stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay:.45s }
+    .stagger.in > *:nth-child(6) { opacity:1; transform:none; transition-delay:.55s }
+
+    /* Tuile pays */
+    .tile {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+      text-decoration: none !important;
+    }
+    .tile:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.10); }
+    .tile .tile-flag { transition: transform .4s cubic-bezier(.34,1.56,.64,1); display: inline-block; }
+    .tile:hover .tile-flag { transform: scale(1.3) rotate(-5deg); }
+    .tile * { text-decoration: none !important; }
+
+    /* Compteur */
+    .count-num { display: inline-block; }
+
+    /* Ticker langues */
+    @keyframes ticker { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+    .ticker-inner { display: flex; width: max-content; animation: ticker 22s linear infinite; }
+    .ticker-inner:hover { animation-play-state: paused; }
+  </style>
+
+  <!-- ① HERO -->
+  <section style="background:#f7f5f2" class="pt-36 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="hp-serif text-5xl md:text-[4.5rem] font-light text-[#1a1a1a] leading-[1.05] mb-6 reveal">
+        Où souhaitez-vous<br/><em class="italic" style="color:#b5936b">vous développer ?</em>
+      </h1>
+      <p class="hp-sans text-[#1a1a1a]/50 text-lg mb-14 max-w-lg leading-[1.8] reveal">
+        Choisissez votre marché cible — JANUS prend en charge la dimension linguistique et interculturelle de votre mission.
+      </p>
+
+      <!-- TUILES PAYS -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 stagger" id="tiles">
+        {marches.map(m => (
+          <a
+            href={m.href}
+            class={`tile block p-6 md:p-8 border ${
+              m.featured
+                ? 'border-[#b5936b] bg-[#1a1a1a]'
+                : 'border-[#1a1a1a]/12 bg-white hover:border-[#b5936b]/60'
+            }`}
+          >
+            <span class="tile-flag text-4xl md:text-5xl block mb-4 leading-none">{m.flag}</span>
+            <p class={`hp-serif text-xl font-light mb-1 ${m.featured ? 'text-[#b5936b]' : 'text-[#1a1a1a]'}`}>
+              {m.pays}
+            </p>
+            <p class={`hp-sans text-xs uppercase tracking-wider ${m.featured ? 'text-[#b5936b]/60' : 'text-[#1a1a1a]/35'}`}>
+              {m.label}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ② TICKER LANGUES -->
+  <div style="background:#1a1a1a" class="py-5 overflow-hidden select-none">
+    <div class="ticker-inner hp-sans text-white/25 text-xs uppercase tracking-[0.3em]">
+      {['Français', 'Polonais', 'Anglais', 'Allemand', 'Espagnol', 'Italien',
+        'Français', 'Polonais', 'Anglais', 'Allemand', 'Espagnol', 'Italien'].map(l => (
+        <span class="px-8">{l}&nbsp;&nbsp;·</span>
+      ))}
+    </div>
+  </div>
+
+  <!-- ③ SERVICES -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="hp-sans text-[#1a1a1a]/35 text-xs uppercase tracking-[0.35em] mb-14 text-center reveal">Nos services</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-px stagger" style="background:#1a1a1a10">
+        {services.map(s => (
+          <a href={s.href} class="group bg-white p-8 flex flex-col gap-4 hover:bg-[#f7f5f2] transition-colors border-b md:border-b-0 md:border-r border-[#1a1a1a]/06 last:border-0">
+            <span class="text-3xl">{s.icon}</span>
+            <p class="hp-serif text-[#1a1a1a] text-xl group-hover:text-[#b5936b] transition-colors">{s.titre}</p>
+            <p class="hp-sans text-[#1a1a1a]/50 text-sm leading-relaxed flex-1">{s.desc}</p>
+            <span class="hp-sans text-[#b5936b] text-xs mt-2 group-hover:underline">En savoir plus →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ③bis SITUATIONS CLIENT -->
+  <section style="background:#f7f5f2" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="hp-sans text-[#1a1a1a]/35 text-xs uppercase tracking-[0.35em] mb-6 text-center reveal">Vos situations</p>
+      <h2 class="hp-serif text-4xl md:text-5xl font-light text-[#1a1a1a] text-center leading-[1.15] mb-16 reveal">
+        Vous reconnaissez-vous<br/>dans <em class="italic" style="color:#b5936b">l'une de ces situations ?</em>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[3px] mb-[3px] stagger" id="sit-grid">
+
+        <!-- Situation 01 -->
+        <div class="sit-tile bg-white p-10 border border-[#1a1a1a]/8 cursor-pointer transition-all duration-300">
+          <p class="hp-serif text-[5rem] font-light leading-none mb-6" style="color:rgba(181,147,107,0.12)">01</p>
+          <p class="hp-sans text-[9px] uppercase tracking-[0.25em] mb-3" style="color:#b5936b">Formation</p>
+          <p class="hp-serif text-[1.35rem] font-light text-[#1a1a1a] sit-title leading-snug mb-8">
+            Vos équipes doivent travailler en langue étrangère
+          </p>
+          <div class="sit-detail hidden">
+            <p class="hp-sans text-[#1a1a1a]/55 text-sm leading-[1.8] mb-6">
+              JANUS conçoit un programme sur mesure adapté à votre secteur. Anglais des affaires, polonais professionnel, préparation à l'expatriation. Financement OPCO/CPF géré par nos soins.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">Sur mesure</span>
+              <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">Finançable OPCO</span>
+              <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">Qualiopi</span>
+            </div>
+          </div>
+          <a href="/fr/services" class="hp-sans text-xs sit-arrow" style="color:#b5936b">Voir ce service →</a>
+        </div>
+
+        <!-- Situation 02 -->
+        <div class="sit-tile bg-white p-10 border border-[#1a1a1a]/8 cursor-pointer transition-all duration-300">
+          <p class="hp-serif text-[5rem] font-light leading-none mb-6" style="color:rgba(181,147,107,0.12)">02</p>
+          <p class="hp-sans text-[9px] uppercase tracking-[0.25em] mb-3" style="color:#b5936b">Interprétariat</p>
+          <p class="hp-serif text-[1.35rem] font-light text-[#1a1a1a] sit-title leading-snug mb-8">
+            Vous négociez avec des partenaires qui ne parlent pas français
+          </p>
+          <div class="sit-detail hidden">
+            <p class="hp-sans text-[#1a1a1a]/55 text-sm leading-[1.8] mb-6">
+              Un interprète natif préparé sur votre secteur assure précision et fluidité. NDA signé avant chaque intervention. Présence physique ou visioconférence.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">Natifs certifiés</span>
+              <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">NDA systématique</span>
+              <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">Déplacement possible</span>
+            </div>
+          </div>
+          <a href="/fr/services" class="hp-sans text-xs sit-arrow" style="color:#b5936b">Voir ce service →</a>
+        </div>
+
+      </div>
+
+      <!-- Situation 03 — pleine largeur -->
+      <div class="sit-tile bg-white p-10 border border-[#1a1a1a]/8 cursor-pointer transition-all duration-300 flex items-start justify-between gap-8">
+        <div class="flex-1">
+          <p class="hp-serif text-[5rem] font-light leading-none mb-6" style="color:rgba(181,147,107,0.12)">03</p>
+          <p class="hp-sans text-[9px] uppercase tracking-[0.25em] mb-3" style="color:#b5936b">Formation technique intensive</p>
+          <p class="hp-serif text-[1.35rem] font-light text-[#1a1a1a] sit-title leading-snug mb-8 max-w-lg">
+            Vous formez des techniciens étrangers sur vos équipements
+          </p>
+          <div class="sit-detail hidden">
+            <p class="hp-sans text-[#1a1a1a]/55 text-sm leading-[1.8] mb-6 max-w-xl">
+              JANUS déploie des interprètes techniques directement en atelier. Préparation terminologique en amont, présence terrain sur toute la durée, coordination linguistique pour missions longues et intensives.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">Interprétation technique</span>
+              <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">Missions longues</span>
+              <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">Haut niveau</span>
+            </div>
+          </div>
+        </div>
+        <a href="/fr/services" class="hp-sans text-xs sit-arrow flex-shrink-0 mt-2" style="color:#b5936b">Voir ce service →</a>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center mt-14 reveal">
+        <a href="/fr/contact" class="hp-sans inline-block px-10 py-5 text-white text-xs uppercase tracking-widest transition-opacity hover:opacity-80" style="background:#b5936b">
+          Décrire mon projet →
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ④ STATS / PREUVES -->
+  <section style="background:#f7f5f2" class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 stagger" id="stats">
+        {stats.map(s => (
+          <div class="text-center">
+            <p class="hp-serif text-4xl md:text-5xl font-light mb-2" style="color:#b5936b">
+              <span class="count-num" data-target={s.num}>{s.num}</span><span class="text-2xl">{s.unit}</span>
+            </p>
+            <p class="hp-sans text-[#1a1a1a]/45 text-xs leading-snug">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ DEAL SPRINT — VIGNETTE -->
+  <section class="bg-white py-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="reveal border border-[#b5936b]/25 p-10 md:p-14 relative overflow-hidden">
+        <!-- fond déco -->
+        <div class="absolute -right-8 -top-8 text-[12rem] leading-none select-none pointer-events-none" style="color:#b5936b08">💼</div>
+        <p class="hp-sans text-[#b5936b] text-xs uppercase tracking-[0.35em] mb-4">Offre phare</p>
+        <h2 class="hp-serif text-4xl md:text-5xl font-light text-[#1a1a1a] mb-3 leading-tight">Deal Sprint</h2>
+        <p class="hp-serif text-[#b5936b] text-2xl font-light mb-6">À partir de 800 € / jour</p>
+        <p class="hp-sans text-[#1a1a1a]/55 text-base leading-[1.8] max-w-lg mb-8">
+          Préparation · présence terrain · compte-rendu. Un forfait complet pour vos négociations internationales. NDA signé avant la mission.
+        </p>
+        <a href="/fr/janus-negociation"
+           class="hp-sans inline-block px-8 py-4 text-white text-sm uppercase tracking-widest hover:opacity-80 transition-opacity"
+           style="background:#b5936b">
+          Voir l'offre complète →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ CAS PRATIQUES — 3 vignettes -->
+  <section style="background:#f7f5f2" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="hp-sans text-[#1a1a1a]/35 text-xs uppercase tracking-[0.35em] mb-14 text-center reveal">Missions récentes</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 stagger">
+        {[
+          {
+            flag: '🏭',
+            titre: 'PME + fournisseur industriel',
+            pays: 'Pologne · Katowice',
+            stat: '−18% sur le prix fournisseur',
+            href: '/fr/cas-pratiques/industrie-pologne',
+          },
+          {
+            flag: '💻',
+            titre: 'Scale-up tech recrute à Cracovie',
+            pays: 'Pologne · Cracovie',
+            stat: '−70% retours sur specs',
+            href: '/fr/cas-pratiques/tech-cracovie',
+          },
+          {
+            flag: '🏢',
+            titre: 'Back office à Wrocław',
+            pays: 'Pologne · Wrocław',
+            stat: '−35% coûts opérations',
+            href: '/fr/cas-pratiques/back-office-pologne',
+          },
+        ].map(c => (
+          <a href={c.href} class="group block bg-white p-8 border border-[#1a1a1a]/8 hover:border-[#b5936b]/40 transition-colors">
+            <span class="text-3xl block mb-5">{c.flag}</span>
+            <p class="hp-serif text-[#1a1a1a] text-lg mb-2 group-hover:text-[#b5936b] transition-colors">{c.titre}</p>
+            <p class="hp-sans text-[#1a1a1a]/35 text-xs uppercase tracking-wider mb-4">{c.pays}</p>
+            <p class="hp-sans text-[#b5936b] text-sm font-medium">{c.stat}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+
+    // Situations client — toggle
+    document.querySelectorAll('.sit-tile').forEach(function(tile) {
+      tile.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') return;
+        var wasOpen = tile.classList.contains('sit-open');
+        document.querySelectorAll('.sit-tile').forEach(function(t) {
+          t.classList.remove('sit-open');
+          t.style.background = 'white';
+          t.style.borderColor = 'rgba(26,26,26,0.08)';
+          t.querySelectorAll('.sit-title').forEach(function(h) { h.style.color = '#1a1a1a'; });
+          t.querySelectorAll('.sit-detail').forEach(function(d) { d.classList.add('hidden'); });
+        });
+        if (!wasOpen) {
+          tile.classList.add('sit-open');
+          tile.style.background = '#1a1a1a';
+          tile.style.borderColor = '#b5936b';
+          tile.querySelectorAll('.sit-title').forEach(function(h) { h.style.color = 'white'; });
+          tile.querySelectorAll('.sit-detail').forEach(function(d) { d.classList.remove('hidden'); });
+        }
+      });
+    });
+
+    // Intersection Observer — reveal + stagger
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+
+    // Compteur animé pour les stats
+    const countEls = document.querySelectorAll('.count-num[data-target]');
+    const countIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target as HTMLElement;
+        const raw = el.dataset.target ?? '';
+        const num = parseInt(raw.replace(/\D/g,''), 10);
+        if (isNaN(num)) return;
+        let start = 0;
+        const step = Math.ceil(num / 40);
+        const timer = setInterval(() => {
+          start = Math.min(start + step, num);
+          el.textContent = (raw.includes('−') ? '−' : '') + start;
+          if (start >= num) clearInterval(timer);
+        }, 35);
+        countIO.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    countEls.forEach(el => countIO.observe(el));
+  </script>
+
+</Layout>
