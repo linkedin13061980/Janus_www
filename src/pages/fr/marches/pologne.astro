@@ -2,89 +2,133 @@
 import Layout from '../../../layouts/Layout.astro';
 const locale = 'fr';
 const currentPath = '/marches/pologne';
+
+const stats = [
+  { num: '750 Mds€', label: 'PIB — 6e économie UE', source: '2023' },
+  { num: '31 Mds€',  label: 'Échanges franco-polonais', source: 'DG Trésor 2024' },
+  { num: '1 100',    label: 'Entreprises françaises', source: 'DG Trésor 2024' },
+];
+
+const raisons = [
+  { n: '01', titre: 'Croissance soutenue', desc: 'PIB doublé en 20 ans. +2,9% en 2023. Aucune récession depuis l\'entrée dans l\'UE en 2004.' },
+  { n: '02', titre: 'Main-d\'œuvre qualifiée', desc: 'Plus d\'ingénieurs diplômés qu\'en Allemagne. Coût du travail 40-50% inférieur à la France.' },
+  { n: '03', titre: 'Stabilité juridique', desc: 'Membre UE depuis 2004, zone Schengen. Droit communautaire. Cadre clair pour les investisseurs.' },
+];
+
+const janus = [
+  { icon: '🧭', titre: 'Préparation interculturelle', desc: 'Codes de conduite polonais, protocoles professionnels, pièges culturels — avant chaque déplacement.' },
+  { icon: '🤝', titre: 'Accompagnement sur site', desc: 'Varsovie, Cracovie, Wrocław — votre expert JANUS pour négociations, audits et réunions stratégiques.' },
+  { icon: '🎙️', titre: 'Interprétariat natif', desc: 'Interprètes FR↔PL. NDA signé avant chaque mission, sans exception.' },
+  { icon: '🔗', titre: 'Réseau CCIFP Lyon', desc: 'Introductions qualifiées auprès d\'entreprises et institutions franco-polonaises.' },
+];
+
+const secteurs = [
+  { icon: '🚗', titre: 'Automobile & VE', pct: '16% exports FR' },
+  { icon: '⚗️', titre: 'Chimie & Pharma', pct: '15% exports FR' },
+  { icon: '🌾', titre: 'Agroalimentaire', pct: '8% exports FR' },
+  { icon: '💻', titre: 'Numérique & Cloud', pct: 'En hausse' },
+];
 ---
+
 <Layout
-  title="S'implanter en Pologne | JANUS Agence Linguistique Lyon"
-  description="Pologne, 6e économie européenne, 35 Mds€ d'échanges franco-polonais. JANUS vous accompagne de l'exploration à l'implantation."
+  title="S'implanter en Pologne | JANUS Lyon"
+  description="Pologne, 6e économie européenne. JANUS vous accompagne de l'exploration à l'implantation — interprétariat, formation, terrain."
   locale={locale}
   currentPath={currentPath}
 >
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+  <style is:global>
+    .hp-serif{font-family:'Cormorant Garamond',Georgia,serif}
+    .hp-sans{font-family:'DM Sans',system-ui,sans-serif}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+    .stagger>*{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+    .stagger.in>*:nth-child(1){opacity:1;transform:none;transition-delay:.05s}
+    .stagger.in>*:nth-child(2){opacity:1;transform:none;transition-delay:.15s}
+    .stagger.in>*:nth-child(3){opacity:1;transform:none;transition-delay:.25s}
+    .stagger.in>*:nth-child(4){opacity:1;transform:none;transition-delay:.35s}
+  </style>
 
-  <!-- Hero -->
-  <section class="bg-anthracite pt-36 pb-24 px-6 relative overflow-hidden">
-    <div class="absolute top-16 right-8 text-[10rem] opacity-[0.06] pointer-events-none select-none leading-none">🇵🇱</div>
-    <div class="max-w-3xl mx-auto relative">
-      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Marché polonais</p>
-      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-8">
-        S'implanter<br/>en <em class="italic text-gold">Pologne.</em>
+  <!-- HERO -->
+  <section style="background:#f7f5f2" class="pt-36 pb-24 px-6 relative overflow-hidden">
+    <div class="absolute top-8 right-6 text-[12rem] opacity-[0.07] pointer-events-none select-none leading-none">🇵🇱</div>
+    <div class="max-w-4xl mx-auto relative">
+      <a href="/fr/" class="hp-sans text-xs uppercase tracking-[0.2em] mb-10 inline-flex items-center gap-2 reveal" style="color:rgba(26,26,26,0.35)">← Marchés</a>
+      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-6 reveal" style="color:#b5936b">Marché polonais</p>
+      <h1 class="hp-serif text-5xl md:text-6xl font-light leading-[1.1] mb-8 reveal" style="color:#1a1a1a">
+        S'implanter<br/>en <em class="italic" style="color:#b5936b">Pologne.</em>
       </h1>
-      <p class="text-white/50 text-lg max-w-lg leading-relaxed">
-        La Pologne est aujourd'hui l'une des économies les plus dynamiques d'Europe. 1 200 entreprises françaises y sont déjà présentes — et elles ont raison.
+      <p class="hp-sans text-lg max-w-lg leading-[1.8] reveal" style="color:rgba(26,26,26,0.5)">
+        La Pologne est l'une des économies les plus dynamiques d'Europe. Plus de 1 100 entreprises françaises y sont déjà présentes.
       </p>
     </div>
   </section>
 
-  <!-- Chiffres clés -->
-  <section class="bg-white py-20 px-6">
-    <div class="max-w-3xl mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-anthracite/10">
-        {[
-          { num: '750 Mds €', label: 'PIB — 6e économie de l\'UE', source: '2023' },
-          { num: '35 Mds €', label: 'Échanges franco-polonais', source: 'Record 2023' },
-          { num: '1 200', label: 'Entreprises françaises implantées', source: 'CCIFP 2023' },
-        ].map(c => (
-          <div class="py-8 px-6 first:pl-0 last:pr-0">
-            <p class="text-4xl font-serif font-bold text-gold mb-2">{c.num}</p>
-            <p class="text-anthracite/70 text-sm leading-tight mb-1">{c.label}</p>
-            <p class="text-anthracite/30 text-xs">{c.source}</p>
+  <!-- STATS -->
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px stagger" style="background:rgba(26,26,26,0.06)">
+        {stats.map(s => (
+          <div class="bg-white p-10 text-center">
+            <p class="hp-serif font-light mb-2" style="font-size:2.5rem;color:#b5936b">{s.num}</p>
+            <p class="hp-sans text-sm mb-1" style="color:#1a1a1a">{s.label}</p>
+            <p class="hp-sans text-xs" style="color:rgba(26,26,26,0.35)">{s.source}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Pourquoi la Pologne -->
-  <section class="bg-[#f5f5f3] py-24 px-6">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-12">Pourquoi la Pologne</p>
-      <div class="divide-y divide-anthracite/10">
-        {[
-          { n: '01', titre: 'Croissance soutenue sans interruption', desc: 'PIB doublé en 20 ans. +2,9% en 2023. L\'une des rares économies européennes sans récession depuis son entrée dans l\'UE en 2004.' },
-          { n: '02', titre: 'Main-d\'œuvre qualifiée et compétitive', desc: 'Plus d\'ingénieurs diplômés par an qu\'en Allemagne. Coût du travail 40 à 50% inférieur à la France, pour un niveau de qualification parmi les plus élevés d\'Europe centrale.' },
-          { n: '03', titre: 'Stabilité européenne et juridique', desc: 'Membre de l\'UE depuis 2004, zone Schengen. Droit communautaire appliqué. Cadre juridique clair pour les investisseurs étrangers.' },
-        ].map(r => (
-          <div class="py-10 flex gap-8">
-            <span class="text-gold/25 font-serif text-sm w-6 shrink-0 pt-1">{r.n}</span>
-            <div>
-              <p class="text-anthracite font-serif text-xl mb-3">{r.titre}</p>
-              <p class="text-anthracite/55 text-sm leading-relaxed max-w-lg">{r.desc}</p>
-            </div>
+  <!-- POURQUOI -->
+  <section style="background:#f7f5f2" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-14 reveal" style="color:rgba(26,26,26,0.35)">Pourquoi la Pologne</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px stagger" style="background:rgba(26,26,26,0.06)">
+        {raisons.map(r => (
+          <div class="bg-white p-10">
+            <p class="hp-serif font-light mb-6" style="font-size:3rem;color:rgba(181,147,107,0.15)">{r.n}</p>
+            <p class="hp-serif text-xl font-light mb-3" style="color:#1a1a1a">{r.titre}</p>
+            <p class="hp-sans text-sm leading-[1.7]" style="color:rgba(26,26,26,0.5)">{r.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Rôle JANUS -->
+  <!-- SECTEURS -->
   <section class="bg-white py-24 px-6">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-anthracite/40 text-xs uppercase tracking-[0.3em] mb-6">Le rôle de JANUS</p>
-      <h2 class="text-4xl font-serif font-light text-anthracite mb-4 leading-tight">
-        Votre interface franco-polonaise,<br/>basée à Lyon.
+    <div class="max-w-4xl mx-auto">
+      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-4 reveal" style="color:rgba(26,26,26,0.35)">Secteurs porteurs</p>
+      <h2 class="hp-serif text-3xl font-light mb-14 reveal" style="color:#1a1a1a">Où les entreprises françaises réussissent</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-px stagger" style="background:rgba(26,26,26,0.06)">
+        {secteurs.map(s => (
+          <div class="bg-white p-8 flex flex-col gap-3">
+            <span class="text-3xl">{s.icon}</span>
+            <p class="hp-serif text-lg font-light" style="color:#1a1a1a">{s.titre}</p>
+            <span class="hp-sans text-[10px] border self-start px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">{s.pct}</span>
+          </div>
+        ))}
+      </div>
+      <p class="hp-sans text-xs mt-6" style="color:rgba(26,26,26,0.3)">Source : DG Trésor / Business France 2024</p>
+    </div>
+  </section>
+
+  <!-- JANUS -->
+  <section style="background:#1a1a1a" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-6 reveal" style="color:rgba(255,255,255,0.3)">Le rôle de JANUS</p>
+      <h2 class="hp-serif text-4xl font-light text-white mb-4 reveal leading-tight">
+        Votre interface franco-polonaise,<br/><em class="italic" style="color:#b5936b">basée à Lyon.</em>
       </h2>
-      <p class="text-anthracite/55 text-lg leading-relaxed mb-16 max-w-xl">
-        Seul acteur à Lyon combinant expertise linguistique franco-polonaise, connaissance terrain du marché polonais et réseau CCIFP actif.
+      <p class="hp-sans text-base mb-14 reveal max-w-xl" style="color:rgba(255,255,255,0.4)">
+        Seul acteur à Lyon combinant expertise linguistique franco-polonaise, connaissance terrain et réseau CCIFP actif.
       </p>
-      <div class="divide-y divide-anthracite/10">
-        {[
-          { titre: 'Préparation interculturelle', desc: 'Briefing avant chaque déplacement : codes de conduite polonais, protocoles professionnels, pièges culturels à éviter.' },
-          { titre: 'Accompagnement physique en Pologne', desc: 'Varsovie, Cracovie, Wrocław, Katowice, Łódź — votre expert JANUS sur site pour vos négociations, audits fournisseurs et réunions stratégiques.' },
-          { titre: 'Interprétariat professionnel', desc: 'Interprètes natifs polonais-français. NDA signé avant chaque mission, sans exception.' },
-          { titre: 'Réseau et introductions', desc: 'Accès au réseau CCIFP Lyon. Introductions qualifiées auprès d\'entreprises et d\'institutions franco-polonaises.' },
-        ].map(s => (
-          <div class="py-8">
-            <p class="text-anthracite font-medium text-base mb-2">{s.titre}</p>
-            <p class="text-anthracite/50 text-sm leading-relaxed max-w-lg">{s.desc}</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px stagger" style="background:rgba(255,255,255,0.05)">
+        {janus.map(j => (
+          <div class="p-10" style="background:#1a1a1a">
+            <span class="text-3xl block mb-5">{j.icon}</span>
+            <p class="hp-serif text-xl font-light mb-3" style="color:#b5936b">{j.titre}</p>
+            <p class="hp-sans text-sm leading-[1.7]" style="color:rgba(255,255,255,0.4)">{j.desc}</p>
           </div>
         ))}
       </div>
@@ -92,16 +136,20 @@ const currentPath = '/marches/pologne';
   </section>
 
   <!-- CTA -->
-  <section class="bg-anthracite py-40 px-6 text-center">
-    <div class="max-w-xl mx-auto">
-      <h2 class="text-4xl font-serif font-light text-white mb-6">
-        Un projet en Pologne ?<br/><em class="italic text-gold">Parlons-en.</em>
+  <section style="background:#f7f5f2" class="py-32 px-6 text-center">
+    <div class="max-w-xl mx-auto reveal">
+      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-8" style="color:rgba(26,26,26,0.35)">Premier échange gratuit · Confidentiel</p>
+      <h2 class="hp-serif text-4xl md:text-5xl font-light mb-6 leading-tight" style="color:#1a1a1a">
+        Un projet en Pologne ?<br/><em class="italic" style="color:#b5936b">Parlons-en.</em>
       </h2>
-      <p class="text-white/40 text-base mb-12">Premier échange gratuit et confidentiel. De l'exploration à l'implantation.</p>
-      <a href="/fr/contact?marche=pologne" class="inline-block px-10 py-5 bg-gold text-anthracite font-semibold uppercase tracking-wider hover:bg-gold-light transition-colors text-sm">
-        Discuter de mon projet
+      <a href="/fr/contact?marche=pologne" class="hp-sans inline-block px-10 py-5 text-xs uppercase tracking-widest hover:opacity-80 transition-opacity" style="background:#b5936b;color:#1a1a1a">
+        Discuter de mon projet →
       </a>
     </div>
   </section>
 
+  <script>
+    const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);} }), {threshold:0.1});
+    document.querySelectorAll('.reveal,.stagger').forEach(el => io.observe(el));
+  </script>
 </Layout>
