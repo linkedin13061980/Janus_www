@@ -1,4 +1,4 @@
-# CLAUDE.md — JANUS Agence Linguistique
+# CLAUDE.md — JANUS I Communication Internationale
 
 ## Mission
 
