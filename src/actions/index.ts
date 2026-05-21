@@ -89,7 +89,7 @@ export const server = {
             </div>
 
             <p style="margin-top: 32px; font-size: 11px; color: #ffffff40; text-align: center;">
-              Janus I Communication Internationale — contact@agence-janus.fr
+              Janus I Communication Interculturelle — contact@agence-janus.fr
             </p>
           </div>
         `,
@@ -97,9 +97,9 @@ export const server = {
 
       // Email de confirmation à l'expéditeur
       await resend.emails.send({
-        from: 'Janus I Communication Internationale <contact@agence-janus.fr>',
+        from: 'Janus I Communication Interculturelle <contact@agence-janus.fr>',
         to: input.email,
-        subject: 'Votre demande a bien été reçue — Janus I Communication Internationale',
+        subject: 'Votre demande a bien été reçue — Janus I Communication Interculturelle',
         html: `
           <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; background: #1e2124; color: #f5f5f0; padding: 32px;">
             <h1 style="color: #c9a84c; font-size: 24px; margin-bottom: 8px;">Bonjour ${input.firstname},</h1>
@@ -123,7 +123,7 @@ export const server = {
             </p>
             <hr style="border: none; border-top: 1px solid #c9a84c22; margin: 32px 0;" />
             <p style="color: #ffffff30; font-size: 11px; text-align: center; margin: 0;">
-              Janus I Communication Internationale · 20 ter rue Julien, 69003 Lyon<br/>
+              Janus I Communication Interculturelle · 20 ter rue Julien, 69003 Lyon<br/>
               SIRET 90335843000010
             </p>
           </div>
