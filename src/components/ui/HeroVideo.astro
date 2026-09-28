@@ -1,0 +1,187 @@
+---
+// Hero plein format avec vidéo d'arrière-plan décorative.
+// Aucun texte ici : le contenu passe par le slot, les libellés par les props.
+//
+// Stratégie de chargement :
+// - l'image poster (<img>) s'affiche immédiatement : c'est elle qui compte pour le LCP ;
+// - la vidéo (preload="none", sans <source>) n'est branchée qu'après l'événement `load` ;
+// - elle n'est jamais chargée si prefers-reduced-motion, Save-Data ou connexion lente ;
+// - sous 768 px, les sources `mobile` sont utilisées (repli sur `desktop`).
+
+interface VideoSource {
+  src: string;
+  type: string;
+}
+
+interface Props {
+  desktop?: VideoSource[];
+  mobile?: VideoSource[];
+  poster?: { avif?: string; jpg: string } | null;
+  pauseLabel: string;
+  playLabel: string;
+  class?: string;
+}
+
+const {
+  desktop = [],
+  mobile = [],
+  poster = null,
+  pauseLabel,
+  playLabel,
+  class: className = '',
+} = Astro.props;
+
+const hasVideo = desktop.length > 0 || mobile.length > 0;
+---
+
+<section
+  class={`hero-video relative isolate overflow-hidden flex items-center min-h-[88svh] md:min-h-[92svh] ${className}`}
+  style="background:#0d0d0d"
+  data-hero-video
+>
+  {poster && (
+    <picture class="absolute inset-0 -z-20" aria-hidden="true">
+      {poster.avif && <source srcset={poster.avif} type="image/avif" />}
+      <img src={poster.jpg} alt="" class="w-full h-full object-cover" fetchpriority="high" decoding="async" />
+    </picture>
+  )}
+
+  {hasVideo && (
+    <video
+      class="hero-video__media absolute inset-0 -z-10 w-full h-full object-cover"
+      muted
+      loop
+      playsinline
+      preload="none"
+      aria-hidden="true"
+      tabindex="-1"
+      data-desktop={JSON.stringify(desktop)}
+      data-mobile={JSON.stringify(mobile)}
+    ></video>
+  )}
+
+  <!-- Overlay : plus dense à gauche et en bas, derrière le texte -->
+  <div class="hero-video__overlay absolute inset-0 -z-10 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative w-full">
+    <slot />
+  </div>
+
+  {hasVideo && (
+    <button
+      type="button"
+      class="hero-video__toggle absolute bottom-5 right-5 md:bottom-8 md:right-8 w-11 h-11 items-center justify-center rounded-full border transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+      style="border-color:rgba(255,255,255,.35);color:rgba(255,255,255,.85);outline-color:#c9a84c"
+      aria-label={pauseLabel}
+      data-label-pause={pauseLabel}
+      data-label-play={playLabel}
+      hidden
+    >
+      <svg class="hero-video__icon-pause w-4 h-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12"/><rect x="9.5" y="2" width="3.5" height="12"/></svg>
+      <svg class="hero-video__icon-play w-4 h-4 hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>
+    </button>
+  )}
+</section>
+
+<style>
+  /* Overlay dimensionné pour garder un contraste ≥ 3:1 sur le texte, même sur une vidéo très claire. */
+  .hero-video__overlay {
+    background:
+      linear-gradient(0deg, rgba(13,13,13,.6) 0%, rgba(13,13,13,0) 40%),
+      rgba(13,13,13,.72);
+  }
+  @media (min-width: 768px) {
+    .hero-video__overlay {
+      background:
+        linear-gradient(0deg, rgba(13,13,13,.6) 0%, rgba(13,13,13,0) 40%),
+        linear-gradient(90deg, rgba(13,13,13,.9) 0%, rgba(13,13,13,.82) 80%, rgba(13,13,13,.6) 100%);
+    }
+  }
+  .hero-video__media { opacity: 0; transition: opacity .8s ease; }
+  .hero-video__media.is-playing { opacity: 1; }
+  .hero-video__toggle:not([hidden]) { display: inline-flex; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video__media { display: none; }
+    .hero-video__toggle { display: none !important; }
+  }
+</style>
+
+<script>
+  type Source = { src: string; type: string };
+
+  function initHeroVideo(root: HTMLElement) {
+    const video = root.querySelector<HTMLVideoElement>('.hero-video__media');
+    const toggle = root.querySelector<HTMLButtonElement>('.hero-video__toggle');
+    if (!video) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reducedMotion.matches) return;
+
+    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    if (conn?.saveData || ['slow-2g', '2g', '3g'].includes(conn?.effectiveType ?? '')) return;
+
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    const desktop: Source[] = JSON.parse(video.dataset.desktop || '[]');
+    const mobile: Source[] = JSON.parse(video.dataset.mobile || '[]');
+    const sources = isMobile && mobile.length ? mobile : desktop.length ? desktop : mobile;
+    if (!sources.length) return;
+
+    const setPlayingUi = (playing: boolean) => {
+      if (!toggle) return;
+      toggle.setAttribute('aria-label', (playing ? toggle.dataset.labelPause : toggle.dataset.labelPlay) || '');
+      toggle.querySelector('.hero-video__icon-pause')?.classList.toggle('hidden', !playing);
+      toggle.querySelector('.hero-video__icon-play')?.classList.toggle('hidden', playing);
+    };
+
+    let userPaused = false;
+
+    const start = () => {
+      for (const s of sources) {
+        const el = document.createElement('source');
+        el.src = s.src;
+        el.type = s.type;
+        video.appendChild(el);
+      }
+      video.load();
+      video.addEventListener('playing', () => {
+        video.classList.add('is-playing');
+        if (toggle) toggle.hidden = false;
+        setPlayingUi(true);
+      }, { once: true });
+      video.play().catch(() => { /* lecture auto refusée : le poster reste affiché */ });
+    };
+
+    toggle?.addEventListener('click', () => {
+      if (video.paused) {
+        userPaused = false;
+        video.play().catch(() => {});
+        setPlayingUi(true);
+      } else {
+        userPaused = true;
+        video.pause();
+        setPlayingUi(false);
+      }
+    });
+
+    // Économie CPU/batterie : pause hors écran, reprise si l'utilisateur n'a pas mis en pause.
+    new IntersectionObserver(([entry]) => {
+      if (!video.classList.contains('is-playing') || userPaused) return;
+      if (entry.isIntersecting) video.play().catch(() => {});
+      else video.pause();
+    }, { threshold: 0.1 }).observe(root);
+
+    reducedMotion.addEventListener('change', (e) => {
+      if (e.matches) { video.pause(); if (toggle) toggle.hidden = true; }
+    });
+
+    const idle = (cb: () => void) =>
+      'requestIdleCallback' in window
+        ? (window as Window & { requestIdleCallback: (cb: () => void, o?: { timeout: number }) => void }).requestIdleCallback(cb, { timeout: 2000 })
+        : setTimeout(cb, 300);
+
+    if (document.readyState === 'complete') idle(start);
+    else window.addEventListener('load', () => idle(start), { once: true });
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-hero-video]').forEach(initHeroVideo);
+</script>

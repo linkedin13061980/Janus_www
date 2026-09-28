@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import HeroVideo from '../../components/ui/HeroVideo.astro';
 
 const locale = 'fr';
 const currentPath = '/';
@@ -14,11 +15,23 @@ const langues = [
 ];
 
 const services = [
-  { titre: 'Accompagnement international', motsCles: ['Négociation', 'Coordination', 'Interculturel', 'Présence terrain'], href: '/fr/services' },
-  { titre: 'Interprétation',               motsCles: ['Réunions', 'Négociations', 'Visites de sites'],                      href: '/fr/services' },
-  { titre: 'Traduction',                   motsCles: ['Documents professionnels', 'Commerciaux', 'Stratégiques'],           href: '/fr/services' },
-  { titre: 'Formation professionnelle',    motsCles: ['Langues', 'Métiers', 'Communication interculturelle'],               href: '/fr/services' },
+  { titre: 'Accompagnement international', motsCles: ['Négociation', 'Coordination', 'Interculturel', 'Terrain'],      href: '/fr/services' },
+  { titre: 'Interprétation',               motsCles: ['Réunions', 'Négociations', 'Visites de sites'],                  href: '/fr/services' },
+  { titre: 'Traduction',                   motsCles: ['Documents', 'Contrats', 'Communication professionnelle'],        href: '/fr/services' },
+  { titre: 'Formation',                    motsCles: ['Langues', 'Métiers', 'Communication interculturelle'],           href: '/fr/services' },
 ];
+
+// Vidéo du Hero : renseigner les chemins une fois les fichiers déposés dans /public/video/.
+// Tant que les listes sont vides, le Hero affiche un fond sombre sans aucune requête vidéo.
+// Exemple :
+//   desktop: [{ src: '/video/hero-1080.webm', type: 'video/webm' }, { src: '/video/hero-1080.mp4', type: 'video/mp4' }],
+//   mobile:  [{ src: '/video/hero-720.mp4', type: 'video/mp4' }],
+//   poster:  { avif: '/video/hero-poster.avif', jpg: '/video/hero-poster.jpg' },
+const heroVideo = {
+  desktop: [],
+  mobile: [],
+  poster: null,
+};
 
 const cas = [
   { secteur: 'Industrie · Allemagne ↔ Pologne',         resume: '5 jours · 18 techniciens' },
@@ -53,43 +66,41 @@ const reassurance = [
     a { text-decoration: none !important; }
   </style>
 
-  <!-- ① HERO + ENTRÉE PAR LANGUE -->
-  <section style="background:#f7f5f2" class="pt-28 md:pt-28 pb-16 md:pb-20 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="max-w-4xl">
-        <p class="hp-sans text-[11px] md:text-xs uppercase tracking-[0.3em] mb-6" style="color:#b5936b">
-          Accompagnement international &amp; services multilingues
-        </p>
-        <h1 class="hp-serif font-light leading-[1.08] mb-6 md:mb-8" style="font-size:clamp(2.3rem,5vw,3.75rem);color:#1a1a1a">
-          Vos échanges internationaux,<br class="hidden md:block" />
-          plus simples et plus efficaces.
-        </h1>
-        <p class="hp-sans text-base md:text-lg max-w-2xl leading-[1.8] mb-8" style="color:rgba(26,26,26,0.65)">
-          JANUS accompagne vos projets internationaux, de la préparation des échanges jusqu’à l’intervention sur le terrain.
-        </p>
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
-          <a href="/fr/contact" class="hp-sans inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#1a1a1a">
-            Parler de votre projet
-          </a>
-          <a href="/fr/services" class="hp-sans hp-link inline-block text-center py-3 text-xs uppercase tracking-widest border-b" style="border-color:rgba(26,26,26,0.3);color:#1a1a1a">
-            Découvrir nos services
-          </a>
-        </div>
-      </div>
+  <!-- ① HERO VIDÉO -->
+  <HeroVideo
+    desktop={heroVideo.desktop}
+    mobile={heroVideo.mobile}
+    poster={heroVideo.poster}
+    pauseLabel="Mettre la vidéo en pause"
+    playLabel="Lire la vidéo"
+  >
+    <div class="max-w-6xl mx-auto px-6 pt-28 pb-20 md:pt-32 md:pb-24">
+      <p class="hp-sans text-[11px] md:text-xs uppercase tracking-[0.3em] mb-6 md:mb-8" style="color:#c9a84c">
+        International · Multilingue · Sur le terrain
+      </p>
+      <h1 class="hp-serif font-light leading-[1.05] mb-8" style="font-size:clamp(2.4rem,6vw,4.25rem);color:#f7f5f2">
+        Vos projets internationaux.<br />
+        <em class="italic" style="color:#c9a84c">Nous faisons tomber les barrières.</em>
+      </h1>
+      <p class="hp-sans text-base md:text-lg max-w-xl leading-[1.7] mb-8" style="color:rgba(247,245,242,0.8)">
+        Négociation, interprétation, coordination et accompagnement terrain pour vos opérations internationales.
+      </p>
+      <p class="hp-sans text-xs md:text-sm uppercase tracking-[0.35em] mb-10" style="color:rgba(247,245,242,0.6)">
+        FR · EN · PL · DE · ES
+      </p>
+      <a href="/fr/contact" class="hp-sans inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">
+        Parler de votre projet →
+      </a>
+    </div>
+  </HeroVideo>
 
-      <!-- Entrée par langue -->
-      <div class="mt-14 md:mt-12 pt-10 border-t" style="border-color:rgba(26,26,26,0.1)">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-8 mb-6">
-          <div>
-            <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#b5936b">Votre langue</p>
-            <h2 class="hp-serif font-light leading-tight" style="font-size:clamp(1.6rem,3vw,2.25rem);color:#1a1a1a">
-              Dans quelle langue travaillez-vous&nbsp;?
-            </h2>
-          </div>
-          <p class="hp-sans text-sm leading-[1.7] md:max-w-xs md:text-right" style="color:rgba(26,26,26,0.6)">
-            Accédez directement aux solutions adaptées à vos échanges professionnels.
-          </p>
-        </div>
+  <!-- ENTRÉE PAR LANGUE -->
+  <section style="background:#f7f5f2" class="py-12 md:py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#b5936b">Votre langue</p>
+      <h2 class="hp-serif font-light leading-tight mb-8" style="font-size:clamp(1.6rem,3vw,2.25rem);color:#1a1a1a">
+        Dans quelle langue travaillez-vous&nbsp;?
+      </h2>
         <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {langues.map((l, i) => (
             <li class={i === langues.length - 1 ? 'col-span-2 sm:col-span-1' : ''}>
@@ -127,7 +138,6 @@ const reassurance = [
             </li>
           ))}
         </ul>
-      </div>
     </div>
   </section>
 
@@ -147,11 +157,11 @@ const reassurance = [
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {services.map((s, i) => (
-          <a href={s.href} class="hp-card flex flex-col bg-[#f7f5f2] border border-[#1a1a1a]/5 p-7">
-            <p class="hp-serif font-light leading-none mb-5" style="font-size:2rem;color:#b5936b">0{i + 1}</p>
-            <h3 class="hp-sans text-sm font-medium uppercase tracking-[0.15em] leading-snug mb-4" style="color:#1a1a1a">{s.titre}</h3>
-            <p class="hp-sans text-sm leading-[1.7] mb-5" style="color:rgba(26,26,26,0.6)">{s.motsCles.join(' · ')}</p>
-            <span class="hp-arrow hp-sans text-sm mt-auto transition-colors" style="color:rgba(26,26,26,0.3)" aria-hidden="true">→</span>
+          <a href={s.href} class={`hp-card flex flex-col border p-7 ${i === 0 ? 'bg-[#1a1a1a] border-[#b5936b]' : 'bg-[#f7f5f2] border-[#1a1a1a]/5'}`}>
+            <p class="hp-serif font-light leading-none mb-5" style={`font-size:2rem;color:${i === 0 ? '#c9a84c' : '#b5936b'}`}>0{i + 1}</p>
+            <h3 class="hp-sans text-sm font-medium uppercase tracking-[0.15em] leading-snug mb-4" style={`color:${i === 0 ? '#f7f5f2' : '#1a1a1a'}`}>{s.titre}</h3>
+            <p class="hp-sans text-sm leading-[1.7] mb-5" style={`color:${i === 0 ? 'rgba(247,245,242,0.7)' : 'rgba(26,26,26,0.6)'}`}>{s.motsCles.join(' · ')}</p>
+            <span class="hp-arrow hp-sans text-sm mt-auto transition-colors" style={`color:${i === 0 ? '#c9a84c' : 'rgba(26,26,26,0.3)'}`} aria-hidden="true">→</span>
           </a>
         ))}
       </div>
