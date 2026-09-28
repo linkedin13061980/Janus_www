@@ -1,0 +1,40 @@
+---
+// Drapeau SVG décoratif (rendu identique sur tous les systèmes, contrairement aux emojis).
+interface Props {
+  code: 'gb' | 'pl' | 'de' | 'es' | 'it' | 'fr';
+  class?: string;
+}
+
+const { code, class: className = 'w-9 h-6' } = Astro.props;
+---
+
+<span class={`inline-block flex-shrink-0 overflow-hidden ${className}`} style="box-shadow:0 0 0 1px rgba(26,26,26,.08)" aria-hidden="true">
+  {code === 'gb' && (
+    <svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" class="w-full h-full block">
+      <clipPath id="flag-uk-s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+      <clipPath id="flag-uk-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+      <g clip-path="url(#flag-uk-s)">
+        <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+        <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#flag-uk-t)" stroke="#C8102E" stroke-width="4"/>
+        <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+        <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+      </g>
+    </svg>
+  )}
+  {code === 'pl' && (
+    <svg viewBox="0 0 3 2" preserveAspectRatio="none" class="w-full h-full block"><rect width="3" height="1" fill="#fff"/><rect y="1" width="3" height="1" fill="#DC143C"/></svg>
+  )}
+  {code === 'de' && (
+    <svg viewBox="0 0 3 3" preserveAspectRatio="none" class="w-full h-full block"><rect width="3" height="1" fill="#000"/><rect y="1" width="3" height="1" fill="#DD0000"/><rect y="2" width="3" height="1" fill="#FFCE00"/></svg>
+  )}
+  {code === 'es' && (
+    <svg viewBox="0 0 3 4" preserveAspectRatio="none" class="w-full h-full block"><rect width="3" height="4" fill="#AA151B"/><rect y="1" width="3" height="2" fill="#F1BF00"/></svg>
+  )}
+  {code === 'it' && (
+    <svg viewBox="0 0 3 2" preserveAspectRatio="none" class="w-full h-full block"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#CE2B37"/></svg>
+  )}
+  {code === 'fr' && (
+    <svg viewBox="0 0 3 2" preserveAspectRatio="none" class="w-full h-full block"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ED2939"/></svg>
+  )}
+</span>

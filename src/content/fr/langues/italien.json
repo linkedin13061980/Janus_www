@@ -1,0 +1,60 @@
+{
+  "slug": "italien",
+  "nom": "Italien",
+  "code": "it",
+  "meta": {
+    "title": "Services en italien pour les entreprises | JANUS",
+    "description": "Interprétation, traduction, accompagnement de négociations et formation professionnelle en italien pour vos échanges et vos projets avec l'Italie."
+  },
+  "hero": {
+    "surtitre": "Italien · Relations franco-italiennes",
+    "h1": "Services en italien pour les entreprises",
+    "intro": "JANUS accompagne les entreprises dans leurs échanges professionnels en italien : négociations, réunions, projets industriels ou commerciaux avec l'Italie, traduction, interprétation et formation professionnelle."
+  },
+  "services": [
+    {
+      "titre": "Accompagnement international",
+      "texte": "Préparation de vos rendez-vous et négociations avec des partenaires italiens : importance de la relation, rôle des dirigeants dans la décision, usages propres à chaque secteur."
+    },
+    {
+      "titre": "Interprétation",
+      "texte": "Interprétation français ↔ italien pour vos réunions, négociations, visites d'ateliers ou d'usines et salons professionnels."
+    },
+    {
+      "titre": "Traduction professionnelle",
+      "texte": "Contrats, catalogues, fiches produits et documentation technique : des traductions fidèles au registre et au vocabulaire de votre secteur."
+    },
+    {
+      "titre": "Formation professionnelle",
+      "texte": "Italien professionnel adapté à vos échanges : relation commerciale, réunions, correspondance et vocabulaire métier."
+    }
+  ],
+  "situations": [
+    "Réunion avec un client, un fournisseur ou un distributeur italien",
+    "Négociation commerciale ou partenariat avec une entreprise italienne",
+    "Visite d'usine, d'atelier ou de site en Italie",
+    "Audit fournisseur conduit en italien",
+    "Coordination d'équipes françaises et italiennes",
+    "Échanges techniques avec des partenaires industriels italiens",
+    "Traduction de catalogues, de contrats ou de documents techniques",
+    "Collaborateurs en relation régulière avec l'Italie"
+  ],
+  "formation": {
+    "titre": "Formation professionnelle en italien",
+    "intro": "Proche du français, l'italien donne vite l'illusion d'être compris — jusqu'au premier malentendu en réunion. La formation cible la précision : vocabulaire de votre métier, formulations professionnelles, écrit commercial et échanges oraux en situation."
+  },
+  "marche": {
+    "titre": "Italie",
+    "texte": "L'Italie compte parmi les principaux partenaires commerciaux de la France, avec des liens industriels étroits, notamment entre Auvergne-Rhône-Alpes et le nord de l'Italie.",
+    "points": [
+      "Industrie, mécanique et sous-traitance",
+      "Mode, luxe, design et agroalimentaire",
+      "Relations transfrontalières avec le nord de l'Italie",
+      "Salons professionnels en Italie"
+    ],
+    "liens": [
+      { "label": "Découvrir le marché italien →", "href": "/fr/marches/italie" }
+    ]
+  },
+  "cta": { "titre": "Un projet en italien ?" }
+}

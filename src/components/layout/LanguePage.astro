@@ -1,0 +1,180 @@
+---
+// Gabarit d'une page langue (/fr/langues/{slug}).
+// Aucun texte ici : tout le contenu vient de /src/content/fr/langues/{slug}.json et _commun.json.
+import Flag from '../ui/Flag.astro';
+
+type FlagCode = 'gb' | 'pl' | 'de' | 'es' | 'it' | 'fr';
+interface Lien { label: string; href: string }
+
+interface Props {
+  data: {
+    slug: string;
+    nom: string;
+    code: FlagCode;
+    hero: { surtitre: string; h1: string; intro: string };
+    services: { titre: string; texte: string }[];
+    situations: string[];
+    formation: { titre: string; intro: string };
+    marche: { titre: string; texte: string; points: string[]; liens: Lien[] };
+    cta: { titre: string };
+  };
+  commun: {
+    langues: { slug: string; nom: string; code: FlagCode }[];
+    fil: Lien;
+    hero: { cta: Lien; lien: Lien };
+    services: { surtitre: string; titre: string; lien: Lien };
+    situations: { surtitre: string; titre: string };
+    formation: { surtitre: string; points: string[]; financementTitre: string; financement: string; qualiopi: string; lien: Lien };
+    marche: { surtitre: string };
+    autres: { titre: string };
+    cta: { surtitre: string; accroche: string; texte: string; bouton: Lien };
+  };
+}
+
+const { data, commun } = Astro.props;
+const autres = commun.langues.filter((l) => l.slug !== data.slug);
+---
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+
+<div class="langue-page">
+  <!-- HERO -->
+  <section style="background:#f7f5f2" class="pt-12 md:pt-16 pb-16 md:pb-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <a href={commun.fil.href} class="lp-sans lp-link text-xs uppercase tracking-[0.2em] inline-block mb-10" style="color:rgba(26,26,26,0.5)">{commun.fil.label}</a>
+      <div class="flex items-center gap-4 mb-6">
+        <Flag code={data.code} class="w-10 h-7" />
+        <p class="lp-sans text-[11px] md:text-xs uppercase tracking-[0.3em]" style="color:#b5936b">{data.hero.surtitre}</p>
+      </div>
+      <h1 class="lp-serif font-light leading-[1.08] mb-6 max-w-4xl" style="font-size:clamp(2.2rem,5vw,3.75rem);color:#1a1a1a">{data.hero.h1}</h1>
+      <p class="lp-sans text-base md:text-lg max-w-2xl leading-[1.8] mb-10" style="color:rgba(26,26,26,0.7)">{data.hero.intro}</p>
+      <div class="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
+        <a href={commun.hero.cta.href} class="lp-sans inline-block text-center px-10 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{commun.hero.cta.label}</a>
+        <a href={commun.hero.lien.href} class="lp-sans lp-link self-start sm:self-auto text-xs uppercase tracking-widest border-b py-2" style="border-color:rgba(26,26,26,0.3);color:#1a1a1a">{commun.hero.lien.label}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMENT JANUS VOUS ACCOMPAGNE -->
+  <section id="accompagnement" class="bg-white py-16 md:py-24 px-6 scroll-mt-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-12">
+        <div>
+          <p class="lp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#b5936b">{commun.services.surtitre}</p>
+          <h2 class="lp-serif font-light leading-tight" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{commun.services.titre}</h2>
+        </div>
+        <a href={commun.services.lien.href} class="lp-sans lp-link self-start md:self-auto text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">{commun.services.lien.label}</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {data.services.map((s, i) => (
+          <article class={`flex flex-col border p-7 ${i === 0 ? 'bg-[#1a1a1a] border-[#b5936b]' : 'bg-[#f7f5f2] border-[#1a1a1a]/5'}`}>
+            <p class="lp-serif font-light leading-none mb-5" style={`font-size:2rem;color:${i === 0 ? '#c9a84c' : '#b5936b'}`}>0{i + 1}</p>
+            <h3 class="lp-sans text-sm font-medium uppercase tracking-[0.15em] leading-snug mb-4" style={`color:${i === 0 ? '#f7f5f2' : '#1a1a1a'}`}>{s.titre}</h3>
+            <p class="lp-sans text-sm leading-[1.75]" style={`color:${i === 0 ? 'rgba(247,245,242,0.75)' : 'rgba(26,26,26,0.68)'}`}>{s.texte}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SITUATIONS -->
+  <section style="background:#f7f5f2" class="py-16 md:py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <p class="lp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#b5936b">{commun.situations.surtitre}</p>
+      <h2 class="lp-serif font-light leading-tight mb-10 md:mb-12" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{commun.situations.titre}</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-10">
+        {data.situations.map((s) => (
+          <li class="lp-sans text-sm md:text-base leading-snug flex items-start gap-4 py-4 border-b" style="border-color:rgba(26,26,26,0.1);color:#1a1a1a">
+            <span class="inline-block w-1.5 h-1.5 mt-2 flex-shrink-0" style="background:#b5936b" aria-hidden="true"></span>
+            {s}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- FORMATION -->
+  <section class="bg-white py-16 md:py-24 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+      <div>
+        <p class="lp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#b5936b">{commun.formation.surtitre}</p>
+        <h2 class="lp-serif font-light leading-tight mb-6" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{data.formation.titre}</h2>
+        <p class="lp-sans text-base leading-[1.8] mb-8" style="color:rgba(26,26,26,0.7)">{data.formation.intro}</p>
+        <ul class="space-y-3">
+          {commun.formation.points.map((p) => (
+            <li class="lp-sans text-sm leading-snug flex items-start gap-3" style="color:#1a1a1a">
+              <span class="lp-sans flex-shrink-0" style="color:#b5936b" aria-hidden="true">—</span>{p}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <aside class="self-start border-l-2 p-8" style="background:#f7f5f2;border-left-color:#b5936b">
+        <h3 class="lp-sans text-xs font-medium uppercase tracking-[0.2em] mb-4" style="color:#1a1a1a">{commun.formation.financementTitre}</h3>
+        <p class="lp-sans text-sm leading-[1.8] mb-4" style="color:rgba(26,26,26,0.72)">{commun.formation.financement}</p>
+        <p class="lp-sans text-sm leading-[1.8] mb-6" style="color:rgba(26,26,26,0.72)">{commun.formation.qualiopi}</p>
+        <a href={commun.formation.lien.href} class="lp-sans lp-link text-xs uppercase tracking-widest border-b py-1" style="border-color:#b5936b;color:#1a1a1a">{commun.formation.lien.label}</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- MARCHÉ -->
+  <section style="background:#1a1a1a" class="py-16 md:py-24 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16">
+      <div>
+        <p class="lp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#c9a84c">{commun.marche.surtitre}</p>
+        <h2 class="lp-serif font-light leading-tight mb-6" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#f7f5f2">{data.marche.titre}</h2>
+        <p class="lp-sans text-base leading-[1.8] mb-8" style="color:rgba(247,245,242,0.75)">{data.marche.texte}</p>
+        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4">
+          {data.marche.liens.map((l, i) => (
+            <a href={l.href} class={`lp-sans inline-block text-center px-8 py-4 text-xs uppercase tracking-widest border transition-colors ${i === 0 ? 'hover:opacity-85' : 'hover:bg-white/5'}`} style={i === 0 ? 'background:#b5936b;border-color:#b5936b;color:#0d0d0d' : 'border-color:rgba(247,245,242,0.35);color:#f7f5f2'}>{l.label}</a>
+          ))}
+        </div>
+      </div>
+      <ul class="self-center border-t" style="border-color:rgba(181,147,107,0.3)">
+        {data.marche.points.map((p) => (
+          <li class="lp-sans text-sm md:text-base flex items-start gap-4 py-4 border-b" style="border-color:rgba(181,147,107,0.3);color:rgba(247,245,242,0.88)">
+            <span class="inline-block w-1.5 h-1.5 mt-2 flex-shrink-0" style="background:#c9a84c" aria-hidden="true"></span>{p}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section style="background:#f7f5f2" class="py-20 md:py-28 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <p class="lp-sans text-xs uppercase tracking-[0.3em] mb-6" style="color:#b5936b">{commun.cta.surtitre}</p>
+      <h2 class="lp-serif text-4xl md:text-5xl font-light mb-6 leading-tight" style="color:#1a1a1a">
+        {data.cta.titre.replace(/ \?$/, ' ?')}<br /><em class="italic" style="color:#b5936b">{commun.cta.accroche}</em>
+      </h2>
+      <p class="lp-sans text-base mb-10 max-w-md mx-auto leading-[1.8]" style="color:rgba(26,26,26,0.7)">{commun.cta.texte}</p>
+      <a href={commun.cta.bouton.href} class="lp-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{commun.cta.bouton.label}</a>
+    </div>
+  </section>
+
+  <!-- AUTRES LANGUES -->
+  <nav class="bg-white py-12 px-6 border-t" style="border-color:rgba(26,26,26,0.08)" aria-label={commun.autres.titre}>
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center gap-5 md:gap-10">
+      <p class="lp-sans text-xs uppercase tracking-[0.3em] flex-shrink-0" style="color:rgba(26,26,26,0.5)">{commun.autres.titre}</p>
+      <ul class="flex flex-wrap gap-3">
+        {autres.map((l) => (
+          <li>
+            <a href={`/fr/langues/${l.slug}`} class="lp-card lp-sans flex items-center gap-3 border px-4 py-3 text-sm" style="border-color:rgba(26,26,26,0.12);color:#1a1a1a">
+              <Flag code={l.code} class="w-6 h-4" />{l.nom}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<style>
+  .langue-page :global(.lp-serif) { font-family: 'Cormorant Garamond', Georgia, serif; }
+  .langue-page :global(.lp-sans) { font-family: 'DM Sans', system-ui, sans-serif; }
+  .langue-page a { text-decoration: none; }
+  .lp-link { transition: opacity .2s ease; }
+  .lp-link:hover { opacity: .7; }
+  .lp-card { transition: border-color .2s ease; }
+  .lp-card:hover { border-color: rgba(181,147,107,.7) !important; }
+</style>

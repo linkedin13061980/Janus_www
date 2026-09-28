@@ -1,0 +1,65 @@
+{
+  "slug": "allemand",
+  "nom": "Allemand",
+  "code": "de",
+  "meta": {
+    "title": "Services en allemand pour les entreprises | JANUS",
+    "description": "Interprétation, traduction, négociations et formation professionnelle en allemand pour vos échanges avec l'Allemagne, l'Autriche et la Suisse."
+  },
+  "hero": {
+    "surtitre": "Allemand · Espace DACH",
+    "h1": "Services en allemand pour les entreprises",
+    "intro": "JANUS accompagne les entreprises dans leurs échanges professionnels en allemand : réunions techniques, négociations, projets industriels, traduction, interprétation et formation professionnelle."
+  },
+  "services": [
+    {
+      "titre": "Accompagnement international",
+      "texte": "Préparation de vos réunions et négociations avec des partenaires germanophones : exigence de préparation, place de l'écrit et des engagements, codes de la relation d'affaires."
+    },
+    {
+      "titre": "Interprétation",
+      "texte": "Interprétation français ↔ allemand pour vos réunions, négociations, visites d'usines, audits et salons professionnels."
+    },
+    {
+      "titre": "Traduction professionnelle",
+      "texte": "Cahiers des charges, documentation technique, contrats et supports commerciaux traduits avec la précision terminologique qu'attendent vos interlocuteurs."
+    },
+    {
+      "titre": "Formation professionnelle",
+      "texte": "Allemand professionnel orienté vers vos échanges réels : réunions, téléphone, e-mails et vocabulaire technique de votre métier."
+    }
+  ],
+  "situations": [
+    "Réunion technique avec un client ou un fournisseur allemand",
+    "Négociation commerciale avec un partenaire germanophone",
+    "Visite d'usine ou accueil d'une délégation d'Allemagne, d'Autriche ou de Suisse",
+    "Audit qualité ou de conformité conduit en allemand",
+    "Coordination d'un projet industriel entre équipes françaises et allemandes",
+    "Échanges avec un bureau d'études ou un service achats germanophone",
+    "Traduction de cahiers des charges, notices et documents contractuels",
+    "Collaborateurs en relation régulière avec des interlocuteurs germanophones"
+  ],
+  "formation": {
+    "titre": "Formation professionnelle en allemand",
+    "intro": "Beaucoup de collaborateurs ont appris l'allemand à l'école sans jamais l'utiliser au travail. La formation part de ce niveau réel pour construire des réflexes professionnels : suivre une réunion technique, reformuler, négocier un délai, rédiger un compte rendu."
+  },
+  "marche": {
+    "titre": "Allemagne et espace DACH",
+    "texte": "L'Allemagne est le premier partenaire commercial de la France. Avec l'Autriche et la Suisse alémanique, l'espace germanophone concentre de nombreux clients, fournisseurs et donneurs d'ordres des entreprises françaises, en particulier dans l'industrie.",
+    "points": [
+      "Allemagne : donneurs d'ordres industriels, clients et fournisseurs",
+      "Autriche et Suisse alémanique : partenaires commerciaux et industriels",
+      "Grands salons professionnels organisés en Allemagne",
+      "Projets transfrontaliers, filiales et coentreprises"
+    ],
+    "liens": [
+      {
+        "label": "Découvrir le marché allemand →",
+        "href": "/fr/marches/allemagne"
+      }
+    ]
+  },
+  "cta": {
+    "titre": "Un projet en allemand ?"
+  }
+}

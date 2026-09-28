@@ -1,0 +1,69 @@
+{
+  "slug": "polonais",
+  "nom": "Polonais",
+  "code": "pl",
+  "meta": {
+    "title": "Services en polonais pour les entreprises | JANUS",
+    "description": "Interprétation, traduction, négociations et missions en Pologne, formation en polonais : l'expertise France–Pologne de JANUS pour les entreprises."
+  },
+  "hero": {
+    "surtitre": "Polonais · Expertise France–Pologne",
+    "h1": "Services en polonais pour les entreprises",
+    "intro": "JANUS accompagne les entreprises dans leurs échanges professionnels avec la Pologne et leurs interlocuteurs polonais : négociations, missions sur site, coordination d'équipes, traduction, interprétation et formation professionnelle."
+  },
+  "services": [
+    {
+      "titre": "Accompagnement international",
+      "texte": "Préparation de vos rendez-vous et négociations avec des partenaires polonais, décodage des usages professionnels et des circuits de décision, présence à vos côtés en France comme en Pologne."
+    },
+    {
+      "titre": "Interprétation",
+      "texte": "Interprétation français ↔ polonais lors de réunions de direction, négociations, visites d'usines, audits ou visioconférences."
+    },
+    {
+      "titre": "Traduction professionnelle",
+      "texte": "Contrats, documents techniques, supports commerciaux et correspondance : traduction français ↔ polonais tenant compte du contexte et de la terminologie de votre secteur."
+    },
+    {
+      "titre": "Formation professionnelle",
+      "texte": "Polonais professionnel pour les collaborateurs qui travaillent avec des équipes, des clients ou des fournisseurs polonais, des premières bases aux échanges métier."
+    }
+  ],
+  "situations": [
+    "Rendez-vous avec un fournisseur ou un sous-traitant polonais",
+    "Négociation d'un contrat ou d'un partenariat en Pologne",
+    "Visite d'usine ou de site de production en Pologne",
+    "Audit qualité chez un fournisseur polonais",
+    "Coordination d'équipes françaises et polonaises sur un même projet",
+    "Échanges techniques entre bureaux d'études des deux pays",
+    "Traduction de documents contractuels, techniques ou commerciaux",
+    "Collaborateurs expatriés ou en relation régulière avec la Pologne"
+  ],
+  "formation": {
+    "titre": "Formation professionnelle en polonais",
+    "intro": "Le polonais demande un apprentissage structuré : la formation part du niveau réel de chaque participant et se concentre sur ce qui sert immédiatement au travail — se présenter, suivre une réunion, comprendre les échanges sur site, entretenir la relation avec ses interlocuteurs."
+  },
+  "marche": {
+    "titre": "Pologne : notre expertise particulière",
+    "texte": "La Pologne est l'une des économies les plus dynamiques de l'Union européenne et un partenaire industriel important pour les entreprises françaises. C'est l'expertise particulière de JANUS : la connaissance des deux environnements professionnels, pas seulement des deux langues.",
+    "points": [
+      "Implantation, sous-traitance et achats en Pologne",
+      "Opérations de fusion-acquisition et partenariats transfrontaliers",
+      "Missions sur site à Varsovie, Cracovie, Wrocław et au-delà",
+      "Équipes mixtes franco-polonaises au quotidien"
+    ],
+    "liens": [
+      {
+        "label": "Découvrir notre expertise France–Pologne →",
+        "href": "/fr/marches/pologne"
+      },
+      {
+        "label": "Investir en Pologne →",
+        "href": "/fr/pologne-investir"
+      }
+    ]
+  },
+  "cta": {
+    "titre": "Un projet en polonais ?"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "slug": "anglais",
+  "nom": "Anglais",
+  "code": "gb",
+  "meta": {
+    "title": "Services en anglais pour les entreprises | JANUS",
+    "description": "Interprétation, traduction, accompagnement de négociations et formation professionnelle en anglais pour les entreprises. Missions à distance ou sur le terrain."
+  },
+  "hero": {
+    "surtitre": "Anglais · Langue internationale des affaires",
+    "h1": "Services en anglais pour les entreprises",
+    "intro": "JANUS accompagne les entreprises dans leurs échanges professionnels en anglais : négociations, réunions, projets internationaux, traduction, interprétation et formation professionnelle."
+  },
+  "services": [
+    {
+      "titre": "Accompagnement international",
+      "texte": "Préparation de vos réunions et négociations avec des interlocuteurs anglophones ou internationaux, décodage des usages professionnels selon les pays, présence à vos côtés pendant les échanges."
+    },
+    {
+      "titre": "Interprétation",
+      "texte": "Interprétation français ↔ anglais en réunion, négociation, visite de site ou visioconférence, selon le format adapté à la mission."
+    },
+    {
+      "titre": "Traduction professionnelle",
+      "texte": "Contrats, présentations, documentation technique, supports commerciaux : des traductions qui respectent la terminologie de votre secteur et le registre attendu par vos interlocuteurs."
+    },
+    {
+      "titre": "Formation professionnelle",
+      "texte": "Anglais professionnel construit à partir de vos situations réelles : réunions, appels, e-mails, présentations et négociations."
+    }
+  ],
+  "situations": [
+    "Réunion avec un client, un fournisseur ou un partenaire anglophone",
+    "Négociation commerciale ou contractuelle en anglais",
+    "Visite d'usine ou de site avec une délégation étrangère",
+    "Audit qualité ou fournisseur mené en anglais",
+    "Coordination d'équipes internationales dont l'anglais est la langue de travail",
+    "Échanges techniques avec un bureau d'études ou un intégrateur étranger",
+    "Traduction de documents commerciaux, techniques ou contractuels",
+    "Collaborateurs devant gagner en aisance à l'oral comme à l'écrit"
+  ],
+  "formation": {
+    "titre": "Formation professionnelle en anglais",
+    "intro": "Chaque formation commence par un échange sur vos objectifs et une évaluation du niveau de départ. Le programme porte ensuite sur les situations que vos collaborateurs rencontrent vraiment : animer une réunion, défendre une offre, rédiger un e-mail clair, suivre une discussion technique."
+  },
+  "marche": {
+    "titre": "Royaume-Uni et échanges internationaux",
+    "texte": "L'anglais est la langue commune d'une grande partie des échanges professionnels internationaux, bien au-delà des pays anglophones. JANUS vous accompagne avec vos interlocuteurs britanniques et, plus largement, dans tous les projets où l'anglais sert de langue de travail entre partenaires de nationalités différentes.",
+    "points": [
+      "Royaume-Uni : relations commerciales et contractuelles depuis le Brexit",
+      "Groupes internationaux, filiales et sièges à l'étranger",
+      "Réunions multinationales où l'anglais est la langue commune",
+      "Salons, audits et visites de sites à l'étranger"
+    ],
+    "liens": [
+      { "label": "Découvrir le marché Royaume-Uni →", "href": "/fr/marches/royaume-uni" }
+    ]
+  },
+  "cta": { "titre": "Un projet en anglais ?" }
+}

@@ -1,0 +1,60 @@
+{
+  "slug": "espagnol",
+  "nom": "Espagnol",
+  "code": "es",
+  "meta": {
+    "title": "Services en espagnol pour les entreprises | JANUS",
+    "description": "Interprétation, traduction, accompagnement de négociations et formation professionnelle en espagnol pour vos échanges avec l'Espagne et les pays hispanophones."
+  },
+  "hero": {
+    "surtitre": "Espagnol · Espagne et monde hispanophone",
+    "h1": "Services en espagnol pour les entreprises",
+    "intro": "JANUS accompagne les entreprises dans leurs échanges professionnels en espagnol : négociations, réunions, projets avec l'Espagne ou l'Amérique latine, traduction, interprétation et formation professionnelle."
+  },
+  "services": [
+    {
+      "titre": "Accompagnement international",
+      "texte": "Préparation de vos échanges avec des partenaires espagnols ou latino-américains : place de la relation personnelle, rythme de décision, usages de la négociation."
+    },
+    {
+      "titre": "Interprétation",
+      "texte": "Interprétation français ↔ espagnol pour vos réunions, négociations, visites de sites et visioconférences."
+    },
+    {
+      "titre": "Traduction professionnelle",
+      "texte": "Documents commerciaux, contrats, présentations et documentation technique adaptés au pays de destination : l'espagnol d'Espagne et celui d'Amérique latine ne s'écrivent pas toujours de la même manière."
+    },
+    {
+      "titre": "Formation professionnelle",
+      "texte": "Espagnol professionnel centré sur vos situations de travail : relation client, réunions, appels et correspondance."
+    }
+  ],
+  "situations": [
+    "Réunion avec un client ou un distributeur espagnol",
+    "Négociation commerciale avec un partenaire hispanophone",
+    "Visite de site ou d'usine en Espagne",
+    "Audit fournisseur mené en espagnol",
+    "Coordination d'équipes entre la France, l'Espagne ou l'Amérique latine",
+    "Échanges techniques avec des partenaires hispanophones",
+    "Traduction de documents commerciaux, contractuels ou techniques",
+    "Collaborateurs en contact régulier avec des clients hispanophones"
+  ],
+  "formation": {
+    "titre": "Formation professionnelle en espagnol",
+    "intro": "L'espagnol se comprend souvent vite mais se parle moins facilement en contexte professionnel. La formation travaille l'expression orale dans vos situations réelles — présenter une offre, conduire un appel, gérer une réclamation — et l'écrit professionnel."
+  },
+  "marche": {
+    "titre": "Espagne et environnement hispanophone",
+    "texte": "L'Espagne, voisine directe de la France, compte parmi ses principaux partenaires commerciaux. L'espagnol ouvre aussi l'accès à la plupart des pays d'Amérique latine, où il est la langue des affaires.",
+    "points": [
+      "Espagne : relations commerciales et industrielles de proximité",
+      "Amérique latine : Mexique, Colombie, Chili, Argentine…",
+      "Distribution, export et partenariats commerciaux",
+      "Missions sur site et salons professionnels"
+    ],
+    "liens": [
+      { "label": "Découvrir le marché espagnol →", "href": "/fr/marches/espagne" }
+    ]
+  },
+  "cta": { "titre": "Un projet en espagnol ?" }
+}

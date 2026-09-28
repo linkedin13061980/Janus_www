@@ -7,6 +7,7 @@ const langues = [
   {
     flag: '🇬🇧',
     nom: 'Anglais',
+    slug: 'anglais',
     label: 'Langue des affaires',
     desc: 'Formateurs britanniques et américains. Business English, TOEIC/TOEFL, anglais technique.',
     tags: ['Business English', 'Coaching cadres', 'TOEIC / TOEFL', 'Industrie · Santé · Finance'],
@@ -15,6 +16,7 @@ const langues = [
   {
     flag: '🇵🇱',
     nom: 'Polonais',
+    slug: 'polonais',
     label: 'Spécialité exclusive Lyon',
     desc: 'Seule agence lyonnaise spécialisée FR↔PL. Formation, interprétariat, réseau CCIFP actif.',
     tags: ['Formation pro', 'Interprétariat', 'Réseau CCIFP', 'Accompagnement terrain'],
@@ -31,6 +33,7 @@ const langues = [
   {
     flag: '🇩🇪',
     nom: 'Allemand',
+    slug: 'allemand',
     label: 'Zone DACH',
     desc: 'Marchés allemand, autrichien, suisse. Formateurs natifs spécialisés industrie et commerce.',
     tags: ['Allemand des affaires', 'Industrie', 'Zone DACH', 'Formateurs natifs'],
@@ -39,6 +42,7 @@ const langues = [
   {
     flag: '🇪🇸',
     nom: 'Espagnol',
+    slug: 'espagnol',
     label: 'Hispanophone',
     desc: 'Espagne et Amérique latine. Espagnol des affaires, interprétariat disponible.',
     tags: ['Espagnol pro', 'Amérique latine', 'Interprétariat', 'Commerce international'],
@@ -47,6 +51,7 @@ const langues = [
   {
     flag: '🇮🇹',
     nom: 'Italien',
+    slug: 'italien',
     label: 'Franco-italien',
     desc: 'Relations commerciales franco-italiennes. Formateurs spécialisés luxe et industrie.',
     tags: ['Italien des affaires', 'Luxe', 'Industrie', 'Traduction disponible'],
@@ -74,6 +79,8 @@ const langues = [
     .stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:.35s }
     .stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay:.45s }
     .stagger.in > *:nth-child(6) { opacity:1; transform:none; transition-delay:.55s }
+    .langue-lien { text-decoration: none; transition: box-shadow .2s ease; }
+    .langue-lien:hover { box-shadow: inset 0 0 0 1px rgba(181,147,107,.6); }
   </style>
 
   <!-- HERO -->
@@ -93,8 +100,8 @@ const langues = [
   <section class="bg-white py-24 px-6">
     <div class="max-w-4xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-px stagger" style="background:rgba(26,26,26,0.06)">
-        {langues.map(l => (
-          <div class={`p-10 flex flex-col gap-4 ${l.featured ? '' : 'bg-white'}`} style={l.featured ? 'background:#1a1a1a' : ''}>
+        {langues.map(l => { const Carte = l.slug ? 'a' : 'div'; return (
+          <Carte href={l.slug ? `/fr/langues/${l.slug}` : undefined} class={`p-10 flex flex-col gap-4 ${l.featured ? '' : 'bg-white'} ${l.slug ? 'langue-lien' : ''}`} style={l.featured ? 'background:#1a1a1a' : ''}>
             <span class="text-4xl">{l.flag}</span>
             <div>
               <p class="hp-sans text-[9px] uppercase tracking-[0.25em] mb-2" style={`color:${l.featured ? 'rgba(181,147,107,0.7)' : 'rgba(181,147,107,0.8)'}`}>{l.label}</p>
@@ -106,8 +113,9 @@ const langues = [
                 <span class="hp-sans text-[10px] border px-3 py-1 rounded-full" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.25)">{tag}</span>
               ))}
             </div>
-          </div>
-        ))}
+            {l.slug && <span class="hp-sans text-xs uppercase tracking-widest pt-2" style="color:#b5936b">Services en {l.nom.toLowerCase()} →</span>}
+          </Carte>
+        ); })}
       </div>
     </div>
   </section>

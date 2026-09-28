@@ -18,6 +18,24 @@ const pages = [
 
 const locales = ['fr', 'en', 'pl'];
 
+// Pages existant uniquement en français : une seule URL, sans variantes EN/PL (qui renverraient une 404).
+const frOnlyPages = [
+  { path: '/langues/anglais', changefreq: 'monthly', priority: '0.8' },
+  { path: '/langues/polonais', changefreq: 'monthly', priority: '0.8' },
+  { path: '/langues/allemand', changefreq: 'monthly', priority: '0.8' },
+  { path: '/langues/espagnol', changefreq: 'monthly', priority: '0.8' },
+  { path: '/langues/italien', changefreq: 'monthly', priority: '0.8' },
+];
+
+function buildFrOnlyUrls() {
+  return frOnlyPages.map(({ path, changefreq, priority }) => `
+  <url>
+    <loc>${site}/fr${path}</loc>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`).join('\n');
+}
+
 function buildUrls() {
   return pages.map(({ path, changefreq, priority }) => {
     const hreflangs = locales.map(loc => {
@@ -53,6 +71,7 @@ export const GET: APIRoute = () => {
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${buildUrls()}
+${buildFrOnlyUrls()}
 </urlset>`;
 
   return new Response(xml, {

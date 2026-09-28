@@ -1,0 +1,88 @@
+{
+  "langues": [
+    {
+      "slug": "anglais",
+      "nom": "Anglais",
+      "code": "gb"
+    },
+    {
+      "slug": "polonais",
+      "nom": "Polonais",
+      "code": "pl"
+    },
+    {
+      "slug": "allemand",
+      "nom": "Allemand",
+      "code": "de"
+    },
+    {
+      "slug": "espagnol",
+      "nom": "Espagnol",
+      "code": "es"
+    },
+    {
+      "slug": "italien",
+      "nom": "Italien",
+      "code": "it"
+    }
+  ],
+  "fil": {
+    "label": "← Toutes les langues",
+    "href": "/fr/langues"
+  },
+  "hero": {
+    "cta": {
+      "label": "Parler de votre projet →",
+      "href": "/fr/contact"
+    },
+    "lien": {
+      "label": "Nos services",
+      "href": "#accompagnement"
+    }
+  },
+  "services": {
+    "surtitre": "Nos services",
+    "titre": "Comment JANUS vous accompagne",
+    "lien": {
+      "label": "Découvrir nos services →",
+      "href": "/fr/services"
+    }
+  },
+  "situations": {
+    "surtitre": "Sur le terrain",
+    "titre": "Dans quelles situations ?"
+  },
+  "formation": {
+    "surtitre": "Formation professionnelle",
+    "points": [
+      "Sur mesure : programme construit à partir de vos objectifs",
+      "Adaptée au niveau initial de chaque participant",
+      "Centrée sur votre métier et vos situations professionnelles réelles",
+      "Individuelle ou organisée pour une équipe",
+      "À distance, partout en France",
+      "Dans les locaux de votre entreprise, selon le projet"
+    ],
+    "financementTitre": "Financement",
+    "financement": "Selon votre situation, la formation peut être financée par votre plan de développement des compétences, prise en charge par votre OPCO selon ses critères, ou mobiliser le CPF lorsque la formation et la certification visée sont éligibles. JANUS vous présente les options envisageables pour votre projet ; aucun financement n'est acquis d'avance.",
+    "qualiopi": "JANUS est certifié Qualiopi au titre des actions de formation.",
+    "lien": {
+      "label": "Comprendre les financements →",
+      "href": "/fr/financement"
+    }
+  },
+  "marche": {
+    "surtitre": "Marchés et environnement international"
+  },
+  "autres": {
+    "titre": "Autres langues"
+  },
+  "cta": {
+    "surtitre": "Premier échange confidentiel",
+    "accroche": "Parlons-en.",
+    "texte": "Expliquez-nous votre situation, votre marché et votre objectif. JANUS construit l'accompagnement adapté à votre projet.",
+    "bouton": {
+      "label": "Parler de votre projet →",
+      "href": "/fr/contact"
+    }
+  }
+}

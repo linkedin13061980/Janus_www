@@ -16,7 +16,7 @@ interface VideoSource {
 interface Props {
   desktop?: VideoSource[];
   mobile?: VideoSource[];
-  // mobileAvif / mobileJpg : recadrage portrait utilisé sous 768 px.
+  // mobileAvif / mobileJpg : version allégée (16:9) utilisée sous 768 px.
   poster?: { avif?: string; jpg: string; mobileAvif?: string; mobileJpg?: string } | null;
   pauseLabel: string;
   playLabel: string;
@@ -35,71 +35,80 @@ const {
 const hasVideo = desktop.length > 0 || mobile.length > 0;
 ---
 
+<!--
+  Mise en page :
+  - mobile (< 768 px) : image/vidéo en bandeau 4:3 (16:9 dès 640 px) au-dessus, texte en dessous sur fond sombre ;
+    la scène reste entière et lumineuse, aucun voile sur le texte n'est nécessaire ;
+  - desktop (≥ 768 px) : hauteur fixe de 620 px ; la vidéo occupe la partie droite (50 %, puis 58 % dès 1280 px), centrée sur la scène,
+    et se fond à gauche dans le fond anthracite qui porte le texte : image claire, sans voile sur les personnes.
+-->
 <section
-  class={`hero-video relative isolate overflow-hidden flex items-center min-h-[88svh] md:min-h-[92svh] ${className}`}
+  class={`hero-video relative isolate overflow-hidden flex flex-col md:flex-row md:items-center md:h-[620px] ${className}`}
   style="background:#0d0d0d"
   data-hero-video
 >
-  {poster && (
-    <picture class="absolute inset-0 -z-20" aria-hidden="true">
-      {poster.mobileAvif && <source media="(max-width: 767px)" srcset={poster.mobileAvif} type="image/avif" />}
-      {poster.mobileJpg && <source media="(max-width: 767px)" srcset={poster.mobileJpg} type="image/jpeg" />}
-      {poster.avif && <source srcset={poster.avif} type="image/avif" />}
-      <img src={poster.jpg} alt="" class="w-full h-full object-cover" fetchpriority="high" decoding="async" />
-    </picture>
-  )}
+  <div class="hero-video__frame relative w-full aspect-[4/3] sm:aspect-video overflow-hidden md:absolute md:inset-y-0 md:right-0 md:w-[50%] xl:w-[58%] md:aspect-auto md:-z-10">
+    {poster && (
+      <picture aria-hidden="true">
+        {poster.mobileAvif && <source media="(max-width: 767px)" srcset={poster.mobileAvif} type="image/avif" />}
+        {poster.mobileJpg && <source media="(max-width: 767px)" srcset={poster.mobileJpg} type="image/jpeg" />}
+        {poster.avif && <source srcset={poster.avif} type="image/avif" />}
+        <img src={poster.jpg} alt="" class="hero-video__fit absolute inset-0 w-full h-full object-cover" fetchpriority="high" decoding="async" />
+      </picture>
+    )}
 
-  {hasVideo && (
-    <video
-      class="hero-video__media absolute inset-0 -z-10 w-full h-full object-cover"
-      muted
-      loop
-      playsinline
-      preload="none"
-      aria-hidden="true"
-      tabindex="-1"
-      data-desktop={JSON.stringify(desktop)}
-      data-mobile={JSON.stringify(mobile)}
-    ></video>
-  )}
+    {hasVideo && (
+      <video
+        class="hero-video__media hero-video__fit absolute inset-0 w-full h-full object-cover"
+        muted
+        loop
+        playsinline
+        preload="none"
+        aria-hidden="true"
+        tabindex="-1"
+        data-desktop={JSON.stringify(desktop)}
+        data-mobile={JSON.stringify(mobile)}
+      ></video>
+    )}
 
-  <!-- Overlay : plus dense à gauche et en bas, derrière le texte -->
-  <div class="hero-video__overlay absolute inset-0 -z-10 pointer-events-none" aria-hidden="true"></div>
+    <div class="hero-video__overlay absolute inset-0 pointer-events-none" aria-hidden="true"></div>
 
-  <div class="relative w-full">
-    <slot />
+    {hasVideo && (
+      <button
+        type="button"
+        class="hero-video__toggle absolute bottom-4 right-4 md:bottom-8 md:right-8 w-11 h-11 items-center justify-center rounded-full border transition-colors hover:bg-black/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+        style="border-color:rgba(255,255,255,.6);color:#fff;background:rgba(13,13,13,.35);outline-color:#c9a84c"
+        aria-label={pauseLabel}
+        data-label-pause={pauseLabel}
+        data-label-play={playLabel}
+        hidden
+      >
+        <svg class="hero-video__icon-pause w-4 h-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12"/><rect x="9.5" y="2" width="3.5" height="12"/></svg>
+        <svg class="hero-video__icon-play w-4 h-4 hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>
+      </button>
+    )}
   </div>
 
-  {hasVideo && (
-    <button
-      type="button"
-      class="hero-video__toggle absolute bottom-5 right-5 md:bottom-8 md:right-8 w-11 h-11 items-center justify-center rounded-full border transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-      style="border-color:rgba(255,255,255,.35);color:rgba(255,255,255,.85);outline-color:#c9a84c"
-      aria-label={pauseLabel}
-      data-label-pause={pauseLabel}
-      data-label-play={playLabel}
-      hidden
-    >
-      <svg class="hero-video__icon-pause w-4 h-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12"/><rect x="9.5" y="2" width="3.5" height="12"/></svg>
-      <svg class="hero-video__icon-play w-4 h-4 hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>
-    </button>
-  )}
+  <div class="hero-video__content relative w-full">
+    <slot />
+  </div>
 </section>
 
 <style>
-  /* Overlay : voile global léger (vidéo bien visible) + zone plus dense uniquement derrière le texte.
-     Réglé pour un contraste WCAG AA (≥ 4,5:1 petit texte, ≥ 3:1 grand texte), mesuré sur la vidéo. */
+  /* Cadrage : la scène est centrée sur la personne au centre ; légère priorité au haut de l'image (casques). */
+  .hero-video__fit { object-position: 50% 35%; }
+
+  /* Mobile : simple fondu en bas de l'image vers le bloc texte. */
   .hero-video__overlay {
-    background:
-      linear-gradient(180deg, rgba(13,13,13,.1) 0%, rgba(13,13,13,.72) 17%, rgba(13,13,13,.68) 82%, rgba(13,13,13,.75) 100%),
-      rgba(13,13,13,.3);
+    background: linear-gradient(180deg, rgba(13,13,13,0) 60%, rgba(13,13,13,.85) 100%);
   }
+  /* Desktop : fondu du bord gauche de la vidéo vers le fond anthracite, là où déborde le texte.
+     Réglé pour un contraste WCAG AA (≥ 4,5:1 petit texte, ≥ 3:1 grand texte), mesuré sur la vidéo. */
   @media (min-width: 768px) {
     .hero-video__overlay {
       background:
-        radial-gradient(ellipse 72% 66% at 35% 52%, rgba(13,13,13,.84) 0%, rgba(13,13,13,.8) 58%, rgba(13,13,13,0) 100%),
-        linear-gradient(0deg, rgba(13,13,13,.4) 0%, rgba(13,13,13,0) 30%),
-        rgba(13,13,13,.12);
+        linear-gradient(90deg, rgba(13,13,13,1) 0%, rgba(13,13,13,.85) 18%, rgba(13,13,13,.35) 34%, rgba(13,13,13,0) 48%),
+        linear-gradient(0deg, rgba(13,13,13,.25) 0%, rgba(13,13,13,0) 22%);
     }
   }
   .hero-video__media { opacity: 0; transition: opacity .8s ease; }
