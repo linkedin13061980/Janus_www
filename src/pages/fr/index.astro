@@ -14,71 +14,16 @@ const langues = [
 ];
 
 const services = [
-  {
-    titre: 'Interprétation',
-    texte: 'Réunions, négociations, visites de sites et missions professionnelles, à distance ou sur le terrain.',
-    href: '/fr/services',
-  },
-  {
-    titre: 'Traduction',
-    texte: 'Documents professionnels, commerciaux et stratégiques nécessitant précision linguistique et compréhension du contexte.',
-    href: '/fr/services',
-  },
-  {
-    titre: 'Accompagnement international',
-    texte: 'Préparation des échanges, négociation, communication interculturelle, coordination et présence sur le terrain.',
-    href: '/fr/services',
-  },
-  {
-    titre: 'Formation professionnelle',
-    texte: 'Langues professionnelles et communication interculturelle adaptées au métier et aux situations réelles des collaborateurs.',
-    href: '/fr/services',
-  },
-];
-
-const situations = [
-  {
-    n: '01',
-    titre: 'Vous négociez avec un partenaire étranger',
-    texte: 'Préparation des échanges, accompagnement interculturel, interprétation et présence pendant les négociations pour faciliter la compréhension et sécuriser les échanges.',
-  },
-  {
-    n: '02',
-    titre: 'Vos équipes internationales doivent travailler efficacement ensemble',
-    texte: 'JANUS facilite les échanges entre collaborateurs, partenaires et fournisseurs lorsque la langue ou les différences culturelles compliquent la collaboration.',
-  },
-  {
-    n: '03',
-    titre: 'Vous avez une mission ou un projet à mener sur le terrain',
-    texte: 'Coordination, interprétation et accompagnement opérationnel aux côtés de vos équipes, partenaires ou fournisseurs en France et en Europe.',
-  },
-  {
-    n: '04',
-    titre: 'Vos collaborateurs doivent gagner en autonomie linguistique',
-    texte: 'Des formations professionnelles ciblées sur leur métier et sur les situations réellement rencontrées dans leur travail.',
-  },
+  { titre: 'Accompagnement international', motsCles: ['Négociation', 'Coordination', 'Interculturel', 'Présence terrain'], href: '/fr/services' },
+  { titre: 'Interprétation',               motsCles: ['Réunions', 'Négociations', 'Visites de sites'],                      href: '/fr/services' },
+  { titre: 'Traduction',                   motsCles: ['Documents professionnels', 'Commerciaux', 'Stratégiques'],           href: '/fr/services' },
+  { titre: 'Formation professionnelle',    motsCles: ['Langues', 'Métiers', 'Communication interculturelle'],               href: '/fr/services' },
 ];
 
 const cas = [
-  {
-    secteur: 'Industrie · Allemagne ↔ Pologne',
-    texte: '5 jours d’accompagnement sur site auprès de 18 techniciens pour faciliter les échanges et la coordination des équipes.',
-  },
-  {
-    secteur: 'Opération M&A · France ↔ Pologne',
-    texte: '4 mois d’accompagnement linguistique et interculturel dans le cadre d’une opération transfrontalière.',
-  },
-  {
-    secteur: 'Réunions stratégiques · France ↔ Pologne',
-    texte: 'Interprétation et accompagnement à distance lors d’échanges professionnels entre interlocuteurs français et polonais.',
-  },
-];
-
-const marches = [
-  { pays: 'Royaume-Uni', href: '/fr/marches/royaume-uni' },
-  { pays: 'Allemagne',   href: '/fr/marches/allemagne' },
-  { pays: 'Espagne',     href: '/fr/marches/espagne' },
-  { pays: 'Italie',      href: '/fr/marches/italie' },
+  { secteur: 'Industrie · Allemagne ↔ Pologne',         resume: '5 jours · 18 techniciens' },
+  { secteur: 'M&A · France ↔ Pologne',                  resume: '4 mois d’accompagnement' },
+  { secteur: 'Réunions stratégiques · France ↔ Pologne', resume: 'Interprétation & accompagnement' },
 ];
 
 const reassurance = [
@@ -120,7 +65,7 @@ const reassurance = [
           plus simples et plus efficaces.
         </h1>
         <p class="hp-sans text-base md:text-lg max-w-2xl leading-[1.8] mb-8" style="color:rgba(26,26,26,0.65)">
-          JANUS accompagne les entreprises dans leurs échanges et projets internationaux : interprétation, traduction, accompagnement interculturel, missions sur le terrain et formation professionnelle.
+          JANUS accompagne vos projets internationaux, de la préparation des échanges jusqu’à l’intervention sur le terrain.
         </p>
         <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
           <a href="/fr/contact" class="hp-sans inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#1a1a1a">
@@ -186,102 +131,69 @@ const reassurance = [
     </div>
   </section>
 
-  <!-- ② ENTRÉE PAR SERVICE -->
-  <section class="bg-white py-20 md:py-28 px-6">
+  <!-- ② SERVICES -->
+  <section class="bg-white py-16 md:py-24 px-6">
     <div class="max-w-6xl mx-auto">
-      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-4" style="color:#b5936b">Votre besoin</p>
-      <h2 class="hp-serif font-light leading-tight mb-12 md:mb-16" style="font-size:clamp(1.9rem,4vw,3rem);color:#1a1a1a">
-        Comment pouvons-nous vous accompagner&nbsp;?
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-12">
+        <div>
+          <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#b5936b">Votre besoin</p>
+          <h2 class="hp-serif font-light leading-tight" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">
+            Comment pouvons-nous vous accompagner&nbsp;?
+          </h2>
+        </div>
+        <a href="/fr/services" class="hp-sans hp-link self-start md:self-auto text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">
+          Découvrir tous nos services →
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {services.map((s, i) => (
-          <a href={s.href} class="hp-card flex flex-col bg-[#f7f5f2] border border-[#1a1a1a]/5 p-8">
-            <p class="hp-serif font-light leading-none mb-6" style="font-size:2.25rem;color:#b5936b">0{i + 1}</p>
+          <a href={s.href} class="hp-card flex flex-col bg-[#f7f5f2] border border-[#1a1a1a]/5 p-7">
+            <p class="hp-serif font-light leading-none mb-5" style="font-size:2rem;color:#b5936b">0{i + 1}</p>
             <h3 class="hp-sans text-sm font-medium uppercase tracking-[0.15em] leading-snug mb-4" style="color:#1a1a1a">{s.titre}</h3>
-            <p class="hp-sans text-sm leading-[1.8] mb-6" style="color:rgba(26,26,26,0.65)">{s.texte}</p>
+            <p class="hp-sans text-sm leading-[1.7] mb-5" style="color:rgba(26,26,26,0.6)">{s.motsCles.join(' · ')}</p>
             <span class="hp-arrow hp-sans text-sm mt-auto transition-colors" style="color:rgba(26,26,26,0.3)" aria-hidden="true">→</span>
           </a>
         ))}
       </div>
-      <a href="/fr/services" class="hp-sans hp-link inline-block text-xs uppercase tracking-widest border-b py-2" style="border-color:#b5936b;color:#1a1a1a">
-        Découvrir tous nos services →
-      </a>
     </div>
   </section>
 
-  <!-- ③ SITUATIONS -->
-  <section style="background:#f7f5f2" class="py-20 md:py-28 px-6">
-    <div class="max-w-5xl mx-auto">
-      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-4" style="color:#b5936b">Quand faire appel à JANUS&nbsp;?</p>
-      <h2 class="hp-serif font-light leading-tight mb-12 md:mb-16" style="font-size:clamp(1.9rem,4vw,3rem);color:#1a1a1a">
-        Dans quelles situations intervenons-nous&nbsp;?
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {situations.map(s => (
-          <div class="hp-card flex flex-col bg-white border border-[#1a1a1a]/5 p-8 md:p-10">
-            <p class="hp-serif font-light leading-none mb-6" style="font-size:2.5rem;color:#b5936b">{s.n}</p>
-            <h3 class="hp-serif text-xl md:text-2xl font-light leading-snug mb-4" style="color:#1a1a1a">{s.titre}</h3>
-            <p class="hp-sans text-sm leading-[1.8] mb-6" style="color:rgba(26,26,26,0.65)">{s.texte}</p>
-            <a href="/fr/contact" class="hp-sans hp-link text-xs uppercase tracking-widest mt-auto" style="color:#b5936b">
-              Parler de votre situation →
-            </a>
-          </div>
-        ))}
+  <!-- ③ CAS CONCRETS -->
+  <section style="background:#f7f5f2" class="py-14 md:py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-3 mb-8">
+        <p class="hp-sans text-xs uppercase tracking-[0.3em]" style="color:#b5936b">Sur le terrain</p>
+        <a href="/fr/cas-clients" class="hp-sans hp-link text-xs uppercase tracking-widest border-b py-1 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">
+          Voir nos cas clients →
+        </a>
       </div>
-    </div>
-  </section>
-
-  <!-- ④ CAS CONCRETS -->
-  <section class="bg-white py-20 md:py-28 px-6">
-    <div class="max-w-5xl mx-auto">
-      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-4" style="color:#b5936b">Sur le terrain</p>
-      <h2 class="hp-serif font-light leading-tight mb-6" style="font-size:clamp(1.9rem,4vw,3rem);color:#1a1a1a">
-        Des situations internationales concrètes
-      </h2>
-      <p class="hp-sans text-base max-w-2xl leading-[1.8] mb-12 md:mb-16" style="color:rgba(26,26,26,0.65)">
-        Quelques exemples de missions réalisées, notamment dans le cadre de notre expertise France–Pologne.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+      <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
         {cas.map(c => (
-          <div class="bg-[#f7f5f2] border-t-2 p-8" style="border-top-color:#b5936b">
-            <p class="hp-sans text-[11px] uppercase tracking-[0.2em] mb-5" style="color:#b5936b">{c.secteur}</p>
-            <p class="hp-serif text-lg md:text-xl font-light leading-snug" style="color:#1a1a1a">{c.texte}</p>
-          </div>
+          <li class="bg-white border-t-2 px-7 py-6" style="border-top-color:#b5936b">
+            <p class="hp-sans text-[11px] uppercase tracking-[0.2em] mb-3" style="color:#b5936b">{c.secteur}</p>
+            <p class="hp-serif text-xl md:text-2xl font-light leading-snug" style="color:#1a1a1a">{c.resume}</p>
+          </li>
         ))}
-      </div>
-      <a href="/fr/cas-clients" class="hp-sans hp-link inline-block text-xs uppercase tracking-widest border-b py-2" style="border-color:#b5936b;color:#1a1a1a">
-        Voir nos cas clients →
-      </a>
+      </ul>
     </div>
   </section>
 
-  <!-- ⑤ EXPERTISE FRANCE–POLOGNE + ⑥ AUTRES MARCHÉS -->
-  <section style="background:#f7f5f2" class="py-16 md:py-20 px-6">
-    <div class="max-w-5xl mx-auto">
-      <div class="bg-white border-l-2 p-8 md:p-12 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-12 md:items-end" style="border-left-color:#b5936b">
+  <!-- ④ EXPERTISE FRANCE–POLOGNE -->
+  <section class="bg-white py-14 md:py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="bg-[#f7f5f2] border-l-2 p-8 md:p-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-12 md:items-center" style="border-left-color:#b5936b">
         <div>
           <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-4" style="color:#b5936b">Une expertise particulière</p>
-          <h2 class="hp-serif font-light leading-none mb-6" style="font-size:clamp(2rem,4.5vw,3rem);color:#1a1a1a">
+          <h2 class="hp-serif font-light leading-none mb-5" style="font-size:clamp(2rem,4.5vw,3rem);color:#1a1a1a">
             France <span style="color:#b5936b">↔</span> Pologne
           </h2>
-          <p class="hp-sans text-sm md:text-base leading-[1.8] max-w-2xl" style="color:rgba(26,26,26,0.65)">
-            JANUS dispose d'une expérience particulière dans l'accompagnement des relations professionnelles franco-polonaises : interprétation, négociation, coordination, traduction et accompagnement sur le terrain.
+          <p class="hp-sans text-sm md:text-base leading-[1.8] max-w-xl" style="color:rgba(26,26,26,0.65)">
+            Une expérience particulière des projets franco-polonais : négociation, interprétation, coordination et accompagnement terrain.
           </p>
         </div>
         <a href="/fr/marches/pologne" class="hp-sans inline-block text-center px-8 py-4 text-xs uppercase tracking-widest border hover:bg-[#b5936b] transition-colors" style="border-color:#b5936b;color:#1a1a1a">
           Découvrir notre expertise <span class="whitespace-nowrap">France–Pologne&nbsp;→</span>
         </a>
-      </div>
-
-      <div class="mt-10 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-        <p class="hp-sans text-xs uppercase tracking-[0.3em] flex-shrink-0" style="color:rgba(26,26,26,0.45)">Autres marchés européens</p>
-        <ul class="flex flex-wrap gap-x-6 gap-y-3">
-          {marches.map(m => (
-            <li>
-              <a href={m.href} class="hp-sans hp-link text-sm border-b pb-1" style="border-color:rgba(181,147,107,0.5);color:#1a1a1a">{m.pays}</a>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   </section>
