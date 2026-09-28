@@ -4,45 +4,98 @@ import Layout from '../../layouts/Layout.astro';
 const locale = 'fr';
 const currentPath = '/';
 
-const marches = [
-  { flag: '🇵🇱', pays: 'Pologne',       label: 'Prioritaire',      href: '/fr/marches/pologne',     featured: true  },
-  { flag: '🇬🇧', pays: 'Royaume-Uni',   label: 'Business',         href: '/fr/marches/royaume-uni', featured: false },
-  { flag: '🇩🇪', pays: 'Allemagne',     label: 'Zone DACH',        href: '/fr/marches/allemagne',   featured: false },
-  { flag: '🇪🇸', pays: 'Espagne',       label: 'Hispanophone',     href: '/fr/marches/espagne',     featured: false },
-  { flag: '🇮🇹', pays: 'Italie',        label: 'Franco-italien',   href: '/fr/marches/italie',      featured: false },
-  { flag: '🇫🇷', pays: 'France',        label: 'FLE · Allophones', href: '/fr/langues#fle',         featured: false },
-];
-
-const services = [
-  { label: 'Formation',        href: '/fr/services/formation'       },
-  { label: 'Interprétariat',   href: '/fr/services/interpretariat'  },
-  { label: 'Accompagnement',   href: '/fr/services/terrain'         },
-  { label: 'Traduction',       href: '/fr/services/traduction'      },
-  { label: 'Chef de projet',   href: '/fr/services/chef-de-projet'  },
-];
-
 const situations = [
   {
     n: '01',
-    titre: 'Vos partenaires ou fournisseurs sont étrangers — et les échanges coûtent du temps et de l\'argent',
-    solution: 'JANUS prend en charge la communication de bout en bout : interprétariat, préparation culturelle, accompagnement sur site.',
+    titre: 'Vous négociez avec un partenaire étranger',
+    texte: 'Préparation des échanges, accompagnement interculturel, interprétation et présence pendant les négociations pour faciliter la compréhension et sécuriser les échanges.',
   },
   {
     n: '02',
-    titre: 'Vos équipes doivent travailler en langue étrangère mais ne sont pas prêtes',
-    solution: 'Programmes de formation sur mesure, finançables OPCO/CPF. Certifié Qualiopi.',
+    titre: 'Vos équipes internationales doivent travailler efficacement ensemble',
+    texte: 'JANUS facilite les échanges entre collaborateurs, partenaires et fournisseurs lorsque la langue ou les différences culturelles compliquent la collaboration.',
   },
   {
     n: '03',
-    titre: 'Vous négociez un contrat ou une acquisition à l\'international',
-    solution: 'Interprètes natifs spécialisés, NDA signé avant chaque mission. Présence physique possible en France et en Europe.',
+    titre: 'Vous avez une mission ou un projet à mener sur le terrain',
+    texte: 'Coordination, interprétation et accompagnement opérationnel aux côtés de vos équipes, partenaires ou fournisseurs en France et en Europe.',
   },
+  {
+    n: '04',
+    titre: 'Vos collaborateurs doivent gagner en autonomie linguistique',
+    texte: 'Des formations professionnelles ciblées sur leur métier et sur les situations réellement rencontrées dans leur travail.',
+  },
+];
+
+const services = [
+  {
+    titre: 'Négociation & communication interculturelle',
+    texte: 'Préparer les échanges, comprendre les codes culturels et faciliter les négociations avec vos partenaires internationaux.',
+    href: '/fr/services',
+  },
+  {
+    titre: 'Interprétation professionnelle',
+    texte: 'Interprétation lors de réunions, négociations, visites de sites et échanges professionnels, à distance ou sur le terrain.',
+    href: '/fr/services',
+  },
+  {
+    titre: 'Accompagnement terrain',
+    texte: 'Présence opérationnelle aux côtés de vos équipes lors de missions, visites, réunions et projets impliquant des partenaires étrangers.',
+    href: '/fr/services',
+  },
+  {
+    titre: 'Traduction stratégique',
+    texte: 'Traduction de documents et supports professionnels lorsque la précision du message et la compréhension du contexte sont essentielles.',
+    href: '/fr/services',
+  },
+  {
+    titre: 'Formation professionnelle',
+    texte: 'Formations linguistiques et interculturelles ciblées sur le métier, les objectifs et les situations professionnelles réelles des collaborateurs.',
+    href: '/fr/services',
+  },
+];
+
+const pologneListe = [
+  'Négociations et rendez-vous professionnels',
+  'Missions et visites sur site',
+  'Relations fournisseurs et partenaires',
+  'Coordination d’équipes franco-polonaises',
+  'Interprétation et traduction professionnelle',
+];
+
+const marches = [
+  { pays: 'Royaume-Uni', href: '/fr/marches/royaume-uni' },
+  { pays: 'Allemagne',   href: '/fr/marches/allemagne' },
+  { pays: 'Espagne',     href: '/fr/marches/espagne' },
+  { pays: 'Italie',      href: '/fr/marches/italie' },
+];
+
+const cas = [
+  {
+    secteur: 'Industrie · Allemagne ↔ Pologne',
+    texte: '5 jours d’accompagnement sur site auprès de 18 techniciens pour faciliter les échanges et la coordination des équipes.',
+  },
+  {
+    secteur: 'Opération M&A · France ↔ Pologne',
+    texte: '4 mois d’accompagnement linguistique et interculturel dans le cadre d’une opération transfrontalière.',
+  },
+  {
+    secteur: 'Réunions stratégiques · France ↔ Pologne',
+    texte: 'Interprétation et accompagnement à distance lors d’échanges professionnels entre interlocuteurs français et polonais.',
+  },
+];
+
+const reassurance = [
+  { titre: 'FR · PL · DE · EN',  texte: 'Langues de travail' },
+  { titre: 'France & Europe',    texte: 'Interventions à distance et sur le terrain' },
+  { titre: 'Confidentialité',    texte: 'NDA selon les missions' },
+  { titre: 'Qualiopi',           texte: 'Formation professionnelle certifiée' },
 ];
 ---
 
 <Layout
-  title="JANUS — Communication Interculturelle B2B | Lyon · Pologne · International"
-  description="JANUS accompagne les PME et ETI lyonnaises dans leurs échanges avec la Pologne et les marchés internationaux. Formation, interprétariat, terrain, traduction."
+  title="JANUS | Accompagnement international des entreprises | France & Europe"
+  description="JANUS accompagne les entreprises dans leurs projets internationaux : négociation, interprétation, coordination terrain, traduction et formation. Expertise France–Pologne, interventions en Europe."
   locale={locale}
   currentPath={currentPath}
 >
@@ -50,160 +103,193 @@ const situations = [
   <style is:global>
     .hp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
     .hp-sans  { font-family: 'DM Sans', system-ui, sans-serif; }
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.in { opacity: 1; transform: none; }
-    .stagger > * { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
-    .stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s }
-    .stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay:.12s }
-    .stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:.19s }
-    .stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:.26s }
-    .stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay:.33s }
-    .stagger.in > *:nth-child(6) { opacity:1; transform:none; transition-delay:.40s }
-    .flag-tile, .flag-tile * { text-decoration: none !important; transition: transform .2s ease, box-shadow .2s ease; }
-    .flag-tile:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.10); }
-    .flag-tile .flag { transition: transform .4s cubic-bezier(.34,1.56,.64,1); display: inline-block; }
-    .flag-tile:hover .flag { transform: scale(1.3) rotate(-5deg); }
-    .sit-tile { cursor: pointer; transition: background .25s ease, border-color .25s ease; text-decoration: none !important; }
-    .sit-tile * { text-decoration: none !important; }
+    .hp-card { transition: border-color .2s ease; }
+    .hp-card:hover { border-color: rgba(181,147,107,.6); }
+    .hp-link { transition: opacity .2s ease; }
+    .hp-link:hover { opacity: .7; }
     a { text-decoration: none !important; }
   </style>
 
   <!-- ① HERO -->
-  <section style="background:#f7f5f2" class="pt-36 pb-20 px-6">
+  <section style="background:#f7f5f2" class="pt-32 md:pt-40 pb-20 md:pb-28 px-6">
     <div class="max-w-4xl mx-auto">
-      <p class="hp-sans text-xs uppercase tracking-[0.45em] mb-10 reveal" style="color:#b5936b">
-        Lyon · Spécialiste franco-polonais · Qualiopi
+      <p class="hp-sans text-[11px] md:text-xs uppercase tracking-[0.3em] mb-8 md:mb-10" style="color:#b5936b">
+        Accompagnement international des entreprises
       </p>
-      <h1 class="hp-serif font-light leading-[1.05] mb-8 reveal" style="font-size:clamp(2.5rem,6vw,4.5rem);color:#1a1a1a">
-        Vous développez votre activité<br/>à l'international ?
+      <h1 class="hp-serif font-light leading-[1.08] mb-8" style="font-size:clamp(2.4rem,6vw,4.5rem);color:#1a1a1a">
+        Vos opérations internationales,<br class="hidden md:block" />
+        sans barrière de langue ni de culture.
       </h1>
-      <p class="hp-sans text-lg max-w-xl leading-[1.8] mb-12 reveal" style="color:rgba(26,26,26,0.5)">
-        JANUS accompagne les PME et ETI de la région lyonnaise dans leurs échanges avec la Pologne et les marchés internationaux.
+      <p class="hp-sans text-base md:text-lg max-w-2xl leading-[1.8] mb-8" style="color:rgba(26,26,26,0.65)">
+        JANUS accompagne les entreprises dans leurs négociations, échanges et projets internationaux — de la préparation des échanges jusqu’à l’intervention sur le terrain.
       </p>
-      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-8 reveal" style="color:rgba(26,26,26,0.35)">
-        Choisissez votre marché cible
+      <p class="hp-sans text-xs uppercase tracking-[0.2em] mb-12 flex items-center gap-3" style="color:#1a1a1a">
+        <span class="inline-block w-8 h-px flex-shrink-0" style="background:#b5936b"></span>
+        <span>Expertise France ↔ Pologne · Interventions en Europe</span>
       </p>
-
-      <!-- DRAPEAUX -->
-      <div class="grid grid-cols-3 md:grid-cols-6 gap-3 stagger">
-        {marches.map(m => (
-          <a href={m.href} class={`flag-tile block p-5 md:p-6 border text-center ${m.featured ? 'bg-[#1a1a1a] border-[#b5936b]' : 'bg-white border-[#1a1a1a]/10 hover:border-[#b5936b]/50'}`}>
-            <span class="flag text-3xl md:text-4xl block mb-3 leading-none">{m.flag}</span>
-            <p class={`hp-serif text-sm font-light ${m.featured ? 'text-[#b5936b]' : 'text-[#1a1a1a]'}`}>{m.pays}</p>
-            <p class="hp-sans text-[9px] uppercase tracking-wider mt-1" style={m.featured ? 'color:rgba(181,147,107,0.6)' : 'color:rgba(26,26,26,0.3)'}>{m.label}</p>
-          </a>
-        ))}
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+        <a href="/fr/contact" class="hp-sans inline-block text-center px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#1a1a1a">
+          Parler de votre projet
+        </a>
+        <a href="/fr/services" class="hp-sans hp-link inline-block text-center py-3 text-xs uppercase tracking-widest border-b" style="border-color:rgba(26,26,26,0.3);color:#1a1a1a">
+          Découvrir nos services
+        </a>
       </div>
     </div>
   </section>
 
   <!-- ② SITUATIONS -->
-  <section class="bg-white py-24 px-6">
-    <div class="max-w-4xl mx-auto">
-      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-6 reveal" style="color:rgba(26,26,26,0.35)">Vous êtes dans cette situation ?</p>
-      <div class="flex flex-col gap-[2px]">
-        {situations.map((s, i) => (
-          <div class="sit-tile bg-[#f7f5f2] border border-[#1a1a1a]/6 p-8 md:p-10" data-index={i}>
-            <div class="flex items-start gap-6 md:gap-10">
-              <p class="hp-serif font-light flex-shrink-0 leading-none" style="font-size:3rem;color:rgba(181,147,107,0.15)">{s.n}</p>
-              <div class="flex-1">
-                <p class="hp-serif text-lg md:text-xl font-light sit-title mb-0" style="color:#1a1a1a">{s.titre}</p>
-                <div class="sit-detail mt-4" style="display:none">
-                  <p class="hp-sans text-sm leading-[1.8]" style="color:rgba(26,26,26,0.55)">{s.solution}</p>
-                  <a href="/fr/contact" class="hp-sans text-xs mt-4 inline-block" style="color:#b5936b">Nous contacter →</a>
-                </div>
-              </div>
-              <span class="hp-sans text-xs flex-shrink-0" style="color:#b5936b">+</span>
-            </div>
+  <section class="bg-white py-20 md:py-28 px-6">
+    <div class="max-w-5xl mx-auto">
+      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-4" style="color:#b5936b">Quand faire appel à JANUS ?</p>
+      <h2 class="hp-serif font-light leading-tight mb-12 md:mb-16" style="font-size:clamp(1.9rem,4vw,3rem);color:#1a1a1a">
+        Dans quelles situations intervenons-nous ?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {situations.map(s => (
+          <div class="hp-card flex flex-col bg-[#f7f5f2] border border-[#1a1a1a]/5 p-8 md:p-10">
+            <p class="hp-serif font-light leading-none mb-6" style="font-size:2.5rem;color:#b5936b">{s.n}</p>
+            <h3 class="hp-serif text-xl md:text-2xl font-light leading-snug mb-4" style="color:#1a1a1a">{s.titre}</h3>
+            <p class="hp-sans text-sm leading-[1.8] mb-6" style="color:rgba(26,26,26,0.65)">{s.texte}</p>
+            <a href="/fr/contact" class="hp-sans hp-link text-xs uppercase tracking-widest mt-auto" style="color:#b5936b">
+              Parler de votre situation →
+            </a>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ③ SERVICES — discrets -->
-  <section style="background:#f7f5f2" class="py-16 px-6">
-    <div class="max-w-4xl mx-auto">
-      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-8 text-center reveal" style="color:rgba(26,26,26,0.35)">Nos services</p>
-      <div class="flex flex-wrap justify-center gap-3 stagger">
-        {services.map(s => (
-          <a href={s.href} class="hp-sans text-sm border px-6 py-3 hover:border-[#b5936b] hover:text-[#b5936b] transition-colors" style="border-color:rgba(26,26,26,0.12);color:rgba(26,26,26,0.6);text-decoration:none">
-            {s.label}
+  <!-- ③ SERVICES -->
+  <section style="background:#f7f5f2" class="py-20 md:py-28 px-6">
+    <div class="max-w-6xl mx-auto">
+      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-4" style="color:#b5936b">Nos services</p>
+      <h2 class="hp-serif font-light leading-tight mb-6" style="font-size:clamp(1.9rem,4vw,3rem);color:#1a1a1a">
+        Un seul partenaire pour vos échanges internationaux
+      </h2>
+      <p class="hp-sans text-base max-w-2xl leading-[1.8] mb-12 md:mb-16" style="color:rgba(26,26,26,0.65)">
+        Selon votre projet, JANUS intervient ponctuellement ou accompagne vos équipes sur plusieurs étapes de l’opération.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {services.map((s, i) => (
+          <a href={s.href} class="hp-card flex flex-col bg-white border border-[#1a1a1a]/10 p-8">
+            <p class="hp-sans text-xs tracking-widest mb-5" style="color:rgba(26,26,26,0.35)">0{i + 1}</p>
+            <h3 class="hp-serif text-xl md:text-2xl font-light leading-snug mb-4" style="color:#1a1a1a">{s.titre}</h3>
+            <p class="hp-sans text-sm leading-[1.8]" style="color:rgba(26,26,26,0.65)">{s.texte}</p>
           </a>
         ))}
+        <a href="/fr/services" class="hp-link flex items-center justify-center p-8 border" style="border-color:#b5936b">
+          <span class="hp-sans text-xs uppercase tracking-widest" style="color:#1a1a1a">Découvrir tous nos services →</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ④ PREUVE -->
-  <section style="background:#1a1a1a" class="py-16 px-6">
-    <div class="max-w-4xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 stagger">
-        {[
-          { num: '25', unit: ' ans', label: 'en finance internationale' },
-          { num: '6',  unit: ' langues', label: '100% natifs spécialisés' },
-          { num: '+40', unit: '', label: 'missions réalisées' },
-          { num: 'NDA', unit: '', label: 'avant chaque mission' },
-        ].map(s => (
-          <div class="text-center">
-            <p class="hp-serif text-3xl md:text-4xl font-light mb-2" style="color:#b5936b">{s.num}{s.unit}</p>
-            <p class="hp-sans text-xs leading-snug" style="color:rgba(255,255,255,0.4)">{s.label}</p>
+  <!-- ④ EXPERTISE FRANCE–POLOGNE -->
+  <section style="background:#1a1a1a" class="py-20 md:py-32 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20">
+      <div>
+        <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-6" style="color:#b5936b">Notre expertise historique</p>
+        <h2 class="hp-serif font-light leading-none sm:whitespace-nowrap mb-10" style="font-size:clamp(2.2rem,6vw,4rem);color:white">
+          France <span style="color:#b5936b">↔</span> Pologne
+        </h2>
+        <p class="hp-sans text-lg md:text-xl leading-[1.7] mb-6" style="color:rgba(255,255,255,0.9)">
+          JANUS accompagne les entreprises françaises et polonaises dans leurs échanges commerciaux, industriels et opérationnels.
+        </p>
+        <p class="hp-sans text-sm md:text-base leading-[1.8] mb-10" style="color:rgba(255,255,255,0.6)">
+          Négociation, interprétation, coordination, accompagnement sur le terrain et communication interculturelle : nous intervenons lorsque la langue, les différences culturelles ou la complexité opérationnelle risquent de ralentir un projet.
+        </p>
+        <a href="/fr/marches/pologne" class="hp-sans inline-block text-center px-10 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#1a1a1a">
+          Votre projet <span class="whitespace-nowrap">France–Pologne&nbsp;→</span>
+        </a>
+      </div>
+      <ul class="self-center border-t" style="border-color:rgba(181,147,107,0.3)">
+        {pologneListe.map(item => (
+          <li class="hp-sans text-sm md:text-base flex items-center gap-4 py-5 border-b" style="border-color:rgba(181,147,107,0.3);color:rgba(255,255,255,0.85)">
+            <span class="inline-block w-1.5 h-1.5 flex-shrink-0" style="background:#b5936b"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ⑤ AUTRES MARCHÉS -->
+  <section class="bg-white py-16 md:py-20 px-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+      <div>
+        <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-4" style="color:#b5936b">Au-delà de la Pologne</p>
+        <h2 class="hp-serif text-2xl md:text-3xl font-light leading-tight mb-4" style="color:#1a1a1a">Vos projets en Europe</h2>
+        <p class="hp-sans text-sm leading-[1.8]" style="color:rgba(26,26,26,0.65)">
+          JANUS accompagne également les entreprises dans leurs échanges avec d’autres marchés européens, en mobilisant les compétences linguistiques et interculturelles adaptées à chaque mission.
+        </p>
+      </div>
+      <ul class="grid grid-cols-2 gap-3">
+        {marches.map(m => (
+          <li>
+            <a href={m.href} class="hp-card hp-sans flex items-center justify-between border border-[#1a1a1a]/10 px-5 py-4 text-sm" style="color:#1a1a1a">
+              {m.pays}
+              <span style="color:#b5936b">→</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ⑥ CAS CONCRETS -->
+  <section style="background:#f7f5f2" class="py-20 md:py-28 px-6">
+    <div class="max-w-5xl mx-auto">
+      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-4" style="color:#b5936b">Sur le terrain</p>
+      <h2 class="hp-serif font-light leading-tight mb-6" style="font-size:clamp(1.9rem,4vw,3rem);color:#1a1a1a">
+        Des situations internationales concrètes
+      </h2>
+      <p class="hp-sans text-base max-w-2xl leading-[1.8] mb-12 md:mb-16" style="color:rgba(26,26,26,0.65)">
+        Quelques exemples de missions réalisées, notamment dans le cadre de notre expertise France–Pologne.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+        {cas.map(c => (
+          <div class="bg-white border-t-2 p-8" style="border-top-color:#b5936b">
+            <p class="hp-sans text-[11px] uppercase tracking-[0.2em] mb-5" style="color:#b5936b">{c.secteur}</p>
+            <p class="hp-serif text-lg md:text-xl font-light leading-snug" style="color:#1a1a1a">{c.texte}</p>
           </div>
         ))}
       </div>
-    </div>
-  </section>
-
-  <!-- ⑤ CTA -->
-  <section style="background:#f7f5f2" class="py-32 px-6 text-center">
-    <div class="max-w-xl mx-auto reveal">
-      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-8" style="color:rgba(26,26,26,0.35)">Premier échange gratuit · Confidentiel</p>
-      <h2 class="hp-serif text-4xl md:text-5xl font-light mb-6 leading-tight" style="color:#1a1a1a">
-        Un projet international ?<br/><em class="italic" style="color:#b5936b">Parlons-en.</em>
-      </h2>
-      <p class="hp-sans text-base mb-12 max-w-sm mx-auto leading-[1.8]" style="color:rgba(26,26,26,0.45)">
-        Décrivez-nous votre situation. Nous vous répondons sous 24h.
-      </p>
-      <a href="/fr/contact" class="hp-sans inline-block px-12 py-5 text-xs uppercase tracking-widest hover:opacity-80 transition-opacity" style="background:#b5936b;color:#1a1a1a;text-decoration:none">
-        Nous contacter →
+      <a href="/fr/cas-clients" class="hp-sans hp-link inline-block text-xs uppercase tracking-widest border-b py-2" style="border-color:#b5936b;color:#1a1a1a">
+        Voir nos cas clients →
       </a>
     </div>
   </section>
 
-  <script>
-    // Situations toggle
-    document.querySelectorAll('.sit-tile').forEach(function(tile) {
-      tile.addEventListener('click', function() {
-        var isOpen = tile.classList.contains('sit-open');
-        document.querySelectorAll('.sit-tile').forEach(function(t) {
-          t.classList.remove('sit-open');
-          (t as HTMLElement).style.background = '#f7f5f2';
-          (t as HTMLElement).style.borderColor = 'rgba(26,26,26,0.06)';
-          var title = t.querySelector('.sit-title') as HTMLElement;
-          if (title) title.style.color = '#1a1a1a';
-          var detail = t.querySelector('.sit-detail') as HTMLElement;
-          if (detail) detail.style.display = 'none';
-          var plus = t.querySelector('span') as HTMLElement;
-          if (plus) plus.textContent = '+';
-        });
-        if (!isOpen) {
-          tile.classList.add('sit-open');
-          (tile as HTMLElement).style.background = '#1a1a1a';
-          (tile as HTMLElement).style.borderColor = '#b5936b';
-          var title = tile.querySelector('.sit-title') as HTMLElement;
-          if (title) title.style.color = 'white';
-          var detail = tile.querySelector('.sit-detail') as HTMLElement;
-          if (detail) detail.style.display = 'block';
-          var plus = tile.querySelector('span') as HTMLElement;
-          if (plus) plus.textContent = '−';
-        }
-      });
-    });
+  <!-- ⑦ RÉASSURANCE -->
+  <section style="background:#1a1a1a" class="py-14 md:py-16 px-6">
+    <div class="max-w-5xl mx-auto">
+      <ul class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
+        {reassurance.map(r => (
+          <li class="text-center">
+            <span class="block w-6 h-px mx-auto mb-4" style="background:#b5936b"></span>
+            <p class="hp-serif text-xl md:text-2xl font-light mb-2" style="color:#b5936b">{r.titre}</p>
+            <p class="hp-sans text-xs leading-relaxed" style="color:rgba(255,255,255,0.6)">{r.texte}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
 
-    // Scroll reveal
-    const io = new IntersectionObserver(e => e.forEach(x => {
-      if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); }
-    }), { threshold: 0.1 });
-    document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
-  </script>
+  <!-- ⑧ CTA FINAL -->
+  <section style="background:#f7f5f2" class="py-24 md:py-32 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-8" style="color:#b5936b">Premier échange confidentiel</p>
+      <h2 class="hp-serif text-4xl md:text-5xl font-light mb-6 leading-tight" style="color:#1a1a1a">
+        Un projet international&nbsp;?<br/><em class="italic" style="color:#b5936b">Parlons-en.</em>
+      </h2>
+      <p class="hp-sans text-base mb-12 max-w-md mx-auto leading-[1.8]" style="color:rgba(26,26,26,0.65)">
+        Expliquez-nous votre situation, le pays concerné et l’objectif de votre projet. Nous vous répondrons sous 24h.
+      </p>
+      <a href="/fr/contact" class="hp-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#1a1a1a">
+        Parler de votre projet →
+      </a>
+    </div>
+  </section>
+
 </Layout>
