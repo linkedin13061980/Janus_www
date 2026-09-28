@@ -21,16 +21,23 @@ const services = [
   { titre: 'Formation',                    motsCles: ['Langues', 'Métiers', 'Communication interculturelle'],           href: '/fr/services' },
 ];
 
-// Vidéo du Hero : renseigner les chemins une fois les fichiers déposés dans /public/video/.
-// Tant que les listes sont vides, le Hero affiche un fond sombre sans aucune requête vidéo.
-// Exemple :
-//   desktop: [{ src: '/video/hero-1080.webm', type: 'video/webm' }, { src: '/video/hero-1080.mp4', type: 'video/mp4' }],
-//   mobile:  [{ src: '/video/hero-720.mp4', type: 'video/mp4' }],
-//   poster:  { avif: '/video/hero-poster.avif', jpg: '/video/hero-poster.jpg' },
+// Vidéo du Hero (Adobe Stock n° 286167621, sous licence) — version web muette, boucle de 11 s.
+// Desktop : 1280×720 (WebM VP9 puis MP4 H.264). Mobile : recadrage portrait 540×960 (WebM VP9 puis MP4 H.264).
 const heroVideo = {
-  desktop: [],
-  mobile: [],
-  poster: null,
+  desktop: [
+    { src: '/video/hero-720p.webm', type: 'video/webm' },
+    { src: '/video/hero-720p.mp4',  type: 'video/mp4' },
+  ],
+  mobile: [
+    { src: '/video/hero-mobile.webm', type: 'video/webm' },
+    { src: '/video/hero-mobile.mp4',  type: 'video/mp4' },
+  ],
+  poster: {
+    avif: '/video/hero-poster.avif',
+    jpg: '/video/hero-poster.jpg',
+    mobileAvif: '/video/hero-poster-mobile.avif',
+    mobileJpg: '/video/hero-poster-mobile.jpg',
+  },
 };
 
 const cas = [
@@ -48,8 +55,8 @@ const reassurance = [
 ---
 
 <Layout
-  title="JANUS | Services multilingues & accompagnement international B2B"
-  description="JANUS accompagne les entreprises à l'international : interprétation, traduction, accompagnement terrain et formation en anglais, polonais, allemand, espagnol et français."
+  title="JANUS | Accompagnement international & services multilingues B2B"
+  description="JANUS accompagne les entreprises dans leurs projets internationaux : négociation, interprétation, coordination terrain, traduction et formation en anglais, polonais, allemand, espagnol et français."
   locale={locale}
   currentPath={currentPath}
 >
@@ -74,33 +81,36 @@ const reassurance = [
     pauseLabel="Mettre la vidéo en pause"
     playLabel="Lire la vidéo"
   >
-    <div class="max-w-6xl mx-auto px-6 pt-28 pb-20 md:pt-32 md:pb-24">
-      <p class="hp-sans text-[11px] md:text-xs uppercase tracking-[0.3em] mb-6 md:mb-8" style="color:#c9a84c">
-        International · Multilingue · Sur le terrain
+    <div class="max-w-6xl mx-auto px-6 pt-28 pb-24 md:pt-32 md:pb-28">
+      <p class="hp-sans text-[11px] md:text-xs uppercase tracking-[0.3em] mb-7 md:mb-9 flex items-center gap-4" style="color:#c9a84c">
+        <span class="hidden sm:inline-block w-10 h-px flex-shrink-0" style="background:#c9a84c" aria-hidden="true"></span>
+        <span>International · Multilingue · Sur le terrain</span>
       </p>
-      <h1 class="hp-serif font-light leading-[1.05] mb-8" style="font-size:clamp(2.4rem,6vw,4.25rem);color:#f7f5f2">
+      <h1 class="hp-serif font-light leading-[1.02] mb-8 md:mb-10" style="font-size:clamp(2.6rem,6.6vw,5.5rem);color:#f7f5f2">
         Vos projets internationaux.<br />
-        <em class="italic" style="color:#c9a84c">Nous faisons tomber les barrières.</em>
+        <em class="italic" style="color:#c9a84c">Nous sommes à vos côtés.</em>
       </h1>
-      <p class="hp-sans text-base md:text-lg max-w-xl leading-[1.7] mb-8" style="color:rgba(247,245,242,0.8)">
+      <p class="hp-sans text-base md:text-lg max-w-xl leading-[1.7] mb-6" style="color:rgba(247,245,242,0.82)">
         Négociation, interprétation, coordination et accompagnement terrain pour vos opérations internationales.
       </p>
-      <p class="hp-sans text-xs md:text-sm uppercase tracking-[0.35em] mb-10" style="color:rgba(247,245,242,0.6)">
+      <p class="hp-sans text-xs md:text-sm uppercase tracking-[0.4em] mb-10 md:mb-12" style="color:rgba(247,245,242,0.6)">
         FR · EN · PL · DE · ES
       </p>
-      <a href="/fr/contact" class="hp-sans inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">
-        Parler de votre projet →
-      </a>
+      <div class="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-10">
+        <a href="/fr/contact" class="hp-sans inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">
+          Parler de votre projet →
+        </a>
+        <a href="/fr/services" class="hp-sans hp-link self-start sm:self-auto text-[11px] uppercase tracking-[0.25em] border-b pb-1" style="border-color:rgba(247,245,242,0.35);color:rgba(247,245,242,0.75)">
+          Découvrir nos services
+        </a>
+      </div>
     </div>
   </HeroVideo>
 
   <!-- ENTRÉE PAR LANGUE -->
-  <section style="background:#f7f5f2" class="py-12 md:py-16 px-6">
+  <section style="background:#f7f5f2" class="py-10 md:py-14 px-6">
     <div class="max-w-6xl mx-auto">
-      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#b5936b">Votre langue</p>
-      <h2 class="hp-serif font-light leading-tight mb-8" style="font-size:clamp(1.6rem,3vw,2.25rem);color:#1a1a1a">
-        Dans quelle langue travaillez-vous&nbsp;?
-      </h2>
+      <h2 class="hp-sans text-xs uppercase tracking-[0.3em] mb-6" style="color:#b5936b">Votre langue</h2>
         <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {langues.map((l, i) => (
             <li class={i === langues.length - 1 ? 'col-span-2 sm:col-span-1' : ''}>
@@ -146,18 +156,18 @@ const reassurance = [
     <div class="max-w-6xl mx-auto">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-12">
         <div>
-          <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#b5936b">Votre besoin</p>
+          <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#b5936b">Nos services</p>
           <h2 class="hp-serif font-light leading-tight" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">
-            Comment pouvons-nous vous accompagner&nbsp;?
+            Votre projet. <em class="italic" style="color:#b5936b">Notre accompagnement.</em>
           </h2>
         </div>
         <a href="/fr/services" class="hp-sans hp-link self-start md:self-auto text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">
-          Découvrir tous nos services →
+          Découvrir nos services →
         </a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {services.map((s, i) => (
-          <a href={s.href} class={`hp-card flex flex-col border p-7 ${i === 0 ? 'bg-[#1a1a1a] border-[#b5936b]' : 'bg-[#f7f5f2] border-[#1a1a1a]/5'}`}>
+          <a href={s.href} class={`hp-card flex flex-col border ${i === 0 ? 'bg-[#1a1a1a] border-[#b5936b] p-8 lg:-my-3 lg:py-11' : 'bg-[#f7f5f2] border-[#1a1a1a]/5 p-7'}`}>
             <p class="hp-serif font-light leading-none mb-5" style={`font-size:2rem;color:${i === 0 ? '#c9a84c' : '#b5936b'}`}>0{i + 1}</p>
             <h3 class="hp-sans text-sm font-medium uppercase tracking-[0.15em] leading-snug mb-4" style={`color:${i === 0 ? '#f7f5f2' : '#1a1a1a'}`}>{s.titre}</h3>
             <p class="hp-sans text-sm leading-[1.7] mb-5" style={`color:${i === 0 ? 'rgba(247,245,242,0.7)' : 'rgba(26,26,26,0.6)'}`}>{s.motsCles.join(' · ')}</p>
@@ -171,9 +181,14 @@ const reassurance = [
   <!-- ③ CAS CONCRETS -->
   <section style="background:#f7f5f2" class="py-14 md:py-16 px-6">
     <div class="max-w-6xl mx-auto">
-      <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-3 mb-8">
-        <p class="hp-sans text-xs uppercase tracking-[0.3em]" style="color:#b5936b">Sur le terrain</p>
-        <a href="/fr/cas-clients" class="hp-sans hp-link text-xs uppercase tracking-widest border-b py-1 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
+        <div>
+          <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#b5936b">JANUS sur le terrain</p>
+          <h2 class="hp-serif font-light leading-tight" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">
+            Des missions internationales concrètes.
+          </h2>
+        </div>
+        <a href="/fr/cas-clients" class="hp-sans hp-link self-start md:self-auto text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">
           Voir nos cas clients →
         </a>
       </div>
@@ -198,7 +213,7 @@ const reassurance = [
             France <span style="color:#b5936b">↔</span> Pologne
           </h2>
           <p class="hp-sans text-sm md:text-base leading-[1.8] max-w-xl" style="color:rgba(26,26,26,0.65)">
-            Une expérience particulière des projets franco-polonais : négociation, interprétation, coordination et accompagnement terrain.
+            Une expérience particulière des projets franco-polonais : négociation, interprétation, coordination, traduction et accompagnement terrain.
           </p>
         </div>
         <a href="/fr/marches/pologne" class="hp-sans inline-block text-center px-8 py-4 text-xs uppercase tracking-widest border hover:bg-[#b5936b] transition-colors" style="border-color:#b5936b;color:#1a1a1a">
@@ -231,7 +246,7 @@ const reassurance = [
         Un projet international&nbsp;?<br/><em class="italic" style="color:#b5936b">Parlons-en.</em>
       </h2>
       <p class="hp-sans text-base mb-12 max-w-md mx-auto leading-[1.8]" style="color:rgba(26,26,26,0.65)">
-        Expliquez-nous votre situation, les langues concernées et l’objectif de votre projet. Nous vous répondrons sous 24h.
+        Expliquez-nous votre projet, les langues concernées et votre objectif.
       </p>
       <a href="/fr/contact" class="hp-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#1a1a1a">
         Parler de votre projet →

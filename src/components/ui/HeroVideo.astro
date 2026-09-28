@@ -16,7 +16,8 @@ interface VideoSource {
 interface Props {
   desktop?: VideoSource[];
   mobile?: VideoSource[];
-  poster?: { avif?: string; jpg: string } | null;
+  // mobileAvif / mobileJpg : recadrage portrait utilisé sous 768 px.
+  poster?: { avif?: string; jpg: string; mobileAvif?: string; mobileJpg?: string } | null;
   pauseLabel: string;
   playLabel: string;
   class?: string;
@@ -41,6 +42,8 @@ const hasVideo = desktop.length > 0 || mobile.length > 0;
 >
   {poster && (
     <picture class="absolute inset-0 -z-20" aria-hidden="true">
+      {poster.mobileAvif && <source media="(max-width: 767px)" srcset={poster.mobileAvif} type="image/avif" />}
+      {poster.mobileJpg && <source media="(max-width: 767px)" srcset={poster.mobileJpg} type="image/jpeg" />}
       {poster.avif && <source srcset={poster.avif} type="image/avif" />}
       <img src={poster.jpg} alt="" class="w-full h-full object-cover" fetchpriority="high" decoding="async" />
     </picture>
@@ -84,11 +87,11 @@ const hasVideo = desktop.length > 0 || mobile.length > 0;
 </section>
 
 <style>
-  /* Overlay dimensionné pour garder un contraste ≥ 3:1 sur le texte, même sur une vidéo très claire. */
+  /* Overlay dimensionné pour un contraste WCAG AA (≥ 4,5:1 petit texte, ≥ 3:1 grand texte), mesuré sur la vidéo. */
   .hero-video__overlay {
     background:
       linear-gradient(0deg, rgba(13,13,13,.6) 0%, rgba(13,13,13,0) 40%),
-      rgba(13,13,13,.72);
+      rgba(13,13,13,.8);
   }
   @media (min-width: 768px) {
     .hero-video__overlay {
