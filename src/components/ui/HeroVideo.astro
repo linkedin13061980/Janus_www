@@ -87,17 +87,19 @@ const hasVideo = desktop.length > 0 || mobile.length > 0;
 </section>
 
 <style>
-  /* Overlay dimensionné pour un contraste WCAG AA (≥ 4,5:1 petit texte, ≥ 3:1 grand texte), mesuré sur la vidéo. */
+  /* Overlay : voile global léger (vidéo bien visible) + zone plus dense uniquement derrière le texte.
+     Réglé pour un contraste WCAG AA (≥ 4,5:1 petit texte, ≥ 3:1 grand texte), mesuré sur la vidéo. */
   .hero-video__overlay {
     background:
-      linear-gradient(0deg, rgba(13,13,13,.6) 0%, rgba(13,13,13,0) 40%),
-      rgba(13,13,13,.8);
+      linear-gradient(180deg, rgba(13,13,13,.1) 0%, rgba(13,13,13,.72) 17%, rgba(13,13,13,.68) 82%, rgba(13,13,13,.75) 100%),
+      rgba(13,13,13,.3);
   }
   @media (min-width: 768px) {
     .hero-video__overlay {
       background:
-        linear-gradient(0deg, rgba(13,13,13,.6) 0%, rgba(13,13,13,0) 40%),
-        linear-gradient(90deg, rgba(13,13,13,.9) 0%, rgba(13,13,13,.82) 80%, rgba(13,13,13,.6) 100%);
+        radial-gradient(ellipse 72% 66% at 35% 52%, rgba(13,13,13,.84) 0%, rgba(13,13,13,.8) 58%, rgba(13,13,13,0) 100%),
+        linear-gradient(0deg, rgba(13,13,13,.4) 0%, rgba(13,13,13,0) 30%),
+        rgba(13,13,13,.12);
     }
   }
   .hero-video__media { opacity: 0; transition: opacity .8s ease; }
