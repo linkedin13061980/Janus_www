@@ -1,9 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import Tracking from '../../components/ui/Tracking.astro';
 import { actions } from 'astro:actions';
+import content from '../../content/fr/contact.json';
 const locale = 'fr';
 const currentPath = '/contact';
+const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1');
 
 // Après un envoi réussi du formulaire : redirection vers la page de remerciement,
 // qui sert de page de conversion mesurable (GA4 / Google Ads).
@@ -13,40 +16,42 @@ if (envoi?.data?.success) {
 }
 ---
 <Layout
-  title="Contact | JANUS Lyon"
-  description="Contactez JANUS pour un devis personnalisé. Formation, interprétariat, traduction franco-polonais. Réponse sous 24h."
+  title={content.meta.title}
+  description={content.meta.description}
   locale={locale}
   currentPath={currentPath}
 >
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+  <style is:global>
+    .hp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .hp-sans  { font-family: 'DM Sans', system-ui, sans-serif; }
+  </style>
+  <Tracking />
 
-  <section class="bg-anthracite pt-36 pb-24 px-6">
+  <section style="background:#1a1a1a" class="pt-20 md:pt-28 pb-20 md:pb-24 px-6">
     <div class="max-w-3xl mx-auto">
-      <p class="text-gold text-xs uppercase tracking-[0.35em] mb-8">Contact</p>
-      <h1 class="text-5xl md:text-6xl font-serif font-light text-white leading-[1.1] mb-6">
-        Parlons de<br/><em class="italic text-gold">votre projet.</em>
+      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-6" style="color:#c9a84c">{content.surtitre}</p>
+      <h1 class="hp-serif font-light leading-[1.1] mb-6" style="font-size:clamp(2.1rem,4.5vw,3.4rem);color:#f7f5f2">
+        {content.h1}
       </h1>
-      <p class="text-white/50 text-lg mb-16 max-w-md leading-relaxed">
-        Réponse sous 24h. Devis gratuit. Premier échange confidentiel.
-      </p>
+      <p class="hp-sans text-base md:text-lg leading-[1.7] mb-3 max-w-2xl" style="color:rgba(247,245,242,0.8)">{fr(content.intro)}</p>
+      <p class="hp-serif italic text-lg mb-12" style="color:#c9a84c">{content.confidentialite}</p>
 
       <!-- Coordonnées -->
-      <div class="flex flex-col sm:flex-row gap-6 mb-20 pb-20 border-b border-white/10">
-        <a href="tel:+33967056831" class="group flex items-center gap-3 text-white/50 hover:text-gold transition-colors">
-          <span class="text-gold">→</span>
-          <span class="text-sm">+33 9 67 05 68 31</span>
+      <div class="hp-sans flex flex-col sm:flex-row gap-5 sm:gap-8 mb-14 pb-14 border-b" style="border-color:rgba(247,245,242,0.1)">
+        <a href={content.coordonnees.telephone.href} data-track="clic_telephone" data-track-position="contact" class="flex items-center gap-3 text-sm hover:opacity-80 transition-opacity" style="color:rgba(247,245,242,0.75)">
+          <span style="color:#c9a84c" aria-hidden="true">→</span>{content.coordonnees.telephone.label}
         </a>
-        <a href="mailto:contact@agence-janus.fr" class="group flex items-center gap-3 text-white/50 hover:text-gold transition-colors">
-          <span class="text-gold">→</span>
-          <span class="text-sm">contact@agence-janus.fr</span>
+        <a href={content.coordonnees.email.href} class="flex items-center gap-3 text-sm hover:opacity-80 transition-opacity" style="color:rgba(247,245,242,0.75)">
+          <span style="color:#c9a84c" aria-hidden="true">→</span>{content.coordonnees.email.label}
         </a>
-        <span class="flex items-center gap-3 text-white/30 text-sm">
-          <span class="text-gold/40">→</span>
-          Lyon, France
+        <span class="flex items-center gap-3 text-sm" style="color:rgba(247,245,242,0.5)">
+          <span style="color:rgba(201,168,76,0.5)" aria-hidden="true">→</span>{content.coordonnees.ville}
         </span>
       </div>
 
       <!-- Formulaire -->
-      <ContactForm locale={locale} />
+      <ContactForm locale={locale} variante="projet" />
     </div>
   </section>
 

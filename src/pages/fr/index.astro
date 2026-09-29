@@ -15,6 +15,24 @@ const { hero, quand, approche, expertises, difference, pologne, exemples, pourQu
 // Pages langues (/fr/langues/{slug}) : maillage conservé depuis la carte « Langues de travail ».
 const langues = communLangues.langues.map((l) => ({ nom: l.nom, href: `/fr/langues/${l.slug}` }));
 
+// Données structurées : uniquement des informations publiées sur le site (homepage, mentions légales, contact).
+const organisation = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'JANUS',
+  legalName: 'MICH',
+  url: 'https://agence-janus.fr/fr/',
+  logo: 'https://agence-janus.fr/favicon.png',
+  image: 'https://agence-janus.fr/og-image.jpg',
+  description: content.meta.description,
+  telephone: '+33 9 67 05 68 31',
+  email: 'contact@agence-janus.fr',
+  foundingDate: '2021',
+  address: { '@type': 'PostalAddress', streetAddress: '20 ter rue Julien', postalCode: '69003', addressLocality: 'Lyon', addressCountry: 'FR' },
+  founder: { '@type': 'Person', name: 'Agata Mich' },
+  knowsLanguage: ['fr', 'en', 'pl', 'de', 'es', 'it'],
+};
+
 // Vidéo du Hero (Adobe Stock n° 286167621, sous licence) — version web muette, boucle de 11 s.
 // Desktop : 1280×720 (WebM VP9 puis MP4 H.264). Mobile : recadrage portrait 540×960 (WebM VP9 puis MP4 H.264).
 const heroVideo = {
@@ -41,6 +59,7 @@ const heroVideo = {
   locale={locale}
   currentPath={currentPath}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(organisation)} />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
   <style is:global>
     .hp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
@@ -233,9 +252,12 @@ const heroVideo = {
             </li>
           ))}
         </ul>
-        <a href={exemples.lien.href} class="hp-sans hp-link self-start lg:self-center text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">
-          {exemples.lien.label}
-        </a>
+        {/* Lien vers les cas clients masqué tant que leur contenu n'est pas validé */}
+        {exemples.lien && (
+          <a href={exemples.lien.href} class="hp-sans hp-link self-start lg:self-center text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">
+            {exemples.lien.label}
+          </a>
+        )}
       </div>
     </div>
   </section>

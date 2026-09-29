@@ -45,18 +45,18 @@
     "h2": "Nos expertises",
     "intro": "Trois domaines d'intervention au cœur de JANUS, appuyés par les compétences linguistiques et interculturelles nécessaires à chaque mission.",
     "principales": [
-      { "titre": "Accompagnement international", "texte": "Aux côtés des dirigeants et des équipes dans leurs relations avec clients, fournisseurs et partenaires étrangers, de l'analyse de la situation à la mise en œuvre des décisions.", "cta": "Découvrir l'accompagnement international", "href": "/fr/services#terrain" },
+      { "titre": "Accompagnement international", "texte": "Aux côtés des dirigeants et des équipes dans leurs relations avec clients, fournisseurs et partenaires étrangers, de l'analyse de la situation à la mise en œuvre des décisions, y compris lors de visites de sites, de déplacements et de missions internationales.", "cta": "Découvrir l'accompagnement international", "href": "/fr/services#accompagnement" },
       { "titre": "Négociation & réunions stratégiques", "texte": "Préparation des échanges, lecture des enjeux et des usages de chaque partie, présence lors des négociations et des réunions décisives.", "cta": "Échanger sur une négociation", "href": "/fr/contact" },
-      { "titre": "Coordination terrain & projets internationaux", "texte": "Faciliter la coordination entre équipes, partenaires et interlocuteurs locaux lors de visites de sites, déplacements et missions internationales. JANUS facilite les échanges et la coordination ; les décisions techniques et opérationnelles restent sous la responsabilité du client.", "cta": "Échanger sur votre mission", "href": "/fr/contact" }
+      { "titre": "Coaching en prise de parole en contexte international", "texte": "Préparez vos présentations, réunions, négociations et interventions professionnelles en langue étrangère. Travail ciblé sur la structure du discours, la clarté du message, l'aisance orale, la fluidité et les mises en situation.", "cta": "Découvrir le coaching", "href": "/fr/services#coaching" }
     ],
     "complementaires": {
       "titre": "Services complémentaires",
       "intro": "Mobilisés selon les besoins de chaque mission.",
       "items": [
-        { "titre": "Interprétation professionnelle", "texte": "Négociations, réunions, visites d'usines, audits, rendez-vous commerciaux.", "cta": "En savoir plus", "href": "/fr/services#interpretariat" },
+        { "titre": "Interprétation professionnelle", "texte": "Négociations, réunions, visites d'usines, audits, rendez-vous commerciaux.", "cta": "En savoir plus", "href": "/fr/services#interpretation" },
         { "titre": "Traduction professionnelle", "texte": "Documents professionnels, commerciaux, techniques et institutionnels.", "cta": "En savoir plus", "href": "/fr/services#traduction" },
         { "titre": "Formation en langues", "texte": "Formations sur mesure pour dirigeants, managers et collaborateurs.", "cta": "En savoir plus", "href": "/fr/services#formation" },
-        { "titre": "Communication interculturelle", "texte": "Comprendre les codes professionnels de ses interlocuteurs et anticiper les différences culturelles." }
+        { "titre": "Communication interculturelle", "texte": "Comprendre les codes professionnels de ses interlocuteurs et anticiper les différences culturelles.", "cta": "En savoir plus", "href": "/fr/services#interculturel" }
       ]
     },
     "langues": {
@@ -97,7 +97,7 @@
       { "secteur": "Industrie · Allemagne ↔ Pologne", "resume": "5 jours · 18 techniciens" },
       { "secteur": "M&A · France ↔ Pologne", "resume": "4 mois d'accompagnement" }
     ],
-    "lien": { "label": "Voir nos cas clients →", "href": "/fr/cas-clients" }
+    "lien": null
   },
   "pourQui": {
     "h2": "Pour les entreprises qui travaillent au-delà des frontières",

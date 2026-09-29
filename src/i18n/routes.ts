@@ -35,6 +35,21 @@ export function equivalentPaths(currentPath: string): Record<Locale, string> | n
 
 const exists = (path: string) => routes.has(path) || routes.has(path.replace(/\/$/, ''));
 
+/**
+ * Chemins hreflang de la page courante : uniquement les versions linguistiques qui existent réellement
+ * (jamais de replis). Renvoie null s'il n'existe pas au moins deux versions.
+ */
+export function hreflangPaths(currentPath: string): Partial<Record<Locale, string>> | null {
+  const eq = equivalentPaths(currentPath);
+  if (eq) return eq;
+  const out: Partial<Record<Locale, string>> = {};
+  for (const loc of ['fr', 'en', 'pl'] as Locale[]) {
+    const path = `/${loc}${currentPath}`;
+    if (exists(path)) out[loc] = path;
+  }
+  return Object.keys(out).length >= 2 ? out : null;
+}
+
 /** URL de la page courante dans la langue `loc`, ou null si aucune version n'existe. */
 export function localizedPath(currentPath: string, loc: Locale): string | null {
   for (const eq of equivalents) {

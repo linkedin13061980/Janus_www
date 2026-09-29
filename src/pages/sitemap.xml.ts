@@ -40,15 +40,15 @@ function buildFrOnlyUrls() {
 function buildUrls() {
   return pages.map(({ path, changefreq, priority }) => {
     const hreflangs = locales.map(loc => {
-      const url = `${site}/${loc}${path === '/' ? '' : path}`;
+      const url = `${site}/${loc}${path === '/' ? '/' : path}`;
       return `<xhtml:link rel="alternate" hreflang="${loc}" href="${url}"/>`;
     });
     hreflangs.push(
-      `<xhtml:link rel="alternate" hreflang="x-default" href="${site}/fr${path === '/' ? '' : path}"/>`
+      `<xhtml:link rel="alternate" hreflang="x-default" href="${site}/fr${path === '/' ? '/' : path}"/>`
     );
 
     // Use FR as canonical
-    const loc = `${site}/fr${path === '/' ? '' : path}`;
+    const loc = `${site}/fr${path === '/' ? '/' : path}`;
 
     return `
   <url>
@@ -58,7 +58,7 @@ function buildUrls() {
     ${hreflangs.join('\n    ')}
   </url>
 ${locales.filter(l => l !== 'fr').map(l => `  <url>
-    <loc>${site}/${l}${path === '/' ? '' : path}</loc>
+    <loc>${site}/${l}${path === '/' ? '/' : path}</loc>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
     ${hreflangs.join('\n    ')}

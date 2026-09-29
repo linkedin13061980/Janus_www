@@ -1,5 +1,7 @@
 {
   "redirects": [
+    { "source": "/fr/marches/pologne", "destination": "/fr/pologne", "statusCode": 301 },
+    { "source": "/fr/services/chef-de-projet-terrain", "destination": "/fr/services#accompagnement", "statusCode": 301 },
     { "source": "/index.html", "destination": "/fr/", "permanent": true },
     { "source": "/contact.html", "destination": "/fr/contact", "permanent": true },
     { "source": "/services.html", "destination": "/fr/services", "permanent": true },

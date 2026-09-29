@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import type { Locale } from '../i18n/utils';
-import { equivalentPaths } from '../i18n/routes';
+import { hreflangPaths } from '../i18n/routes';
 
 interface Props {
   title: string;
@@ -30,11 +30,12 @@ const {
   alternates = true,
 } = Astro.props;
 
-const locales: Locale[] = ['fr', 'en', 'pl'];
 const canonicalUrl = canonical ?? `https://agence-janus.fr/${locale}${currentPath}`;
-// Pages dont l'URL diffère selon la langue (ex. cas clients) : hreflang vers les vraies URL de chaque version.
-const equivalents = equivalentPaths(currentPath);
-const alternateUrl = (loc: Locale) => `https://agence-janus.fr${equivalents ? equivalents[loc] : `/${loc}${currentPath}`}`;
+// hreflang : uniquement vers les versions linguistiques qui existent réellement (URL traduites comprises, ex. cas clients).
+const hreflang = alternates ? hreflangPaths(currentPath) : null;
+const alternateLinks = hreflang
+  ? (Object.entries(hreflang) as [Locale, string][]).map(([loc, path]) => [loc, `https://agence-janus.fr${path}`])
+  : [];
 // Google Analytics 4 — propriété JANUS. ID fixé dans le code : aucune variable d'environnement ne peut réintroduire l'ancienne propriété.
 const GA_ID = 'G-DYN5KDTKK8';
 ---
@@ -52,10 +53,10 @@ const GA_ID = 'G-DYN5KDTKK8';
     {noindex && <meta name="robots" content="noindex, follow" />}
 
     <!-- hreflang -->
-    {alternates && locales.map((loc) => (
-      <link rel="alternate" hreflang={loc} href={alternateUrl(loc)} />
+    {alternateLinks.map(([loc, href]) => (
+      <link rel="alternate" hreflang={loc} href={href} />
     ))}
-    {alternates && <link rel="alternate" hreflang="x-default" href={alternateUrl('fr')} />}
+    {hreflang?.fr && <link rel="alternate" hreflang="x-default" href={`https://agence-janus.fr${hreflang.fr}`} />}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

@@ -5,9 +5,13 @@ import { t } from '../i18n/utils';
 
 interface Props {
   locale: Locale;
+  // « projet » : formulaire orienté projet international (FR). « classique » : ancien formulaire (EN/PL, en attente d'harmonisation).
+  variante?: 'projet' | 'classique';
 }
 
-const { locale } = Astro.props;
+const { locale, variante = 'classique' } = Astro.props;
+const besoins = ['accompagnement', 'negociation', 'coordination', 'coaching', 'interpretation', 'traduction', 'interculturel', 'formation', 'autre'];
+const langues = ['francais', 'anglais', 'polonais', 'allemand', 'espagnol', 'italien', 'plusieurs'];
 
 const result = Astro.getActionResult(actions.sendContact);
 const inputErrors = isInputError(result?.error) ? result.error.fields : {};
@@ -107,56 +111,133 @@ const success = result?.data?.success === true;
       {inputErrors.company && <p class="field-error">{inputErrors.company}</p>}
     </div>
 
-    <!-- Service / Langue -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div>
-        <label for="service" class="field-label">{t(locale, 'contact.service')} *</label>
-        <select
-          id="service"
-          name="service"
-          required
-          class={`field-input ${inputErrors.service ? 'border-red-400' : ''}`}
-        >
-          <option value="">—</option>
-          <option value="formation">{t(locale, 'contact.service_options.formation')}</option>
-          <option value="interpretation">{t(locale, 'contact.service_options.interpretation')}</option>
-          <option value="accompagnement">{t(locale, 'contact.service_options.accompagnement')}</option>
-          <option value="traduction">{t(locale, 'contact.service_options.traduction')}</option>
-        </select>
-        {inputErrors.service && <p class="field-error">{inputErrors.service}</p>}
-      </div>
-      <div>
-        <label for="langue" class="field-label">{t(locale, 'contact.langue')} *</label>
-        <select
-          id="langue"
-          name="langue"
-          required
-          class={`field-input ${inputErrors.langue ? 'border-red-400' : ''}`}
-        >
-          <option value="">—</option>
-          <option value="anglais">{t(locale, 'contact.langue_options.anglais')}</option>
-          <option value="polonais">{t(locale, 'contact.langue_options.polonais')}</option>
-          <option value="fle">{t(locale, 'contact.langue_options.fle')}</option>
-          <option value="allemand">{t(locale, 'contact.langue_options.allemand')}</option>
-          <option value="espagnol">{t(locale, 'contact.langue_options.espagnol')}</option>
-          <option value="italien">{t(locale, 'contact.langue_options.italien')}</option>
-        </select>
-        {inputErrors.langue && <p class="field-error">{inputErrors.langue}</p>}
-      </div>
-    </div>
+    {variante === 'projet' ? (
+      <>
+        <input type="hidden" name="variante" value="projet" />
+        <!-- Type de besoin / Pays concernés -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="besoin" class="field-label">{t(locale, 'contact.besoin')} *</label>
+            <select
+              id="besoin"
+              name="besoin"
+              required
+              class={`field-input ${inputErrors.besoin ? 'border-red-400' : ''}`}
+            >
+              <option value="">—</option>
+              {besoins.map((b) => <option value={b}>{t(locale, `contact.besoin_options.${b}`)}</option>)}
+            </select>
+            {inputErrors.besoin && <p class="field-error">{inputErrors.besoin}</p>}
+          </div>
+          <div>
+            <label for="pays" class="field-label">{t(locale, 'contact.pays')}</label>
+            <input
+              id="pays"
+              name="pays"
+              type="text"
+              maxlength="300"
+              placeholder={t(locale, 'contact.pays_placeholder')}
+              class={`field-input ${inputErrors.pays ? 'border-red-400' : ''}`}
+            />
+            {inputErrors.pays && <p class="field-error">{inputErrors.pays}</p>}
+          </div>
+        </div>
 
-    <!-- Message -->
-    <div>
-      <label for="message" class="field-label">{t(locale, 'contact.message')} *</label>
-      <textarea
-        id="message"
-        name="message"
-        rows={5}
-        required
-        class={`field-input resize-none ${inputErrors.message ? 'border-red-400' : ''}`}
-      ></textarea>
-      {inputErrors.message && <p class="field-error">{inputErrors.message}</p>}
-    </div>
+        <!-- Langue(s), facultatif -->
+        <fieldset>
+          <legend class="field-label">{t(locale, 'contact.langues')}</legend>
+          <div class="flex flex-wrap gap-x-6 gap-y-3">
+            {langues.map((l) => (
+              <label class="flex items-center gap-2 text-sm text-white/70 cursor-pointer">
+                <input type="checkbox" name="langues" value={l} class="w-4 h-4 accent-gold" />
+                {t(locale, `contact.langues_options.${l}`)}
+              </label>
+            ))}
+          </div>
+          {inputErrors.langues && <p class="field-error">{inputErrors.langues}</p>}
+        </fieldset>
+
+        <!-- Besoin / objectif -->
+        <div>
+          <label for="objectif" class="field-label">{t(locale, 'contact.objectif')} *</label>
+          <textarea
+            id="objectif"
+            name="objectif"
+            rows={5}
+            required
+            placeholder={t(locale, 'contact.objectif_placeholder')}
+            class={`field-input resize-none ${inputErrors.objectif ? 'border-red-400' : ''}`}
+          ></textarea>
+          {inputErrors.objectif && <p class="field-error">{inputErrors.objectif}</p>}
+        </div>
+
+        <!-- Informations complémentaires, facultatif -->
+        <div>
+          <label for="message" class="field-label">{t(locale, 'contact.message_facultatif')}</label>
+          <textarea
+            id="message"
+            name="message"
+            rows={3}
+            class={`field-input resize-none ${inputErrors.message ? 'border-red-400' : ''}`}
+          ></textarea>
+          {inputErrors.message && <p class="field-error">{inputErrors.message}</p>}
+        </div>
+      </>
+    ) : (
+      <>
+    <!-- Service / Langue -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="service" class="field-label">{t(locale, 'contact.service')} *</label>
+          <select
+            id="service"
+            name="service"
+            required
+            class={`field-input ${inputErrors.service ? 'border-red-400' : ''}`}
+          >
+            <option value="">—</option>
+            <option value="formation">{t(locale, 'contact.service_options.formation')}</option>
+            <option value="interpretation">{t(locale, 'contact.service_options.interpretation')}</option>
+            <option value="accompagnement">{t(locale, 'contact.service_options.accompagnement')}</option>
+            <option value="traduction">{t(locale, 'contact.service_options.traduction')}</option>
+          </select>
+          {inputErrors.service && <p class="field-error">{inputErrors.service}</p>}
+        </div>
+        <div>
+          <label for="langue" class="field-label">{t(locale, 'contact.langue')} *</label>
+          <select
+            id="langue"
+            name="langue"
+            required
+            class={`field-input ${inputErrors.langue ? 'border-red-400' : ''}`}
+          >
+            <option value="">—</option>
+            <option value="anglais">{t(locale, 'contact.langue_options.anglais')}</option>
+            <option value="polonais">{t(locale, 'contact.langue_options.polonais')}</option>
+            <option value="fle">{t(locale, 'contact.langue_options.fle')}</option>
+            <option value="allemand">{t(locale, 'contact.langue_options.allemand')}</option>
+            <option value="espagnol">{t(locale, 'contact.langue_options.espagnol')}</option>
+            <option value="italien">{t(locale, 'contact.langue_options.italien')}</option>
+          </select>
+          {inputErrors.langue && <p class="field-error">{inputErrors.langue}</p>}
+        </div>
+      </div>
+  
+      <!-- Message -->
+      <div>
+        <label for="message" class="field-label">{t(locale, 'contact.message')} *</label>
+        <textarea
+          id="message"
+          name="message"
+          rows={5}
+          required
+          class={`field-input resize-none ${inputErrors.message ? 'border-red-400' : ''}`}
+        ></textarea>
+        {inputErrors.message && <p class="field-error">{inputErrors.message}</p>}
+      </div>
+  
+      </>
+    )}
 
     <!-- RGPD -->
     <div class="flex items-start gap-3">

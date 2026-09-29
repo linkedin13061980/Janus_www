@@ -1,10 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { localePath } from '../../i18n/utils';
-import content from '../../content/fr/services.json';
+import content from '../../content/fr/expertises.json';
 
 const locale = 'fr';
 const currentPath = '/services';
+
+// Typographie française : espace insécable avant « ? ; : ! » et « → », « France–Pologne » insécable.
+const fr = (s: string) => s.replace(/ ([?;:!])/g, ' $1').replace(/France–Pologne/g, 'France⁠–⁠Pologne').replace(/ →/g, ' →');
+
+const { hero, principales, complementaires, pologne, ctaFinal } = content;
 ---
 
 <Layout
@@ -17,78 +21,113 @@ const currentPath = '/services';
   <style is:global>
     .hp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
     .hp-sans  { font-family: 'DM Sans', system-ui, sans-serif; }
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.in { opacity: 1; transform: none; }
-    .stagger > * { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
-    .stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay:.05s }
-    .stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay:.15s }
-    .stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:.25s }
-    .stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:.35s }
-    .stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay:.45s }
+    .hp-link { transition: opacity .2s ease; }
+    .hp-link:hover { opacity: .7; }
+    a { text-decoration: none !important; }
   </style>
 
   <!-- HERO -->
-  <section style="background:#f7f5f2" class="pt-36 pb-20 px-6">
-    <div class="max-w-4xl mx-auto">
-      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-8 reveal" style="color:#b5936b">{content.hero.label}</p>
-      <h1 class="hp-serif text-5xl md:text-6xl font-light leading-[1.1] mb-6 reveal" style="color:#1a1a1a">
-        {content.hero.title}
+  <section style="background:#1a1a1a" class="pt-20 md:pt-28 pb-16 md:pb-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-6" style="color:#c9a84c">{hero.surtitre}</p>
+      <h1 class="hp-serif font-light leading-[1.1] mb-6 max-w-4xl" style="font-size:clamp(2.1rem,4.5vw,3.4rem);color:#f7f5f2">
+        {hero.h1}
       </h1>
-      <p class="hp-sans text-lg max-w-lg leading-[1.8] reveal" style="color:rgba(26,26,26,0.5)">
-        {content.hero.subtitle}
-      </p>
+      <p class="hp-sans text-base md:text-lg leading-[1.7] max-w-2xl mb-6" style="color:rgba(247,245,242,0.8)">{hero.intro}</p>
+      <p class="hp-sans text-sm leading-[1.7] max-w-2xl border-l-2 pl-4" style="border-left-color:#b5936b;color:rgba(247,245,242,0.6)">{fr(hero.principe)}</p>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="bg-white py-24 px-6">
-    <div class="max-w-4xl mx-auto">
-      <div class="flex flex-col gap-px stagger" style="background:rgba(26,26,26,0.06)">
-        {content.services.sort((a,b) => a.order - b.order).map((s, i) => (
-          <div id={s.slug} class="flex flex-col md:flex-row scroll-mt-16" style={i % 2 !== 0 ? 'background:#f7f5f2' : 'background:white'}>
-            <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center">
-              {s.badge && (
-                <span class="hp-sans text-[9px] uppercase tracking-[0.2em] border px-3 py-1 rounded-full mb-6 self-start" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">{s.badge}</span>
-              )}
-              <p class="hp-sans text-[9px] uppercase tracking-[0.25em] mb-3" style="color:rgba(181,147,107,0.6)">0{s.order}</p>
-              <h2 class="hp-serif text-3xl md:text-4xl font-light mb-4 leading-tight" style="color:#1a1a1a">{s.title}</h2>
-              <p class="hp-sans text-base leading-[1.7] mb-8" style="color:rgba(26,26,26,0.5)">{s.desc}</p>
-              <a href={localePath(locale, s.href)} class="hp-sans text-xs uppercase tracking-widest hover:opacity-70 transition-opacity self-start" style="color:#b5936b">
-                {s.cta} →
-              </a>
+  <!-- EXPERTISES PRINCIPALES -->
+  <section class="bg-white py-16 md:py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-10 md:mb-12" style="color:#b5936b">{principales.surtitre}</p>
+      <div class="flex flex-col gap-px" style="background:rgba(26,26,26,0.08)">
+        {principales.items.map((x, i) => (
+          <article id={x.id} class="scroll-mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 p-8 md:p-12" style={`background:${i === 0 ? '#1a1a1a' : i % 2 ? '#f7f5f2' : 'white'}`}>
+            <div>
+              <p class="hp-serif font-light leading-none mb-5" style={`font-size:2.5rem;color:${i === 0 ? '#c9a84c' : '#b5936b'}`}>0{i + 1}</p>
+              <h2 class="hp-serif font-light leading-tight mb-5" style={`font-size:clamp(1.7rem,3vw,2.4rem);color:${i === 0 ? '#f7f5f2' : '#1a1a1a'}`}>{x.titre}</h2>
+              <p class="hp-sans text-base leading-[1.75] mb-8" style={`color:${i === 0 ? 'rgba(247,245,242,0.75)' : 'rgba(26,26,26,0.65)'}`}>{fr(x.texte)}</p>
+              <a href={x.cta.href} class="hp-sans hp-link inline-block text-xs uppercase tracking-widest border-b py-2" style={`border-color:#b5936b;color:${i === 0 ? '#c9a84c' : '#1a1a1a'}`}>{fr(`${x.cta.label} →`)}</a>
             </div>
-            <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center border-t md:border-t-0 md:border-l" style="border-color:rgba(26,26,26,0.06)">
-              <ul class="space-y-4">
-                {s.items.map(item => (
-                  <li class="flex items-start gap-3 hp-sans text-sm" style="color:rgba(26,26,26,0.6)">
-                    <span style="color:#b5936b;margin-top:2px">◆</span>
-                    {item}
+            <div>
+              <ul class="border-t" style={`border-color:${i === 0 ? 'rgba(247,245,242,0.12)' : 'rgba(26,26,26,0.1)'}`}>
+                {x.points.map((pt) => (
+                  <li class="hp-sans text-sm md:text-base leading-[1.7] py-3 border-b flex gap-4" style={`border-color:${i === 0 ? 'rgba(247,245,242,0.12)' : 'rgba(26,26,26,0.1)'};color:${i === 0 ? 'rgba(247,245,242,0.85)' : '#1a1a1a'}`}>
+                    <span class="w-4 h-px mt-3 flex-shrink-0" style="background:#b5936b" aria-hidden="true"></span>
+                    <span>{fr(pt)}</span>
                   </li>
                 ))}
               </ul>
+              {x.note && (
+                <p class="hp-sans text-sm leading-[1.7] mt-6" style={`color:${i === 0 ? 'rgba(247,245,242,0.6)' : 'rgba(26,26,26,0.55)'}`}>{fr(x.note)}</p>
+              )}
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section style="background:#1a1a1a" class="py-32 px-6 text-center">
-    <div class="max-w-xl mx-auto reveal">
-      <p class="hp-sans text-xs uppercase tracking-[0.35em] mb-8" style="color:rgba(255,255,255,0.3)">Devis gratuit sous 24h</p>
-      <h2 class="hp-serif text-4xl md:text-5xl font-light text-white mb-6 leading-tight">
-        {content.cta.title}
-      </h2>
-      <p class="hp-sans text-base mb-12" style="color:rgba(255,255,255,0.4)">{content.cta.subtitle}</p>
-      <a href={localePath(locale, content.cta.href)} class="hp-sans inline-block px-10 py-5 text-xs uppercase tracking-widest hover:opacity-80 transition-opacity" style="background:#b5936b;color:#1a1a1a">
-        {content.cta.btn} →
+  <!-- SERVICES COMPLÉMENTAIRES -->
+  <section style="background:#f7f5f2" class="py-16 md:py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-10">
+        <h2 class="hp-serif font-light leading-tight" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{complementaires.surtitre}</h2>
+        <p class="hp-sans text-sm" style="color:rgba(26,26,26,0.55)">{complementaires.intro}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {complementaires.items.map((c) => (
+          <article id={c.id} class="scroll-mt-16 bg-white border border-[#1a1a1a]/10 p-7 md:p-9 flex flex-col">
+            <h3 class="hp-sans text-sm font-medium uppercase tracking-[0.15em] mb-4" style="color:#1a1a1a">{c.titre}</h3>
+            <p class="hp-sans text-sm md:text-base leading-[1.7] mb-5" style="color:rgba(26,26,26,0.65)">{c.texte}</p>
+            <ul class="space-y-2 mb-2">
+              {c.points.map((pt) => (
+                <li class="hp-sans text-sm leading-[1.6] flex gap-3" style="color:rgba(26,26,26,0.7)">
+                  <span class="w-3 h-px mt-[0.7em] flex-shrink-0" style="background:#b5936b" aria-hidden="true"></span>
+                  <span>{fr(pt)}</span>
+                </li>
+              ))}
+            </ul>
+            {c.liens && (
+              <p class="hp-sans flex flex-wrap gap-x-6 gap-y-2 mt-auto pt-5">
+                {c.liens.map((l) => (
+                  <a href={l.href} class="hp-link text-xs uppercase tracking-widest" style="color:#b5936b">{fr(`${l.label} →`)}</a>
+                ))}
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FRANCE–POLOGNE -->
+  <section class="bg-white py-16 md:py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="bg-[#f7f5f2] border-l-2 p-8 md:p-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-12 md:items-center" style="border-left-color:#b5936b">
+        <div>
+          <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-4" style="color:#b5936b">{pologne.surtitre}</p>
+          <h2 class="hp-serif font-light leading-none mb-5" style="font-size:clamp(2rem,4.5vw,3rem);color:#1a1a1a">{fr(pologne.h2)}</h2>
+          <p class="hp-sans text-sm md:text-base leading-[1.8] max-w-xl" style="color:rgba(26,26,26,0.65)">{fr(pologne.texte)}</p>
+        </div>
+        <a href={pologne.cta.href} class="hp-sans inline-block text-center px-8 py-4 text-xs uppercase tracking-widest border hover:bg-[#b5936b] transition-colors" style="border-color:#b5936b;color:#1a1a1a">
+          {fr(pologne.cta.label)}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section style="background:#1a1a1a" class="py-24 md:py-28 px-6 text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="hp-serif text-3xl md:text-5xl font-light mb-6 leading-tight" style="color:#f7f5f2">{fr(ctaFinal.h2)}</h2>
+      <p class="hp-sans text-base mb-10 max-w-lg mx-auto leading-[1.8]" style="color:rgba(247,245,242,0.65)">{ctaFinal.texte}</p>
+      <a href={ctaFinal.cta.href} class="hp-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#1a1a1a">
+        {fr(ctaFinal.cta.label)}
       </a>
     </div>
   </section>
 
-  <script>
-    const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);} }), {threshold:0.1});
-    document.querySelectorAll('.reveal,.stagger').forEach(el => io.observe(el));
-  </script>
 </Layout>

@@ -45,14 +45,13 @@
     "h2": "Des missions concrètes avec la Pologne",
     "items": [
       { "secteur": "Industrie · Allemagne ↔ Pologne", "texte": "5 jours d'accompagnement sur site auprès de 18 techniciens pour faciliter les échanges et la coordination des équipes." },
-      { "secteur": "Opération M&A · France ↔ Pologne", "texte": "4 mois d'accompagnement linguistique et interculturel dans le cadre d'une opération transfrontalière." },
-      { "secteur": "Réunions stratégiques · France ↔ Pologne", "texte": "Interprétation et accompagnement à distance lors d'échanges professionnels entre interlocuteurs français et polonais." }
+      { "secteur": "Opération M&A · France ↔ Pologne", "texte": "4 mois d'accompagnement linguistique et interculturel dans le cadre d'une opération transfrontalière." }
     ],
-    "lien": { "label": "Voir nos cas clients →", "href": "/fr/cas-clients" }
+    "lien": null
   },
   "experience": {
     "h2": "Une expertise France–Pologne construite sur l'expérience",
-    "texte": "Dès 2002, à Paris, la fondatrice de JANUS a travaillé au sein de la Société Générale sur des opérations de fusions-acquisitions impliquant des entreprises françaises et polonaises. JANUS, créée en 2021, met cette connaissance des deux environnements au service des entreprises.",
+    "texte": "Dès 2002, à Paris, la fondatrice de JANUS a travaillé dans la finance sur des opérations de fusions-acquisitions impliquant des entreprises françaises et polonaises. JANUS, créée en 2021, met cette connaissance des deux environnements au service des entreprises.",
     "points": [
       "Expérience professionnelle franco-polonaise depuis 2002",
       "Fusions-acquisitions impliquant des entreprises françaises et polonaises",
@@ -63,15 +62,14 @@
   "complementaires": {
     "h2": "Des services complémentaires",
     "items": [
-      { "titre": "Traduction professionnelle FR ↔ PL", "texte": "Contrats, documents techniques et supports commerciaux traduits dans le contexte de votre projet.", "lien": { "label": "Services en polonais →", "href": "/fr/langues/polonais" } },
+      { "titre": "Traduction professionnelle FR ↔ PL", "texte": "Contrats, documents techniques et supports commerciaux traduits dans le contexte de votre projet.", "lien": { "label": "Traduction professionnelle →", "href": "/fr/services#traduction" } },
       { "titre": "Formation linguistique", "texte": "Polonais professionnel pour les collaborateurs en relation régulière avec la Pologne.", "lien": { "label": "Formation en polonais →", "href": "/fr/langues/polonais" } },
-      { "titre": "Communication interculturelle", "texte": "Préparer vos équipes aux usages professionnels de leurs interlocuteurs polonais.", "lien": { "label": "Nos services →", "href": "/fr/services" } }
+      { "titre": "Communication interculturelle", "texte": "Préparer vos équipes aux usages professionnels de leurs interlocuteurs polonais.", "lien": { "label": "Communication interculturelle →", "href": "/fr/services#interculturel" } }
     ]
   },
   "pologne": {
     "h2": "Comprendre et développer votre activité en Pologne",
     "items": [
-      { "titre": "S'implanter en Pologne", "texte": "Implantation et accompagnement sur le marché polonais.", "href": "/fr/marches/pologne" },
       { "titre": "Investir en Pologne", "texte": "Données économiques et relations commerciales franco-polonaises.", "href": "/fr/pologne-investir" },
       { "titre": "Services en polonais", "texte": "Interprétation, traduction et formation en polonais.", "href": "/fr/langues/polonais" }
     ]

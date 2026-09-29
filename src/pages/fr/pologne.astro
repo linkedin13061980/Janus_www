@@ -9,6 +9,12 @@ import Tracking from '../../components/ui/Tracking.astro';
 import p from '../../content/fr/pologne.json';
 
 // Espace insécable avant « ? » et « France–Pologne » insécable (le tiret ne doit pas couper la ligne).
+// Données structurées FAQ : reprend exactement les questions/réponses publiées sur la page.
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: p.faq.items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.r } })),
+};
 const fr = (s: string) => s.replace(/ \?/g, '\u00A0?').replace(/France–Pologne/g, 'France\u2060–\u2060Pologne');
 ---
 
@@ -20,6 +26,7 @@ const fr = (s: string) => s.replace(/ \?/g, '\u00A0?').replace(/France–Pologne
   canonical="https://agence-janus.fr/fr/pologne"
   alternates={false}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
   <style is:global>
     .fp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
@@ -103,9 +110,12 @@ const fr = (s: string) => s.replace(/ \?/g, '\u00A0?').replace(/France–Pologne
       <div class="max-w-6xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <h2 class="fp-serif font-light leading-tight" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(p.cas.h2)}</h2>
-          <a href={p.cas.lien.href} class="fp-sans fp-link self-start md:self-auto text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">{p.cas.lien.label}</a>
+          {/* Lien vers les cas clients masqué tant que leur contenu n'est pas validé */}
+          {p.cas.lien && (
+            <a href={p.cas.lien.href} class="fp-sans fp-link self-start md:self-auto text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">{p.cas.lien.label}</a>
+          )}
         </div>
-        <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
           {p.cas.items.map((c) => (
             <li class="border-t-2 px-7 py-6" style="border-top-color:#b5936b;background:#f7f5f2">
               <h3 class="fp-sans text-[11px] uppercase tracking-[0.2em] mb-3" style="color:#8a6d4b">{c.secteur}</h3>
@@ -154,7 +164,7 @@ const fr = (s: string) => s.replace(/ \?/g, '\u00A0?').replace(/France–Pologne
     <section style="background:#f7f5f2" class="px-6 py-16 md:py-24">
       <div class="max-w-6xl mx-auto">
         <h2 class="fp-serif font-light leading-tight mb-10" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{p.pologne.h2}</h2>
-        <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
           {p.pologne.items.map((l) => (
             <li>
               <a href={l.href} class="fp-card flex flex-col h-full bg-white border p-7" style="border-color:rgba(26,26,26,0.1)">

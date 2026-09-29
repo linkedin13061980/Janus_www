@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "title": "Échanger sur votre projet international | JANUS",
+    "description": "Présentez à JANUS le contexte, les pays concernés et l'objectif de votre projet international : négociation, relation partenaire, mission terrain, interprétation."
+  },
+  "surtitre": "Contact",
+  "h1": "Échanger sur votre projet international",
+  "intro": "Présentez-nous le contexte, les pays concernés et l'objectif de votre projet. Nous déterminerons ensemble si et comment JANUS peut intervenir.",
+  "confidentialite": "Premier échange confidentiel.",
+  "coordonnees": {
+    "telephone": { "label": "+33 9 67 05 68 31", "href": "tel:+33967056831" },
+    "email": { "label": "contact@agence-janus.fr", "href": "mailto:contact@agence-janus.fr" },
+    "ville": "Lyon, France"
+  }
+}

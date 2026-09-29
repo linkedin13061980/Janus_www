@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Agata Mich et JANUS, accompagnement international | JANUS",
+    "description": "JANUS, créée en 2021 par Agata Mich, accompagne les entreprises dans leurs projets internationaux, avec une expertise particulière des relations France–Pologne."
+  },
+  "hero": {
+    "surtitre": "À propos · Lyon · depuis 2021",
+    "h1": "Une structure d'accompagnement international et multilingue",
+    "intro": "Depuis 2021, JANUS accompagne dirigeants et équipes dans les étapes clés de leurs projets internationaux : négociations, réunions stratégiques, relations partenaires, missions terrain et communication multilingue."
+  },
+  "fondatrice": {
+    "surtitre": "La dirigeante",
+    "h2": "Une expertise construite sur le terrain",
+    "paragraphes": [
+      "JANUS est dirigée par Agata Mich. Son parcours international débute à Paris dans la finance, où elle intervient notamment sur des opérations de fusions-acquisitions impliquant des entreprises françaises et polonaises. Elle poursuit ensuite son parcours à Genève dans un environnement international avant de créer JANUS en 2021.",
+      "Elle travaille en français, polonais, anglais et russe."
+    ],
+    "etapesTitre": "Parcours",
+    "etapes": [
+      { "repere": "Paris", "texte": "Finance internationale : opérations de fusions-acquisitions impliquant des entreprises françaises et polonaises." },
+      { "repere": "Genève", "texte": "Poursuite du parcours dans un environnement international." },
+      { "repere": "2016", "texte": "Première activité dans la formation linguistique." },
+      { "repere": "2021", "texte": "Création de JANUS à Lyon." }
+    ]
+  },
+  "janus": {
+    "h2": "JANUS aujourd'hui",
+    "paragraphes": [
+      "JANUS est le nom commercial de la société MICH, créée en 2021 à Lyon.",
+      "JANUS intervient à un niveau senior : analyse de la situation, préparation des échanges, négociation, facilitation entre les parties et accompagnement des dirigeants et des équipes lors des moments décisifs du projet.",
+      "Selon les besoins de chaque mission, JANUS mobilise des professionnels multilingues pour l'interprétation, la traduction ou la formation."
+    ],
+    "zonesTitre": "Interventions possibles",
+    "zones": [
+      "Lyon et Auvergne-Rhône-Alpes",
+      "Partout en France",
+      "À distance",
+      "À l'étranger selon les missions"
+    ]
+  },
+  "principes": {
+    "h2": "Notre manière de travailler",
+    "items": [
+      { "titre": "Préparation", "texte": "Chaque intervention est préparée en amont : contexte, interlocuteurs, enjeux, vocabulaire et points sensibles." },
+      { "titre": "Confidentialité", "texte": "La confidentialité fait partie du cadre des missions ; un accord de confidentialité peut être mis en place lorsque le projet le nécessite." },
+      { "titre": "Responsabilités claires", "texte": "JANUS facilite les échanges et la coordination ; les décisions techniques et opérationnelles restent sous la responsabilité du client." }
+    ]
+  },
+  "international": {
+    "surtitre": "France–Pologne et international",
+    "texte": "La Pologne est une expertise forte de JANUS. L'agence accompagne aussi les entreprises en anglais, en allemand, en espagnol et en italien.",
+    "liens": [
+      { "label": "Notre expertise France–Pologne", "href": "/fr/pologne" },
+      { "label": "Nos expertises", "href": "/fr/services" }
+    ]
+  },
+  "ctaFinal": {
+    "h2": "Un projet international à préparer, débloquer ou faire avancer ?",
+    "texte": "Présentez-nous le contexte, les pays concernés et l'objectif de votre projet.",
+    "cta": { "label": "Échanger sur votre projet →", "href": "/fr/contact" }
+  }
+}

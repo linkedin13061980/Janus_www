@@ -45,6 +45,33 @@
       "espagnol": "Espagnol",
       "italien": "Italien"
     },
+    "besoin": "Type de besoin",
+    "besoin_options": {
+      "accompagnement": "Accompagnement international",
+      "negociation": "Négociation / réunion stratégique",
+      "coordination": "Coordination d'une mission internationale",
+      "coaching": "Coaching en prise de parole (contexte international)",
+      "interpretation": "Interprétation",
+      "traduction": "Traduction",
+      "interculturel": "Communication interculturelle",
+      "formation": "Formation professionnelle",
+      "autre": "Autre / à définir"
+    },
+    "pays": "Pays concernés",
+    "pays_placeholder": "Ex. France, Pologne, Allemagne",
+    "langues": "Langue(s) de travail (facultatif)",
+    "langues_options": {
+      "francais": "Français",
+      "anglais": "Anglais",
+      "polonais": "Polonais",
+      "allemand": "Allemand",
+      "espagnol": "Espagnol",
+      "italien": "Italien",
+      "plusieurs": "Plusieurs / à définir"
+    },
+    "objectif": "Votre besoin / objectif",
+    "objectif_placeholder": "Contexte, interlocuteurs, échéance, ce que vous souhaitez obtenir…",
+    "message_facultatif": "Informations complémentaires (facultatif)",
     "message": "Message",
     "rgpd_consent": "J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la politique de confidentialité.",
     "submit": "Envoyer",

@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "title": "Accompagnement international, négociation et interprétation | JANUS",
+    "description": "Accompagnement international, négociations et coaching en prise de parole : JANUS accompagne les entreprises et mobilise interprétation, traduction, formation."
+  },
+  "hero": {
+    "surtitre": "Nos expertises",
+    "h1": "Accompagner vos projets internationaux, de la préparation à la mise en œuvre",
+    "intro": "JANUS intervient aux côtés des dirigeants et des équipes lors des étapes clés de leurs projets internationaux. Les compétences linguistiques et interculturelles nécessaires sont mobilisées selon chaque mission.",
+    "principe": "JANUS facilite les échanges et la coordination ; les décisions techniques et opérationnelles restent sous la responsabilité du client."
+  },
+  "principales": {
+    "surtitre": "Expertises principales",
+    "items": [
+      {
+        "id": "accompagnement",
+        "titre": "Accompagnement international",
+        "texte": "Aux côtés des dirigeants et des équipes dans leurs relations avec clients, fournisseurs et partenaires étrangers, de l'analyse de la situation à la mise en œuvre des décisions, y compris lors de visites de sites, de déplacements et de missions internationales.",
+        "points": [
+          "Analyse du contexte, des parties prenantes et des enjeux",
+          "Préparation des échanges importants",
+          "Clarification ou déblocage d'une relation commerciale internationale",
+          "Coordination terrain : visites de sites et d'usines, audits fournisseurs, déplacements professionnels, rencontres partenaires et salons professionnels",
+          "Facilitation des échanges entre équipes, partenaires et interlocuteurs locaux",
+          "Suivi des décisions, des engagements et des prochaines étapes"
+        ],
+        "cta": {
+          "label": "Échanger sur votre projet",
+          "href": "/fr/contact"
+        },
+        "note": "JANUS facilite les échanges et la coordination ; les décisions techniques et opérationnelles restent sous la responsabilité du client."
+      },
+      {
+        "id": "negociation",
+        "titre": "Négociation & réunions stratégiques",
+        "texte": "Préparation des échanges, lecture des enjeux et des usages de chaque partie, présence lors des négociations et des réunions décisives.",
+        "points": [
+          "Clarification des objectifs de l'échange",
+          "Lecture des usages professionnels et des circuits de décision",
+          "Présence aux côtés de la direction pendant la négociation ou la réunion",
+          "Interprétation lorsque la mission le nécessite",
+          "Formalisation des décisions et des prochaines étapes"
+        ],
+        "cta": {
+          "label": "Échanger sur une négociation",
+          "href": "/fr/contact"
+        }
+      },
+      {
+        "id": "coaching",
+        "titre": "Coaching en prise de parole en contexte international",
+        "texte": "Préparez vos présentations, réunions, négociations et interventions professionnelles en langue étrangère. Travail ciblé sur la structure du discours, la clarté du message, l'aisance orale, la fluidité et les mises en situation.",
+        "points": [
+          "Présentations, réunions, négociations et interventions professionnelles en langue étrangère",
+          "Structure du discours et clarté du message",
+          "Aisance orale et fluidité",
+          "Mises en situation"
+        ],
+        "cta": {
+          "label": "Échanger sur votre besoin",
+          "href": "/fr/contact"
+        }
+      }
+    ]
+  },
+  "complementaires": {
+    "surtitre": "Services complémentaires",
+    "intro": "Mobilisés selon les besoins de chaque mission, ou de manière autonome.",
+    "items": [
+      {
+        "id": "interpretation",
+        "titre": "Interprétation professionnelle",
+        "texte": "Interprétation lors de négociations, réunions, visites d'usines, audits, rendez-vous commerciaux et événements professionnels.",
+        "points": [
+          "Interprétation consécutive, de liaison ou en visioconférence",
+          "Français ↔ anglais, polonais, allemand, espagnol",
+          "Confidentialité et NDA selon les exigences de la mission"
+        ]
+      },
+      {
+        "id": "traduction",
+        "titre": "Traduction professionnelle",
+        "texte": "Traduction de documents professionnels, commerciaux, techniques et institutionnels nécessaires aux échanges internationaux.",
+        "points": [
+          "Documents juridiques, techniques, commerciaux et marketing",
+          "Professionnels sélectionnés selon les besoins de chaque mission",
+          "Confidentialité et NDA selon les exigences de la mission"
+        ]
+      },
+      {
+        "id": "interculturel",
+        "titre": "Communication interculturelle",
+        "texte": "Comprendre les codes professionnels de ses interlocuteurs, anticiper les différences culturelles et faciliter les relations de travail internationales.",
+        "points": [
+          "Préparation des équipes avant une négociation ou un déplacement",
+          "Lecture des usages, des attentes et des implicites",
+          "Intégrée aux missions d'accompagnement"
+        ]
+      },
+      {
+        "id": "formation",
+        "titre": "Formation professionnelle en langues",
+        "texte": "Formations sur mesure destinées aux dirigeants, managers et collaborateurs travaillant dans un environnement international.",
+        "points": [
+          "Anglais, polonais, français langue étrangère, allemand, espagnol, italien",
+          "Individuel, groupe ou intensif",
+          "Selon le dispositif et l'éligibilité, possibilités de financement : CPF, OPCO, plan de développement des compétences",
+          "MICH est certifiée Qualiopi au titre de la catégorie actions de formation."
+        ],
+        "liens": [
+          {
+            "label": "Financement",
+            "href": "/fr/financement"
+          },
+          {
+            "label": "Nos langues",
+            "href": "/fr/langues"
+          }
+        ]
+      }
+    ]
+  },
+  "pologne": {
+    "surtitre": "Une expertise particulière",
+    "h2": "France–Pologne",
+    "texte": "JANUS possède une expérience particulière des environnements professionnels français et polonais : négociations, visites de sites, relations fournisseurs et partenaires, interprétation français–polonais.",
+    "cta": {
+      "label": "Découvrir notre expertise France–Pologne →",
+      "href": "/fr/pologne"
+    }
+  },
+  "ctaFinal": {
+    "h2": "Un projet international à préparer, débloquer ou faire avancer ?",
+    "texte": "Présentez-nous le contexte, les pays concernés et l'objectif de votre projet.",
+    "cta": {
+      "label": "Échanger sur votre projet →",
+      "href": "/fr/contact"
+    }
+  }
+}
