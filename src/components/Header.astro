@@ -1,6 +1,7 @@
 ---
 import type { Locale } from '../i18n/utils';
 import { t, localePath, localeNames } from '../i18n/utils';
+import { localizedPath } from '../i18n/routes';
 
 interface Props {
   locale: Locale;
@@ -47,18 +48,26 @@ const casesPath: Record<Locale, string> = {
 
       <!-- Switcher de langue -->
       <div class="flex items-center gap-1 ml-4">
-        {locales.map((loc) => (
-          <a
-            href={`/${loc}${currentPath}`}
-            class={`px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors ${
-              loc === locale
-                ? 'text-gold border-b border-gold'
-                : 'text-white/50 hover:text-white'
-            }`}
-          >
-            {localeNames[loc]}
-          </a>
-        ))}
+        {locales.map((loc) => {
+          // Uniquement les versions existantes ; sinon la langue est affichée désactivée (pas de 404).
+          const href = loc === locale ? `/${loc}${currentPath}` : localizedPath(currentPath, loc);
+          return href ? (
+            <a
+              href={href}
+              class={`px-2 py-1 text-xs font-semibold uppercase tracking-wider transition-colors ${
+                loc === locale
+                  ? 'text-gold border-b border-gold'
+                  : 'text-white/50 hover:text-white'
+              }`}
+            >
+              {localeNames[loc]}
+            </a>
+          ) : (
+            <span class="px-2 py-1 text-xs font-semibold uppercase tracking-wider text-white/20 cursor-default" aria-disabled="true">
+              {localeNames[loc]}
+            </span>
+          );
+        })}
       </div>
 
       <!-- Burger mobile -->

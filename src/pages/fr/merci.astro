@@ -4,14 +4,14 @@ import Tracking from '../../components/ui/Tracking.astro';
 import merci from '../../content/fr/merci.json';
 
 // Page de conversion (après envoi du formulaire FR) : exclue de l'indexation et du sitemap.
-// Le sélecteur de langue renvoie vers /contact, qui existe en FR/EN/PL.
+// Page FR uniquement : EN/PL sont désactivés dans le sélecteur de langue.
 ---
 
 <Layout
   title={merci.meta.title}
   description={merci.meta.description}
   locale="fr"
-  currentPath="/contact"
+  currentPath="/merci"
   canonical="https://agence-janus.fr/fr/merci"
   alternates={false}
   noindex

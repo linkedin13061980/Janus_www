@@ -1,7 +1,7 @@
 ---
 // Page pilier de l'expertise France–Pologne (et page d'atterrissage Google Ads).
 // Contenu : /src/content/fr/pologne.json — page en français uniquement.
-// Le sélecteur de langue pointe vers /pologne-investir (existant en FR/EN/PL) ; aucune balise hreflang ;
+// Sélecteur de langue : EN/PL renvoient vers /pologne-investir (cf. src/i18n/routes.ts) ; aucune balise hreflang ;
 // la canonical est la page elle-même, sans barre finale.
 import Layout from '../../layouts/Layout.astro';
 import Flag from '../../components/ui/Flag.astro';
@@ -16,7 +16,7 @@ const fr = (s: string) => s.replace(/ \?/g, '\u00A0?').replace(/France–Pologne
   title={p.meta.title}
   description={p.meta.description}
   locale="fr"
-  currentPath="/pologne-investir"
+  currentPath="/pologne"
   canonical="https://agence-janus.fr/fr/pologne"
   alternates={false}
 >

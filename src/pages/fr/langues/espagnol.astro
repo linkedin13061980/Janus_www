@@ -4,15 +4,16 @@ import LanguePage from '../../../components/layout/LanguePage.astro';
 import data from '../../../content/fr/langues/espagnol.json';
 import commun from '../../../content/fr/langues/_commun.json';
 
-// Page FR uniquement : le sélecteur de langue et les hreflang pointent vers /langues (existant en FR/EN/PL),
-// la canonical est la page elle-même.
+// Page FR uniquement : dans le sélecteur de langue, EN/PL renvoient vers la page « Langues » (cf. src/i18n/routes.ts) ;
+// aucune balise hreflang ; la canonical est la page elle-même.
 ---
 
 <Layout
   title={data.meta.title}
   description={data.meta.description}
   locale="fr"
-  currentPath="/langues"
+  currentPath={`/langues/${data.slug}`}
+  alternates={false}
   canonical={`https://agence-janus.fr/fr/langues/${data.slug}`}
 >
   <LanguePage data={data as any} commun={commun as any} />

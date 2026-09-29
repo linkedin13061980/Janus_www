@@ -4,11 +4,11 @@ const locale = 'en';
 const currentPath = '/';
 
 const marches = [
-  { flag: '🇵🇱', pays: 'Poland',         label: 'Priority',       href: '/en/marches/pologne',     featured: true  },
-  { flag: '🇬🇧', pays: 'United Kingdom', label: 'Business',       href: '/en/marches/royaume-uni', featured: false },
-  { flag: '🇩🇪', pays: 'Germany',        label: 'DACH Zone',      href: '/en/marches/allemagne',   featured: false },
-  { flag: '🇪🇸', pays: 'Spain',          label: 'Hispanic',       href: '/en/marches/espagne',     featured: false },
-  { flag: '🇮🇹', pays: 'Italy',          label: 'Franco-Italian', href: '/en/marches/italie',      featured: false },
+  { flag: '🇵🇱', pays: 'Poland',         label: 'Priority',       href: '/en/pologne-investir',     featured: true  },
+  { flag: '🇬🇧', pays: 'United Kingdom', label: 'Business',       href: null,                      featured: false },
+  { flag: '🇩🇪', pays: 'Germany',        label: 'DACH Zone',      href: null,                      featured: false },
+  { flag: '🇪🇸', pays: 'Spain',          label: 'Hispanic',       href: null,                      featured: false },
+  { flag: '🇮🇹', pays: 'Italy',          label: 'Franco-Italian', href: null,                      featured: false },
   { flag: '🇫🇷', pays: 'France',         label: 'FLE · Allophones',href: '/en/langues#fle',        featured: false },
 ];
 
@@ -47,7 +47,7 @@ const stats = [
     .stagger.in>*:nth-child(5){opacity:1;transform:none;transition-delay:.45s}
     .stagger.in>*:nth-child(6){opacity:1;transform:none;transition-delay:.55s}
     .tile{transition:transform .2s ease,box-shadow .2s ease}
-    .tile:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.10)}
+    a.tile:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.10)}
     @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .ticker-inner{display:flex;width:max-content;animation:ticker 22s linear infinite}
   </style>
@@ -62,13 +62,13 @@ const stats = [
         Choose your target market — JANUS handles the linguistic and intercultural dimension of your mission.
       </p>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-3 stagger">
-        {marches.map(m => (
-          <a href={m.href} class={`tile block p-6 md:p-8 border ${m.featured ? 'border-[#b5936b] bg-[#1a1a1a]' : 'border-[#1a1a1a]/12 bg-white hover:border-[#b5936b]/60'}`}>
+        {marches.map(m => { const Tuile = m.href ? 'a' : 'div'; return (
+          <Tuile href={m.href ?? undefined} class={`tile block p-6 md:p-8 border ${m.featured ? 'border-[#b5936b] bg-[#1a1a1a]' : `border-[#1a1a1a]/12 bg-white ${m.href ? 'hover:border-[#b5936b]/60' : ''}`}`}>
             <span class="text-4xl md:text-5xl block mb-4 leading-none">{m.flag}</span>
             <p class={`hp-serif text-xl font-light mb-1 ${m.featured ? 'text-[#b5936b]' : 'text-[#1a1a1a]'}`}>{m.pays}</p>
             <p class={`hp-sans text-xs uppercase tracking-wider ${m.featured ? 'text-[#b5936b]/60' : 'text-[#1a1a1a]/35'}`}>{m.label}</p>
-          </a>
-        ))}
+          </Tuile>
+        ); })}
       </div>
     </div>
   </section>
