@@ -45,7 +45,7 @@ const currentPath = '/services';
     <div class="max-w-4xl mx-auto">
       <div class="flex flex-col gap-px stagger" style="background:rgba(26,26,26,0.06)">
         {content.services.sort((a,b) => a.order - b.order).map((s, i) => (
-          <div class="flex flex-col md:flex-row" style={i % 2 !== 0 ? 'background:#f7f5f2' : 'background:white'}>
+          <div id={s.slug} class="flex flex-col md:flex-row scroll-mt-16" style={i % 2 !== 0 ? 'background:#f7f5f2' : 'background:white'}>
             <div class="md:w-1/2 p-10 md:p-16 flex flex-col justify-center">
               {s.badge && (
                 <span class="hp-sans text-[9px] uppercase tracking-[0.2em] border px-3 py-1 rounded-full mb-6 self-start" style="color:rgba(181,147,107,0.8);border-color:rgba(181,147,107,0.3)">{s.badge}</span>

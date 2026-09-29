@@ -39,11 +39,11 @@ const hasVideo = desktop.length > 0 || mobile.length > 0;
   Mise en page :
   - mobile (< 768 px) : image/vidéo en bandeau 4:3 (16:9 dès 640 px) au-dessus, texte en dessous sur fond sombre ;
     la scène reste entière et lumineuse, aucun voile sur le texte n'est nécessaire ;
-  - desktop (≥ 768 px) : hauteur fixe de 620 px ; la vidéo occupe la partie droite (50 %, puis 58 % dès 1280 px), centrée sur la scène,
+  - desktop (≥ 768 px) : hauteur minimale de 620 px (le bloc s'agrandit si le texte l'exige) ; la vidéo occupe la partie droite (50 %, puis 58 % dès 1280 px), centrée sur la scène,
     et se fond à gauche dans le fond anthracite qui porte le texte : image claire, sans voile sur les personnes.
 -->
 <section
-  class={`hero-video relative isolate overflow-hidden flex flex-col md:flex-row md:items-center md:h-[620px] ${className}`}
+  class={`hero-video relative isolate overflow-hidden flex flex-col md:flex-row md:items-center md:min-h-[620px] ${className}`}
   style="background:#0d0d0d"
   data-hero-video
 >

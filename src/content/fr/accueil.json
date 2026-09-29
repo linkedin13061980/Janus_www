@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "title": "Accompagnement international des entreprises | JANUS",
+    "description": "JANUS accompagne dirigeants et équipes dans leurs projets internationaux : négociations, relations fournisseurs et partenaires, interprétation, interculturel."
+  },
+  "hero": {
+    "surtitre": "International · Business · Multilingue",
+    "h1": "Accompagnement des entreprises dans leurs projets internationaux",
+    "question": "Vous développez une relation avec un client, fournisseur ou partenaire à l'étranger ?",
+    "intro": "JANUS accompagne dirigeants et équipes dans les étapes clés de leurs projets internationaux : négociations, réunions stratégiques, déplacements professionnels, relations partenaires et communication multilingue.",
+    "accroche": "De la compréhension des enjeux à l'accord et à sa mise en œuvre.",
+    "ctaPrincipal": { "label": "Échanger sur votre projet →", "href": "/fr/contact" },
+    "ctaSecondaire": { "label": "Découvrir nos expertises", "href": "#expertises" }
+  },
+  "quand": {
+    "h2": "Quand faire appel à JANUS ?",
+    "intro": [
+      "Un projet international ne se résume pas à parler la même langue.",
+      "Les difficultés apparaissent souvent lorsque plusieurs entreprises, cultures, métiers et intérêts doivent avancer ensemble."
+    ],
+    "listeTitre": "JANUS peut intervenir lorsque :",
+    "situations": [
+      "vous préparez une négociation avec un client, fournisseur ou partenaire étranger ;",
+      "une réunion stratégique nécessite une préparation et un accompagnement spécifiques ;",
+      "vous devez rencontrer un partenaire ou visiter un site à l'étranger ;",
+      "des différences linguistiques ou interculturelles compliquent les échanges ;",
+      "une relation commerciale internationale doit être structurée, clarifiée ou débloquée ;",
+      "un projet entre dans une phase importante nécessitant un regard extérieur ;",
+      "la direction souhaite sécuriser les échanges avant une décision importante."
+    ]
+  },
+  "approche": {
+    "surtitre": "Notre approche",
+    "h2": "De l'analyse à l'action",
+    "etapes": [
+      { "titre": "Analyser", "texte": "Comprendre le contexte, les parties prenantes, les objectifs, les enjeux et les éventuels points de blocage." },
+      { "titre": "Préparer", "texte": "Clarifier les objectifs de l'échange, préparer les réunions ou négociations et anticiper les dimensions linguistiques et interculturelles." },
+      { "titre": "Accompagner", "texte": "Intervenir aux côtés des dirigeants et des équipes lors des réunions, négociations, visites de sites et déplacements professionnels." },
+      { "titre": "Faciliter", "texte": "Créer les conditions d'un dialogue efficace entre clients, fournisseurs, partenaires et équipes de différents pays." },
+      { "titre": "Sécuriser la suite", "texte": "Clarifier les décisions, les engagements et les prochaines étapes afin de permettre aux équipes de poursuivre efficacement le projet." }
+    ]
+  },
+  "expertises": {
+    "surtitre": "Expertises",
+    "h2": "Nos expertises",
+    "intro": "Trois domaines d'intervention au cœur de JANUS, appuyés par les compétences linguistiques et interculturelles nécessaires à chaque mission.",
+    "principales": [
+      { "titre": "Accompagnement international", "texte": "Aux côtés des dirigeants et des équipes dans leurs relations avec clients, fournisseurs et partenaires étrangers, de l'analyse de la situation à la mise en œuvre des décisions.", "cta": "Découvrir l'accompagnement international", "href": "/fr/services#terrain" },
+      { "titre": "Négociation & réunions stratégiques", "texte": "Préparation des échanges, lecture des enjeux et des usages de chaque partie, présence lors des négociations et des réunions décisives.", "cta": "Échanger sur une négociation", "href": "/fr/contact" },
+      { "titre": "Coordination terrain & projets internationaux", "texte": "Faciliter la coordination entre équipes, partenaires et interlocuteurs locaux lors de visites de sites, déplacements et missions internationales. JANUS facilite les échanges et la coordination ; les décisions techniques et opérationnelles restent sous la responsabilité du client.", "cta": "Échanger sur votre mission", "href": "/fr/contact" }
+    ],
+    "complementaires": {
+      "titre": "Services complémentaires",
+      "intro": "Mobilisés selon les besoins de chaque mission.",
+      "items": [
+        { "titre": "Interprétation professionnelle", "texte": "Négociations, réunions, visites d'usines, audits, rendez-vous commerciaux.", "cta": "En savoir plus", "href": "/fr/services#interpretariat" },
+        { "titre": "Traduction professionnelle", "texte": "Documents professionnels, commerciaux, techniques et institutionnels.", "cta": "En savoir plus", "href": "/fr/services#traduction" },
+        { "titre": "Formation en langues", "texte": "Formations sur mesure pour dirigeants, managers et collaborateurs.", "cta": "En savoir plus", "href": "/fr/services#formation" },
+        { "titre": "Communication interculturelle", "texte": "Comprendre les codes professionnels de ses interlocuteurs et anticiper les différences culturelles." }
+      ]
+    },
+    "langues": {
+      "titre": "Langues de travail",
+      "lien": { "label": "Toutes nos langues", "href": "/fr/langues" }
+    }
+  },
+  "difference": {
+    "h2": "Plus qu'une question de langue",
+    "paragraphes": [
+      "Une négociation internationale ne se joue pas uniquement sur les mots.",
+      "Le contexte, les intérêts des parties, les différences culturelles et la manière dont les messages sont compris peuvent avoir un impact direct sur la relation professionnelle.",
+      "JANUS intervient dans le contexte réel du projet pour faciliter la compréhension entre les parties, préparer les échanges et accompagner les moments où les décisions doivent être prises."
+    ]
+  },
+  "pologne": {
+    "surtitre": "Une expertise particulière",
+    "h2": "Une expertise particulière des relations France–Pologne",
+    "paragraphes": [
+      "JANUS possède une expérience particulière des environnements professionnels français et polonais.",
+      "Nous accompagnons les entreprises françaises et polonaises dans leurs relations avec clients, fournisseurs, partenaires et équipes situés dans l'autre pays."
+    ],
+    "listeTitre": "Nos interventions peuvent notamment concerner :",
+    "interventions": [
+      "Négociations",
+      "Réunions professionnelles",
+      "Visites de sites et d'usines",
+      "Accompagnement terrain",
+      "Relations fournisseurs et partenaires",
+      "Interprétation français–polonais",
+      "Compréhension des pratiques professionnelles et culturelles"
+    ],
+    "cta": { "label": "Découvrir notre expertise France–Pologne →", "href": "/fr/pologne" }
+  },
+  "exemples": {
+    "surtitre": "Exemples d'interventions",
+    "items": [
+      { "secteur": "Industrie · Allemagne ↔ Pologne", "resume": "5 jours · 18 techniciens" },
+      { "secteur": "M&A · France ↔ Pologne", "resume": "4 mois d'accompagnement" }
+    ],
+    "lien": { "label": "Voir nos cas clients →", "href": "/fr/cas-clients" }
+  },
+  "pourQui": {
+    "h2": "Pour les entreprises qui travaillent au-delà des frontières",
+    "publicTitre": "JANUS accompagne principalement",
+    "public": [
+      "PME",
+      "ETI",
+      "Entreprises industrielles",
+      "Sociétés de services",
+      "Directions générales",
+      "Directions commerciales",
+      "Directions achats",
+      "Directions internationales",
+      "Responsables de projets internationaux"
+    ],
+    "zonesTitre": "Interventions possibles",
+    "zones": [
+      "Lyon et Auvergne-Rhône-Alpes",
+      "Partout en France",
+      "À distance",
+      "À l'étranger selon les missions"
+    ]
+  },
+  "equipe": {
+    "h2": "Une expertise construite sur le terrain",
+    "paragraphes": [
+      "JANUS est dirigée par Agata Mich. Son parcours international débute à Paris dans la finance, où elle intervient notamment sur des opérations de fusions-acquisitions impliquant des entreprises françaises et polonaises. Elle poursuit ensuite son parcours à Genève dans un environnement international avant de créer JANUS en 2021.",
+      "Elle travaille en français, polonais, anglais et russe."
+    ],
+    "cta": { "label": "Découvrir JANUS →", "href": "/fr/a-propos" }
+  },
+  "ctaFinal": {
+    "h2": "Un projet international à préparer, débloquer ou faire avancer ?",
+    "paragraphes": [
+      "Présentez-nous le contexte, les pays concernés et l'objectif de votre projet.",
+      "Nous déterminerons ensemble si et comment JANUS peut intervenir."
+    ],
+    "cta": { "label": "Échanger sur votre projet →", "href": "/fr/contact" }
+  }
+}
