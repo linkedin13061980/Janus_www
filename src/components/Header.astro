@@ -10,12 +10,6 @@ interface Props {
 
 const { locale, currentPath } = Astro.props;
 const locales: Locale[] = ['fr', 'en', 'pl'];
-
-const casesPath: Record<Locale, string> = {
-  fr: '/cas-clients',
-  en: '/case-studies',
-  pl: '/realizacje',
-};
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-anthracite/95 backdrop-blur border-b border-gold/20">
@@ -23,12 +17,10 @@ const casesPath: Record<Locale, string> = {
     <div class="flex items-center justify-between h-16">
 
       <!-- Logo -->
-      <a href={localePath(locale, '/')} class="flex items-center gap-3 group">
+      <a href={localePath(locale, '/')} class="flex items-center gap-2.5 sm:gap-3 group">
+        <img src="/logo/janus-embleme-fond-sombre.svg" alt="" aria-hidden="true" width="36" height="40" class="h-[34px] sm:h-10 w-auto" />
         <span class="text-2xl font-serif font-bold text-gold tracking-widest group-hover:text-gold-light transition-colors">
           JANUS
-        </span>
-        <span class="hidden 2xl:block text-xs text-white/50 uppercase tracking-widest border-l border-gold/30 pl-3">
-          Communication Interculturelle
         </span>
       </a>
 
@@ -36,7 +28,6 @@ const casesPath: Record<Locale, string> = {
       <nav class="hidden xl:flex items-center gap-6">
         <a href={localePath(locale, '/')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.home')}</a>
         <a href={localePath(locale, '/services')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.services')}</a>
-        <a href={localePath(locale, casesPath[locale])} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.cases')}</a>
         <a href={localePath(locale, '/langues')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.langues')}</a>
         {locale === 'fr' && <a href={localePath(locale, '/pologne')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.francePologne')}</a>}
         <a href={localePath(locale, '/financement')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.financement')}</a>
@@ -87,14 +78,13 @@ const casesPath: Record<Locale, string> = {
   <!-- Menu mobile -->
   <div id="mobile-menu" class="hidden xl:hidden border-t border-gold/20 bg-anthracite">
     <nav class="px-4 py-4 flex flex-col gap-3">
-      <a href={localePath(locale, '/')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.home')}</a>
-      <a href={localePath(locale, '/services')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.services')}</a>
-      <a href={localePath(locale, casesPath[locale])} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.cases')}</a>
-      <a href={localePath(locale, '/langues')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.langues')}</a>
-      {locale === 'fr' && <a href={localePath(locale, '/pologne')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.francePologne')}</a>}
-      <a href={localePath(locale, '/financement')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.financement')}</a>
-      <a href={localePath(locale, '/a-propos')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider">{t(locale, 'nav.about')}</a>
-      <a href={localePath(locale, '/contact')} class="text-sm text-gold hover:text-gold-light transition-colors uppercase tracking-wider">{t(locale, 'nav.contact')}</a>
+      <a href={localePath(locale, '/')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.home')}</a>
+      <a href={localePath(locale, '/services')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.services')}</a>
+      <a href={localePath(locale, '/langues')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.langues')}</a>
+      {locale === 'fr' && <a href={localePath(locale, '/pologne')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.francePologne')}</a>}
+      <a href={localePath(locale, '/financement')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.financement')}</a>
+      <a href={localePath(locale, '/a-propos')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.about')}</a>
+      <a href={localePath(locale, '/contact')} class="text-sm text-gold hover:text-gold-light transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.contact')}</a>
     </nav>
   </div>
 </header>
