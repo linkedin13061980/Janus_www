@@ -17,7 +17,7 @@ const currentPath = '/a-propos';
         <p class="text-white/55 text-base leading-relaxed">JANUS is a Lyon-based language and intercultural agency founded by <strong class="text-white">Agata Mich</strong> — quadrilingual (French, Polish, English, Russian), former VP at Credit Suisse and analyst at SG CIB. Rare financial and international expertise in service of business communication.</p>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        {[{n:'2021',l:'JANUS founded'},{n:'2016',l:'English Academy'},{n:'6',l:'Languages'},{n:'100%',l:'Native speakers'}].map(s => (
+        {[{n:'2021',l:'JANUS founded'},{n:'6',l:'Languages'},{n:'100%',l:'Native speakers'}].map(s => (
           <div class="border border-gold/20 p-5 text-center">
             <p class="text-3xl font-serif font-bold text-gold">{s.n}</p>
             <p class="text-white/40 text-xs uppercase tracking-wider mt-1">{s.l}</p>
@@ -34,7 +34,7 @@ const currentPath = '/a-propos';
         <h2 class="text-3xl font-serif font-light text-white mb-8">20 years in service<br/>of <em class="italic text-gold">international projects.</em></h2>
         <div class="space-y-5">
           <p class="text-white/60 text-sm leading-relaxed">I had the opportunity to work in very different environments — institutional, financial, entrepreneurial — in France, Poland and Switzerland, always in international and multicultural contexts. Regular contact with counterparts from different cultures and languages taught me that communication is often the real challenge behind projects.</p>
-          <p class="text-white/60 text-sm leading-relaxed">This observation led me to first create a language school (<strong class="text-white">English Academy</strong>, 2016), then <strong class="text-white">Janus I Communication Interculturelle</strong> in 2021 — to meet a concrete need: companies going international need support that goes beyond simple translation or standard language lessons.</p>
+          <p class="text-white/60 text-sm leading-relaxed">This observation led me to create <strong class="text-white">JANUS</strong> in 2021 — to meet a concrete need: companies going international need support that goes beyond simple translation or standard language lessons.</p>
           <p class="text-white/60 text-sm leading-relaxed">We chose the name <strong class="text-white">JANUS</strong> — the Roman god with two faces, guardian of passages — because it embodies exactly what we do: open doors between two worlds, look in both directions.</p>
         </div>
       </div>
@@ -45,8 +45,7 @@ const currentPath = '/a-propos';
             {years:'2002–2007',titre:'SG CIB — Financial Analyst, Paris',desc:'French-Polish M&A analysis, investment banking, group strategy.'},
             {years:'2007–2014',titre:'Credit Suisse — VP, Switzerland',desc:'International private wealth management (Russian-speaking & Israeli clients). Technical rigour, absolute discretion, relationship skills.'},
             {years:'2014–2016',titre:'Family Office — Switzerland',desc:'Global multi-jurisdiction private wealth management. Confidentiality and coordination in a multicultural environment.'},
-            {years:'2016',titre:'Founded English Academy, Lyon',desc:'English language school for individuals and professionals, progressively developed into a multilingual structure.'},
-            {years:'2021 — present',titre:'Founded Janus I Communication Interculturelle',desc:'Bespoke language training, interpreting, on-site support, intercultural consulting. Qualiopi certification obtained.'},
+            {years:'2021 — present',titre:'Founded JANUS',desc:'Bespoke language training, interpreting, on-site support, intercultural consulting. Qualiopi certification obtained.'},
           ].map((tl, i, arr) => (
             <div class="grid grid-cols-[16px_1fr] gap-4 pb-8 relative">
               {i < arr.length - 1 && <div class="absolute left-2 top-3 bottom-0 w-px bg-gold/20"></div>}
