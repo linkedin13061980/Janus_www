@@ -14,22 +14,20 @@ const marches = [
 
 const services = [
   { icon: '🎓', titre: 'Training',        desc: 'Tailored programmes for managers, sales teams and technicians. CPF/OPCO funding available.', href: '/en/services' },
-  { icon: '🎙️', titre: 'Interpreting',    desc: 'Native interpreters for negotiations, audits and sensitive meetings. NDA signed before each assignment.', href: '/en/services' },
+  { icon: '🎙️', titre: 'Interpreting',    desc: 'Professional interpreters for negotiations, audits and sensitive meetings. Confidentiality and NDA available according to assignment requirements.', href: '/en/services' },
   { icon: '🤝', titre: 'On-site support', desc: 'Physical presence during critical missions. Supplier audits, negotiations, trade shows.', href: '/en/services' },
-  { icon: '📄', titre: 'Translation',     desc: 'Legal, technical, commercial, financial. Native translators by field. Quote within 2h.', href: '/en/services' },
+  { icon: '📄', titre: 'Translation',     desc: 'Legal, technical, commercial, financial. Professional translators by field.', href: '/en/services' },
 ];
 
 const stats = [
-  { num: '25', unit: ' yrs',    label: 'in international finance' },
-  { num: '6',  unit: ' lang',   label: '100% native specialists'  },
-  { num: '40', unit: 'h',       label: 'mission → signed contract' },
-  { num: 'NDA', unit: '',       label: 'before each assignment'   },
+  { num: '6',  unit: ' lang',   label: 'Multilingual professional network' },
+  { num: 'NDA', unit: '',       label: 'Confidentiality and NDA available according to assignment requirements' },
 ];
 ---
 
 <Layout
   title="JANUS — Your international exchanges, secured | Lyon"
-  description="Linguistic and intercultural expert for your international exchanges. Training, interpreting, on-site support, translation. Qualiopi certified. Lyon."
+  description="Linguistic and intercultural expert for your international exchanges. Training, interpreting, on-site support, translation. Qualiopi-certified training provider. Lyon."
   locale={locale}
   currentPath={currentPath}
 >
@@ -54,7 +52,7 @@ const stats = [
 
   <section style="background:#f7f5f2" class="pt-36 pb-20 px-6">
     <div class="max-w-4xl mx-auto">
-      <p class="hp-sans text-xs uppercase tracking-[0.45em] mb-8 reveal" style="color:#b5936b">Lyon · Qualiopi · NDA systematic</p>
+      <p class="hp-sans text-xs uppercase tracking-[0.45em] mb-8 reveal" style="color:#b5936b">Lyon · Qualiopi-certified training provider</p>
       <h1 class="hp-serif text-5xl md:text-6xl font-light leading-[1.05] mb-6 reveal" style="color:#1a1a1a">
         Where would you like<br/><em class="italic" style="color:#b5936b">to expand?</em>
       </h1>
@@ -102,7 +100,7 @@ const stats = [
 
   <section style="background:#1a1a1a" class="py-20 px-6">
     <div class="max-w-4xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 stagger">
+      <div class="grid grid-cols-2 gap-8 stagger">
         {stats.map(s => (
           <div class="text-center">
             <p class="hp-serif text-4xl md:text-5xl font-light mb-2" style="color:#b5936b">{s.num}{s.unit}</p>

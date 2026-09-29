@@ -14,22 +14,20 @@ const marches = [
 
 const services = [
   { icon: '🎓', titre: 'Szkolenia',        desc: 'Programy szyte na miarę dla menedżerów, handlowców i techników. Dofinansowanie CPF/OPCO.', href: '/pl/services' },
-  { icon: '🎙️', titre: 'Interpretacja',    desc: 'Rodzimi tłumacze na Twoje negocjacje i audyty. NDA podpisywane przed każdą misją.', href: '/pl/services' },
+  { icon: '🎙️', titre: 'Interpretacja',    desc: 'Profesjonalni tłumacze ustni na Twoje negocjacje i audyty. Poufność i NDA dostosowane do wymagań zlecenia.', href: '/pl/services' },
   { icon: '🤝', titre: 'Wsparcie terenowe',desc: 'Fizyczna obecność podczas kluczowych misji. Audyty dostawców, negocjacje, targi.', href: '/pl/services' },
-  { icon: '📄', titre: 'Tłumaczenia',      desc: 'Prawne, techniczne, handlowe, finansowe. Rodzimi tłumacze według dziedziny. Wycena w 2h.', href: '/pl/services' },
+  { icon: '📄', titre: 'Tłumaczenia',      desc: 'Prawne, techniczne, handlowe, finansowe. Profesjonalni tłumacze pisemni według dziedziny.', href: '/pl/services' },
 ];
 
 const stats = [
-  { num: '25', unit: ' lat',    label: 'w finansach międzynarodowych' },
-  { num: '6',  unit: ' języków', label: '100% rodzimych specjalistów' },
-  { num: '40', unit: 'h',       label: 'misja → podpisana umowa'      },
-  { num: 'NDA', unit: '',       label: 'przed każdą misją'            },
+  { num: '6',  unit: ' języków', label: 'Sieć wielojęzycznych specjalistów' },
+  { num: 'NDA', unit: '',       label: 'Poufność i NDA dostosowane do wymagań zlecenia' },
 ];
 ---
 
 <Layout
   title="JANUS — Twoje wymiany międzynarodowe, zabezpieczone | Lyon"
-  description="Ekspert językowy i międzykulturowy dla Twoich wymian międzynarodowych. Szkolenia, interpretacja, wsparcie terenowe, tłumaczenia. Certyfikat Qualiopi. Lyon."
+  description="Ekspert językowy i międzykulturowy dla Twoich wymian międzynarodowych. Szkolenia, interpretacja, wsparcie terenowe, tłumaczenia. Certyfikowany zgodnie z Qualiopi organizator szkoleń. Lyon."
   locale={locale}
   currentPath={currentPath}
 >
@@ -54,7 +52,7 @@ const stats = [
 
   <section style="background:#f7f5f2" class="pt-36 pb-20 px-6">
     <div class="max-w-4xl mx-auto">
-      <p class="hp-sans text-xs uppercase tracking-[0.45em] mb-8 reveal" style="color:#b5936b">Lyon · Qualiopi · NDA systematyczne</p>
+      <p class="hp-sans text-xs uppercase tracking-[0.45em] mb-8 reveal" style="color:#b5936b">Lyon · Certyfikowany zgodnie z Qualiopi organizator szkoleń</p>
       <h1 class="hp-serif text-5xl md:text-6xl font-light leading-[1.05] mb-6 reveal" style="color:#1a1a1a">
         Gdzie chcesz<br/><em class="italic" style="color:#b5936b">się rozwijać?</em>
       </h1>
@@ -102,7 +100,7 @@ const stats = [
 
   <section style="background:#1a1a1a" class="py-20 px-6">
     <div class="max-w-4xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 stagger">
+      <div class="grid grid-cols-2 gap-8 stagger">
         {stats.map(s => (
           <div class="text-center">
             <p class="hp-serif text-4xl md:text-5xl font-light mb-2" style="color:#b5936b">{s.num}{s.unit}</p>
