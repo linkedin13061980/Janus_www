@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import type { Locale } from '../i18n/utils';
+import { equivalentPaths } from '../i18n/routes';
 
 interface Props {
   title: string;
@@ -31,6 +32,9 @@ const {
 
 const locales: Locale[] = ['fr', 'en', 'pl'];
 const canonicalUrl = canonical ?? `https://agence-janus.fr/${locale}${currentPath}`;
+// Pages dont l'URL diffère selon la langue (ex. cas clients) : hreflang vers les vraies URL de chaque version.
+const equivalents = equivalentPaths(currentPath);
+const alternateUrl = (loc: Locale) => `https://agence-janus.fr${equivalents ? equivalents[loc] : `/${loc}${currentPath}`}`;
 const GA_ID = import.meta.env.PUBLIC_GA_ID;
 ---
 
@@ -48,9 +52,9 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID;
 
     <!-- hreflang -->
     {alternates && locales.map((loc) => (
-      <link rel="alternate" hreflang={loc} href={`https://agence-janus.fr/${loc}${currentPath}`} />
+      <link rel="alternate" hreflang={loc} href={alternateUrl(loc)} />
     ))}
-    {alternates && <link rel="alternate" hreflang="x-default" href={`https://agence-janus.fr/fr${currentPath}`} />}
+    {alternates && <link rel="alternate" hreflang="x-default" href={alternateUrl('fr')} />}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

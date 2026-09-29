@@ -27,6 +27,12 @@ const fallbacks: Record<string, string> = {
 };
 const prefixFallbacks: [string, string][] = [['/langues/', '/langues']];
 
+/** Chemins complets des versions FR/EN/PL d'une page dont l'URL diffère selon la langue, sinon null. */
+export function equivalentPaths(currentPath: string): Record<Locale, string> | null {
+  const eq = equivalents.find((e) => Object.values(e).includes(currentPath));
+  return eq ? { fr: `/fr${eq.fr}`, en: `/en${eq.en}`, pl: `/pl${eq.pl}` } : null;
+}
+
 const exists = (path: string) => routes.has(path) || routes.has(path.replace(/\/$/, ''));
 
 /** URL de la page courante dans la langue `loc`, ou null si aucune version n'existe. */
