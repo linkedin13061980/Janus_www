@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "title": "Merci pour votre message | JANUS",
+    "description": "Votre demande a bien été transmise à JANUS."
+  },
+  "surtitre": "Message envoyé",
+  "h1": "Merci, votre demande a bien été transmise.",
+  "texte": "Nous étudions votre message et revenons vers vous dans les meilleurs délais pour échanger sur votre projet.",
+  "liens": [
+    { "label": "Retour à l'accueil", "href": "/fr/" },
+    { "label": "Notre expertise France–Pologne →", "href": "/fr/pologne" }
+  ]
+}

@@ -1,0 +1,35 @@
+---
+// Préparation du suivi des conversions (GA4 / Google Ads), sans configuration de compte.
+// - Tout élément portant data-track="nom_evenement" envoie cet événement au clic.
+// - onLoad="nom_evenement" envoie un événement au chargement (ex. page /fr/merci).
+// Les événements sont poussés dans window.dataLayer et transmis à gtag() s'il est chargé
+// (GA4 n'est chargé qu'après consentement aux cookies, cf. Layout.astro).
+// Événements prévus : cta_principal · clic_telephone · prise_rdv · formulaire_envoye
+interface Props {
+  onLoad?: string;
+}
+
+const { onLoad } = Astro.props;
+---
+
+<script is:inline define:vars={{ onLoad }}>
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    function send(name, params) {
+      var data = Object.assign({ page_path: location.pathname }, params || {});
+      window.dataLayer.push(Object.assign({ event: name }, data));
+      if (typeof window.gtag === 'function') window.gtag('event', name, data);
+    }
+    window.janusTrack = send;
+    document.addEventListener('click', function (e) {
+      var el = e.target instanceof Element ? e.target.closest('[data-track]') : null;
+      if (!el) return;
+      send(el.getAttribute('data-track'), {
+        link_url: el.getAttribute('href') || undefined,
+        link_text: (el.textContent || '').trim().slice(0, 80),
+        position: el.getAttribute('data-track-position') || undefined,
+      });
+    });
+    if (onLoad) send(onLoad);
+  })();
+</script>

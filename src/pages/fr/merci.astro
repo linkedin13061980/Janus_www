@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Tracking from '../../components/ui/Tracking.astro';
+import merci from '../../content/fr/merci.json';
+
+// Page de conversion (après envoi du formulaire FR) : exclue de l'indexation et du sitemap.
+// Le sélecteur de langue renvoie vers /contact, qui existe en FR/EN/PL.
+---
+
+<Layout
+  title={merci.meta.title}
+  description={merci.meta.description}
+  locale="fr"
+  currentPath="/contact"
+  canonical="https://agence-janus.fr/fr/merci"
+  alternates={false}
+  noindex
+>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+  <section style="background:#f7f5f2" class="py-28 md:py-40 px-6 text-center">
+    <div class="max-w-xl mx-auto">
+      <p class="text-xs uppercase tracking-[0.3em] mb-6" style="font-family:'DM Sans',system-ui,sans-serif;color:#b5936b">{merci.surtitre}</p>
+      <h1 class="font-light leading-tight mb-6" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.2rem,5vw,3.25rem);color:#1a1a1a">{merci.h1}</h1>
+      <p class="text-base leading-[1.8] mb-10" style="font-family:'DM Sans',system-ui,sans-serif;color:rgba(26,26,26,0.7)">{merci.texte}</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+        {merci.liens.map((l, i) => (
+          <a href={l.href} class={`inline-block text-xs uppercase tracking-widest ${i === 0 ? 'px-8 py-4 border' : 'border-b py-1'}`} style={`font-family:'DM Sans',system-ui,sans-serif;text-decoration:none;color:#1a1a1a;border-color:${i === 0 ? 'rgba(26,26,26,0.3)' : '#b5936b'}`}>{l.label}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <Tracking onLoad="formulaire_envoye" />
+</Layout>

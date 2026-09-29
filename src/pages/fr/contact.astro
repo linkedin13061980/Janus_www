@@ -1,8 +1,16 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import { actions } from 'astro:actions';
 const locale = 'fr';
 const currentPath = '/contact';
+
+// Après un envoi réussi du formulaire : redirection vers la page de remerciement,
+// qui sert de page de conversion mesurable (GA4 / Google Ads).
+const envoi = Astro.getActionResult(actions.sendContact);
+if (envoi?.data?.success) {
+  return Astro.redirect('/fr/merci', 303);
+}
 ---
 <Layout
   title="Contact | Janus I Communication Interculturelle Lyon"

@@ -1,0 +1,214 @@
+---
+// Page pilier de l'expertise France–Pologne (et page d'atterrissage Google Ads).
+// Contenu : /src/content/fr/pologne.json — page en français uniquement.
+// Le sélecteur de langue pointe vers /pologne-investir (existant en FR/EN/PL) ; aucune balise hreflang ;
+// la canonical est la page elle-même, sans barre finale.
+import Layout from '../../layouts/Layout.astro';
+import Flag from '../../components/ui/Flag.astro';
+import Tracking from '../../components/ui/Tracking.astro';
+import p from '../../content/fr/pologne.json';
+
+// Espace insécable avant « ? » et « France–Pologne » insécable (le tiret ne doit pas couper la ligne).
+const fr = (s: string) => s.replace(/ \?/g, '\u00A0?').replace(/France–Pologne/g, 'France\u2060–\u2060Pologne');
+---
+
+<Layout
+  title={p.meta.title}
+  description={p.meta.description}
+  locale="fr"
+  currentPath="/pologne-investir"
+  canonical="https://agence-janus.fr/fr/pologne"
+  alternates={false}
+>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+  <style is:global>
+    .fp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .fp-sans { font-family: 'DM Sans', system-ui, sans-serif; }
+    .fp a { text-decoration: none; }
+    .fp-link { transition: opacity .2s ease; }
+    .fp-link:hover { opacity: .7; }
+    .fp-card { transition: border-color .2s ease; }
+    .fp-card:hover { border-color: rgba(181,147,107,.7) !important; }
+    .fp details > summary { list-style: none; cursor: pointer; }
+    .fp details > summary::-webkit-details-marker { display: none; }
+    .fp details[open] .fp-plus { transform: rotate(45deg); }
+    .fp-plus { transition: transform .2s ease; }
+  </style>
+
+  <div class="fp">
+    <!-- HERO -->
+    <section style="background:#1a1a1a" class="px-6 pt-14 pb-16 md:pt-20 md:pb-24">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-center gap-3 mb-7">
+          <Flag code="fr" class="w-8 h-5" />
+          <Flag code="pl" class="w-8 h-5" />
+          <p class="fp-sans text-[11px] md:text-xs uppercase tracking-[0.3em]" style="color:#c9a84c">{p.hero.surtitre}</p>
+        </div>
+        <h1 class="fp-serif font-light leading-[1.05] mb-7 max-w-4xl" style="font-size:clamp(2.4rem,5.5vw,4.25rem);color:#f7f5f2">{fr(p.hero.h1)}</h1>
+        <p class="fp-sans text-base md:text-lg max-w-2xl leading-[1.75] mb-10" style="color:rgba(247,245,242,0.8)">{p.hero.accroche}</p>
+        <a href={p.hero.cta.href} data-track="cta_principal" data-track-position="hero" class="fp-sans inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(p.hero.cta.label)}</a>
+        <ul class="flex flex-wrap gap-x-6 gap-y-2 mt-10 pt-8 border-t" style="border-color:rgba(247,245,242,0.12)">
+          {p.hero.reassurance.map((r) => (
+            <li class="fp-sans text-xs uppercase tracking-[0.2em] flex items-center gap-2" style="color:rgba(247,245,242,0.65)">
+              <span class="inline-block w-1.5 h-1.5" style="background:#c9a84c" aria-hidden="true"></span>{r}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- RELATIONS + INTERVENTIONS -->
+    <section id="interventions" class="bg-white px-6 py-16 md:py-24 scroll-mt-20">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="fp-serif font-light leading-tight mb-5 max-w-3xl" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(p.relations.h2)}</h2>
+        <p class="fp-sans text-base leading-[1.8] mb-10 max-w-2xl" style="color:rgba(26,26,26,0.7)">{p.relations.intro}</p>
+
+        <h3 class="fp-sans text-xs font-medium uppercase tracking-[0.25em] mb-4" style="color:#b5936b">{p.relations.situationsTitre}</h3>
+        <ul class="flex flex-wrap gap-3 mb-14">
+          {p.relations.situations.map((s) => (
+            <li class="fp-sans text-sm border px-4 py-2.5" style="border-color:rgba(26,26,26,0.14);color:#1a1a1a;background:#f7f5f2">{s}</li>
+          ))}
+        </ul>
+
+        <h3 class="fp-sans text-xs font-medium uppercase tracking-[0.25em] mb-6" style="color:#b5936b">{p.relations.interventionsTitre}</h3>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-12 border-t" style="border-color:rgba(26,26,26,0.1)">
+          {p.relations.interventions.map((it) => (
+            <li class="py-5 border-b" style="border-color:rgba(26,26,26,0.1)">
+              <p class="fp-serif text-xl md:text-2xl font-light mb-1.5" style="color:#1a1a1a">{it.titre}</p>
+              <p class="fp-sans text-sm leading-[1.7]" style="color:rgba(26,26,26,0.68)">{it.texte}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- MÉTHODE -->
+    <section style="background:#f7f5f2" class="px-6 py-16 md:py-24">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="fp-serif font-light leading-tight mb-10 md:mb-12" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{p.methode.h2}</h2>
+        <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {p.methode.etapes.map((e, i) => (
+            <li class="bg-white border-t-2 p-7" style="border-top-color:#b5936b">
+              <p class="fp-serif font-light leading-none mb-5" style="font-size:2rem;color:#b5936b">{i + 1}</p>
+              <h3 class="fp-sans text-sm font-medium uppercase tracking-[0.12em] leading-snug mb-3" style="color:#1a1a1a">{e.titre}</h3>
+              <p class="fp-sans text-sm leading-[1.7]" style="color:rgba(26,26,26,0.68)">{e.texte}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- CAS -->
+    <section class="bg-white px-6 py-16 md:py-24">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+          <h2 class="fp-serif font-light leading-tight" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(p.cas.h2)}</h2>
+          <a href={p.cas.lien.href} class="fp-sans fp-link self-start md:self-auto text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">{p.cas.lien.label}</a>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {p.cas.items.map((c) => (
+            <li class="border-t-2 px-7 py-6" style="border-top-color:#b5936b;background:#f7f5f2">
+              <h3 class="fp-sans text-[11px] uppercase tracking-[0.2em] mb-3" style="color:#8a6d4b">{c.secteur}</h3>
+              <p class="fp-serif text-lg md:text-xl font-light leading-snug" style="color:#1a1a1a">{c.texte}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- EXPÉRIENCE -->
+    <section style="background:#1a1a1a" class="px-6 py-16 md:py-24">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16">
+        <div>
+          <h2 class="fp-serif font-light leading-tight mb-6" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#f7f5f2">{fr(p.experience.h2)}</h2>
+          <p class="fp-sans text-base leading-[1.8] mb-8" style="color:rgba(247,245,242,0.78)">{p.experience.texte}</p>
+          <a href={p.experience.lien.href} class="fp-sans fp-link text-xs uppercase tracking-widest border-b py-2" style="border-color:#c9a84c;color:#f7f5f2">{p.experience.lien.label}</a>
+        </div>
+        <ul class="self-center border-t" style="border-color:rgba(181,147,107,0.3)">
+          {p.experience.points.map((pt) => (
+            <li class="fp-sans text-sm md:text-base flex items-start gap-4 py-4 border-b" style="border-color:rgba(181,147,107,0.3);color:rgba(247,245,242,0.9)">
+              <span class="inline-block w-1.5 h-1.5 mt-2 flex-shrink-0" style="background:#c9a84c" aria-hidden="true"></span>{pt}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- SERVICES COMPLÉMENTAIRES -->
+    <section class="bg-white px-6 py-16 md:py-24">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="fp-serif font-light leading-tight mb-10" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{p.complementaires.h2}</h2>
+        <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {p.complementaires.items.map((s) => (
+            <li class="flex flex-col border p-7" style="border-color:rgba(26,26,26,0.1);background:#f7f5f2">
+              <h3 class="fp-sans text-sm font-medium uppercase tracking-[0.12em] leading-snug mb-3" style="color:#1a1a1a">{s.titre}</h3>
+              <p class="fp-sans text-sm leading-[1.7] mb-5" style="color:rgba(26,26,26,0.68)">{s.texte}</p>
+              <a href={s.lien.href} class="fp-sans fp-link mt-auto self-start text-xs uppercase tracking-widest border-b py-1" style="border-color:#b5936b;color:#1a1a1a">{s.lien.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- PAGES POLOGNE -->
+    <section style="background:#f7f5f2" class="px-6 py-16 md:py-24">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="fp-serif font-light leading-tight mb-10" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{p.pologne.h2}</h2>
+        <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {p.pologne.items.map((l) => (
+            <li>
+              <a href={l.href} class="fp-card flex flex-col h-full bg-white border p-7" style="border-color:rgba(26,26,26,0.1)">
+                <h3 class="fp-serif text-xl md:text-2xl font-light mb-2" style="color:#1a1a1a">{l.titre}</h3>
+                <p class="fp-sans text-sm leading-[1.7] mb-5" style="color:rgba(26,26,26,0.68)">{l.texte}</p>
+                <span class="fp-sans mt-auto text-sm" style="color:#b5936b" aria-hidden="true">→</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- INTERNATIONAL -->
+    <section class="bg-white px-6 py-14 md:py-16 border-b" style="border-color:rgba(26,26,26,0.08)">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div class="max-w-2xl">
+          <h2 class="fp-serif text-2xl md:text-3xl font-light leading-tight mb-3" style="color:#1a1a1a">{p.international.h2}</h2>
+          <p class="fp-sans text-sm md:text-base leading-[1.75]" style="color:rgba(26,26,26,0.68)">{p.international.texte}</p>
+        </div>
+        <a href={p.international.lien.href} class="fp-sans fp-link self-start md:self-auto text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">{p.international.lien.label}</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-white px-6 py-16 md:py-24">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="fp-serif font-light leading-tight mb-8" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{p.faq.h2}</h2>
+        <div class="border-t" style="border-color:rgba(26,26,26,0.12)">
+          {p.faq.items.map((f) => (
+            <details class="border-b py-5" style="border-color:rgba(26,26,26,0.12)">
+              <summary class="flex items-start justify-between gap-6">
+                <h3 class="fp-sans text-base md:text-lg font-medium leading-snug" style="color:#1a1a1a">{fr(f.q)}</h3>
+                <span class="fp-plus fp-sans text-xl leading-none flex-shrink-0" style="color:#b5936b" aria-hidden="true">+</span>
+              </summary>
+              <p class="fp-sans text-sm md:text-base leading-[1.8] mt-3 pr-8" style="color:rgba(26,26,26,0.72)">{f.r}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section style="background:#1a1a1a" class="px-6 py-20 md:py-28 text-center">
+      <div class="max-w-xl mx-auto">
+        <h2 class="fp-serif text-4xl md:text-5xl font-light leading-tight mb-5" style="color:#f7f5f2">{fr(p.ctaFinal.h2)}</h2>
+        <p class="fp-sans text-base leading-[1.8] mb-10" style="color:rgba(247,245,242,0.75)">{p.ctaFinal.texte}</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8">
+          <a href={p.ctaFinal.cta.href} data-track="cta_principal" data-track-position="final" class="fp-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{p.ctaFinal.cta.label}</a>
+          <a href={p.ctaFinal.telephone.href} data-track="clic_telephone" data-track-position="final" class="fp-sans fp-link text-sm tracking-wider border-b py-1" style="border-color:rgba(247,245,242,0.35);color:#f7f5f2">{p.ctaFinal.telephone.label}</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <Tracking />
+</Layout>

@@ -12,6 +12,10 @@ interface Props {
   currentPath?: string;
   ogImage?: string;
   canonical?: string;
+  // true : page exclue de l'indexation (ex. page de remerciement /fr/merci)
+  noindex?: boolean;
+  // false : page sans équivalent EN/PL → aucune balise hreflang (évite des alternates erronés)
+  alternates?: boolean;
 }
 
 const {
@@ -21,6 +25,8 @@ const {
   currentPath = '/',
   ogImage = 'https://agence-janus.fr/og-image.jpg',
   canonical,
+  noindex = false,
+  alternates = true,
 } = Astro.props;
 
 const locales: Locale[] = ['fr', 'en', 'pl'];
@@ -38,12 +44,13 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
 
     <!-- hreflang -->
-    {locales.map((loc) => (
+    {alternates && locales.map((loc) => (
       <link rel="alternate" hreflang={loc} href={`https://agence-janus.fr/${loc}${currentPath}`} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={`https://agence-janus.fr/fr${currentPath}`} />
+    {alternates && <link rel="alternate" hreflang="x-default" href={`https://agence-janus.fr/fr${currentPath}`} />}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

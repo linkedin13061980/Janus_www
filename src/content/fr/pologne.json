@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "title": "Accompagnement France–Pologne pour les entreprises | JANUS",
+    "description": "Négociations, visites de sites, coordination et interprétation français–polonais : JANUS accompagne les entreprises entre la France et la Pologne."
+  },
+  "hero": {
+    "surtitre": "Expertise JANUS · France ↔ Pologne",
+    "h1": "Accompagnement France–Pologne pour les entreprises",
+    "accroche": "Clients, fournisseurs, partenaires, filiales, équipes : JANUS accompagne vos relations professionnelles entre la France et la Pologne, de la préparation des échanges jusqu'à l'intervention sur le terrain.",
+    "cta": { "label": "Parler de votre projet France–Pologne →", "href": "/fr/contact" },
+    "reassurance": ["Lyon", "France & Pologne", "FR / PL", "Confidentialité"]
+  },
+  "relations": {
+    "h2": "Vous travaillez avec un client, fournisseur ou partenaire en Pologne ?",
+    "intro": "JANUS intervient lorsque la langue, les usages professionnels ou la distance compliquent vos échanges franco-polonais.",
+    "situationsTitre": "Vos interlocuteurs",
+    "situations": [
+      "Fournisseurs et sous-traitants",
+      "Clients",
+      "Partenaires",
+      "Filiales et sites",
+      "Équipes franco-polonaises"
+    ],
+    "interventionsTitre": "Nos interventions",
+    "interventions": [
+      { "titre": "Réunions professionnelles", "texte": "Préparation et accompagnement de vos réunions avec vos interlocuteurs polonais, sur place ou en visioconférence." },
+      { "titre": "Négociations", "texte": "Préparation des échanges, lecture des usages et des circuits de décision, présence à vos côtés pendant la négociation." },
+      { "titre": "Visites de sites et d'usines", "texte": "Visites fournisseurs, audits, réception de délégations : préparation et accompagnement sur place." },
+      { "titre": "Coordination entre équipes", "texte": "Fluidifier le travail entre équipes françaises et polonaises engagées sur un même projet." },
+      { "titre": "Accompagnement opérationnel", "texte": "Une présence à vos côtés sur la durée d'une mission ou d'un projet, en France ou en Pologne." },
+      { "titre": "Interprétation français ↔ polonais", "texte": "Interprétation professionnelle adaptée au format : réunion, négociation, visite de site, visioconférence." },
+      { "titre": "Communication interculturelle", "texte": "Comprendre les attentes, les codes et les implicites de vos interlocuteurs pour éviter les malentendus." }
+    ]
+  },
+  "methode": {
+    "h2": "Comment JANUS vous accompagne",
+    "etapes": [
+      { "titre": "Compréhension du contexte et des enjeux", "texte": "Un premier échange pour cerner votre projet, vos interlocuteurs et ce qui est en jeu." },
+      { "titre": "Préparation de la mission et de la terminologie", "texte": "Déroulé, points sensibles, vocabulaire technique ou contractuel : la mission est préparée en amont." },
+      { "titre": "Intervention à distance ou sur site", "texte": "En visioconférence, en France ou en Pologne, selon le format le plus utile à votre projet." },
+      { "titre": "Suivi lorsque la mission le nécessite", "texte": "Points d'étape, clarifications et préparation des échanges suivants." }
+    ]
+  },
+  "cas": {
+    "h2": "Des missions France–Pologne concrètes",
+    "items": [
+      { "secteur": "Industrie · Allemagne ↔ Pologne", "texte": "5 jours d'accompagnement sur site auprès de 18 techniciens pour faciliter les échanges et la coordination des équipes." },
+      { "secteur": "Opération M&A · France ↔ Pologne", "texte": "4 mois d'accompagnement linguistique et interculturel dans le cadre d'une opération transfrontalière." },
+      { "secteur": "Réunions stratégiques · France ↔ Pologne", "texte": "Interprétation et accompagnement à distance lors d'échanges professionnels entre interlocuteurs français et polonais." }
+    ],
+    "lien": { "label": "Voir nos cas clients →", "href": "/fr/cas-clients" }
+  },
+  "experience": {
+    "h2": "Une expertise France–Pologne construite sur l'expérience",
+    "texte": "Dès 2002, à Paris, la fondatrice de JANUS a travaillé au sein de la Société Générale sur des opérations de fusions-acquisitions impliquant des entreprises françaises et polonaises. JANUS, créée en 2021, met cette connaissance des deux environnements au service des entreprises.",
+    "points": [
+      "Expérience professionnelle franco-polonaise depuis 2002",
+      "Fusions-acquisitions impliquant des entreprises françaises et polonaises",
+      "JANUS créée en 2021"
+    ],
+    "lien": { "label": "En savoir plus sur JANUS →", "href": "/fr/a-propos" }
+  },
+  "complementaires": {
+    "h2": "Des services complémentaires",
+    "items": [
+      { "titre": "Traduction professionnelle FR ↔ PL", "texte": "Contrats, documents techniques et supports commerciaux traduits dans le contexte de votre projet.", "lien": { "label": "Services en polonais →", "href": "/fr/langues/polonais" } },
+      { "titre": "Formation linguistique", "texte": "Polonais professionnel pour les collaborateurs en relation régulière avec la Pologne.", "lien": { "label": "Formation en polonais →", "href": "/fr/langues/polonais" } },
+      { "titre": "Communication interculturelle", "texte": "Préparer vos équipes aux usages professionnels de leurs interlocuteurs polonais.", "lien": { "label": "Nos services →", "href": "/fr/services" } }
+    ]
+  },
+  "pologne": {
+    "h2": "Comprendre et développer votre activité en Pologne",
+    "items": [
+      { "titre": "S'implanter en Pologne", "texte": "Implantation et accompagnement sur le marché polonais.", "href": "/fr/marches/pologne" },
+      { "titre": "Investir en Pologne", "texte": "Données économiques et relations commerciales franco-polonaises.", "href": "/fr/pologne-investir" },
+      { "titre": "Services en polonais", "texte": "Interprétation, traduction et formation en polonais.", "href": "/fr/langues/polonais" }
+    ]
+  },
+  "international": {
+    "h2": "Une agence internationale et multilingue",
+    "texte": "La Pologne est une expertise forte de JANUS. L'agence accompagne aussi les entreprises en anglais, en allemand, en espagnol et en italien.",
+    "lien": { "label": "Toutes nos langues →", "href": "/fr/langues" }
+  },
+  "faq": {
+    "h2": "Questions fréquentes",
+    "items": [
+      { "q": "JANUS peut-elle intervenir directement en Pologne ?", "r": "Oui. Les missions peuvent être réalisées en France, en Pologne ou à distance selon le projet." },
+      { "q": "JANUS intervient-elle uniquement comme interprète ?", "r": "Non. L'interprétation peut faire partie d'une mission plus large comprenant préparation des échanges, accompagnement de réunions ou visites de sites, coordination et suivi." },
+      { "q": "JANUS peut-elle accompagner une visite de fournisseur ou d'usine en Pologne ?", "r": "Oui. JANUS peut préparer la mission et accompagner les équipes lors des réunions et visites professionnelles en France ou en Pologne." },
+      { "q": "Les échanges sont-ils confidentiels ?", "r": "Oui. La confidentialité fait partie du cadre des missions et un accord de confidentialité peut être mis en place lorsque le projet le nécessite." }
+    ]
+  },
+  "ctaFinal": {
+    "h2": "Un projet entre la France et la Pologne ?",
+    "texte": "Expliquez-nous votre situation, vos interlocuteurs et votre objectif.",
+    "cta": { "label": "Parler de votre projet →", "href": "/fr/contact" },
+    "telephone": { "label": "+33 9 67 05 68 31", "href": "tel:+33967056831" }
+  }
+}
