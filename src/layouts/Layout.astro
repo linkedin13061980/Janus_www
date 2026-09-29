@@ -35,7 +35,8 @@ const canonicalUrl = canonical ?? `https://agence-janus.fr/${locale}${currentPat
 // Pages dont l'URL diffère selon la langue (ex. cas clients) : hreflang vers les vraies URL de chaque version.
 const equivalents = equivalentPaths(currentPath);
 const alternateUrl = (loc: Locale) => `https://agence-janus.fr${equivalents ? equivalents[loc] : `/${loc}${currentPath}`}`;
-const GA_ID = import.meta.env.PUBLIC_GA_ID;
+// Google Analytics 4 — propriété JANUS. ID fixé dans le code : aucune variable d'environnement ne peut réintroduire l'ancienne propriété.
+const GA_ID = 'G-DYN5KDTKK8';
 ---
 
 <!doctype html>
@@ -93,18 +94,27 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID;
     <Footer locale={locale} />
     <CookieBanner locale={locale} />
 
-    <!-- Google Analytics 4 — chargé uniquement après consentement -->
+    <!-- Google Analytics 4 — aucun script Google n'est chargé avant le consentement (bandeau cookies) -->
     {GA_ID && (
       <script define:vars={{ GA_ID }}>
         function loadGA() {
+          if (window.gtag) return;
+          window.dataLayer = window.dataLayer || [];
+          // gtag.js n'interprète que l'objet `arguments` (un tableau serait ignoré).
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          // Consent Mode v2 : mesure d'audience acceptée ; aucun usage publicitaire.
+          window.gtag('consent', 'default', {
+            analytics_storage: 'granted',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+          });
+          window.gtag('js', new Date());
+          window.gtag('config', GA_ID);
           const s = document.createElement('script');
           s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
           s.async = true;
           document.head.appendChild(s);
-          window.dataLayer = window.dataLayer || [];
-          function gtag(...args) { window.dataLayer.push(args); }
-          gtag('js', new Date());
-          gtag('config', GA_ID);
         }
 
         if (localStorage.getItem('cookie_consent') === 'accepted') {

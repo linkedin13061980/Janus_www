@@ -33,6 +33,24 @@ const { locale } = Astro.props;
   const banner = document.getElementById('cookie-banner');
   const consent = localStorage.getItem('cookie_consent');
 
+  // Suppression des cookies Google Analytics (_ga, _ga_*) lorsque le consentement est absent, refusé ou retiré.
+  // GA4 les dépose sur le domaine le plus large possible (ex. .agence-janus.fr) : on les efface sur chaque domaine parent.
+  function clearAnalyticsCookies() {
+    const names = document.cookie
+      .split(';')
+      .map((c) => c.split('=')[0].trim())
+      .filter((n) => n === '_ga' || n.startsWith('_ga_'));
+    if (!names.length) return;
+    const parts = location.hostname.split('.');
+    const domains = [''];
+    for (let i = 0; i < parts.length - 1; i++) domains.push(`; domain=.${parts.slice(i).join('.')}`);
+    const expired = '; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+    names.forEach((n) => domains.forEach((d) => { document.cookie = `${n}=${expired}${d}`; }));
+  }
+
+  // Pas de consentement valide (aucun choix, refus, ou choix réinitialisé depuis la page Cookies) : purge au chargement.
+  if (consent !== 'accepted') clearAnalyticsCookies();
+
   if (!consent) {
     banner?.classList.remove('hidden');
   }
@@ -46,5 +64,6 @@ const { locale } = Astro.props;
   document.getElementById('cookie-decline')?.addEventListener('click', () => {
     localStorage.setItem('cookie_consent', 'declined');
     banner?.classList.add('hidden');
+    clearAnalyticsCookies();
   });
 </script>
