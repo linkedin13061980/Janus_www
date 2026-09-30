@@ -1,0 +1,260 @@
+---
+// Timeline « scénario » : deux lignes parallèles — le projet (gris) et le volet linguistique et interculturel (doré).
+// Aucun texte ici : tout provient de la prop `s` (ex. pologne.json → scenario).
+// Une seule rédaction par étape, rendue une seule fois : seule la mise en page change selon la largeur.
+// - Desktop : situation à gauche, axe au centre, JANUS à droite.
+// - Mobile (< 768 px) : axe à gauche, étape condensée ; `detail`, `janus.note` et les blocs `janus.masqueMobile`
+//   sont des compléments secondaires masqués en CSS, les points JANUS passent en ligne.
+// `relance` : CTA léger inséré dans la timeline après l'étape indiquée.
+// Animations ajoutées uniquement si JavaScript tourne et sans prefers-reduced-motion : sinon tout reste visible.
+interface Lien { label: string; href: string }
+interface Etape {
+  label: string;
+  titre: string;
+  texte: string;
+  detail?: string;
+  niveaux?: { titre: string; texte: string }[];
+  janus: { titre: string; texte?: string; points?: string[]; tags?: string[]; note?: string; masqueMobile?: boolean };
+  phrase?: string;
+}
+interface Props {
+  s: {
+    colonnes: { projet: string; janus: string };
+    marque: string;
+    relance?: { apresEtape: number; question: string; texte?: string; cta: Lien; lien: Lien };
+    etapes: Etape[];
+  };
+}
+const { s } = Astro.props;
+const fr = (t: string) => t.replace(/ ([?;:!])/g, '\u00A0$1').replace(/France–Pologne/g, 'France\u2060–\u2060Pologne').replace(/ →/g, '\u00A0→');
+const num = (i: number) => String(i + 1).padStart(2, '0');
+---
+
+<div class="st" data-st>
+  <!-- Légende : colonnes sur desktop, pastilles sur mobile -->
+  <div class="st-head" aria-hidden="true">
+    <p class="st-head-projet fp-sans">{s.colonnes.projet}</p>
+    <span></span>
+    <p class="st-head-janus fp-sans">{s.colonnes.janus}</p>
+  </div>
+  <div class="st-legend fp-sans" aria-hidden="true">
+    <span><i class="st-sw st-sw-projet"></i>{s.colonnes.projet}</span>
+    <span><i class="st-sw st-sw-janus"></i>{s.colonnes.janus}</span>
+  </div>
+
+  <div class="st-body">
+    <div class="st-rail" aria-hidden="true">
+      <span class="st-rail-projet"></span>
+      <span class="st-rail-janus"><span class="st-rail-fill"></span></span>
+    </div>
+    <ol class="st-list">
+      {s.etapes.map((e, i) => (
+        <>
+          <li class="st-step">
+            <div class="st-node" aria-hidden="true"><span class="st-dot"></span></div>
+
+            <div class="st-projet">
+              <p class="fp-sans st-label"><span class="st-num">{num(i)}</span>{e.label}</p>
+              <h3 class="fp-serif st-titre">{fr(e.titre)}</h3>
+              <p class="fp-sans st-texte">{fr(e.texte)}</p>
+              {e.detail && <p class="fp-sans st-texte st-secondaire">{fr(e.detail)}</p>}
+              {e.niveaux && (
+                <ul class="st-niveaux">
+                  {e.niveaux.map((n, k) => (
+                    <li class="fp-sans">
+                      <span class="st-niv-bar" aria-hidden="true">{[0, 1, 2].map((b) => <i class={b <= k ? 'on' : ''}></i>)}</span>
+                      <span><strong>{n.titre}</strong><span class="st-niv-sep">{'\u00A0→ '}</span><span class="st-niv-t">{fr(n.texte)}</span></span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            <div class:list={['st-janus', { 'st-secondaire': e.janus.masqueMobile }]}>
+              <p class="fp-sans st-janus-titre"><span class="st-marque">{s.marque} — </span>{fr(e.janus.titre)}</p>
+              {e.janus.texte && <p class="fp-sans st-janus-texte">{fr(e.janus.texte)}</p>}
+              {e.janus.points && (
+                <ul class="st-points">
+                  {e.janus.points.map((pt) => <li class="fp-sans">{fr(pt)}</li>)}
+                </ul>
+              )}
+              {e.janus.tags && (
+                <ul class="st-tags">
+                  {e.janus.tags.map((t) => <li class="fp-sans">{t}</li>)}
+                </ul>
+              )}
+              {e.janus.note && <p class="fp-sans st-note st-secondaire">{fr(e.janus.note)}</p>}
+            </div>
+
+            {e.phrase && <p class="fp-serif st-phrase">{fr(e.phrase)}</p>}
+          </li>
+          {s.relance && s.relance.apresEtape === i + 1 && (
+            <li class="st-relance">
+              <p class="fp-serif st-relance-q">{fr(s.relance.question)}</p>
+              {s.relance.texte && <p class="fp-sans st-relance-t">{s.relance.texte}</p>}
+              <a href={s.relance.cta.href} data-track="cta_principal" data-track-position="timeline" class="fp-sans st-relance-btn">{fr(s.relance.cta.label)}</a>
+              <a href={s.relance.lien.href} class="fp-sans fp-link st-relance-lien">{fr(s.relance.lien.label)}</a>
+            </li>
+          )}
+        </>
+      ))}
+    </ol>
+  </div>
+</div>
+
+<style>
+  .st { --st-c: 12px; }
+  .st-head { display: none; }
+  .st-legend { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-bottom: 2rem; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(26,26,26,.6); }
+  .st-legend span { display: inline-flex; align-items: center; gap: .6rem; }
+  .st-sw { display: inline-block; width: 22px; }
+  .st-sw-projet { height: 1px; background: rgba(26,26,26,.35); }
+  .st-sw-janus { height: 2px; background: #c9a84c; }
+
+  .st-body { position: relative; }
+  .st-list { position: relative; list-style: none; margin: 0; padding: 0; }
+  .st-rail { position: absolute; left: calc(var(--st-c) - 3px); width: 8px; top: var(--st-top, 10px); height: var(--st-h, calc(100% - 10px)); pointer-events: none; }
+  .st-rail-projet { position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: rgba(26,26,26,.2); }
+  .st-rail-janus { position: absolute; left: 5px; top: 0; bottom: 0; width: 2px; background: rgba(201,168,76,.2); }
+  .st-rail-fill { position: absolute; inset: 0; background: #c9a84c; transform-origin: top; transform: scaleY(var(--st-p, 1)); }
+
+  /* ---- Mobile (base) : étape condensée ---- */
+  .st-step { position: relative; display: grid; grid-template-columns: calc(var(--st-c) * 2) minmax(0, 1fr); grid-template-areas: "node projet" ". janus" ". phrase"; column-gap: .9rem; padding-bottom: 1.9rem; }
+  .st-node { grid-area: node; position: relative; }
+  .st-dot { position: absolute; left: 50%; top: 4px; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: #f7f5f2; border: 2px solid #c9a84c; transition: background-color .4s ease, box-shadow .4s ease; }
+  .st-step.is-on .st-dot { background: #c9a84c; box-shadow: 0 0 0 5px rgba(201,168,76,.18); }
+
+  .st-projet { grid-area: projet; }
+  .st-label { display: flex; align-items: baseline; gap: .7rem; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: #8a6d4b; margin: 0 0 .6rem; line-height: 1.5; }
+  .st-num { color: #b5936b; letter-spacing: .1em; }
+  .st-titre { font-weight: 300; font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.2; color: #1a1a1a; margin: 0 0 .6rem; }
+  .st-texte { font-size: .9rem; line-height: 1.65; color: rgba(26,26,26,.72); margin: 0; }
+
+  .st-niveaux { list-style: none; padding: 0; margin: .7rem 0 0; }
+  .st-niveaux li { display: flex; gap: .65rem; align-items: flex-start; padding: .3rem 0; font-size: .875rem; line-height: 1.5; color: rgba(26,26,26,.72); }
+  .st-niveaux strong { font-weight: 500; color: #1a1a1a; }
+  .st-niv-bar { display: inline-flex; align-items: flex-end; gap: 3px; padding-top: 3px; flex-shrink: 0; }
+  .st-niv-bar i { display: block; width: 4px; background: rgba(26,26,26,.14); }
+  .st-niv-bar i:nth-child(1) { height: 7px; }
+  .st-niv-bar i:nth-child(2) { height: 11px; }
+  .st-niv-bar i:nth-child(3) { height: 15px; }
+  .st-niv-bar i.on { background: #b5936b; }
+
+  .st-janus { grid-area: janus; align-self: start; margin-top: .8rem; background: #fff; border-left: 2px solid #c9a84c; padding: .65rem .9rem .7rem; }
+  .st-janus-titre { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: #8a6d4b; margin: 0 0 .25rem; line-height: 1.5; }
+  .st-janus-texte { font-size: .875rem; line-height: 1.55; color: #1a1a1a; margin: 0; }
+  .st-points { list-style: none; padding: 0; margin: 0; font-size: .875rem; line-height: 1.55; color: #1a1a1a; }
+  .st-points li { display: inline; }
+  .st-points li + li::before { content: " • "; color: #b5936b; }
+  .st-tags { list-style: none; padding: 0; margin: .5rem 0 0; display: flex; flex-wrap: wrap; gap: .35rem; }
+  .st-tags li { font-size: .75rem; padding: .25rem .6rem; border: 1px solid rgba(181,147,107,.45); color: #1a1a1a; background: #f7f5f2; }
+  .st-note { margin: .9rem 0 0; padding-top: .8rem; border-top: 1px solid rgba(26,26,26,.08); font-size: .85rem; font-style: italic; line-height: 1.6; color: rgba(26,26,26,.62); }
+
+  .st-phrase { grid-area: phrase; margin: .9rem 0 0; font-weight: 300; font-style: italic; font-size: 1.2rem; line-height: 1.3; color: #8a6d4b; }
+
+  /* Relance : respiration dans la timeline, pas un bloc commercial */
+  .st-relance { position: relative; margin: 0 0 1.9rem calc(var(--st-c) * 2 + .9rem); padding: 1.25rem 0; border-top: 1px solid rgba(181,147,107,.4); border-bottom: 1px solid rgba(181,147,107,.4); }
+  .st-relance-q { font-weight: 300; font-size: 1.35rem; line-height: 1.25; color: #1a1a1a; margin: 0 0 .5rem; }
+  .st-relance-t { font-size: .875rem; line-height: 1.6; color: rgba(26,26,26,.7); margin: 0 0 .9rem; }
+  .st-relance-btn { display: inline-block; padding: .85rem 1.25rem; background: #b5936b; color: #0d0d0d; font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; transition: opacity .2s ease; }
+  .st-relance-btn:hover { opacity: .85; }
+  .st-relance-lien { display: block; margin-top: .8rem; font-size: .8rem; color: #1a1a1a; }
+
+  @media (max-width: 767.98px) {
+    .st-secondaire { display: none; }
+  }
+
+  /* ---- Desktop : mêmes éléments, disposés sur deux colonnes ---- */
+  @media (min-width: 768px) {
+    .st-head { display: grid; grid-template-columns: minmax(0,1fr) 72px minmax(0,1fr); margin-bottom: 2.5rem; }
+    .st-head p { margin: 0; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; padding-bottom: .75rem; }
+    .st-head-projet { color: rgba(26,26,26,.55); border-bottom: 1px solid rgba(26,26,26,.2); }
+    .st-head-janus { color: #8a6d4b; border-bottom: 2px solid #c9a84c; }
+    .st-legend { display: none; }
+    .st-rail { left: calc(50% - 3px); }
+    .st-step { grid-template-columns: minmax(0,1fr) 72px minmax(0,1fr); grid-template-areas: "projet node janus" "phrase phrase phrase"; column-gap: 0; padding-bottom: 5rem; }
+    .st-label { margin-bottom: .75rem; }
+    .st-titre { margin-bottom: .9rem; }
+    .st-texte { font-size: .95rem; line-height: 1.75; }
+    .st-texte + .st-texte { margin-top: .6rem; }
+    .st-niveaux { margin-top: 1.25rem; border-top: 1px solid rgba(26,26,26,.1); }
+    .st-niveaux li { gap: .9rem; padding: .7rem 0; border-bottom: 1px solid rgba(26,26,26,.1); }
+    .st-niveaux strong { display: block; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .15rem; }
+    .st-niv-sep { display: none; }
+    .st-niveaux li > span:last-child { display: block; }
+    .st-janus { margin-top: 0; border-left: 0; border: 1px solid rgba(26,26,26,.08); border-top: 2px solid #c9a84c; padding: 1.5rem 1.75rem 1.6rem; }
+    .st-marque { display: none; }
+    .st-janus-titre { font-size: .8rem; letter-spacing: .12em; color: #1a1a1a; margin-bottom: .6rem; }
+    .st-janus-texte { font-size: .9rem; line-height: 1.7; color: rgba(26,26,26,.72); }
+    .st-points { margin-top: .25rem; font-size: .9rem; color: rgba(26,26,26,.78); }
+    .st-points li { display: block; position: relative; padding: .22rem 0 .22rem 1.1rem; }
+    .st-points li::before, .st-points li + li::before { content: ""; position: absolute; left: 0; top: .78rem; width: 6px; height: 1px; background: #b5936b; }
+    .st-tags { margin-top: .9rem; gap: .4rem; }
+    .st-tags li { font-size: .78rem; padding: .35rem .7rem; }
+    .st-phrase { text-align: center; margin: 2.5rem auto 0; max-width: 40rem; background: #f7f5f2; position: relative; padding: .5rem 0; font-size: clamp(1.3rem, 2.4vw, 1.75rem); }
+    .st-relance { margin: 0 auto 5rem; max-width: 40rem; text-align: center; background: #f7f5f2; padding: 1.75rem 1.5rem; border: 1px solid rgba(181,147,107,.4); }
+    .st-relance-q { font-size: 1.6rem; }
+    .st-relance-t { font-size: .9rem; }
+    .st-relance-btn { padding: 1rem 2rem; }
+  }
+
+  /* Animations : seulement quand le script a posé .st-anim (JS actif, mouvement non réduit) */
+  .st-anim .st-projet, .st-anim .st-janus, .st-anim .st-phrase { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+  .st-anim .st-janus { transition-delay: .15s; }
+  .st-anim .st-phrase { transition-delay: .3s; }
+  .st-anim .is-on .st-projet, .st-anim .is-on .st-janus, .st-anim .is-on .st-phrase { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .st-dot { transition: none; }
+    .st-anim .st-projet, .st-anim .st-janus, .st-anim .st-phrase { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-st]').forEach((root) => {
+    const body = root.querySelector<HTMLElement>('.st-body');
+    const rail = root.querySelector<HTMLElement>('.st-rail');
+    const steps = Array.from(root.querySelectorAll<HTMLElement>('.st-step'));
+    if (!body || !rail || !steps.length) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Axe : du premier au dernier repère.
+    const place = () => {
+      const dots = root.querySelectorAll<HTMLElement>('.st-dot');
+      const base = body.getBoundingClientRect().top;
+      const c = (d: HTMLElement) => d.getBoundingClientRect().top + d.offsetHeight / 2 - base;
+      const top = c(dots[0]);
+      rail.style.setProperty('--st-top', `${top}px`);
+      rail.style.setProperty('--st-h', `${Math.max(0, c(dots[dots.length - 1]) - top)}px`);
+    };
+    place();
+    window.addEventListener('resize', place, { passive: true });
+    window.addEventListener('load', place);
+    document.fonts?.ready.then(place);
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      steps.forEach((s) => s.classList.add('is-on'));
+      return;
+    }
+
+    root.classList.add('st-anim');
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('is-on'); io.unobserve(e.target); }
+      }),
+      { rootMargin: '0px 0px -25% 0px', threshold: 0 },
+    );
+    steps.forEach((s) => io.observe(s));
+
+    // Ligne dorée : se remplit avec le défilement (repère à 60 % de la hauteur d'écran).
+    let raf = 0;
+    const fill = () => {
+      raf = 0;
+      const r = rail.getBoundingClientRect();
+      const p = r.height ? (window.innerHeight * 0.6 - r.top) / r.height : 1;
+      rail.style.setProperty('--st-p', String(Math.min(1, Math.max(0, p))));
+    };
+    window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(fill); }, { passive: true });
+    fill();
+  });
+</script>
