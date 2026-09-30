@@ -21,6 +21,7 @@ const locales = ['fr', 'en', 'pl'];
 // Pages existant uniquement en français : une seule URL, sans variantes EN/PL (qui renverraient une 404).
 const frOnlyPages = [
   { path: '/pologne', changefreq: 'monthly', priority: '0.9' },
+  { path: '/acquisition-entreprise-pologne', changefreq: 'monthly', priority: '0.8' },
   { path: '/langues/anglais', changefreq: 'monthly', priority: '0.8' },
   { path: '/langues/polonais', changefreq: 'monthly', priority: '0.8' },
   { path: '/langues/allemand', changefreq: 'monthly', priority: '0.8' },

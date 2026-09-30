@@ -111,6 +111,7 @@ const { hero, principales, complementaires, pologne, ctaFinal } = content;
           <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-4" style="color:#b5936b">{pologne.surtitre}</p>
           <h2 class="hp-serif font-light leading-none mb-5" style="font-size:clamp(2rem,4.5vw,3rem);color:#1a1a1a">{fr(pologne.h2)}</h2>
           <p class="hp-sans text-sm md:text-base leading-[1.8] max-w-xl" style="color:rgba(26,26,26,0.65)">{fr(pologne.texte)}</p>
+          <a href={pologne.lienSecondaire.href} class="hp-sans hp-link inline-block mt-5 text-xs uppercase tracking-widest border-b py-1" style="border-color:#b5936b;color:#1a1a1a">{fr(pologne.lienSecondaire.label)}</a>
         </div>
         <a href={pologne.cta.href} class="hp-sans inline-block text-center px-8 py-4 text-xs uppercase tracking-widest border hover:bg-[#b5936b] transition-colors" style="border-color:#b5936b;color:#1a1a1a">
           {fr(pologne.cta.label)}

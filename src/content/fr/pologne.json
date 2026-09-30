@@ -71,6 +71,7 @@
     "h2": "Comprendre et développer votre activité en Pologne",
     "items": [
       { "titre": "Investir en Pologne", "texte": "Données économiques et relations commerciales franco-polonaises.", "href": "/fr/pologne-investir" },
+      { "titre": "Acquisition et intégration en Pologne", "texte": "Préparer les dirigeants et les équipes lors d'une acquisition ou d'un rapprochement franco-polonais.", "href": "/fr/acquisition-entreprise-pologne" },
       { "titre": "Services en polonais", "texte": "Interprétation, traduction et formation en polonais.", "href": "/fr/langues/polonais" }
     ]
   },

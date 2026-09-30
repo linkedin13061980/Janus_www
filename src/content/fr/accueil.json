@@ -89,7 +89,8 @@
       "Interprétation français–polonais",
       "Compréhension des pratiques professionnelles et culturelles"
     ],
-    "cta": { "label": "Découvrir notre expertise France–Pologne →", "href": "/fr/pologne" }
+    "cta": { "label": "Découvrir notre expertise France–Pologne →", "href": "/fr/pologne" },
+    "lienSecondaire": { "label": "Acquisition et intégration en Pologne →", "href": "/fr/acquisition-entreprise-pologne" }
   },
   "exemples": {
     "surtitre": "Exemples d'interventions",
