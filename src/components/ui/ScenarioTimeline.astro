@@ -13,6 +13,7 @@ interface Etape {
   titre: string;
   texte: string;
   detail?: string;
+  intervention?: string;
   niveaux?: { titre: string; texte: string }[];
   janus: { titre: string; texte?: string; points?: string[]; tags?: string[]; note?: string; masqueMobile?: boolean };
   phrase?: string;
@@ -58,6 +59,7 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
               <h3 class="fp-serif st-titre">{fr(e.titre)}</h3>
               <p class="fp-sans st-texte">{fr(e.texte)}</p>
               {e.detail && <p class="fp-sans st-texte st-secondaire">{fr(e.detail)}</p>}
+              {e.intervention && <p class="fp-sans st-intervention">{fr(e.intervention)}</p>}
               {e.niveaux && (
                 <ul class="st-niveaux">
                   {e.niveaux.map((n, k) => (
@@ -130,6 +132,7 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
   .st-titre { font-weight: 300; font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.2; color: #1a1a1a; margin: 0 0 .6rem; }
   .st-texte { font-size: .9rem; line-height: 1.65; color: rgba(26,26,26,.72); margin: 0; }
 
+  .st-intervention { font-size: .9rem; line-height: 1.6; font-weight: 500; color: #1a1a1a; margin: .6rem 0 0; }
   .st-niveaux { list-style: none; padding: 0; margin: .7rem 0 0; }
   .st-niveaux li { display: flex; gap: .65rem; align-items: flex-start; padding: .3rem 0; font-size: .875rem; line-height: 1.5; color: rgba(26,26,26,.72); }
   .st-niveaux strong { font-weight: 500; color: #1a1a1a; }

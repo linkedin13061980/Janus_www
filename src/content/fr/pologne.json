@@ -91,6 +91,7 @@
         "label": "Visioconférences",
         "titre": "Les réunions se multiplient",
         "texte": "Direction, dirigeants polonais, conseils, équipes techniques… Toutes les réunions n'ont pas besoin d'un interprète.",
+        "intervention": "JANUS intervient lorsque l'enjeu, la technicité ou le besoin de précision le justifient.",
         "niveaux": [
           {
             "titre": "Échange courant",
@@ -148,13 +149,13 @@
       {
         "label": "Après l'opération",
         "titre": "Maintenant, les équipes doivent travailler ensemble",
-        "texte": "L'opération avance, le travail commun commence. Des collaborateurs français travaillent avec l'équipe polonaise ; des collaborateurs polonais peuvent venir en France.",
+        "texte": "L'opération avance, le travail commun commence. Des collaborateurs français commencent à travailler avec l'équipe polonaise ; parallèlement, des collaborateurs polonais peuvent rejoindre temporairement ou durablement les équipes en France.",
         "janus": {
           "titre": "Préparation des équipes",
           "points": [
             "Langue",
             "Vocabulaire métier",
-            "Interculturel",
+            "Communication interculturelle",
             "Situations professionnelles réelles"
           ]
         }
