@@ -16,7 +16,7 @@
       { "mot": "Terrain", "reponse": "Accompagnement sur place" },
       { "mot": "Réunions", "reponse": "Interprétation sur place ou à distance" },
       { "mot": "Documents", "reponse": "Traduction professionnelle" },
-      { "mot": "Équipes & mobilité", "reponse": "Préparation linguistique & interculturelle" },
+      { "mot": "Équipes", "reponse": "Formation et préparation interculturelle" },
       { "mot": "Prise de parole", "reponse": "Coaching en anglais" }
     ],
     "conclusion": ["Les besoins changent.", "Le contexte, lui, reste le même."]
@@ -34,7 +34,6 @@
         { "label": "Accompagnement terrain", "href": null },
         { "label": "Communication interculturelle", "href": "/fr/services#interculturel" },
         { "label": "Formation linguistique", "href": "/fr/services#formation" },
-        { "label": "Préparation linguistique & interculturelle à la mobilité", "href": null, "texte": "Préparation au départ et accompagnement de l'accueil des salariés étrangers en France." },
         { "label": "Coaching de prise de parole en anglais", "href": null }
       ]
     },
