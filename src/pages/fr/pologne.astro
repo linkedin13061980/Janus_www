@@ -95,7 +95,7 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
               <div>
                 <h3 class="sit-txt fp-serif">{fr(x.situation)}</h3>
                 {x.lieux && <p class="sit-lieux fp-sans">{x.lieux.join(' · ')}</p>}
-                {x.complement && <p class="sit-lieux fp-sans">{x.complement.map((c, j) => (<>{j > 0 && ' · '}<span class="whitespace-nowrap">{c}</span></>))}</p>}
+                {x.complement && <p class="sit-lieux fp-sans">{x.complement.map((c, j, all) => (<><span class="whitespace-nowrap">{c.replace(/ ↔ /g, '\u00A0↔\u00A0')}{j < all.length - 1 && '\u00A0·'}</span>{j < all.length - 1 && ' '}</>))}</p>}
               </div>
               <p class="sit-rep fp-sans">{x.reponse}</p>
             </li>
