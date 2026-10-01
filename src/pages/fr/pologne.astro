@@ -3,23 +3,25 @@
 // Contenu : /src/content/fr/pologne.json — page en français uniquement.
 // Sélecteur de langue : EN/PL renvoient vers /pologne-investir (cf. src/i18n/routes.ts) ; aucune balise hreflang ;
 // la canonical est la page elle-même, sans barre finale.
+// Principe : la page se comprend en scrollant (mots-clés, situations → réponses, chiffres) ; les paragraphes sont secondaires.
 import Layout from '../../layouts/Layout.astro';
 import Flag from '../../components/ui/Flag.astro';
 import Tracking from '../../components/ui/Tracking.astro';
 import p from '../../content/fr/pologne.json';
 
 const m = p.microBesoins;
-const t = p.terrain;
-const l = p.maillage;
+const msg = p.message;
+const pr = p.preuves;
 
-// Espace insécable avant « ? » et « France–Pologne » insécable (le tiret ne doit pas couper la ligne).
 // Données structurées FAQ : reprend exactement les questions/réponses publiées sur la page.
 const faqLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: p.faq.items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.r } })),
 };
-const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1').replace(/France–Pologne/g, 'France\u2060–\u2060Pologne').replace(/ →/g, '\u00A0→');
+// Espace insécable avant « ? ; : ! », « France–Pologne » insécable (le tiret ne doit pas couper la ligne), flèche finale insécable.
+const fr = (s: string) => s.replace(/ ([?;:!])/g, ' $1').replace(/(France|Allemagne)–Pologne/g, '$1⁠–⁠Pologne').replace(/ →/g, ' →');
+const num = (i: number) => String(i + 1).padStart(2, '0');
 
 ---
 
@@ -43,207 +45,137 @@ const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1').replace(/France–
     .fp details > summary::-webkit-details-marker { display: none; }
     .fp details[open] .fp-plus { transform: rotate(45deg); }
     .fp-plus { transition: transform .2s ease; }
-    /* Dispositif « micro-besoins » — mobile : axe doré qui aboutit à JANUS ; desktop (≥ 1024 px) : JANUS au centre, 3 situations de chaque côté. */
-    .mb-schema { position: relative; list-style: none; margin: 0; padding: 0 0 0 28px; }
-    .mb-schema::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 2rem; width: 2px; background: #c9a84c; }
-    .mb-item { position: relative; padding: 0 0 1.15rem; }
-    .mb-item::before { content: ""; position: absolute; left: -28px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: #f7f5f2; border: 2px solid #c9a84c; }
-    .mb-mot { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #8a6d4b; margin: 0 0 .2rem; }
-    .mb-sit { font-weight: 400; font-size: 1.2rem; line-height: 1.25; color: #1a1a1a; margin: 0 0 .25rem; }
-    .mb-detail { font-size: .8rem; line-height: 1.55; color: rgba(26,26,26,.62); margin: 0 0 .35rem; }
-    .mb-rep { font-size: .875rem; font-weight: 500; line-height: 1.5; color: #1a1a1a; margin: 0; }
-    .mb-rep::before { content: "→ "; color: #b5936b; }
-    .mb-centre { position: relative; margin: .35rem 0 0 -28px; }
-    .mb-lines { display: none; }
-    .mb-rond { background: #0d0d0d; padding: 1.1rem 1.25rem; display: flex; align-items: baseline; flex-wrap: wrap; gap: .35rem 1rem; }
-    .mb-nom { font-size: 1.6rem; letter-spacing: .14em; color: #c9a84c; margin: 0; line-height: 1; }
-    .mb-role { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(247,245,242,.8); margin: 0; line-height: 1.5; }
+    .fp-balance { text-wrap: balance; }
+    /* Situations → réponses JANUS : lecture linéaire. Mobile : mot-clé au-dessus ; desktop (≥ 1024 px) : 3 colonnes. */
+    .sit-list { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid rgba(181,147,107,.35); }
+    .sit { display: grid; grid-template-columns: 1fr; gap: .35rem; padding: 1.15rem 0; border-top: 1px solid rgba(181,147,107,.35); }
+    .sit-mot { font-size: 12px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: #8a6d4b; margin: 0; }
+    .sit-num { color: rgba(26,26,26,.38); margin-right: .75rem; font-weight: 400; }
+    .sit-txt { font-weight: 400; font-size: 1.4rem; line-height: 1.22; color: #1a1a1a; margin: 0; }
+    .sit-lieux { font-size: .78rem; line-height: 1.6; color: rgba(26,26,26,.58); margin: .35rem 0 0; }
+    .sit-rep { font-size: 1rem; font-weight: 500; line-height: 1.45; color: #1a1a1a; margin: .3rem 0 0; }
+    .sit-rep::before { content: "→\00a0"; color: #b5936b; }
     @media (min-width: 1024px) {
-      .mb-schema { display: grid; grid-template-columns: minmax(0,1fr) 300px minmax(0,1fr); grid-template-rows: repeat(3, 1fr); padding: 0; }
-      .mb-schema::before { content: none; }
-      .mb-item { padding: 1.15rem 1.5rem; margin: .45rem 0; background: #fff; border: 1px solid rgba(26,26,26,.08); display: flex; flex-direction: column; justify-content: center; }
-      .mb-item::before { content: none; }
-      .mb-item:nth-child(-n+3) { grid-column: 1; text-align: right; border-right: 2px solid #c9a84c; }
-      .mb-item:nth-child(n+4) { grid-column: 3; border-left: 2px solid #c9a84c; }
-      .mb-item:nth-child(1), .mb-item:nth-child(4) { grid-row: 1; }
-      .mb-item:nth-child(2), .mb-item:nth-child(5) { grid-row: 2; }
-      .mb-item:nth-child(3), .mb-item:nth-child(6) { grid-row: 3; }
-      .mb-centre { grid-column: 2; grid-row: 1 / span 3; margin: 0; display: flex; align-items: center; justify-content: center; }
-      .mb-lines { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
-      .mb-rond { position: relative; width: 190px; height: 190px; border-radius: 50%; border: 1px solid #c9a84c; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .7rem; padding: 1.5rem; }
-      .mb-nom { font-size: 2rem; }
-      .mb-role { font-size: 10px; letter-spacing: .14em; max-width: 140px; }
-    }
-    .fp-anim .mb-item, .fp-anim .mb-lines, .fp-anim .mb-rond { opacity: 0; transition: opacity .7s ease, transform .7s ease; }
-    .fp-anim .mb-item { transform: translateY(10px); transition-delay: calc(var(--i) * 90ms); }
-    .fp-anim .mb-lines { transition-delay: .5s; }
-    .fp-anim .mb-rond { transition-delay: .6s; }
-    .fp-anim.is-on .mb-item, .fp-anim.is-on .mb-lines, .fp-anim.is-on .mb-rond { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      .fp-anim .mb-item, .fp-anim .mb-lines, .fp-anim .mb-rond { opacity: 1; transform: none; transition: none; }
+      .sit { grid-template-columns: 15rem minmax(0,1fr) 19rem; gap: 2.5rem; align-items: baseline; padding: 1.7rem 0; }
+      .sit-txt { font-size: 1.65rem; }
+      .sit-rep { font-size: 1.05rem; margin: 0; }
     }
   </style>
 
   <div class="fp">
-    <!-- HERO -->
-    <section style="background:#1a1a1a" class="px-6 pt-14 pb-16 md:pt-20 md:pb-24">
+    <!-- HERO : France–Pologne → projet -->
+    <section style="background:#1a1a1a" class="px-6 pt-12 pb-14 md:pt-20 md:pb-20">
       <div class="max-w-6xl mx-auto">
-        <div class="flex items-center gap-3 mb-7">
+        <div class="flex items-center gap-3 mb-6">
           <Flag code="fr" class="w-8 h-5" />
           <Flag code="pl" class="w-8 h-5" />
-          <p class="fp-sans text-[11px] md:text-xs uppercase tracking-[0.3em]" style="color:#c9a84c">{p.hero.surtitre}</p>
+          <p class="fp-sans text-xs uppercase tracking-[0.3em]" style="color:#c9a84c">{p.hero.surtitre}</p>
         </div>
-        <h1 class="fp-serif font-light leading-[1.05] mb-7 max-w-4xl" style="font-size:clamp(2.4rem,5.5vw,4.25rem);color:#f7f5f2">{fr(p.hero.h1)}</h1>
-        <p class="fp-sans text-base md:text-lg max-w-2xl leading-[1.75] mb-10" style="color:rgba(247,245,242,0.8)">{p.hero.accroche}</p>
-        <a href={p.hero.cta.href} data-track="cta_principal" data-track-position="hero" class="fp-sans inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(p.hero.cta.label)}</a>
-        <ul class="flex flex-wrap gap-x-6 gap-y-2 mt-10 pt-8 border-t" style="border-color:rgba(247,245,242,0.12)">
-          {p.hero.reassurance.map((r) => (
-            <li class="fp-sans text-xs uppercase tracking-[0.2em] flex items-center gap-2" style="color:rgba(247,245,242,0.65)">
-              <span class="inline-block w-1.5 h-1.5" style="background:#c9a84c" aria-hidden="true"></span>{r}
+        <h1 class="fp-serif font-light leading-[1.05] mb-6 max-w-4xl" style="font-size:clamp(2.4rem,5.5vw,4.25rem);color:#f7f5f2">{fr(p.hero.h1)}</h1>
+        <p class="fp-sans text-xs md:text-sm uppercase tracking-[0.22em] leading-[1.9] mb-5" style="color:#c9a84c">
+          {p.hero.motsCles.map((k, i) => (
+            <>{i > 0 && <span aria-hidden="true" style="color:rgba(247,245,242,0.35)">{' · '}</span>}<span class="whitespace-nowrap">{k}</span></>
+          ))}
+        </p>
+        <p class="fp-sans text-base md:text-lg max-w-2xl leading-[1.7] mb-9" style="color:rgba(247,245,242,0.8)">{p.hero.accroche}</p>
+        <a href={p.hero.cta.href} data-track="cta_principal" data-track-position="hero" class="fp-sans block sm:inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(p.hero.cta.label)}</a>
+      </div>
+    </section>
+
+    <!-- MICRO-BESOINS : 6 situations → réponses JANUS, puis bandeau transversal -->
+    <section id="micro-besoins" style="background:#f7f5f2" class="px-6 py-14 md:py-24 scroll-mt-20">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="fp-serif fp-balance font-light leading-[1.1] mb-3 max-w-4xl" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{fr(m.h2)}</h2>
+        <p class="fp-sans text-base md:text-lg leading-[1.6] mb-8 md:mb-12" style="color:rgba(26,26,26,0.65)">{fr(m.intro)}</p>
+
+        <ol class="sit-list">
+          {m.situations.map((x, i) => (
+            <li class="sit">
+              <p class="sit-mot fp-sans"><span class="sit-num" aria-hidden="true">{num(i)}</span>{x.mot}</p>
+              <div>
+                <h3 class="sit-txt fp-serif">{fr(x.situation)}</h3>
+                {x.lieux && <p class="sit-lieux fp-sans">{x.lieux.join(' · ')}</p>}
+              </div>
+              <p class="sit-rep fp-sans">{x.reponse}</p>
             </li>
           ))}
-        </ul>
-      </div>
-    </section>
+        </ol>
 
-    <!-- INTRODUCTION -->
-    <section id="introduction" class="bg-white px-6 py-14 md:py-20 scroll-mt-20">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="fp-serif font-light leading-tight mb-5" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(p.introduction.h2)}</h2>
-        <p class="fp-sans text-base md:text-lg leading-[1.8]" style="color:rgba(26,26,26,0.72)">{p.introduction.texte}</p>
-      </div>
-    </section>
-
-    <!-- MICRO-BESOINS : un projet, plusieurs besoins, un seul point de coordination -->
-    <section id="micro-besoins" style="background:#f7f5f2" class="px-6 py-16 md:py-24 scroll-mt-20">
-      <div class="max-w-6xl mx-auto">
-        <div class="max-w-3xl mb-10 md:mb-14">
-          <h2 class="fp-serif font-light leading-[1.1] mb-5" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{fr(m.h2)}</h2>
-          <p class="fp-sans text-base md:text-lg leading-[1.75]" style="color:rgba(26,26,26,0.72)">{fr(m.intro)}</p>
-        </div>
-
-        <div class="mb-schema" data-fp-reveal>
-          {m.situations.map((x, i) => (
-            <div class="mb-item" style={`--i:${i}`}>
-              <p class="mb-mot fp-sans">{x.mot}</p>
-              <h3 class="mb-sit fp-serif">{fr(x.situation)}</h3>
-              {x.detail && <p class="mb-detail fp-sans">{fr(x.detail)}</p>}
-              <p class="mb-rep fp-sans">{x.reponse}</p>
-            </div>
-          ))}
-          <div class="mb-centre">
-            <svg class="mb-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              {[16.67, 50, 83.33].map((y) => (
-                <>
-                  <line x1="0" y1={y} x2="50" y2="50" stroke="#c9a84c" stroke-width="1" vector-effect="non-scaling-stroke" />
-                  <line x1="100" y1={y} x2="50" y2="50" stroke="#c9a84c" stroke-width="1" vector-effect="non-scaling-stroke" />
-                </>
-              ))}
-            </svg>
-            <div class="mb-rond">
-              <p class="mb-nom fp-serif">{m.centre.nom}</p>
-              <p class="mb-role fp-sans">{m.centre.role}</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="max-w-2xl mx-auto text-center mt-12 md:mt-16">
-          <p class="fp-sans text-sm md:text-base leading-[1.75] mb-4" style="color:rgba(26,26,26,0.72)">{fr(m.niveau.texte)}</p>
-          <p class="fp-serif italic font-light leading-snug" style="font-size:clamp(1.25rem,2.4vw,1.6rem);color:#8a6d4b">{m.niveau.phrase}</p>
+        <div class="mt-10 md:mt-14 bg-white border-l-[3px] px-6 py-7 md:px-10 md:py-9" style="border-left-color:#c9a84c">
+          <p class="fp-sans text-[11px] uppercase tracking-[0.22em] mb-2" style="color:rgba(26,26,26,0.55)">{m.transversal.surtitre}</p>
+          <p class="sit-mot fp-sans mb-3">{m.transversal.mot}</p>
+          <h3 class="fp-serif italic font-light leading-snug mb-4 max-w-3xl" style="font-size:clamp(1.4rem,2.6vw,2rem);color:#1a1a1a">« {fr(m.transversal.situation)} »</h3>
+          <p class="sit-rep fp-sans">{m.transversal.reponse}</p>
         </div>
       </div>
     </section>
 
-    <!-- MESSAGE CENTRAL + SANS / AVEC -->
-    <section style="background:#0d0d0d" class="px-6 py-16 md:py-24">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="fp-serif font-light text-center leading-[1.15] mb-12 md:mb-14" style="font-size:clamp(2.1rem,4.6vw,3.6rem);color:#f7f5f2">
-          <span class="block">{m.message[0]}</span>
-          <span class="block" style="color:#c9a84c">{m.message[1]}</span>
+    <!-- MESSAGE CENTRAL (grand moment n° 1) + accordéon Expertises -->
+    <section style="background:#0d0d0d" class="px-6 py-16 md:py-28 lg:min-h-[85vh] flex items-center">
+      <div class="max-w-4xl mx-auto w-full text-center">
+        <h2 class="fp-serif fp-balance font-light leading-[1.1] mb-7" style="font-size:clamp(2.5rem,6vw,4.75rem);color:#f7f5f2">
+          <span class="block">{msg.lignes[0]}</span>
+          <span class="block" style="color:#c9a84c">{msg.lignes[1]}</span>
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="border p-6" style="border-color:rgba(247,245,242,0.14)">
-            <h3 class="fp-sans text-xs font-medium uppercase tracking-[0.22em] mb-3" style="color:rgba(247,245,242,0.55)">{m.sans.titre}</h3>
-            <p class="fp-sans text-sm md:text-base leading-[1.9]" style="color:rgba(247,245,242,0.75)">
-              {m.sans.chaine.map((c, i) => (
-                <>{i > 0 && <span style="color:rgba(247,245,242,0.35)" aria-hidden="true">{' → '}</span>}<span class="whitespace-nowrap">{c}</span></>
+        <p class="fp-sans text-base md:text-lg leading-[1.7] max-w-2xl mx-auto mb-12" style="color:rgba(247,245,242,0.75)">{msg.texte}</p>
+
+        <details class="max-w-2xl mx-auto text-left border-y" style="border-color:rgba(247,245,242,0.18)">
+          <summary class="py-5">
+            <span class="flex items-center justify-between gap-6">
+              <span class="fp-sans text-xs md:text-sm font-medium uppercase tracking-[0.22em]" style="color:#f7f5f2">{msg.expertises.label}</span>
+              <span class="fp-plus fp-sans text-2xl leading-none" style="color:#c9a84c" aria-hidden="true">+</span>
+            </span>
+          </summary>
+          <div class="pb-6">
+            <ul class="fp-sans grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-sm md:text-base mb-5">
+              {msg.expertises.items.map((x) => (
+                <li><a href={x.href} class="fp-link border-b pb-0.5" style="color:rgba(247,245,242,0.88);border-color:rgba(201,168,76,0.5)">{x.label}</a></li>
               ))}
-            </p>
+            </ul>
+            <a href={msg.expertises.polonais.href} class="fp-sans fp-link text-sm leading-relaxed border-b pb-0.5" style="color:#c9a84c;border-color:rgba(201,168,76,0.5)">{fr(msg.expertises.polonais.label)}</a>
           </div>
-          <div class="border-t-2 p-6" style="border-top-color:#c9a84c;background:#1a1a1a">
-            <h3 class="fp-sans text-xs font-medium uppercase tracking-[0.22em] mb-3" style="color:#c9a84c">{m.avec.titre}</h3>
-            <p class="fp-sans text-sm md:text-base leading-[1.75]" style="color:rgba(247,245,242,0.88)">{m.avec.texte}</p>
-          </div>
-        </div>
-        <p class="fp-serif italic font-light text-center max-w-3xl mx-auto mt-12 md:mt-14 leading-snug" style="font-size:clamp(1.4rem,2.8vw,2.1rem);color:#f7f5f2">{fr(m.phrase)}</p>
-        <p class="fp-sans text-center text-xs md:text-sm tracking-[0.12em] mt-10 leading-[2]" style="color:rgba(247,245,242,0.55)">
-          {m.services.map((l, i) => (
-            <>{i > 0 && <span aria-hidden="true">{' · '}</span>}<a href={l.href} class="fp-link whitespace-nowrap border-b" style="color:rgba(247,245,242,0.85);border-color:rgba(201,168,76,0.5)">{l.label}</a></>
-          ))}
-        </p>
+        </details>
+
+        <a href={msg.cta.href} data-track="cta_principal" data-track-position="message" class="fp-sans block sm:inline-block text-center mt-12 px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(msg.cta.label)}</a>
       </div>
     </section>
 
-    <!-- PÉRIMÈTRE + CTA + EXEMPLE -->
-    <section class="bg-white px-6 py-16 md:py-24">
-      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <div>
-          <p class="fp-serif font-light leading-snug mb-8" style="font-size:clamp(1.35rem,2.4vw,1.75rem);color:#1a1a1a">{fr(m.perimetre)}</p>
-          <a href={m.cta.href} data-track="cta_principal" data-track-position="micro-besoins" class="fp-sans inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(m.cta.label)}</a>
-        </div>
-        <div class="border border-dashed p-6 md:p-8" style="border-color:rgba(138,109,75,0.55);background:#f7f5f2">
-          <p class="fp-sans inline-block text-[10px] md:text-[11px] font-medium uppercase tracking-[0.22em] px-2.5 py-1 mb-4" style="color:#8a6d4b;border:1px solid rgba(138,109,75,0.5)">{m.exemple.mention}</p>
-          <h3 class="fp-serif font-light text-xl md:text-2xl leading-snug mb-4" style="color:#1a1a1a">{fr(m.exemple.titre)}</h3>
-          <p class="fp-sans text-sm md:text-base leading-[1.75] mb-4" style="color:rgba(26,26,26,0.75)">{m.exemple.texte}</p>
-          <p class="fp-serif italic text-lg md:text-xl leading-snug mb-6" style="color:#1a1a1a">{m.exemple.conclusion}</p>
-          <a href={m.exemple.lien.href} class="fp-sans fp-link text-sm leading-relaxed border-b pb-1" style="border-color:rgba(181,147,107,0.6);color:#1a1a1a">{fr(m.exemple.lien.label)}</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERTISE TERRAIN : missions vérifiées + parcours -->
-    <section style="background:#f7f5f2" class="px-6 py-16 md:py-24">
+    <!-- PREUVES (grand moment n° 2) : lecture par chiffres -->
+    <section class="bg-white px-6 py-14 md:py-24">
       <div class="max-w-6xl mx-auto">
-        <h2 class="fp-serif font-light leading-tight mb-10 md:mb-12 max-w-3xl" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(t.h2)}</h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          <div>
-            <p class="fp-sans text-[11px] uppercase tracking-[0.22em] mb-5" style="color:#8a6d4b">{t.label}</p>
-            <p class="fp-serif font-light leading-none mb-3" style="font-size:clamp(3.4rem,7vw,5rem);color:#b5936b">{t.principale.chiffre}</p>
-            <h3 class="fp-serif text-xl md:text-2xl leading-snug mb-1" style="color:#1a1a1a">{fr(t.principale.titre)}</h3>
-            <p class="fp-sans text-sm md:text-base leading-[1.7]" style="color:rgba(26,26,26,0.72)">{t.principale.texte}</p>
-            <div class="mt-8 pt-6 border-t" style="border-color:rgba(181,147,107,0.35)">
-              <p class="fp-serif font-light leading-none mb-2" style="font-size:clamp(1.5rem,2.6vw,1.9rem);color:#8a6d4b">{t.secondaire.chiffre}</p>
-              <h3 class="fp-sans text-sm font-medium mb-1" style="color:#1a1a1a">{fr(t.secondaire.titre)}</h3>
-              <p class="fp-sans text-sm leading-[1.7]" style="color:rgba(26,26,26,0.68)">{t.secondaire.texte}</p>
-            </div>
+        <h2 class="fp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-8 md:mb-12" style="color:#8a6d4b">{pr.h2}</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8 lg:gap-0">
+          <div class="lg:pr-14">
+            <p class="fp-serif font-light uppercase leading-none mb-3" style="font-size:clamp(4.5rem,11vw,8.5rem);color:#b5936b">{pr.principale.chiffre}</p>
+            <h3 class="fp-serif text-2xl md:text-3xl leading-snug" style="color:#1a1a1a">{fr(pr.principale.titre)}</h3>
+            <p class="fp-sans text-sm mt-1" style="color:rgba(26,26,26,0.6)">{pr.principale.texte}</p>
           </div>
-          <div class="lg:pt-10">
-            {t.texte.map((x) => (
-              <p class="fp-sans text-base leading-[1.8] mb-4" style="color:rgba(26,26,26,0.75)">{fr(x)}</p>
-            ))}
-            <a href={t.lien.href} class="fp-sans fp-link inline-block mt-2 text-xs uppercase tracking-widest border-b py-2" style="border-color:#b5936b;color:#1a1a1a">{fr(t.lien.label)}</a>
+          <div class="border-t pt-8 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-14 lg:flex lg:flex-col lg:justify-end" style="border-color:#c9a84c">
+            <p class="fp-serif font-light uppercase leading-[1.05] mb-3" style="font-size:clamp(2.1rem,4vw,3.25rem);color:#8a6d4b">{pr.secondaire.chiffre.split(' · ').map((c, i) => (<>{i > 0 && ' · '}<span class="whitespace-nowrap">{c}</span></>))}</p>
+            <h3 class="fp-serif text-xl md:text-2xl leading-snug" style="color:#1a1a1a">{fr(pr.secondaire.titre)}</h3>
+            <p class="fp-sans text-sm mt-1" style="color:rgba(26,26,26,0.6)">{pr.secondaire.texte}</p>
           </div>
+        </div>
+        <div class="max-w-2xl mt-12 md:mt-16">
+          <p class="fp-sans text-sm md:text-base leading-[1.75] mb-3" style="color:rgba(26,26,26,0.72)">{fr(pr.parcours)}</p>
+          <a href={pr.lien.href} class="fp-sans fp-link text-xs uppercase tracking-widest border-b py-1" style="border-color:#b5936b;color:#1a1a1a">{fr(pr.lien.label)}</a>
         </div>
       </div>
     </section>
 
-    <!-- MAILLAGE INTERNE (liens texte) -->
-    <section class="bg-white px-6 pt-16 md:pt-20 pb-4">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="fp-serif font-light leading-tight mb-6" style="font-size:clamp(1.5rem,2.8vw,2.1rem);color:#1a1a1a">{l.h2}</h2>
-        <ul class="fp-sans text-sm md:text-base space-y-3 mb-6">
-          {l.liens.map((x) => (
-            <li><a href={x.href} class="fp-link border-b pb-0.5" style="border-color:rgba(181,147,107,0.6);color:#1a1a1a">{fr(x.label)}</a></li>
-          ))}
-        </ul>
-        <p class="fp-sans text-sm leading-[1.75]" style="color:rgba(26,26,26,0.68)">
-          {l.international.texte}{' '}<a href={l.international.lien.href} class="fp-link whitespace-nowrap border-b" style="border-color:rgba(181,147,107,0.6);color:#1a1a1a">{fr(l.international.lien.label)}</a>
-        </p>
+    <!-- TEASER ACQUISITION (page détaillée : /fr/acquisition-entreprise-pologne) -->
+    <section style="background:#f7f5f2" class="px-6 py-12 md:py-16">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-16 lg:items-center">
+        <h2 class="fp-serif font-light leading-tight" style="font-size:clamp(1.8rem,3.4vw,2.6rem);color:#1a1a1a">{fr(p.acquisition.h2)}</h2>
+        <div>
+          <p class="fp-sans text-sm md:text-base leading-[1.7] mb-4" style="color:rgba(26,26,26,0.72)">{fr(p.acquisition.texte)}</p>
+          <a href={p.acquisition.lien.href} class="fp-sans fp-link text-sm font-medium border-b pb-1" style="border-color:#b5936b;color:#1a1a1a">{fr(p.acquisition.lien.label)}</a>
+        </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="bg-white px-6 py-16 md:py-24">
+    <!-- FAQ + liens annexes -->
+    <section class="bg-white px-6 py-14 md:py-24">
       <div class="max-w-3xl mx-auto">
         <h2 class="fp-serif font-light leading-tight mb-8" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(p.faq.h2)}</h2>
         <div class="border-t" style="border-color:rgba(26,26,26,0.12)">
@@ -257,16 +189,21 @@ const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1').replace(/France–
             </details>
           ))}
         </div>
+        <ul class="fp-sans flex flex-wrap gap-x-6 gap-y-3 text-sm mt-10">
+          {p.annexes.map((x) => (
+            <li><a href={x.href} class="fp-link border-b pb-0.5" style="border-color:rgba(181,147,107,0.6);color:#1a1a1a">{fr(x.label)}</a></li>
+          ))}
+        </ul>
       </div>
     </section>
 
     <!-- CTA FINAL -->
-    <section style="background:#1a1a1a" class="px-6 py-20 md:py-28 text-center">
+    <section style="background:#1a1a1a" class="px-6 py-16 md:py-28 text-center">
       <div class="max-w-xl mx-auto">
         <h2 class="fp-serif text-4xl md:text-5xl font-light leading-tight mb-5" style="color:#f7f5f2">{fr(p.ctaFinal.h2)}</h2>
         <p class="fp-sans text-base leading-[1.8] mb-10" style="color:rgba(247,245,242,0.75)">{p.ctaFinal.texte}</p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8">
-          <a href={p.ctaFinal.cta.href} data-track="cta_principal" data-track-position="final" class="fp-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{p.ctaFinal.cta.label}</a>
+          <a href={p.ctaFinal.cta.href} data-track="cta_principal" data-track-position="final" class="fp-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(p.ctaFinal.cta.label)}</a>
           <a href={p.ctaFinal.telephone.href} data-track="clic_telephone" data-track-position="final" class="fp-sans fp-link text-sm tracking-wider border-b py-1" style="border-color:rgba(247,245,242,0.35);color:#f7f5f2">{p.ctaFinal.telephone.label}</a>
         </div>
       </div>
@@ -275,14 +212,3 @@ const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1').replace(/France–
 
   <Tracking />
 </Layout>
-
-<script>
-  // Apparition sobre des situations autour de JANUS ; rien n'est masqué sans JS ou avec prefers-reduced-motion.
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduce && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
-      if (e.isIntersecting) { e.target.classList.add('is-on'); io.unobserve(e.target); }
-    }), { rootMargin: '0px 0px -20% 0px' });
-    document.querySelectorAll('[data-fp-reveal]').forEach((el) => { el.classList.add('fp-anim'); io.observe(el); });
-  }
-</script>
