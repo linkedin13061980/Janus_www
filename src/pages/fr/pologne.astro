@@ -9,6 +9,8 @@ import Tracking from '../../components/ui/Tracking.astro';
 import p from '../../content/fr/pologne.json';
 
 const m = p.microBesoins;
+const t = p.terrain;
+const l = p.maillage;
 
 // Espace insécable avant « ? » et « France–Pologne » insécable (le tiret ne doit pas couper la ligne).
 // Données structurées FAQ : reprend exactement les questions/réponses publiées sur la page.
@@ -37,8 +39,6 @@ const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1').replace(/France–
     .fp a { text-decoration: none; }
     .fp-link { transition: opacity .2s ease; }
     .fp-link:hover { opacity: .7; }
-    .fp-card { transition: border-color .2s ease; }
-    .fp-card:hover { border-color: rgba(181,147,107,.7) !important; }
     .fp details > summary { list-style: none; cursor: pointer; }
     .fp details > summary::-webkit-details-marker { display: none; }
     .fp details[open] .fp-plus { transform: rotate(45deg); }
@@ -106,25 +106,11 @@ const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1').replace(/France–
       </div>
     </section>
 
-    <!-- RELATIONS + INTERVENTIONS -->
-    <section id="interventions" class="bg-white px-6 py-16 md:py-24 scroll-mt-20">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="fp-serif font-light leading-tight mb-5 max-w-3xl" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(p.relations.h2)}</h2>
-        <p class="fp-sans text-base leading-[1.8] mb-10 max-w-2xl" style="color:rgba(26,26,26,0.7)">{p.relations.intro}</p>
-
-        <h3 class="fp-sans text-xs font-medium uppercase tracking-[0.25em] mb-4" style="color:#b5936b">{p.relations.situationsTitre}</h3>
-        <ul class="flex flex-wrap gap-3 mb-10">
-          {p.relations.situations.map((s) => (
-            <li class="fp-sans text-sm border px-4 py-2.5" style="border-color:rgba(26,26,26,0.14);color:#1a1a1a;background:#f7f5f2">{s}</li>
-          ))}
-        </ul>
-
-        <h3 class="fp-sans text-xs font-medium uppercase tracking-[0.25em] mb-4" style="color:#b5936b">{p.relations.interventionsTitre}</h3>
-        <ul class="flex flex-wrap gap-3">
-          {p.relations.interventions.map((it) => (
-            <li class="fp-sans text-sm border px-4 py-2.5" style="border-color:rgba(181,147,107,0.45);color:#1a1a1a">{it}</li>
-          ))}
-        </ul>
+    <!-- INTRODUCTION -->
+    <section id="introduction" class="bg-white px-6 py-14 md:py-20 scroll-mt-20">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="fp-serif font-light leading-tight mb-5" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(p.introduction.h2)}</h2>
+        <p class="fp-sans text-base md:text-lg leading-[1.8]" style="color:rgba(26,26,26,0.72)">{p.introduction.texte}</p>
       </div>
     </section>
 
@@ -190,6 +176,11 @@ const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1').replace(/France–
           </div>
         </div>
         <p class="fp-serif italic font-light text-center max-w-3xl mx-auto mt-12 md:mt-14 leading-snug" style="font-size:clamp(1.4rem,2.8vw,2.1rem);color:#f7f5f2">{fr(m.phrase)}</p>
+        <p class="fp-sans text-center text-xs md:text-sm tracking-[0.12em] mt-10 leading-[2]" style="color:rgba(247,245,242,0.55)">
+          {m.services.map((l, i) => (
+            <>{i > 0 && <span aria-hidden="true">{' · '}</span>}<a href={l.href} class="fp-link whitespace-nowrap border-b" style="color:rgba(247,245,242,0.85);border-color:rgba(201,168,76,0.5)">{l.label}</a></>
+          ))}
+        </p>
       </div>
     </section>
 
@@ -200,8 +191,9 @@ const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1').replace(/France–
           <p class="fp-serif font-light leading-snug mb-8" style="font-size:clamp(1.35rem,2.4vw,1.75rem);color:#1a1a1a">{fr(m.perimetre)}</p>
           <a href={m.cta.href} data-track="cta_principal" data-track-position="micro-besoins" class="fp-sans inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(m.cta.label)}</a>
         </div>
-        <div class="border-t-2 p-6 md:p-8" style="border-top-color:#b5936b;background:#f7f5f2">
-          <h3 class="fp-sans text-xs font-medium uppercase tracking-[0.22em] mb-4" style="color:#8a6d4b">{fr(m.exemple.titre)}</h3>
+        <div class="border border-dashed p-6 md:p-8" style="border-color:rgba(138,109,75,0.55);background:#f7f5f2">
+          <p class="fp-sans inline-block text-[10px] md:text-[11px] font-medium uppercase tracking-[0.22em] px-2.5 py-1 mb-4" style="color:#8a6d4b;border:1px solid rgba(138,109,75,0.5)">{m.exemple.mention}</p>
+          <h3 class="fp-serif font-light text-xl md:text-2xl leading-snug mb-4" style="color:#1a1a1a">{fr(m.exemple.titre)}</h3>
           <p class="fp-sans text-sm md:text-base leading-[1.75] mb-4" style="color:rgba(26,26,26,0.75)">{m.exemple.texte}</p>
           <p class="fp-serif italic text-lg md:text-xl leading-snug mb-6" style="color:#1a1a1a">{m.exemple.conclusion}</p>
           <a href={m.exemple.lien.href} class="fp-sans fp-link text-sm leading-relaxed border-b pb-1" style="border-color:rgba(181,147,107,0.6);color:#1a1a1a">{fr(m.exemple.lien.label)}</a>
@@ -209,82 +201,51 @@ const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1').replace(/France–
       </div>
     </section>
 
-    <!-- CAS -->
+    <!-- EXPERTISE TERRAIN : missions vérifiées + parcours -->
     <section style="background:#f7f5f2" class="px-6 py-16 md:py-24">
       <div class="max-w-6xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+        <h2 class="fp-serif font-light leading-tight mb-10 md:mb-12 max-w-3xl" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(t.h2)}</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           <div>
-            <h2 class="fp-serif font-light leading-tight mb-3" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(p.cas.h2)}</h2>
-            <p class="fp-sans text-sm md:text-base leading-[1.75]" style="color:rgba(26,26,26,0.68)">{p.cas.intro}</p>
+            <p class="fp-sans text-[11px] uppercase tracking-[0.22em] mb-5" style="color:#8a6d4b">{t.label}</p>
+            <p class="fp-serif font-light leading-none mb-3" style="font-size:clamp(3.4rem,7vw,5rem);color:#b5936b">{t.principale.chiffre}</p>
+            <h3 class="fp-serif text-xl md:text-2xl leading-snug mb-1" style="color:#1a1a1a">{fr(t.principale.titre)}</h3>
+            <p class="fp-sans text-sm md:text-base leading-[1.7]" style="color:rgba(26,26,26,0.72)">{t.principale.texte}</p>
+            <div class="mt-8 pt-6 border-t" style="border-color:rgba(181,147,107,0.35)">
+              <p class="fp-serif font-light leading-none mb-2" style="font-size:clamp(1.5rem,2.6vw,1.9rem);color:#8a6d4b">{t.secondaire.chiffre}</p>
+              <h3 class="fp-sans text-sm font-medium mb-1" style="color:#1a1a1a">{fr(t.secondaire.titre)}</h3>
+              <p class="fp-sans text-sm leading-[1.7]" style="color:rgba(26,26,26,0.68)">{t.secondaire.texte}</p>
+            </div>
           </div>
-          {/* Lien vers les cas clients masqué tant que leur contenu n'est pas validé */}
-          {p.cas.lien && (
-            <a href={p.cas.lien.href} class="fp-sans fp-link self-start md:self-auto text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">{p.cas.lien.label}</a>
-          )}
+          <div class="lg:pt-10">
+            {t.texte.map((x) => (
+              <p class="fp-sans text-base leading-[1.8] mb-4" style="color:rgba(26,26,26,0.75)">{fr(x)}</p>
+            ))}
+            <a href={t.lien.href} class="fp-sans fp-link inline-block mt-2 text-xs uppercase tracking-widest border-b py-2" style="border-color:#b5936b;color:#1a1a1a">{fr(t.lien.label)}</a>
+          </div>
         </div>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {p.cas.items.map((c) => (
-            <li class="border-t-2 px-7 py-6" style="border-top-color:#b5936b;background:#fff">
-              <h3 class="fp-sans text-[11px] uppercase tracking-[0.2em] mb-3" style="color:#8a6d4b">{c.secteur}</h3>
-              {c.chiffre && <p class="fp-serif font-light leading-none mb-3" style="font-size:clamp(2.6rem,5vw,3.5rem);color:#b5936b">{c.chiffre}</p>}
-              <p class="fp-serif text-lg md:text-xl font-light leading-snug" style="color:#1a1a1a">{c.texte}</p>
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
 
-    <!-- EXPÉRIENCE -->
-    <section style="background:#1a1a1a" class="px-6 py-16 md:py-24">
-      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16">
-        <div>
-          <h2 class="fp-serif font-light leading-tight mb-6" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#f7f5f2">{fr(p.experience.h2)}</h2>
-          <p class="fp-sans text-base leading-[1.8] mb-8" style="color:rgba(247,245,242,0.78)">{p.experience.texte}</p>
-          <a href={p.experience.lien.href} class="fp-sans fp-link text-xs uppercase tracking-widest border-b py-2" style="border-color:#c9a84c;color:#f7f5f2">{p.experience.lien.label}</a>
-        </div>
-        <ul class="self-center border-t" style="border-color:rgba(181,147,107,0.3)">
-          {p.experience.points.map((pt) => (
-            <li class="fp-sans text-sm md:text-base flex items-start gap-4 py-4 border-b" style="border-color:rgba(181,147,107,0.3);color:rgba(247,245,242,0.9)">
-              <span class="inline-block w-1.5 h-1.5 mt-2 flex-shrink-0" style="background:#c9a84c" aria-hidden="true"></span>{pt}
-            </li>
+    <!-- MAILLAGE INTERNE (liens texte) -->
+    <section class="bg-white px-6 pt-16 md:pt-20 pb-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="fp-serif font-light leading-tight mb-6" style="font-size:clamp(1.5rem,2.8vw,2.1rem);color:#1a1a1a">{l.h2}</h2>
+        <ul class="fp-sans text-sm md:text-base space-y-3 mb-6">
+          {l.liens.map((x) => (
+            <li><a href={x.href} class="fp-link border-b pb-0.5" style="border-color:rgba(181,147,107,0.6);color:#1a1a1a">{fr(x.label)}</a></li>
           ))}
         </ul>
-      </div>
-    </section>
-
-    <!-- PAGES POLOGNE -->
-    <section style="background:#f7f5f2" class="px-6 py-16 md:py-24">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="fp-serif font-light leading-tight mb-10" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{p.pologne.h2}</h2>
-        <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {p.pologne.items.map((l) => (
-            <li>
-              <a href={l.href} class="fp-card flex flex-col h-full bg-white border p-7" style="border-color:rgba(26,26,26,0.1)">
-                <h3 class="fp-serif text-xl md:text-2xl font-light mb-2" style="color:#1a1a1a">{l.titre}</h3>
-                <p class="fp-sans text-sm leading-[1.7] mb-5" style="color:rgba(26,26,26,0.68)">{l.texte}</p>
-                <span class="fp-sans mt-auto text-sm" style="color:#b5936b" aria-hidden="true">→</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-
-    <!-- INTERNATIONAL -->
-    <section class="bg-white px-6 py-14 md:py-16 border-b" style="border-color:rgba(26,26,26,0.08)">
-      <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-        <div class="max-w-2xl">
-          <h2 class="fp-serif text-2xl md:text-3xl font-light leading-tight mb-3" style="color:#1a1a1a">{p.international.h2}</h2>
-          <p class="fp-sans text-sm md:text-base leading-[1.75]" style="color:rgba(26,26,26,0.68)">{p.international.texte}</p>
-        </div>
-        <a href={p.international.lien.href} class="fp-sans fp-link self-start md:self-auto text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">{p.international.lien.label}</a>
+        <p class="fp-sans text-sm leading-[1.75]" style="color:rgba(26,26,26,0.68)">
+          {l.international.texte}{' '}<a href={l.international.lien.href} class="fp-link whitespace-nowrap border-b" style="border-color:rgba(181,147,107,0.6);color:#1a1a1a">{fr(l.international.lien.label)}</a>
+        </p>
       </div>
     </section>
 
     <!-- FAQ -->
     <section class="bg-white px-6 py-16 md:py-24">
       <div class="max-w-3xl mx-auto">
-        <h2 class="fp-serif font-light leading-tight mb-8" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{p.faq.h2}</h2>
+        <h2 class="fp-serif font-light leading-tight mb-8" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(p.faq.h2)}</h2>
         <div class="border-t" style="border-color:rgba(26,26,26,0.12)">
           {p.faq.items.map((f) => (
             <details class="border-b py-5" style="border-color:rgba(26,26,26,0.12)">
