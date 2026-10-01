@@ -6,8 +6,9 @@
 import Layout from '../../layouts/Layout.astro';
 import Flag from '../../components/ui/Flag.astro';
 import Tracking from '../../components/ui/Tracking.astro';
-import ScenarioTimeline from '../../components/ui/ScenarioTimeline.astro';
 import p from '../../content/fr/pologne.json';
+
+const m = p.microBesoins;
 
 // Espace insécable avant « ? » et « France–Pologne » insécable (le tiret ne doit pas couper la ligne).
 // Données structurées FAQ : reprend exactement les questions/réponses publiées sur la page.
@@ -18,11 +19,6 @@ const faqLd = {
 };
 const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1').replace(/France–Pologne/g, 'France\u2060–\u2060Pologne').replace(/ →/g, '\u00A0→');
 
-// Point de bascule : besoins répartis en ellipse autour de JANUS (desktop uniquement ; liste simple sur mobile).
-const besoins = p.bascule.besoins.map((b, i, a) => {
-  const t = -Math.PI / 2 + (i * 2 * Math.PI) / a.length;
-  return { label: b, x: +(50 + 40 * Math.cos(t)).toFixed(2), y: +(50 + 40 * Math.sin(t)).toFixed(2) };
-});
 ---
 
 <Layout
@@ -47,19 +43,44 @@ const besoins = p.bascule.besoins.map((b, i, a) => {
     .fp details > summary::-webkit-details-marker { display: none; }
     .fp details[open] .fp-plus { transform: rotate(45deg); }
     .fp-plus { transition: transform .2s ease; }
-    .fp-orbit { position: relative; }
-    .fp-orbit-lines { display: none; }
-    @media (min-width: 768px) {
-      .fp-orbit { height: 440px; }
-      .fp-orbit-lines { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
-      .fp-orbit-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
-      .fp-orbit-item { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); white-space: nowrap; }
+    /* Dispositif « micro-besoins » — mobile : axe doré qui aboutit à JANUS ; desktop (≥ 1024 px) : JANUS au centre, 3 situations de chaque côté. */
+    .mb-schema { position: relative; list-style: none; margin: 0; padding: 0 0 0 28px; }
+    .mb-schema::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 2rem; width: 2px; background: #c9a84c; }
+    .mb-item { position: relative; padding: 0 0 1.15rem; }
+    .mb-item::before { content: ""; position: absolute; left: -28px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: #f7f5f2; border: 2px solid #c9a84c; }
+    .mb-mot { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #8a6d4b; margin: 0 0 .2rem; }
+    .mb-sit { font-weight: 400; font-size: 1.2rem; line-height: 1.25; color: #1a1a1a; margin: 0 0 .25rem; }
+    .mb-detail { font-size: .8rem; line-height: 1.55; color: rgba(26,26,26,.62); margin: 0 0 .35rem; }
+    .mb-rep { font-size: .875rem; font-weight: 500; line-height: 1.5; color: #1a1a1a; margin: 0; }
+    .mb-rep::before { content: "→ "; color: #b5936b; }
+    .mb-centre { position: relative; margin: .35rem 0 0 -28px; }
+    .mb-lines { display: none; }
+    .mb-rond { background: #0d0d0d; padding: 1.1rem 1.25rem; display: flex; align-items: baseline; flex-wrap: wrap; gap: .35rem 1rem; }
+    .mb-nom { font-size: 1.6rem; letter-spacing: .14em; color: #c9a84c; margin: 0; line-height: 1; }
+    .mb-role { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(247,245,242,.8); margin: 0; line-height: 1.5; }
+    @media (min-width: 1024px) {
+      .mb-schema { display: grid; grid-template-columns: minmax(0,1fr) 300px minmax(0,1fr); grid-template-rows: repeat(3, 1fr); padding: 0; }
+      .mb-schema::before { content: none; }
+      .mb-item { padding: 1.15rem 1.5rem; margin: .45rem 0; background: #fff; border: 1px solid rgba(26,26,26,.08); display: flex; flex-direction: column; justify-content: center; }
+      .mb-item::before { content: none; }
+      .mb-item:nth-child(-n+3) { grid-column: 1; text-align: right; border-right: 2px solid #c9a84c; }
+      .mb-item:nth-child(n+4) { grid-column: 3; border-left: 2px solid #c9a84c; }
+      .mb-item:nth-child(1), .mb-item:nth-child(4) { grid-row: 1; }
+      .mb-item:nth-child(2), .mb-item:nth-child(5) { grid-row: 2; }
+      .mb-item:nth-child(3), .mb-item:nth-child(6) { grid-row: 3; }
+      .mb-centre { grid-column: 2; grid-row: 1 / span 3; margin: 0; display: flex; align-items: center; justify-content: center; }
+      .mb-lines { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
+      .mb-rond { position: relative; width: 190px; height: 190px; border-radius: 50%; border: 1px solid #c9a84c; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .7rem; padding: 1.5rem; }
+      .mb-nom { font-size: 2rem; }
+      .mb-role { font-size: 10px; letter-spacing: .14em; max-width: 140px; }
     }
-    .fp-anim .fp-orbit-item, .fp-anim .fp-orbit-lines { opacity: 0; transition: opacity .8s ease; }
-    .fp-anim .fp-orbit-item { transition-delay: calc(var(--i) * 70ms); }
-    .fp-anim.is-on .fp-orbit-item, .fp-anim.is-on .fp-orbit-lines { opacity: 1; }
+    .fp-anim .mb-item, .fp-anim .mb-lines, .fp-anim .mb-rond { opacity: 0; transition: opacity .7s ease, transform .7s ease; }
+    .fp-anim .mb-item { transform: translateY(10px); transition-delay: calc(var(--i) * 90ms); }
+    .fp-anim .mb-lines { transition-delay: .5s; }
+    .fp-anim .mb-rond { transition-delay: .6s; }
+    .fp-anim.is-on .mb-item, .fp-anim.is-on .mb-lines, .fp-anim.is-on .mb-rond { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
-      .fp-anim .fp-orbit-item, .fp-anim .fp-orbit-lines { opacity: 1; transition: none; }
+      .fp-anim .mb-item, .fp-anim .mb-lines, .fp-anim .mb-rond { opacity: 1; transform: none; transition: none; }
     }
   </style>
 
@@ -107,81 +128,83 @@ const besoins = p.bascule.besoins.map((b, i, a) => {
       </div>
     </section>
 
-    <!-- SCÉNARIO -->
-    <section id="scenario" style="background:#f7f5f2" class="px-6 py-16 md:py-24 scroll-mt-20">
+    <!-- MICRO-BESOINS : un projet, plusieurs besoins, un seul point de coordination -->
+    <section id="micro-besoins" style="background:#f7f5f2" class="px-6 py-16 md:py-24 scroll-mt-20">
       <div class="max-w-6xl mx-auto">
-        <div class="max-w-3xl mb-12 md:mb-16">
-          <p class="fp-sans text-[11px] md:text-xs uppercase tracking-[0.3em] mb-5" style="color:#8a6d4b">{p.scenario.label}</p>
-          <h2 class="fp-serif font-light leading-[1.1] mb-7" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{fr(p.scenario.h2)}</h2>
-          {p.scenario.intro.map((t) => (
-            <p class="fp-sans text-base leading-[1.8] mb-3" style="color:rgba(26,26,26,0.72)">{fr(t)}</p>
-          ))}
-          <p class="fp-sans text-xs italic mt-5" style="color:rgba(26,26,26,0.5)">{p.scenario.mention}</p>
+        <div class="max-w-3xl mb-10 md:mb-14">
+          <h2 class="fp-serif font-light leading-[1.1] mb-5" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{fr(m.h2)}</h2>
+          <p class="fp-sans text-base md:text-lg leading-[1.75]" style="color:rgba(26,26,26,0.72)">{fr(m.intro)}</p>
         </div>
-        <ScenarioTimeline s={p.scenario} />
+
+        <div class="mb-schema" data-fp-reveal>
+          {m.situations.map((x, i) => (
+            <div class="mb-item" style={`--i:${i}`}>
+              <p class="mb-mot fp-sans">{x.mot}</p>
+              <h3 class="mb-sit fp-serif">{fr(x.situation)}</h3>
+              {x.detail && <p class="mb-detail fp-sans">{fr(x.detail)}</p>}
+              <p class="mb-rep fp-sans">{x.reponse}</p>
+            </div>
+          ))}
+          <div class="mb-centre">
+            <svg class="mb-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              {[16.67, 50, 83.33].map((y) => (
+                <>
+                  <line x1="0" y1={y} x2="50" y2="50" stroke="#c9a84c" stroke-width="1" vector-effect="non-scaling-stroke" />
+                  <line x1="100" y1={y} x2="50" y2="50" stroke="#c9a84c" stroke-width="1" vector-effect="non-scaling-stroke" />
+                </>
+              ))}
+            </svg>
+            <div class="mb-rond">
+              <p class="mb-nom fp-serif">{m.centre.nom}</p>
+              <p class="mb-role fp-sans">{m.centre.role}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="max-w-2xl mx-auto text-center mt-12 md:mt-16">
+          <p class="fp-sans text-sm md:text-base leading-[1.75] mb-4" style="color:rgba(26,26,26,0.72)">{fr(m.niveau.texte)}</p>
+          <p class="fp-serif italic font-light leading-snug" style="font-size:clamp(1.25rem,2.4vw,1.6rem);color:#8a6d4b">{m.niveau.phrase}</p>
+        </div>
       </div>
     </section>
 
-    <!-- POINT DE BASCULE -->
+    <!-- MESSAGE CENTRAL + SANS / AVEC -->
     <section style="background:#0d0d0d" class="px-6 py-16 md:py-24">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="fp-serif font-light leading-tight text-center mb-10 md:mb-6" style="font-size:clamp(2rem,4vw,3.25rem);color:#f7f5f2">{fr(p.bascule.h2)}</h2>
-
-        <div class="fp-orbit" data-fp-reveal>
-          <svg class="fp-orbit-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            {besoins.map((b) => (
-              <line x1="50" y1="50" x2={b.x} y2={b.y} stroke="rgba(201,168,76,0.28)" stroke-width="1" vector-effect="non-scaling-stroke" />
-            ))}
-          </svg>
-          <p class="fp-orbit-center fp-serif text-center mx-auto mb-6 md:mb-0 flex items-center justify-center rounded-full" style="width:120px;height:120px;background:#0d0d0d;border:1px solid #c9a84c;color:#c9a84c;font-size:1.6rem;letter-spacing:.12em">{p.bascule.centre}</p>
-          <ul class="flex flex-wrap justify-center gap-2 md:block">
-            {besoins.map((b, i) => (
-              <li class="fp-orbit-item fp-sans text-xs md:text-[13px] px-3 py-2 border" style={`--x:${b.x}%;--y:${b.y}%;--i:${i};border-color:rgba(247,245,242,0.2);color:rgba(247,245,242,0.88);background:#0d0d0d`}>{b.label}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 md:mt-10">
-          <div class="border p-7" style="border-color:rgba(247,245,242,0.14)">
-            <h3 class="fp-sans text-xs font-medium uppercase tracking-[0.22em] mb-4" style="color:rgba(247,245,242,0.55)">{p.bascule.sans.titre}</h3>
+      <div class="max-w-5xl mx-auto">
+        <h2 class="fp-serif font-light text-center leading-[1.15] mb-12 md:mb-14" style="font-size:clamp(2.1rem,4.6vw,3.6rem);color:#f7f5f2">
+          <span class="block">{m.message[0]}</span>
+          <span class="block" style="color:#c9a84c">{m.message[1]}</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="border p-6" style="border-color:rgba(247,245,242,0.14)">
+            <h3 class="fp-sans text-xs font-medium uppercase tracking-[0.22em] mb-3" style="color:rgba(247,245,242,0.55)">{m.sans.titre}</h3>
             <p class="fp-sans text-sm md:text-base leading-[1.9]" style="color:rgba(247,245,242,0.75)">
-              {p.bascule.sans.chaine.map((c, i) => (
+              {m.sans.chaine.map((c, i) => (
                 <>{i > 0 && <span style="color:rgba(247,245,242,0.35)" aria-hidden="true">{' → '}</span>}<span class="whitespace-nowrap">{c}</span></>
               ))}
             </p>
           </div>
-          <div class="border-t-2 p-7" style="border-top-color:#c9a84c;background:#1a1a1a">
-            <h3 class="fp-sans text-xs font-medium uppercase tracking-[0.22em] mb-4" style="color:#c9a84c">{p.bascule.avec.titre}</h3>
-            <p class="fp-sans text-sm md:text-base leading-[1.75]" style="color:rgba(247,245,242,0.88)">{p.bascule.avec.texte}</p>
+          <div class="border-t-2 p-6" style="border-top-color:#c9a84c;background:#1a1a1a">
+            <h3 class="fp-sans text-xs font-medium uppercase tracking-[0.22em] mb-3" style="color:#c9a84c">{m.avec.titre}</h3>
+            <p class="fp-sans text-sm md:text-base leading-[1.75]" style="color:rgba(247,245,242,0.88)">{m.avec.texte}</p>
           </div>
         </div>
-
-        <p class="fp-serif italic font-light text-center max-w-3xl mx-auto mt-12 md:mt-16 leading-snug" style="font-size:clamp(1.4rem,2.8vw,2.1rem);color:#f7f5f2">{fr(p.bascule.phrase)}</p>
+        <p class="fp-serif italic font-light text-center max-w-3xl mx-auto mt-12 md:mt-14 leading-snug" style="font-size:clamp(1.4rem,2.8vw,2.1rem);color:#f7f5f2">{fr(m.phrase)}</p>
       </div>
     </section>
 
-    <!-- COORDINATION -->
+    <!-- PÉRIMÈTRE + CTA + EXEMPLE -->
     <section class="bg-white px-6 py-16 md:py-24">
-      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <div>
-          <h2 class="fp-serif font-light leading-tight mb-6" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(p.coordination.h2)}</h2>
-          <p class="fp-sans text-base leading-[1.8]" style="color:rgba(26,26,26,0.72)">{fr(p.coordination.texte)}</p>
-          <div class="flex flex-col items-start gap-5 mt-8">
-            <a href={p.coordination.cta.href} data-track="cta_principal" data-track-position="coordination" class="fp-sans inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(p.coordination.cta.label)}</a>
-            <a href={p.coordination.lienSecondaire.href} class="fp-sans fp-link text-sm leading-relaxed border-b pb-1" style="border-color:rgba(181,147,107,0.6);color:#1a1a1a">{fr(p.coordination.lienSecondaire.label)}</a>
-          </div>
+          <p class="fp-serif font-light leading-snug mb-8" style="font-size:clamp(1.35rem,2.4vw,1.75rem);color:#1a1a1a">{fr(m.perimetre)}</p>
+          <a href={m.cta.href} data-track="cta_principal" data-track-position="micro-besoins" class="fp-sans inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(m.cta.label)}</a>
         </div>
-
-        <div class="flex flex-col items-center" aria-hidden="true">
-          <p class="fp-sans text-xs uppercase tracking-[0.2em] border px-5 py-3" style="border-color:rgba(26,26,26,0.2);color:#1a1a1a">{p.coordination.schema.haut}</p>
-          <span class="block w-px h-8" style="background:rgba(26,26,26,0.25)"></span>
-          <p class="fp-serif flex items-center justify-center rounded-full" style="width:96px;height:96px;border:1px solid #c9a84c;color:#8a6d4b;font-size:1.35rem;letter-spacing:.12em;background:#f7f5f2">{p.coordination.schema.centre}</p>
-          <span class="block w-px h-8" style="background:#c9a84c"></span>
-          <ul class="flex flex-wrap justify-center gap-2 pt-4 border-t w-full max-w-md" style="border-color:#c9a84c">
-            {p.coordination.schema.domaines.map((d) => (
-              <li class="fp-sans text-xs md:text-sm px-3 py-2" style="background:#f7f5f2;color:#1a1a1a">{d}</li>
-            ))}
-          </ul>
+        <div class="border-t-2 p-6 md:p-8" style="border-top-color:#b5936b;background:#f7f5f2">
+          <h3 class="fp-sans text-xs font-medium uppercase tracking-[0.22em] mb-4" style="color:#8a6d4b">{fr(m.exemple.titre)}</h3>
+          <p class="fp-sans text-sm md:text-base leading-[1.75] mb-4" style="color:rgba(26,26,26,0.75)">{m.exemple.texte}</p>
+          <p class="fp-serif italic text-lg md:text-xl leading-snug mb-6" style="color:#1a1a1a">{m.exemple.conclusion}</p>
+          <a href={m.exemple.lien.href} class="fp-sans fp-link text-sm leading-relaxed border-b pb-1" style="border-color:rgba(181,147,107,0.6);color:#1a1a1a">{fr(m.exemple.lien.label)}</a>
         </div>
       </div>
     </section>
@@ -203,6 +226,7 @@ const besoins = p.bascule.besoins.map((b, i, a) => {
           {p.cas.items.map((c) => (
             <li class="border-t-2 px-7 py-6" style="border-top-color:#b5936b;background:#fff">
               <h3 class="fp-sans text-[11px] uppercase tracking-[0.2em] mb-3" style="color:#8a6d4b">{c.secteur}</h3>
+              {c.chiffre && <p class="fp-serif font-light leading-none mb-3" style="font-size:clamp(2.6rem,5vw,3.5rem);color:#b5936b">{c.chiffre}</p>}
               <p class="fp-serif text-lg md:text-xl font-light leading-snug" style="color:#1a1a1a">{c.texte}</p>
             </li>
           ))}
@@ -292,7 +316,7 @@ const besoins = p.bascule.besoins.map((b, i, a) => {
 </Layout>
 
 <script>
-  // Apparition sobre des besoins autour de JANUS ; rien n'est masqué sans JS ou avec prefers-reduced-motion.
+  // Apparition sobre des situations autour de JANUS ; rien n'est masqué sans JS ou avec prefers-reduced-motion.
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduce && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => entries.forEach((e) => {

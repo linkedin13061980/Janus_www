@@ -24,190 +24,82 @@
     "interventionsTitre": "Nos interventions",
     "interventions": ["Réunions professionnelles", "Négociations", "Visites de sites et d'usines", "Coordination entre équipes", "Accompagnement opérationnel", "Interprétation français ↔ polonais", "Communication interculturelle"]
   },
-  "scenario": {
-    "label": "Un projet international, en pratique",
-    "h2": "Une acquisition en Pologne. Et soudain, une multitude de besoins à coordonner.",
-    "intro": [
-      "Au début, le besoin semble simple : une entreprise française prépare une opération en Pologne.",
-      "Mais au fil du projet, les situations se multiplient : rendez-vous avec les dirigeants, visioconférences, visites de site, documents, présentations, réunions techniques, collaborateurs à préparer…",
-      "Chaque étape peut créer un nouveau besoin linguistique ou interculturel. Voici comment JANUS peut intervenir autour du projet."
-    ],
-    "mention": "Scénario illustratif d'un projet franco-polonais.",
-    "marque": "JANUS",
-    "relance": {
-      "apresEtape": 4,
-      "question": "Votre projet France–Pologne se complexifie au fil des échanges ?",
-      "texte": "JANUS peut coordonner les besoins linguistiques et interculturels qui apparaissent au fil de votre projet.",
-      "cta": {
-        "label": "Parler de votre projet France–Pologne →",
-        "href": "/fr/contact"
-      },
-      "lien": {
-        "label": "Vous préparez une acquisition ? Découvrir l'accompagnement →",
-        "href": "/fr/acquisition-entreprise-pologne"
-      }
-    },
-    "colonnes": {
-      "projet": "Le projet",
-      "janus": "Volet linguistique et interculturel"
-    },
-    "etapes": [
-      {
-        "label": "Projet d'acquisition",
-        "titre": "L'entreprise française prépare une acquisition en Pologne",
-        "texte": "La direction et ses conseils travaillent sur l'opération. En parallèle, les premiers échanges avec les interlocuteurs polonais commencent.",
-        "janus": {
-          "titre": "Le volet linguistique et interculturel commence",
-          "texte": "Identification des personnes, des langues, des réunions à venir et des situations à anticiper."
-        }
-      },
-      {
-        "label": "Avant le premier rendez-vous",
-        "titre": "Le dirigeant doit rencontrer les propriétaires polonais",
-        "texte": "Son anglais est suffisant pour travailler. Mais ce rendez-vous est stratégique : présenter le projet, faire passer les messages clés, répondre aux questions sensibles.",
-        "detail": "Il n'a pas besoin de reprendre des cours d'anglais général. Il a besoin de préparer ce rendez-vous précis.",
-        "janus": {
-          "titre": "Préparation du dirigeant",
-          "points": [
-            "Messages clés",
-            "Vocabulaire de l'opération",
-            "Répétition et simulation",
-            "Questions difficiles"
-          ]
-        },
-        "phrase": "On ne prépare pas une langue. On prépare une situation."
-      },
-      {
-        "label": "Visite sur le terrain",
-        "titre": "Il faut maintenant visiter l'usine",
-        "texte": "Production, maintenance, qualité, sécurité : le vocabulaire devient technique et les niveaux d'anglais varient.",
-        "detail": "Certains échanges peuvent se dérouler directement en anglais ; d'autres nécessitent une interprétation précise.",
-        "janus": {
-          "titre": "Interprétation sur site",
-          "texte": "Interprète adapté au contexte de la visite et préparation en amont de la terminologie technique."
-        }
-      },
-      {
-        "label": "Visioconférences",
-        "titre": "Les réunions se multiplient",
-        "texte": "Direction, dirigeants polonais, conseils, équipes techniques… Toutes les réunions n'ont pas besoin d'un interprète.",
-        "intervention": "JANUS intervient lorsque l'enjeu, la technicité ou le besoin de précision le justifient.",
-        "niveaux": [
-          {
-            "titre": "Échange courant",
-            "texte": "les équipes communiquent directement"
-          },
-          {
-            "titre": "Réunion importante",
-            "texte": "assistance ponctuelle de JANUS"
-          },
-          {
-            "titre": "Réunion technique ou sensible",
-            "texte": "interprète spécialisé et préparé"
-          }
-        ],
-        "janus": {
-          "titre": "JANUS intervient lorsque :",
-          "points": [
-            "l'enjeu devient important ;",
-            "le vocabulaire devient très technique ;",
-            "la précision des propos est essentielle ;",
-            "un interlocuteur ne maîtrise pas assez la langue de travail."
-          ],
-          "masqueMobile": true
-        },
-        "phrase": "Le bon niveau d'accompagnement dépend de la situation, pas simplement de la langue parlée."
-      },
-      {
-        "label": "Communication du dirigeant",
-        "titre": "Le DG doit présenter le projet aux managers polonais",
-        "texte": "Il ne s'agit plus seulement de comprendre : il faut convaincre, rassurer et répondre aux questions.",
-        "janus": {
-          "titre": "Coaching en prise de parole",
-          "points": [
-            "Structure du message",
-            "Anglais professionnel",
-            "Répétition",
-            "Questions-réponses"
-          ],
-          "note": "La préparation est construite autour de la véritable présentation du dirigeant."
-        }
-      },
-      {
-        "label": "Documents",
-        "titre": "Les documents commencent à circuler",
-        "texte": "Présentations, supports de réunion, communications internes, documents opérationnels. Tout ne nécessite pas une traduction.",
-        "janus": {
-          "titre": "Traduction professionnelle",
-          "texte": "JANUS identifie ce qui doit réellement être traduit et mobilise les compétences adaptées.",
-          "tags": [
-            "Français ↔ polonais",
-            "Anglais ↔ polonais selon les besoins du projet"
-          ]
-        }
-      },
-      {
-        "label": "Après l'opération",
-        "titre": "Maintenant, les équipes doivent travailler ensemble",
-        "texte": "L'opération avance, le travail commun commence. Des collaborateurs français commencent à travailler avec l'équipe polonaise ; parallèlement, des collaborateurs polonais peuvent rejoindre temporairement ou durablement les équipes en France.",
-        "janus": {
-          "titre": "Préparation des équipes",
-          "points": [
-            "Langue",
-            "Vocabulaire métier",
-            "Communication interculturelle",
-            "Situations professionnelles réelles"
-          ]
-        }
-      }
-    ]
-  },
-  "bascule": {
+  "microBesoins": {
     "h2": "Un projet. Une multitude de micro-besoins.",
-    "centre": "JANUS",
-    "besoins": [
-      "Interprète",
-      "Traduction",
-      "Visioconférence",
-      "Réunion technique",
-      "Visite d'usine",
-      "Préparation du DG",
-      "Présentation",
-      "Communication interculturelle",
-      "Formation des équipes",
-      "Vocabulaire métier"
+    "intro": "Au fil d'un projet France–Pologne, les besoins linguistiques et interculturels apparaissent souvent un par un — parfois prévisibles, parfois urgents.",
+    "centre": {
+      "nom": "JANUS",
+      "role": "Point de coordination linguistique et interculturel"
+    },
+    "situations": [
+      {
+        "mot": "Négociation",
+        "situation": "Le DG prépare une négociation",
+        "reponse": "Préparation de la prise de parole"
+      },
+      {
+        "mot": "Usine",
+        "situation": "Une visite d'usine est organisée",
+        "reponse": "Interprétation + vocabulaire technique"
+      },
+      {
+        "mot": "Visioconférence",
+        "situation": "Une visioconférence devient sensible ou très technique",
+        "reponse": "Assistance linguistique adaptée à l'enjeu"
+      },
+      {
+        "mot": "Interculturel",
+        "situation": "La réunion semble claire. Pourtant, chacun en ressort avec une compréhension différente.",
+        "detail": "Façon de formuler un désaccord, niveau de franchise, prise de décision, attentes vis-à-vis du manager : les difficultés ne sont pas toujours linguistiques.",
+        "reponse": "Préparation interculturelle des échanges"
+      },
+      {
+        "mot": "Documents",
+        "situation": "Des documents doivent circuler",
+        "reponse": "Traduction ciblée"
+      },
+      {
+        "mot": "Équipes",
+        "situation": "Les équipes françaises et polonaises commencent à travailler ensemble",
+        "reponse": "Préparation linguistique et interculturelle des équipes"
+      }
+    ],
+    "niveau": {
+      "texte": "Toutes les situations ne nécessitent pas une intervention. JANUS mobilise le niveau d'accompagnement adapté lorsque l'enjeu, la technicité ou le besoin de précision le justifient.",
+      "phrase": "Le bon niveau d'accompagnement dépend de la situation, pas simplement de la langue parlée."
+    },
+    "message": [
+      "Pour vous, plusieurs besoins.",
+      "Pour JANUS, un seul projet."
     ],
     "sans": {
       "titre": "Sans coordination",
-      "chaine": ["Besoin", "recherche du prestataire", "briefing", "organisation", "nouveau besoin", "nouveau prestataire"]
+      "chaine": [
+        "Nouveau besoin",
+        "recherche d'un prestataire",
+        "nouveau briefing",
+        "organisation de l'intervention",
+        "nouveau besoin…"
+      ]
     },
     "avec": {
       "titre": "Avec JANUS",
-      "texte": "Le contexte est déjà connu. JANUS coordonne les ressources linguistiques et interculturelles adaptées au fil du projet."
+      "texte": "Le contexte est déjà connu. JANUS identifie le niveau d'accompagnement nécessaire et coordonne les compétences linguistiques et interculturelles adaptées à la situation."
     },
-    "phrase": "Vous n'avez pas à rechercher un nouveau prestataire chaque fois qu'un besoin linguistique apparaît."
-  },
-  "coordination": {
-    "h2": "JANUS, point de coordination linguistique et interculturel",
-    "texte": "JANUS intervient aux côtés de votre direction, de vos équipes RH et de vos conseils sur un périmètre précis : les dimensions linguistiques et interculturelles du projet.",
-    "schema": {
-      "haut": "Direction / équipe projet",
-      "centre": "JANUS",
-      "domaines": [
-        "Interprétation",
-        "Traduction",
-        "Préparation dirigeant",
-        "Interculturel",
-        "Formation"
-      ]
+    "phrase": "Vous n'avez pas à rechercher un nouveau prestataire chaque fois qu'un besoin linguistique apparaît.",
+    "exemple": {
+      "titre": "Exemple : une acquisition en Pologne",
+      "texte": "Votre DG prépare une rencontre avec les propriétaires. Quelques jours plus tard, une visite d'usine nécessite un interprète technique. Puis viennent des visioconférences, des documents à traduire et des équipes françaises et polonaises à préparer.",
+      "conclusion": "Pris séparément, ce sont plusieurs besoins. Pour JANUS, c'est un seul projet.",
+      "lien": {
+        "label": "Découvrir notre accompagnement autour d'une acquisition en Pologne →",
+        "href": "/fr/acquisition-entreprise-pologne"
+      }
     },
+    "perimetre": "JANUS intervient aux côtés de votre direction, de vos équipes RH et de vos conseils sur un périmètre précis : les dimensions linguistiques et interculturelles du projet.",
     "cta": {
       "label": "Parler de votre projet France–Pologne →",
       "href": "/fr/contact"
-    },
-    "lienSecondaire": {
-      "label": "Vous préparez une acquisition ? Découvrir l'accompagnement →",
-      "href": "/fr/acquisition-entreprise-pologne"
     }
   },
   "cas": {
@@ -215,16 +107,16 @@
     "intro": "Deux missions menées par JANUS avec des interlocuteurs polonais.",
     "items": [
       { "secteur": "Industrie · Allemagne ↔ Pologne", "texte": "5 jours d'accompagnement sur site auprès de 18 techniciens pour faciliter les échanges et la coordination des équipes." },
-      { "secteur": "Opération M&A · France ↔ Pologne", "texte": "4 mois d'accompagnement linguistique et interculturel dans le cadre d'une opération transfrontalière." }
+      { "secteur": "Opération M&A · France ↔ Pologne", "chiffre": "4 mois", "texte": "Accompagnement linguistique et interculturel dans le cadre d'une opération transfrontalière." }
     ],
     "lien": null
   },
   "experience": {
     "h2": "Une expertise France–Pologne construite sur l'expérience",
-    "texte": "Dès 2002, à Paris, la fondatrice de JANUS a travaillé dans la finance sur des opérations de fusions-acquisitions impliquant des entreprises françaises et polonaises. JANUS, créée en 2021, met cette connaissance des deux environnements au service des entreprises.",
+    "texte": "Dès 2002, à Paris, la fondatrice de JANUS a travaillé dans la finance sur des opérations de fusions-acquisitions impliquant des entreprises françaises et polonaises. Après un parcours international, notamment à Genève, elle revient en France et travaille à Lyon dans le secteur linguistique, avant de créer JANUS en 2021.",
     "points": [
-      "Expérience professionnelle franco-polonaise depuis 2002",
-      "Fusions-acquisitions impliquant des entreprises françaises et polonaises",
+      "Fusions-acquisitions franco-polonaises à Paris dès 2002",
+      "Expérience internationale puis secteur linguistique à Lyon",
       "JANUS créée en 2021"
     ],
     "lien": { "label": "En savoir plus sur JANUS →", "href": "/fr/a-propos" }
