@@ -31,16 +31,21 @@
     "company": "Firma",
     "service": "Usługa",
     "service_options": {
-      "formation": "Szkolenia",
-      "interpretation": "Tłumaczenia ustne",
       "accompagnement": "Wsparcie na miejscu",
-      "traduction": "Tłumaczenia pisemne"
+      "interpretation": "Tłumaczenia ustne",
+      "traduction": "Tłumaczenia pisemne",
+      "negociation": "Przygotowanie spotkań i negocjacji",
+      "equipes": "Przygotowanie językowe i międzykulturowe zespołów",
+      "coaching": "Coaching wystąpień",
+      "formation": "Szkolenia językowe",
+      "autre": "Inna potrzeba"
     },
     "langue": "Język",
     "langue_options": {
+      "francais": "Francuski",
       "anglais": "Angielski",
       "polonais": "Polski",
-      "fle": "Francuski FLE",
+      "fle": "Francuski jako język obcy",
       "allemand": "Niemiecki",
       "espagnol": "Hiszpański",
       "italien": "Włoski"
@@ -48,8 +53,33 @@
     "message": "Wiadomość",
     "rgpd_consent": "Wyrażam zgodę na przetwarzanie moich danych w celu obsługi mojego zapytania, zgodnie z polityką prywatności.",
     "submit": "Wyślij",
-    "success": "Twoja wiadomość została wysłana. Odpowiemy jak najszybciej.",
-    "error": "Wystąpił błąd. Spróbuj ponownie lub skontaktuj się z nami bezpośrednio."
+    "success": "Państwa wiadomość została wysłana. Odpowiemy najszybciej, jak to możliwe.",
+    "error": "Wystąpił błąd. Prosimy spróbować ponownie lub skontaktować się z nami bezpośrednio.",
+    "errors": {
+      "firstname": "Prosimy podać imię (co najmniej 2 znaki).",
+      "lastname": "Prosimy podać nazwisko (co najmniej 2 znaki).",
+      "email": "Prosimy podać prawidłowy adres e-mail.",
+      "company": "Prosimy podać nazwę firmy.",
+      "besoin": "Prosimy wybrać rodzaj potrzeby.",
+      "objectif": "Prosimy opisać potrzebę (co najmniej 10 znaków).",
+      "service": "Prosimy wybrać usługę.",
+      "langue": "Prosimy wybrać język.",
+      "message": "Wiadomość jest zbyt krótka (co najmniej 10 znaków).",
+      "rgpd": "Prosimy wyrazić zgodę na przetwarzanie danych, aby wysłać zapytanie."
+    },
+    "confirmation": {
+      "subject": "Potwierdzenie otrzymania zapytania — JANUS",
+      "greeting": "Dzień dobry,",
+      "received": "Dziękujemy za kontakt z JANUS. Otrzymaliśmy Państwa zapytanie dotyczące:",
+      "reply": "Odpowiemy najszybciej, jak to możliwe.",
+      "summary": "Podsumowanie",
+      "service": "Usługa",
+      "langue": "Język",
+      "company": "Firma",
+      "phone": "Mogą Państwo również skontaktować się z nami bezpośrednio pod numerem",
+      "phoneSuffix": " (rozmawiamy po polsku).",
+      "address": "JANUS · 20 ter rue Julien, 69003 Lyon, Francja"
+    }
   },
   "cookies": {
     "message": "Używamy plików cookie, aby poprawić Twoje doświadczenie i analizować ruch.",

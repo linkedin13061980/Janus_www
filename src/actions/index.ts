@@ -1,14 +1,17 @@
 import { defineAction, ActionError } from 'astro:actions';
 import { z } from 'astro:schema';
 import { Resend } from 'resend';
+import { t, type Locale } from '../i18n/utils';
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL ?? 'contact@agence-janus.fr';
 
 const BESOINS = ['accompagnement', 'negociation', 'coordination', 'coaching', 'interpretation', 'traduction', 'interculturel', 'formation', 'autre'] as const;
 const LANGUES = ['francais', 'anglais', 'polonais', 'allemand', 'espagnol', 'italien', 'plusieurs'] as const;
-const SERVICES = ['formation', 'interpretation', 'accompagnement', 'traduction'] as const;
-const LANGUE_CLASSIQUE = ['anglais', 'polonais', 'fle', 'allemand', 'espagnol', 'italien'] as const;
+const SERVICES = ['accompagnement', 'interpretation', 'traduction', 'negociation', 'equipes', 'coaching', 'formation', 'autre'] as const;
+const LANGUE_CLASSIQUE = ['francais', 'anglais', 'polonais', 'fle', 'allemand', 'espagnol', 'italien'] as const;
+// Langue de la page d'où part le formulaire : messages affichés et e-mail de confirmation dans cette langue.
+const LOCALES = ['fr', 'en', 'pl'] as const;
 
 // Échappement HTML des saisies du formulaire avant insertion dans les e-mails.
 const esc = (v: string) =>
@@ -27,6 +30,7 @@ export const server = {
         email: z.string().email('Email invalide'),
         phone: z.string().optional(),
         company: z.string().min(1, 'Entreprise requise'),
+        locale: z.enum(LOCALES).optional(),
         // Variante « projet »
         variante: z.enum(['projet']).optional(),
         besoin: z.enum(BESOINS, { error: 'Merci de choisir un type de besoin' }).optional(),
@@ -63,9 +67,9 @@ export const server = {
       }
 
       const besoinLabels: Record<string, string> = {
-        accompagnement: 'Accompagnement international',
+        coordination: 'Projet international : plusieurs besoins linguistiques et interculturels',
+        accompagnement: "Accompagnement terrain, en France ou à l'étranger",
         negociation: 'Négociation / réunion stratégique',
-        coordination: "Coordination d'une mission internationale",
         coaching: 'Coaching en prise de parole (contexte international)',
         interpretation: 'Interprétation',
         traduction: 'Traduction',
@@ -74,10 +78,14 @@ export const server = {
         autre: 'Autre / à définir',
       };
       const serviceLabels: Record<string, string> = {
-        formation: 'Formation professionnelle',
-        interpretation: 'Interprétariat',
         accompagnement: 'Accompagnement terrain',
+        interpretation: 'Interprétation',
         traduction: 'Traduction',
+        negociation: 'Préparation de réunions et négociations',
+        equipes: 'Préparation linguistique et interculturelle des équipes',
+        coaching: 'Coaching de prise de parole',
+        formation: 'Formation en langues',
+        autre: 'Autre besoin',
       };
       const langueLabels: Record<string, string> = {
         francais: 'Français',
@@ -89,6 +97,8 @@ export const server = {
         italien: 'Italien',
         plusieurs: 'Plusieurs / à définir',
       };
+
+      const locale: Locale = input.locale ?? 'fr';
 
       // Toutes les valeurs saisies sont échappées avant d'être insérées dans les e-mails HTML.
       const nature = input.besoin ? besoinLabels[input.besoin] : serviceLabels[input.service!];
@@ -135,6 +145,7 @@ export const server = {
               ${ligne(input.besoin ? 'Type de besoin' : 'Service', e.nature)}
               ${input.besoin ? ligne('Pays concernés', e.pays) : ''}
               ${ligne(input.besoin ? 'Langue(s)' : 'Langue', e.langues)}
+              ${ligne('Langue du formulaire', locale.toUpperCase())}
             </table>
             <div style="margin-top: 24px; padding: 20px; background: #2d3238; border-left: 3px solid #c9a84c;">
               <p style="color: #c9a84c; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 12px;">${input.besoin ? 'Besoin / objectif' : 'Message'}</p>
@@ -155,6 +166,48 @@ export const server = {
       if (envoiAgence.error) {
         console.error('Resend — échec de l\'e-mail à l\'agence :', envoiAgence.error);
         throw new ActionError({ code: 'INTERNAL_SERVER_ERROR', message: 'Envoi impossible' });
+      }
+
+      // Email de confirmation à l'expéditeur : EN/PL dans la langue du formulaire, FR inchangé.
+      if (locale !== 'fr' && !input.besoin) {
+        const c = (k: string) => t(locale, `contact.confirmation.${k}`);
+        const natureLoc = esc(t(locale, `contact.service_options.${input.service}`));
+        const langueLoc = esc(t(locale, `contact.langue_options.${input.langue}`));
+        const suffixe = t(locale, 'contact.confirmation.phoneSuffix');
+        await resend.emails.send({
+          from: 'JANUS <contact@agence-janus.fr>',
+          to: input.email,
+          subject: c('subject'),
+          html: `
+          <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; background: #1e2124; color: #f5f5f0; padding: 32px;">
+            <h1 style="color: #c9a84c; font-size: 24px; margin-bottom: 8px;">${c('greeting').replace('{prenom}', e.prenom)}</h1>
+            <p style="color: #f5f5f0; line-height: 1.6; font-size: 16px;">
+              ${c('received')} <strong style="color: #c9a84c;">${natureLoc}</strong>.
+            </p>
+            <p style="color: #f5f5f0a0; line-height: 1.6;">
+              ${c('reply')}
+            </p>
+            <div style="margin: 32px 0; padding: 20px; background: #2d3238; border-left: 3px solid #c9a84c;">
+              <p style="color: #c9a84c; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 8px;">${c('summary')}</p>
+              <p style="color: #f5f5f0a0; font-size: 14px; margin: 0;">
+                ${c('service')}: ${natureLoc}<br/>
+                ${c('langue')}: ${langueLoc}<br/>
+                ${c('company')}: ${e.entreprise}
+              </p>
+            </div>
+            <p style="color: #f5f5f0a0; font-size: 14px;">
+              ${c('phone')}<br/>
+              <a href="tel:+33967056831" style="color: #c9a84c;">+33 9 67 05 68 31</a>${suffixe.startsWith('contact.') ? '' : suffixe}
+            </p>
+            <hr style="border: none; border-top: 1px solid #c9a84c22; margin: 32px 0;" />
+            <p style="color: #ffffff30; font-size: 11px; text-align: center; margin: 0;">
+              ${c('address')}<br/>
+              SIRET 90335843000010
+            </p>
+          </div>
+        `,
+        });
+        return { success: true };
       }
 
       // Email de confirmation à l'expéditeur

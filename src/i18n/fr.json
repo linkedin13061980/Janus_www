@@ -31,13 +31,18 @@
     "company": "Entreprise",
     "service": "Service concerné",
     "service_options": {
-      "formation": "Formation",
-      "interpretation": "Interprétariat",
       "accompagnement": "Accompagnement terrain",
-      "traduction": "Traduction"
+      "interpretation": "Interprétation",
+      "traduction": "Traduction",
+      "negociation": "Préparation de réunions et négociations",
+      "equipes": "Préparation linguistique et interculturelle des équipes",
+      "coaching": "Coaching de prise de parole",
+      "formation": "Formation en langues",
+      "autre": "Autre besoin"
     },
     "langue": "Langue concernée",
     "langue_options": {
+      "francais": "Français",
       "anglais": "Anglais",
       "polonais": "Polonais",
       "fle": "Français FLE",
@@ -47,9 +52,9 @@
     },
     "besoin": "Type de besoin",
     "besoin_options": {
-      "accompagnement": "Accompagnement international",
+      "coordination": "Projet international : plusieurs besoins linguistiques et interculturels",
+      "accompagnement": "Accompagnement terrain, en France ou à l'étranger",
       "negociation": "Négociation / réunion stratégique",
-      "coordination": "Coordination d'une mission internationale",
       "coaching": "Coaching en prise de parole (contexte international)",
       "interpretation": "Interprétation",
       "traduction": "Traduction",
@@ -76,7 +81,19 @@
     "rgpd_consent": "J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la politique de confidentialité.",
     "submit": "Envoyer",
     "success": "Votre message a bien été envoyé. Nous vous répondrons dans les meilleurs délais.",
-    "error": "Une erreur est survenue. Veuillez réessayer ou nous contacter directement."
+    "error": "Une erreur est survenue. Veuillez réessayer ou nous contacter directement.",
+    "errors": {
+      "firstname": "Prénom requis",
+      "lastname": "Nom requis",
+      "email": "Email invalide",
+      "company": "Entreprise requise",
+      "besoin": "Merci de choisir un type de besoin",
+      "objectif": "Merci de décrire votre besoin (10 caractères minimum)",
+      "service": "Service requis",
+      "langue": "Langue requise",
+      "message": "Message trop court",
+      "rgpd": "Consentement RGPD requis"
+    }
   },
   "cookies": {
     "message": "Nous utilisons des cookies pour améliorer votre expérience et analyser le trafic.",

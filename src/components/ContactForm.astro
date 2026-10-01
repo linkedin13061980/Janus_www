@@ -10,12 +10,18 @@ interface Props {
 }
 
 const { locale, variante = 'classique' } = Astro.props;
-const besoins = ['accompagnement', 'negociation', 'coordination', 'coaching', 'interpretation', 'traduction', 'interculturel', 'formation', 'autre'];
+const besoins = ['coordination', 'accompagnement', 'negociation', 'coaching', 'interpretation', 'traduction', 'interculturel', 'formation', 'autre'];
+const services = ['accompagnement', 'interpretation', 'traduction', 'negociation', 'equipes', 'coaching', 'formation', 'autre'];
 const langues = ['francais', 'anglais', 'polonais', 'allemand', 'espagnol', 'italien', 'plusieurs'];
 
 const result = Astro.getActionResult(actions.sendContact);
 const inputErrors = isInputError(result?.error) ? result.error.fields : {};
 const success = result?.data?.success === true;
+// Message d'erreur dans la langue du formulaire ; repli sur le message du serveur si aucune traduction n'existe.
+const err = (field: string) => {
+  const msg = t(locale, `contact.errors.${field}`);
+  return msg.startsWith('contact.errors.') ? (inputErrors as Record<string, string[]>)[field] : msg;
+};
 ---
 
 {success ? (
@@ -42,6 +48,8 @@ const success = result?.data?.success === true;
     <div class="hidden" aria-hidden="true">
       <input type="text" name="website" tabindex="-1" autocomplete="off" />
     </div>
+    <!-- Langue de la page : messages et e-mail de confirmation dans cette langue -->
+    <input type="hidden" name="locale" value={locale} />
 
     <!-- Prénom / Nom -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -55,7 +63,7 @@ const success = result?.data?.success === true;
           autocomplete="given-name"
           class={`field-input ${inputErrors.firstname ? 'border-red-400' : ''}`}
         />
-        {inputErrors.firstname && <p class="field-error">{inputErrors.firstname}</p>}
+        {inputErrors.firstname && <p class="field-error">{err('firstname')}</p>}
       </div>
       <div>
         <label for="lastname" class="field-label">{t(locale, 'contact.lastname')} *</label>
@@ -67,7 +75,7 @@ const success = result?.data?.success === true;
           autocomplete="family-name"
           class={`field-input ${inputErrors.lastname ? 'border-red-400' : ''}`}
         />
-        {inputErrors.lastname && <p class="field-error">{inputErrors.lastname}</p>}
+        {inputErrors.lastname && <p class="field-error">{err('lastname')}</p>}
       </div>
     </div>
 
@@ -83,7 +91,7 @@ const success = result?.data?.success === true;
           autocomplete="email"
           class={`field-input ${inputErrors.email ? 'border-red-400' : ''}`}
         />
-        {inputErrors.email && <p class="field-error">{inputErrors.email}</p>}
+        {inputErrors.email && <p class="field-error">{err('email')}</p>}
       </div>
       <div>
         <label for="phone" class="field-label">{t(locale, 'contact.phone')}</label>
@@ -108,7 +116,7 @@ const success = result?.data?.success === true;
         autocomplete="organization"
         class={`field-input ${inputErrors.company ? 'border-red-400' : ''}`}
       />
-      {inputErrors.company && <p class="field-error">{inputErrors.company}</p>}
+      {inputErrors.company && <p class="field-error">{err('company')}</p>}
     </div>
 
     {variante === 'projet' ? (
@@ -127,7 +135,7 @@ const success = result?.data?.success === true;
               <option value="">—</option>
               {besoins.map((b) => <option value={b}>{t(locale, `contact.besoin_options.${b}`)}</option>)}
             </select>
-            {inputErrors.besoin && <p class="field-error">{inputErrors.besoin}</p>}
+            {inputErrors.besoin && <p class="field-error">{err('besoin')}</p>}
           </div>
           <div>
             <label for="pays" class="field-label">{t(locale, 'contact.pays')}</label>
@@ -139,7 +147,7 @@ const success = result?.data?.success === true;
               placeholder={t(locale, 'contact.pays_placeholder')}
               class={`field-input ${inputErrors.pays ? 'border-red-400' : ''}`}
             />
-            {inputErrors.pays && <p class="field-error">{inputErrors.pays}</p>}
+            {inputErrors.pays && <p class="field-error">{err('pays')}</p>}
           </div>
         </div>
 
@@ -154,7 +162,7 @@ const success = result?.data?.success === true;
               </label>
             ))}
           </div>
-          {inputErrors.langues && <p class="field-error">{inputErrors.langues}</p>}
+          {inputErrors.langues && <p class="field-error">{err('langues')}</p>}
         </fieldset>
 
         <!-- Besoin / objectif -->
@@ -168,7 +176,7 @@ const success = result?.data?.success === true;
             placeholder={t(locale, 'contact.objectif_placeholder')}
             class={`field-input resize-none ${inputErrors.objectif ? 'border-red-400' : ''}`}
           ></textarea>
-          {inputErrors.objectif && <p class="field-error">{inputErrors.objectif}</p>}
+          {inputErrors.objectif && <p class="field-error">{err('objectif')}</p>}
         </div>
 
         <!-- Informations complémentaires, facultatif -->
@@ -196,12 +204,9 @@ const success = result?.data?.success === true;
             class={`field-input ${inputErrors.service ? 'border-red-400' : ''}`}
           >
             <option value="">—</option>
-            <option value="formation">{t(locale, 'contact.service_options.formation')}</option>
-            <option value="interpretation">{t(locale, 'contact.service_options.interpretation')}</option>
-            <option value="accompagnement">{t(locale, 'contact.service_options.accompagnement')}</option>
-            <option value="traduction">{t(locale, 'contact.service_options.traduction')}</option>
+            {services.map((sv) => <option value={sv}>{t(locale, `contact.service_options.${sv}`)}</option>)}
           </select>
-          {inputErrors.service && <p class="field-error">{inputErrors.service}</p>}
+          {inputErrors.service && <p class="field-error">{err('service')}</p>}
         </div>
         <div>
           <label for="langue" class="field-label">{t(locale, 'contact.langue')} *</label>
@@ -212,6 +217,7 @@ const success = result?.data?.success === true;
             class={`field-input ${inputErrors.langue ? 'border-red-400' : ''}`}
           >
             <option value="">—</option>
+            <option value="francais">{t(locale, 'contact.langue_options.francais')}</option>
             <option value="anglais">{t(locale, 'contact.langue_options.anglais')}</option>
             <option value="polonais">{t(locale, 'contact.langue_options.polonais')}</option>
             <option value="fle">{t(locale, 'contact.langue_options.fle')}</option>
@@ -219,7 +225,7 @@ const success = result?.data?.success === true;
             <option value="espagnol">{t(locale, 'contact.langue_options.espagnol')}</option>
             <option value="italien">{t(locale, 'contact.langue_options.italien')}</option>
           </select>
-          {inputErrors.langue && <p class="field-error">{inputErrors.langue}</p>}
+          {inputErrors.langue && <p class="field-error">{err('langue')}</p>}
         </div>
       </div>
   
@@ -233,7 +239,7 @@ const success = result?.data?.success === true;
           required
           class={`field-input resize-none ${inputErrors.message ? 'border-red-400' : ''}`}
         ></textarea>
-        {inputErrors.message && <p class="field-error">{inputErrors.message}</p>}
+        {inputErrors.message && <p class="field-error">{err('message')}</p>}
       </div>
   
       </>
@@ -255,7 +261,7 @@ const success = result?.data?.success === true;
         </a>
       </label>
     </div>
-    {inputErrors.rgpd && <p class="field-error">{inputErrors.rgpd}</p>}
+    {inputErrors.rgpd && <p class="field-error">{err('rgpd')}</p>}
 
     {result?.error && !isInputError(result.error) && (
       <p class="text-red-400 text-sm">{t(locale, 'contact.error')}</p>
