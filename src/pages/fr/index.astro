@@ -1,19 +1,19 @@
 ---
+// Homepage FR : explique le modèle JANUS (un projet, plusieurs besoins, un seul interlocuteur qui garde le contexte).
+// /fr/pologne montre ce modèle en situations concrètes ; ici, lecture en 5–10 s par mots-clés, sans paragraphes.
+// Contenu : /src/content/fr/accueil.json.
 import Layout from '../../layouts/Layout.astro';
 import HeroVideo from '../../components/ui/HeroVideo.astro';
+import Tracking from '../../components/ui/Tracking.astro';
 import content from '../../content/fr/accueil.json';
-import communLangues from '../../content/fr/langues/_commun.json';
 
 const locale = 'fr';
 const currentPath = '/';
 
-// Typographie française : espace insécable avant « ? ; : ! » et « → », « France–Pologne » insécable.
-const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1').replace(/France–Pologne/g, 'France\u2060–\u2060Pologne').replace(/ →/g, '\u00A0→');
+// Typographie française : espace insécable avant « ? ; : ! » et « → », « France–Pologne » / « Allemagne–Pologne » insécables.
+const fr = (s: string) => s.replace(/ ([?;:!])/g, ' $1').replace(/(France|Allemagne)–Pologne/g, '$1⁠–⁠Pologne').replace(/ →/g, ' →');
 
-const { hero, quand, approche, expertises, difference, pologne, exemples, pourQui, equipe, ctaFinal } = content;
-
-// Pages langues (/fr/langues/{slug}) : maillage conservé depuis la carte « Langues de travail ».
-const langues = communLangues.langues.map((l) => ({ nom: l.nom, href: `/fr/langues/${l.slug}` }));
+const { hero, modele, message, langues, pologne, preuves, pourQui, ctaFinal } = content;
 
 // Données structurées : uniquement des informations publiées sur le site (homepage, mentions légales, contact).
 const organisation = {
@@ -64,267 +64,182 @@ const heroVideo = {
   <style is:global>
     .hp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
     .hp-sans  { font-family: 'DM Sans', system-ui, sans-serif; }
-    .hp-card { transition: border-color .2s ease, box-shadow .2s ease; }
-    .hp-card:hover { border-color: rgba(181,147,107,.6); box-shadow: 0 10px 28px rgba(0,0,0,.05); }
-    .hp-card:hover .hp-arrow { color: #b5936b; }
     .hp-link { transition: opacity .2s ease; }
     .hp-link:hover { opacity: .7; }
-    a { text-decoration: none !important; }
-    #expertises { scroll-margin-top: 4rem; }
+    .hp-balance { text-wrap: balance; }
+    .hp a { text-decoration: none; }
+    .hp details > summary { list-style: none; cursor: pointer; }
+    .hp details > summary::-webkit-details-marker { display: none; }
+    .hp details[open] .hp-plus { transform: rotate(45deg); }
+    .hp-plus { transition: transform .2s ease; }
+    /* Hero : vidéo réduite à un bandeau de 150 px sous 768 px, pour que le CTA soit visible au premier écran. */
+    @media (max-width: 767px) {
+      .hp-hero .hero-video__frame { aspect-ratio: auto; height: 150px; }
+    }
+    /* Modèle JANUS : chaîne de besoins. Mobile : axe vertical doré ; desktop (≥ 1024 px) : frise horizontale en 6 colonnes. */
+    .hp-chaine { list-style: none; margin: 0; padding: 0 0 0 26px; position: relative; }
+    .hp-chaine::before { content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 1px; background: #c9a84c; }
+    .hp-besoin { position: relative; display: grid; grid-template-columns: 9.5rem minmax(0,1fr); gap: .75rem; align-items: baseline; padding: .6rem 0; }
+    .hp-besoin::before { content: ""; position: absolute; left: -26px; top: calc(.6rem + 3px); width: 11px; height: 11px; border-radius: 50%; background: #f7f5f2; border: 2px solid #c9a84c; }
+    .hp-mot { font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #8a6d4b; margin: 0; }
+    .hp-fleche { display: none; }
+    .hp-rep { font-size: .9rem; line-height: 1.4; color: #1a1a1a; margin: 0; }
+    @media (min-width: 1024px) {
+      .hp-chaine { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 1.5rem; padding: 0; }
+      .hp-chaine::before { left: 0; right: 0; top: 2.35rem; bottom: auto; width: auto; height: 1px; }
+      .hp-besoin { display: block; padding: 0; }
+      .hp-besoin::before { left: 0; top: 2.35rem; margin-top: -5px; }
+      .hp-mot { font-size: 13px; height: 1.6rem; display: flex; align-items: center; gap: .6rem; }
+      .hp-fleche { display: inline; color: #b5936b; letter-spacing: 0; }
+      .hp-besoin:last-child .hp-fleche { display: none; }
+      .hp-rep { margin-top: 2.1rem; font-size: .95rem; }
+    }
   </style>
 
-  <!-- ① HERO VIDÉO -->
-  <HeroVideo
-    desktop={heroVideo.desktop}
-    mobile={heroVideo.mobile}
-    poster={heroVideo.poster}
-    pauseLabel="Mettre la vidéo en pause"
-    playLabel="Lire la vidéo"
-  >
-    <div class="max-w-6xl mx-auto px-6 pt-8 pb-12 md:py-14">
-      <div class="md:max-w-[46vw] xl:max-w-[640px]">
-      <p class="hp-sans text-[11px] md:text-xs uppercase tracking-[0.3em] mb-5 md:mb-6 flex items-center gap-4" style="color:#c9a84c">
-        <span class="hidden sm:inline-block w-10 h-px flex-shrink-0" style="background:#c9a84c" aria-hidden="true"></span>
-        <span>{hero.surtitre}</span>
-      </p>
-      <h1 class="hp-serif font-light leading-[1.08] mb-5 md:mb-6" style="font-size:clamp(2.1rem,3.6vw,3.1rem);color:#f7f5f2">
-        {hero.h1}
-      </h1>
-      <p class="hp-sans text-base md:text-lg leading-[1.6] mb-3" style="color:#f7f5f2">
-        {fr(hero.question)}
-      </p>
-      <p class="hp-sans text-sm md:text-base max-w-xl leading-[1.7] mb-4" style="color:rgba(247,245,242,0.8)">
-        {fr(hero.intro)}
-      </p>
-      <p class="hp-serif italic text-lg md:text-xl leading-snug mb-7 md:mb-8" style="color:#c9a84c">
-        {hero.accroche}
-      </p>
-      <div class="flex flex-col sm:flex-row sm:items-center md:flex-col md:items-start xl:flex-row xl:items-center gap-5 sm:gap-8 md:gap-5 xl:gap-10">
-        <a href={hero.ctaPrincipal.href} class="hp-sans inline-block text-center px-8 sm:px-12 md:px-7 xl:px-12 py-5 whitespace-nowrap text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">
-          {hero.ctaPrincipal.label}
-        </a>
-        <a href={hero.ctaSecondaire.href} class="hp-sans hp-link self-start sm:self-auto text-[11px] uppercase tracking-[0.25em] border-b pb-1 whitespace-nowrap" style="border-color:rgba(247,245,242,0.35);color:rgba(247,245,242,0.75)">
-          {hero.ctaSecondaire.label}
-        </a>
-      </div>
-      </div>
-    </div>
-  </HeroVideo>
-
-  <!-- ② QUAND FAIRE APPEL À JANUS ? -->
-  <section class="bg-white py-16 md:py-24 px-6">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 lg:gap-16">
-      <div>
-        <h2 class="hp-serif font-light leading-tight mb-6" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">
-          {fr(quand.h2)}
-        </h2>
-        {quand.intro.map((p) => (
-          <p class="hp-sans text-base leading-[1.8] mb-4" style="color:rgba(26,26,26,0.65)">{p}</p>
-        ))}
-      </div>
-      <div>
-        <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-5" style="color:#b5936b">{fr(quand.listeTitre)}</p>
-        <ul class="border-t" style="border-color:rgba(26,26,26,0.1)">
-          {quand.situations.map((s) => (
-            <li class="hp-sans text-sm md:text-base leading-[1.7] py-4 border-b flex gap-4" style="border-color:rgba(26,26,26,0.1);color:#1a1a1a">
-              <span class="w-4 h-px mt-3 flex-shrink-0" style="background:#b5936b" aria-hidden="true"></span>
-              <span>{fr(s)}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ③ NOTRE APPROCHE -->
-  <section style="background:#1a1a1a" class="py-16 md:py-24 px-6">
-    <div class="max-w-6xl mx-auto">
-      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#c9a84c">{approche.surtitre}</p>
-      <h2 class="hp-serif font-light leading-tight mb-10 md:mb-14" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#f7f5f2">
-        {approche.h2}
-      </h2>
-      <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px" style="background:rgba(247,245,242,0.08)">
-        {approche.etapes.map((e, i) => (
-          <li class="p-6 md:p-7" style="background:#1a1a1a">
-            <p class="hp-serif font-light leading-none mb-4" style="font-size:2rem;color:#b5936b">0{i + 1}</p>
-            <h3 class="hp-sans text-sm font-medium uppercase tracking-[0.15em] mb-3" style="color:#f7f5f2">{e.titre}</h3>
-            <p class="hp-sans text-sm leading-[1.7]" style="color:rgba(247,245,242,0.65)">{e.texte}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <!-- ④ EXPERTISES : trois domaines cœur, puis services complémentaires -->
-  <section id="expertises" style="background:#f7f5f2" class="py-16 md:py-24 px-6">
-    <div class="max-w-6xl mx-auto">
-      <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-3" style="color:#b5936b">{expertises.surtitre}</p>
-      <h2 class="hp-serif font-light leading-tight mb-5" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">
-        {expertises.h2}
-      </h2>
-      <p class="hp-sans text-base leading-[1.8] max-w-2xl mb-10 md:mb-12" style="color:rgba(26,26,26,0.65)">{expertises.intro}</p>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {expertises.principales.map((x, i) => (
-          <a href={x.href} class={`hp-card flex flex-col border p-8 md:p-10 ${i === 0 ? 'bg-[#1a1a1a] border-[#b5936b]' : 'bg-white border-[#1a1a1a]/10'}`}>
-            <p class="hp-serif font-light leading-none mb-6" style={`font-size:2.5rem;color:${i === 0 ? '#c9a84c' : '#b5936b'}`}>0{i + 1}</p>
-            <h3 class="hp-serif font-light leading-tight mb-5" style={`font-size:clamp(1.5rem,2.2vw,1.9rem);color:${i === 0 ? '#f7f5f2' : '#1a1a1a'}`}>{x.titre}</h3>
-            <p class="hp-sans text-sm md:text-base leading-[1.75] mb-8" style={`color:${i === 0 ? 'rgba(247,245,242,0.75)' : 'rgba(26,26,26,0.65)'}`}>{fr(x.texte)}</p>
-            <span class="hp-arrow hp-sans text-xs uppercase tracking-widest mt-auto transition-colors" style={`color:${i === 0 ? '#c9a84c' : '#b5936b'}`}>{fr(`${x.cta} →`)}</span>
+  <div class="hp">
+    <!-- ① HERO VIDÉO -->
+    <HeroVideo
+      class="hp-hero"
+      desktop={heroVideo.desktop}
+      mobile={heroVideo.mobile}
+      poster={heroVideo.poster}
+      pauseLabel="Mettre la vidéo en pause"
+      playLabel="Lire la vidéo"
+    >
+      <div class="max-w-6xl mx-auto px-6 pt-6 pb-10 md:py-14">
+        <div class="md:max-w-[46vw] xl:max-w-[620px]">
+          <p class="hp-sans text-[11px] md:text-xs uppercase tracking-[0.3em] mb-4 md:mb-6 flex items-center gap-4" style="color:#c9a84c">
+            <span class="hidden sm:inline-block w-10 h-px flex-shrink-0" style="background:#c9a84c" aria-hidden="true"></span>
+            <span>{hero.surtitre}</span>
+          </p>
+          <h1 class="hp-serif hp-balance font-light leading-[1.05] mb-5 md:mb-6" style="font-size:clamp(2.3rem,4.4vw,3.75rem);color:#f7f5f2">
+            {hero.h1}
+          </h1>
+          <p class="hp-sans text-[15px] md:text-lg leading-[1.6] mb-7 md:mb-9" style="color:rgba(247,245,242,0.82)">
+            {fr(hero.sousTexte)}
+          </p>
+          <a href={hero.cta.href} data-track="cta_principal" data-track-position="hero" class="hp-sans block sm:inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">
+            {fr(hero.cta.label)}
           </a>
-        ))}
-      </div>
-
-      <div class="mt-14 md:mt-16 pt-10 border-t" style="border-color:rgba(26,26,26,0.12)">
-        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-8">
-          <h3 class="hp-sans text-xs uppercase tracking-[0.3em]" style="color:#1a1a1a">{expertises.complementaires.titre}</h3>
-          <p class="hp-sans text-sm" style="color:rgba(26,26,26,0.55)">{expertises.complementaires.intro}</p>
         </div>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
-          {expertises.complementaires.items.map((c) => (
-            <li class="flex flex-col">
-              <p class="hp-sans text-sm font-medium mb-2" style="color:#1a1a1a">{c.titre}</p>
-              <p class="hp-sans text-sm leading-[1.7] mb-3" style="color:rgba(26,26,26,0.6)">{c.texte}</p>
-              {c.href && (
-                <a href={c.href} class="hp-sans hp-link text-xs uppercase tracking-widest mt-auto self-start" style="color:#b5936b">{fr(`${c.cta} →`)}</a>
-              )}
+      </div>
+    </HeroVideo>
+
+    <!-- ② MODÈLE JANUS : un projet, plusieurs besoins, un contexte constant -->
+    <section style="background:#f7f5f2" class="px-6 py-14 md:py-20">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="hp-serif hp-balance font-light leading-[1.1] mb-8 md:mb-14" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{modele.h2}</h2>
+        <ol class="hp-chaine">
+          {modele.besoins.map((b) => (
+            <li class="hp-besoin">
+              <p class="hp-mot hp-sans">{b.mot}<span class="hp-fleche" aria-hidden="true">→</span></p>
+              <p class="hp-rep hp-sans">{b.reponse}</p>
             </li>
           ))}
-        </ul>
-        <p class="hp-sans text-sm mt-10 flex flex-wrap items-baseline gap-x-5 gap-y-2" style="color:rgba(26,26,26,0.6)">
-          <span class="text-xs uppercase tracking-[0.3em]" style="color:#b5936b">{expertises.langues.titre}</span>
-          {langues.map((l) => (
-            <a href={l.href} class="hp-link border-b" style="border-color:rgba(181,147,107,0.5);color:#1a1a1a">{l.nom}</a>
-          ))}
-          <a href={expertises.langues.lien.href} class="hp-link text-xs uppercase tracking-widest" style="color:#b5936b">{fr(`${expertises.langues.lien.label} →`)}</a>
+        </ol>
+        <p class="hp-serif italic font-light leading-[1.2] mt-10 md:mt-16 md:text-center" style="font-size:clamp(1.6rem,3.2vw,2.5rem);color:#1a1a1a">
+          <span class="block">{modele.conclusion[0]}</span>
+          <span class="block" style="color:#8a6d4b">{modele.conclusion[1]}</span>
         </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ⑤ DIFFÉRENCIATION -->
-  <section class="bg-white py-16 md:py-24 px-6">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-8 lg:gap-16">
-      <h2 class="hp-serif font-light leading-tight" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">
-        {difference.h2}
-      </h2>
-      <div class="border-l-2 pl-6 md:pl-8" style="border-left-color:#b5936b">
-        {difference.paragraphes.map((p, i) => (
-          <p class={`hp-sans leading-[1.8] ${i === 0 ? 'text-lg md:text-xl mb-5' : 'text-base mb-4'}`} style={`color:${i === 0 ? '#1a1a1a' : 'rgba(26,26,26,0.65)'}`}>{p}</p>
-        ))}
-      </div>
-    </div>
-  </section>
+    <!-- ③ MESSAGE CENTRAL + périmètre + accordéon Expertises -->
+    <section style="background:#0d0d0d" class="px-6 py-16 md:py-24 lg:min-h-[80vh] flex items-center">
+      <div class="max-w-4xl mx-auto w-full text-center">
+        <h2 class="hp-serif hp-balance font-light leading-[1.1] mb-7" style="font-size:clamp(2.5rem,6vw,4.75rem);color:#f7f5f2">
+          <span class="block">{message.lignes[0]}</span>
+          <span class="block" style="color:#c9a84c">{message.lignes[1]}</span>
+        </h2>
+        <p class="hp-sans text-base md:text-lg leading-[1.7] max-w-2xl mx-auto mb-4" style="color:rgba(247,245,242,0.8)">{message.texte}</p>
+        <p class="hp-sans text-[13px] md:text-sm leading-[1.6] max-w-xl mx-auto mb-10 md:mb-12" style="color:rgba(247,245,242,0.55)">{message.perimetre}</p>
 
-  <!-- ⑥ FRANCE–POLOGNE -->
-  <section class="bg-white pb-16 md:pb-24 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="bg-[#f7f5f2] border-l-2 p-8 md:p-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14" style="border-left-color:#b5936b">
-        <div>
-          <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-4" style="color:#b5936b">{pologne.surtitre}</p>
-          <h2 class="hp-serif font-light leading-tight mb-6" style="font-size:clamp(1.8rem,3.2vw,2.5rem);color:#1a1a1a">
-            {fr(pologne.h2)}
-          </h2>
-          {pologne.paragraphes.map((p) => (
-            <p class="hp-sans text-sm md:text-base leading-[1.8] mb-4" style="color:rgba(26,26,26,0.65)">{p}</p>
-          ))}
-        </div>
-        <div>
-          <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-4" style="color:#b5936b">{fr(pologne.listeTitre)}</p>
-          <ul class="flex flex-wrap gap-2 mb-8">
-            {pologne.interventions.map((x) => (
-              <li class="hp-sans text-sm px-4 py-2 border bg-white" style="border-color:rgba(26,26,26,0.1);color:#1a1a1a">{fr(x)}</li>
-            ))}
-          </ul>
-          <a href={pologne.cta.href} class="hp-sans inline-block text-center px-8 py-4 text-xs uppercase tracking-widest border hover:bg-[#b5936b] transition-colors" style="border-color:#b5936b;color:#1a1a1a">
-            {fr(pologne.cta.label)}
-          </a>
-          <a href={pologne.lienSecondaire.href} class="hp-sans hp-link block mt-5 text-xs uppercase tracking-widest" style="color:rgba(26,26,26,0.6)">
-            {fr(pologne.lienSecondaire.label)}
-          </a>
-        </div>
-      </div>
-      <!-- Exemples d'interventions : missions réelles confirmées uniquement -->
-      <div class="mt-10 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
-        <p class="hp-sans text-xs uppercase tracking-[0.3em] flex-shrink-0" style="color:#b5936b">{exemples.surtitre}</p>
-        <ul class="flex flex-col sm:flex-row gap-4 flex-1">
-          {exemples.items.map((c) => (
-            <li class="flex-1 border-t-2 pt-4" style="border-top-color:#b5936b">
-              <p class="hp-sans text-[11px] uppercase tracking-[0.2em] mb-2" style="color:rgba(26,26,26,0.55)">{c.secteur}</p>
-              <p class="hp-serif text-xl md:text-2xl font-light leading-snug" style="color:#1a1a1a">{c.resume}</p>
-            </li>
-          ))}
-        </ul>
-        {/* Lien vers les cas clients masqué tant que leur contenu n'est pas validé */}
-        {exemples.lien && (
-          <a href={exemples.lien.href} class="hp-sans hp-link self-start lg:self-center text-xs uppercase tracking-widest border-b py-2 flex-shrink-0" style="border-color:#b5936b;color:#1a1a1a">
-            {exemples.lien.label}
-          </a>
-        )}
-      </div>
-    </div>
-  </section>
-
-  <!-- ⑦ POUR QUI ? -->
-  <section style="background:#1a1a1a" class="py-16 md:py-24 px-6">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="hp-serif font-light leading-tight mb-10 md:mb-12 max-w-3xl" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#f7f5f2">
-        {pourQui.h2}
-      </h2>
-      <div class="grid grid-cols-1 lg:grid-cols-[7fr_5fr] gap-10 lg:gap-16">
-        <div>
-          <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-5" style="color:#c9a84c">{pourQui.publicTitre}</p>
-          <ul class="flex flex-wrap gap-2">
-            {pourQui.public.map((x) => (
-              <li class="hp-sans text-sm px-4 py-2 border" style="border-color:rgba(247,245,242,0.18);color:rgba(247,245,242,0.85)">{x}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p class="hp-sans text-xs uppercase tracking-[0.3em] mb-5" style="color:#c9a84c">{pourQui.zonesTitre}</p>
-          <ul>
-            {pourQui.zones.map((z) => (
-              <li class="hp-sans text-sm md:text-base py-3 border-b flex gap-4" style="border-color:rgba(247,245,242,0.1);color:rgba(247,245,242,0.85)">
-                <span class="w-4 h-px mt-3 flex-shrink-0" style="background:#b5936b" aria-hidden="true"></span>
-                <span>{z}</span>
+        <details class="max-w-2xl mx-auto text-left border-y" style="border-color:rgba(247,245,242,0.18)">
+          <summary class="py-5">
+            <span class="flex items-center justify-between gap-6">
+              <span class="hp-sans text-xs md:text-sm font-medium uppercase tracking-[0.22em]" style="color:#f7f5f2">{message.expertises.label}</span>
+              <span class="hp-plus hp-sans text-2xl leading-none" style="color:#c9a84c" aria-hidden="true">+</span>
+            </span>
+          </summary>
+          <ul class="hp-sans grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-sm md:text-base pb-6">
+            {message.expertises.items.map((x) => (
+              <li>
+                {x.href
+                  ? <a href={x.href} class="hp-link border-b pb-0.5" style="color:rgba(247,245,242,0.88);border-color:rgba(201,168,76,0.5)">{x.label}</a>
+                  : <span style="color:rgba(247,245,242,0.88)">{x.label}</span>}
               </li>
             ))}
           </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+        </details>
 
-  <!-- ⑧ PREUVE HUMAINE -->
-  <section class="bg-white py-16 md:py-24 px-6">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-8 lg:gap-16 lg:items-start">
-      <h2 class="hp-serif font-light leading-tight" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">
-        {equipe.h2}
-      </h2>
-      <div class="border-l-2 pl-6 md:pl-8" style="border-left-color:#b5936b">
-        {equipe.paragraphes.map((p, i) => (
-          <p class={`hp-sans leading-[1.8] ${i === 0 ? 'text-base md:text-lg mb-4' : 'text-sm mb-8'}`} style={`color:${i === 0 ? '#1a1a1a' : 'rgba(26,26,26,0.55)'}`}>{p}</p>
-        ))}
-        <a href={equipe.cta.href} class="hp-sans hp-link inline-block text-xs uppercase tracking-widest border-b py-2" style="border-color:#b5936b;color:#1a1a1a">
-          {fr(equipe.cta.label)}
+        <a href={message.cta.href} data-track="cta_principal" data-track-position="message" class="hp-sans block sm:inline-block text-center mt-10 md:mt-12 px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">
+          {fr(message.cta.label)}
         </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ⑨ CTA FINAL -->
-  <section style="background:#f7f5f2" class="py-24 md:py-32 px-6 text-center">
-    <div class="max-w-2xl mx-auto">
-      <h2 class="hp-serif text-3xl md:text-5xl font-light mb-8 leading-tight" style="color:#1a1a1a">
-        {fr(ctaFinal.h2)}
-      </h2>
-      {ctaFinal.paragraphes.map((p) => (
-        <p class="hp-sans text-base mb-3 max-w-lg mx-auto leading-[1.8]" style="color:rgba(26,26,26,0.65)">{p}</p>
-      ))}
-      <a href={ctaFinal.cta.href} class="hp-sans inline-block mt-9 px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#1a1a1a">
-        {ctaFinal.cta.label}
-      </a>
-    </div>
-  </section>
+    <!-- ④ LANGUES DE TRAVAIL + EXPERTISE FRANCE–POLOGNE -->
+    <section class="bg-white px-6 py-14 md:py-20">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        <div>
+          <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-5" style="color:#8a6d4b">{langues.h2}</h2>
+          <p class="hp-serif font-light leading-[1.5] mb-5" style="font-size:clamp(1.4rem,2.4vw,1.75rem);color:#1a1a1a">
+            {langues.items.map((l, i) => (
+              <>{i > 0 && <span aria-hidden="true" style="color:#b5936b">{' · '}</span>}{l.href
+                ? <a href={l.href} class="hp-link whitespace-nowrap border-b" style="border-color:rgba(181,147,107,0.5);color:#1a1a1a">{l.nom}</a>
+                : <span class="whitespace-nowrap">{l.nom}</span>}</>
+            ))}
+          </p>
+          <a href={langues.lien.href} class="hp-sans hp-link text-xs uppercase tracking-widest" style="color:#8a6d4b">{fr(langues.lien.label)}</a>
+        </div>
+        <div class="border-t pt-10 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-16" style="border-color:rgba(181,147,107,0.4)">
+          <h2 class="hp-serif hp-balance font-light leading-tight mb-4" style="font-size:clamp(1.6rem,2.8vw,2.1rem);color:#1a1a1a">{fr(pologne.h2)}</h2>
+          <p class="hp-sans text-sm md:text-base leading-[1.7] mb-5" style="color:rgba(26,26,26,0.7)">{pologne.texte}</p>
+          <a href={pologne.lien.href} class="hp-sans hp-link text-sm font-medium border-b pb-1" style="border-color:#b5936b;color:#1a1a1a">{fr(pologne.lien.label)}</a>
+        </div>
+      </div>
+    </section>
 
+    <!-- ⑤ PREUVES : lecture par chiffres (missions réelles confirmées uniquement) -->
+    <section class="bg-white px-6 pb-14 md:pb-24">
+      <div class="max-w-6xl mx-auto border-t pt-12 md:pt-16" style="border-color:rgba(26,26,26,0.1)">
+        <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-8 md:mb-12" style="color:#8a6d4b">{preuves.h2}</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-0">
+          <div class="lg:pr-14">
+            <p class="hp-serif font-light uppercase leading-none mb-4" style="font-size:clamp(4.5rem,10vw,8rem);color:#b5936b">{preuves.principale.chiffre}</p>
+            <p class="hp-serif text-xl md:text-2xl leading-snug max-w-lg" style="color:#1a1a1a">{fr(preuves.principale.texte)}</p>
+          </div>
+          <div class="border-t pt-8 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-14 lg:flex lg:flex-col lg:justify-end" style="border-color:#c9a84c">
+            <p class="hp-serif font-light uppercase leading-[1.05] mb-4" style="font-size:clamp(2.1rem,3.8vw,3.1rem);color:#8a6d4b">{preuves.secondaire.chiffre.split(' · ').map((c, i) => (<>{i > 0 && ' · '}<span class="whitespace-nowrap">{c}</span></>))}</p>
+            <p class="hp-serif text-lg md:text-xl leading-snug" style="color:#1a1a1a">{fr(preuves.secondaire.texte)}</p>
+          </div>
+        </div>
+        <p class="hp-sans text-sm md:text-base leading-[1.75] max-w-2xl mt-12 md:mt-14 mb-3" style="color:rgba(26,26,26,0.7)">{preuves.parcours}</p>
+        <a href={preuves.lien.href} class="hp-sans hp-link text-xs uppercase tracking-widest border-b py-1" style="border-color:#b5936b;color:#1a1a1a">{fr(preuves.lien.label)}</a>
+      </div>
+    </section>
+
+    <!-- ⑥ POUR QUI : une ligne -->
+    <section style="background:#f7f5f2" class="px-6 py-8 md:py-10">
+      <div class="max-w-6xl mx-auto hp-sans text-sm leading-[1.7] flex flex-col lg:flex-row lg:items-baseline gap-1 lg:gap-6" style="color:rgba(26,26,26,0.72)">
+        <p class="text-[11px] uppercase tracking-[0.24em] font-medium lg:flex-shrink-0" style="color:#8a6d4b">{pourQui.titre}</p>
+        <p><span style="color:#1a1a1a">{pourQui.public}</span> — {pourQui.directions}</p>
+        <p class="lg:ml-auto">{pourQui.zones}</p>
+      </div>
+    </section>
+
+    <!-- ⑦ CTA FINAL -->
+    <section style="background:#1a1a1a" class="px-6 py-16 md:py-28 text-center">
+      <div class="max-w-xl mx-auto">
+        <h2 class="hp-serif hp-balance text-4xl md:text-5xl font-light leading-tight mb-5" style="color:#f7f5f2">{fr(ctaFinal.h2)}</h2>
+        <p class="hp-sans text-base leading-[1.8] mb-10" style="color:rgba(247,245,242,0.75)">{ctaFinal.texte}</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8">
+          <a href={ctaFinal.cta.href} data-track="cta_principal" data-track-position="final" class="hp-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(ctaFinal.cta.label)}</a>
+          <a href={ctaFinal.telephone.href} data-track="clic_telephone" data-track-position="final" class="hp-sans hp-link text-sm tracking-wider border-b py-1" style="border-color:rgba(247,245,242,0.35);color:#f7f5f2">{ctaFinal.telephone.label}</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <Tracking />
 </Layout>
