@@ -14,9 +14,7 @@ const routes = new Set(
 );
 
 // Équivalences certaines entre langues lorsque l'URL diffère d'une langue à l'autre.
-const equivalents: Record<Locale, string>[] = [
-  { fr: '/cas-clients', en: '/case-studies', pl: '/realizacje' },
-];
+const equivalents: Record<Locale, string>[] = [];
 
 // Page de repli validée lorsqu'une page n'existe qu'en français :
 // le marché Pologne renvoie vers « Investir en Pologne », qui existe en EN et en PL.
