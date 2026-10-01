@@ -40,8 +40,9 @@
       },
       {
         "mot": "Équipes",
-        "situation": "Des collaborateurs français et polonais doivent travailler ensemble",
-        "reponse": "Préparation linguistique et interculturelle"
+        "situation": "Des collaborateurs français et polonais travaillent ensemble, ponctuellement ou dans la durée",
+        "complement": ["Projet commun", "prise de poste en Pologne ou en France", "collaboration régulière"],
+        "reponse": "Préparation et accompagnement linguistique et interculturel"
       },
       {
         "mot": "Prise de parole",
