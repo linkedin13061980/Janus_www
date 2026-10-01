@@ -39,6 +39,18 @@
     },
     "cta": { "label": "Échanger sur votre projet →", "href": "/fr/contact" }
   },
+  "methode": {
+    "h2": "Notre méthode",
+    "etapes": [
+      { "repere": "Avant", "numero": "01", "titre": "Préparer", "texte": "Comprendre le contexte, préparer les échanges et les personnes." },
+      { "repere": "Pendant", "numero": "02", "titre": "Accompagner", "texte": "Intervenir à distance ou sur le terrain, en France comme à l'étranger." },
+      { "repere": "Dans la durée", "numero": "03", "titre": "Assurer la continuité", "texte": "Un même interlocuteur coordonne les expertises nécessaires au fil du projet." }
+    ],
+    "mobilite": {
+      "titre": "Mobilité des équipes",
+      "texte": "Préparation linguistique et interculturelle au départ, et accompagnement de l'intégration des collaborateurs étrangers en France."
+    }
+  },
   "langues": {
     "h2": "Langues de travail",
     "items": [

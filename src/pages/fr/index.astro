@@ -13,7 +13,7 @@ const currentPath = '/';
 // Typographie française : espace insécable avant « ? ; : ! » et « → », « France–Pologne » / « Allemagne–Pologne » insécables.
 const fr = (s: string) => s.replace(/ ([?;:!])/g, ' $1').replace(/(France|Allemagne)–Pologne/g, '$1⁠–⁠Pologne').replace(/ →/g, ' →');
 
-const { hero, modele, message, langues, pologne, preuves, pourQui, ctaFinal } = content;
+const { hero, modele, message, methode, langues, pologne, preuves, pourQui, ctaFinal } = content;
 
 // Données structurées : uniquement des informations publiées sur le site (homepage, mentions légales, contact).
 const organisation = {
@@ -93,6 +93,32 @@ const heroVideo = {
       .hp-fleche { display: inline; color: #b5936b; letter-spacing: 0; }
       .hp-besoin:last-child .hp-fleche { display: none; }
       .hp-rep { margin-top: 2.1rem; font-size: .95rem; }
+    }
+    /* Notre méthode : 3 temps (avant, pendant, dans la durée). Mobile : filet vertical ; desktop (≥ 1024 px) : 3 colonnes reliées par un filet fléché. */
+    .hp-methode { list-style: none; margin: 0; padding: 0 0 0 20px; position: relative; }
+    .hp-methode::before { content: ""; position: absolute; left: 3px; top: 6px; bottom: 6px; width: 1px; background: #c9a84c; }
+    .hp-etape + .hp-etape { margin-top: 1.4rem; }
+    .hp-repere { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(26,26,26,.5); margin: 0 0 .2rem; }
+    .hp-etape-tete { display: flex; align-items: baseline; gap: .7rem; }
+    .hp-num { font-size: 1.75rem; line-height: 1; color: #b5936b; }
+    .hp-trait { display: none; }
+    .hp-etape-titre { font-size: 13px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: #1a1a1a; margin: 0; }
+    .hp-etape-txt { font-size: .95rem; line-height: 1.5; color: rgba(26,26,26,.7); margin: .3rem 0 0; }
+    .hp-mobilite { display: grid; grid-template-columns: 1fr; gap: .3rem; }
+    @media (min-width: 1024px) {
+      .hp-methode { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 2.5rem; padding: 0; }
+      .hp-methode::before { content: none; }
+      .hp-etape + .hp-etape { margin-top: 0; }
+      .hp-repere { margin-bottom: .5rem; }
+      .hp-etape-tete { flex-wrap: wrap; align-items: center; gap: .9rem; }
+      .hp-num { font-size: 2.75rem; }
+      .hp-trait { display: block; flex: 1; height: 1px; background: #c9a84c; position: relative; margin-right: -1.6rem; }
+      .hp-trait::after { content: ""; position: absolute; right: 0; top: -4px; border: 4.5px solid transparent; border-left: 7px solid #c9a84c; border-right: 0; }
+      .hp-etape:last-child .hp-trait { visibility: hidden; }
+      .hp-etape-titre { flex-basis: 100%; margin-top: .4rem; }
+      .hp-etape-txt { margin-top: .5rem; }
+      .hp-mobilite { grid-template-columns: repeat(3, minmax(0,1fr)); column-gap: 2.5rem; align-items: baseline; }
+      .hp-mobilite > :last-child { grid-column: span 2; }
     }
   </style>
 
@@ -175,6 +201,30 @@ const heroVideo = {
         <a href={message.cta.href} data-track="cta_principal" data-track-position="message" class="hp-sans block sm:inline-block text-center mt-10 md:mt-12 px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">
           {fr(message.cta.label)}
         </a>
+      </div>
+    </section>
+
+    <!-- ③ bis NOTRE MÉTHODE : comment JANUS travaille (sans liens ni CTA) -->
+    <section class="bg-white px-6 pt-12 md:pt-[72px]">
+      <div class="max-w-6xl mx-auto pb-12 md:pb-[72px] border-b" style="border-color:rgba(26,26,26,0.1)">
+        <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-6 md:mb-10" style="color:#8a6d4b">{methode.h2}</h2>
+        <ol class="hp-methode">
+          {methode.etapes.map((e) => (
+            <li class="hp-etape">
+              <p class="hp-repere hp-sans">{e.repere}</p>
+              <div class="hp-etape-tete">
+                <span class="hp-num hp-serif font-light" aria-hidden="true">{e.numero}</span>
+                <span class="hp-trait" aria-hidden="true"></span>
+                <h3 class="hp-etape-titre hp-sans">{e.titre}</h3>
+              </div>
+              <p class="hp-etape-txt hp-sans">{e.texte}</p>
+            </li>
+          ))}
+        </ol>
+        <div class="hp-mobilite hp-sans mt-8 md:mt-12 pt-6 md:pt-8 border-t" style="border-color:rgba(26,26,26,0.1)">
+          <p class="text-[11px] uppercase tracking-[0.22em]" style="color:rgba(26,26,26,0.55)">{methode.mobilite.titre}</p>
+          <p class="text-sm leading-[1.6]" style="color:rgba(26,26,26,0.62)">{methode.mobilite.texte}</p>
+        </div>
       </div>
     </section>
 
