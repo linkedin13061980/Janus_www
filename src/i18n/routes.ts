@@ -14,14 +14,16 @@ const routes = new Set(
 );
 
 // Équivalences certaines entre langues lorsque l'URL diffère d'une langue à l'autre.
-const equivalents: Record<Locale, string>[] = [];
+const equivalents: Record<Locale, string>[] = [
+  // Page pilier France–Pologne : URL traduite dans chaque langue.
+  { fr: '/pologne', en: '/poland', pl: '/francja-polska' },
+];
 
 // Page de repli validée lorsqu'une page n'existe qu'en français :
 // le marché Pologne renvoie vers « Investir en Pologne », qui existe en EN et en PL.
-// La page pilier France–Pologne suit la même règle, et une page langue renvoie vers la page « Langues ».
+// Une page langue renvoie vers la page « Langues ».
 const fallbacks: Record<string, string> = {
   '/marches/pologne': '/pologne-investir',
-  '/pologne': '/pologne-investir',
 };
 const prefixFallbacks: [string, string][] = [['/langues/', '/langues']];
 

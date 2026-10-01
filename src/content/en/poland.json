@@ -1,0 +1,207 @@
+{
+  "meta": {
+    "title": "French–Polish Business Support & Interpreting | JANUS",
+    "description": "Negotiations, French–Polish interpreting and translation, team preparation: JANUS supports companies working between France and Poland, in both directions."
+  },
+  "hero": {
+    "surtitre": "France ↔ Poland",
+    "h1": "Supporting businesses between France and Poland",
+    "motsCles": [
+      "Negotiation",
+      "On site",
+      "Meetings",
+      "Documents",
+      "Teams"
+    ],
+    "accroche": "One point of contact for the language and intercultural side of your France–Poland project.",
+    "cta": {
+      "label": "Discuss your France–Poland project →",
+      "href": "/en/contact"
+    }
+  },
+  "microBesoins": {
+    "h2": "One project. Countless small needs.",
+    "intro": "Throughout a France–Poland project, they arise one at a time.",
+    "situations": [
+      {
+        "mot": "Negotiation",
+        "situation": "The CEO meets their French or Polish counterpart",
+        "reponse": "Preparation + interpreting"
+      },
+      {
+        "mot": "On site",
+        "situation": "A business visit is organised",
+        "lieux": [
+          "supplier",
+          "partner",
+          "production site",
+          "trade fair",
+          "technical meeting",
+          "other business appointment"
+        ],
+        "reponse": "On-site support"
+      },
+      {
+        "mot": "Video call",
+        "situation": "A remote meeting becomes technical or sensitive",
+        "reponse": "Remote interpreting"
+      },
+      {
+        "mot": "Documents",
+        "situation": "Business documents circulate between teams",
+        "reponse": "Professional translation"
+      },
+      {
+        "mot": "Teams",
+        "situation": "French and Polish colleagues work together, on a one-off or long-term basis",
+        "complement": [
+          "Joint project",
+          "assignment or new role France ↔ Poland",
+          "ongoing collaboration"
+        ],
+        "reponse": "Language and intercultural preparation and support"
+      },
+      {
+        "mot": "Public speaking",
+        "situation": "The CEO needs to present, persuade or negotiate in English",
+        "reponse": "Public speaking coaching"
+      }
+    ],
+    "transversal": {
+      "surtitre": "In each of these situations",
+      "mot": "Understanding",
+      "situation": "The meeting seemed clear. Yet everyone left with a different understanding.",
+      "reponse": "Intercultural preparation for your exchanges"
+    }
+  },
+  "message": {
+    "lignes": [
+      "For you, several needs.",
+      "For JANUS, one project."
+    ],
+    "texte": "One context, one point of contact, fewer gaps between your meetings, your teams and your partners.",
+    "expertises": {
+      "label": "Expertise we can bring in",
+      "items": [
+        {
+          "label": "Interpreting",
+          "href": "/en/services#interpreting"
+        },
+        {
+          "label": "Translation",
+          "href": "/en/services#translation"
+        },
+        {
+          "label": "Meeting and negotiation preparation",
+          "href": null
+        },
+        {
+          "label": "Intercultural communication",
+          "href": null
+        },
+        {
+          "label": "Language training",
+          "href": "/en/services#training"
+        },
+        {
+          "label": "Team preparation",
+          "href": null
+        }
+      ],
+      "polonais": {
+        "label": "All our working languages →",
+        "href": "/en/langues"
+      }
+    },
+    "cta": {
+      "label": "Discuss your project →",
+      "href": "/en/contact"
+    }
+  },
+  "preuves": {
+    "h2": "Selected JANUS assignments",
+    "principale": {
+      "chiffre": "4 months",
+      "titre": "Language and intercultural support",
+      "texte": "as part of a France–Poland M&A transaction"
+    },
+    "secondaire": {
+      "chiffre": "5 days · 18 technicians",
+      "titre": "Germany–Poland industrial assignment",
+      "texte": "On-site support for the teams"
+    },
+    "parcours": "JANUS was founded in 2021 by Agata Mich. Agata Mich's career began in Paris in 2002 in finance, on mergers and acquisitions between French and Polish companies, before moving into the language sector in Lyon. Agata Mich works in French, Polish and English.",
+    "lien": {
+      "label": "About JANUS →",
+      "href": "/en/a-propos"
+    }
+  },
+  "acquisition": {
+    "h2": "Preparing an acquisition between France and Poland?",
+    "texte": "Meetings with the sellers, site visits, documents, team integration: JANUS supports the language and intercultural side, alongside your advisers.",
+    "lien": {
+      "label": "Discuss your acquisition project →",
+      "href": "/en/contact"
+    }
+  },
+  "faq": {
+    "h2": "Frequently asked questions about France–Poland support",
+    "items": [
+      {
+        "q": "Can JANUS provide a French–Polish interpreter for a meeting, a business visit or a video call?",
+        "r": "Yes. Assignments take place on site, in France or in Poland, or remotely. The interpreter is chosen for the context and briefed in advance on the vocabulary of the meeting or visit. Not every meeting needs an interpreter: the level of support depends on what is at stake."
+      },
+      {
+        "q": "Does JANUS translate business documents between French and Polish?",
+        "r": "Yes: presentations, meeting materials, internal communications and operational documents, French–Polish in both directions and, where the project requires it, English–Polish. JANUS also helps identify what actually needs translating."
+      },
+      {
+        "q": "Does JANUS only provide interpreting?",
+        "r": "No. Interpreting can be part of a wider assignment: preparing exchanges and negotiations, preparing senior executives, intercultural communication and coordinating the project's language needs."
+      },
+      {
+        "q": "Can JANUS prepare French and Polish teams to work together?",
+        "r": "Yes. JANUS prepares French employees working with a team in Poland, Polish employees working with a team in France, and colleagues starting an assignment or a new role in the other country: communication, job-specific vocabulary, intercultural preparation and real work situations."
+      },
+      {
+        "q": "Can JANUS prepare an executive to speak in a foreign language?",
+        "r": "Yes. JANUS can prepare an executive for a presentation, a negotiation or a speech in an international setting, particularly in English in the context of France–Poland exchanges."
+      },
+      {
+        "q": "Does JANUS support companies during an acquisition between France and Poland?",
+        "r": "Yes, but only on the language and intercultural side of the transaction, alongside the company's financial, legal and tax advisers: preparing meetings, interpreting, translation and preparing teams after the deal. JANUS does not provide M&A, legal or tax advice."
+      },
+      {
+        "q": "Are exchanges confidential?",
+        "r": "Yes. Confidentiality is part of every assignment, and a non-disclosure agreement can be put in place when the project requires it."
+      }
+    ]
+  },
+  "annexes": [
+    {
+      "label": "Investing and growing in Poland →",
+      "href": "/en/pologne-investir"
+    },
+    {
+      "label": "All our services →",
+      "href": "/en/services"
+    },
+    {
+      "label": "All our working languages →",
+      "href": "/en/langues"
+    }
+  ],
+  "ctaFinal": {
+    "h2": "A project between France and Poland?",
+    "texte": "Tell us about your situation, the people involved and your objective.",
+    "cta": {
+      "label": "Discuss your project →",
+      "href": "/en/contact"
+    },
+    "telephone": {
+      "label": "+33 9 67 05 68 31",
+      "href": "tel:+33967056831"
+    },
+    "note": null
+  }
+}

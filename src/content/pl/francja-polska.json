@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "title": "Polska–Francja: wsparcie językowe i międzykulturowe | JANUS",
+    "description": "Negocjacje, tłumaczenia ustne i pisemne polsko-francuskie, przygotowanie zespołów: JANUS wspiera polskie firmy i zespoły we współpracy z Francją – w obu kierunkach."
+  },
+  "hero": {
+    "surtitre": "Polska ↔ Francja",
+    "h1": "Wsparcie dla firm i zespołów współpracujących z Francją",
+    "motsCles": [
+      "Negocjacje",
+      "Wizyty",
+      "Spotkania",
+      "Dokumenty",
+      "Zespoły"
+    ],
+    "accroche": "Jeden partner do spraw językowych i międzykulturowych w Państwa współpracy z Francją.",
+    "cta": {
+      "label": "Porozmawiajmy o Państwa projekcie →",
+      "href": "/pl/contact"
+    }
+  },
+  "microBesoins": {
+    "h2": "Jeden projekt. Wiele drobnych potrzeb.",
+    "intro": "W trakcie współpracy z partnerami z Francji pojawiają się one jedna po drugiej.",
+    "situations": [
+      {
+        "mot": "Negocjacje",
+        "situation": "Przedstawiciele Państwa firmy spotykają się z francuskim partnerem",
+        "reponse": "Przygotowanie + tłumaczenie ustne"
+      },
+      {
+        "mot": "Wizyty",
+        "situation": "Organizowana jest wizyta – w Polsce lub we Francji",
+        "lieux": [
+          "klient",
+          "dostawca",
+          "partner",
+          "zakład produkcyjny",
+          "targi",
+          "spotkanie techniczne",
+          "inne spotkanie biznesowe"
+        ],
+        "reponse": "Wsparcie na miejscu"
+      },
+      {
+        "mot": "Wideokonferencja",
+        "situation": "Spotkanie online z francuską stroną staje się techniczne lub delikatne",
+        "reponse": "Tłumaczenie ustne online"
+      },
+      {
+        "mot": "Dokumenty",
+        "situation": "Dokumenty firmowe krążą między zespołami w Polsce i we Francji",
+        "reponse": "Profesjonalne tłumaczenie pisemne"
+      },
+      {
+        "mot": "Zespoły",
+        "situation": "Polscy i francuscy pracownicy współpracują – doraźnie lub długofalowo",
+        "complement": [
+          "Wspólny projekt",
+          "delegacja lub objęcie stanowiska Polska ↔ Francja",
+          "stała współpraca"
+        ],
+        "reponse": "Przygotowanie i wsparcie językowe oraz międzykulturowe"
+      },
+      {
+        "mot": "Wystąpienia",
+        "situation": "Menedżer lub członek zarządu musi zaprezentować, przekonać lub negocjować po angielsku",
+        "reponse": "Coaching wystąpień"
+      }
+    ],
+    "transversal": {
+      "surtitre": "W każdej z tych sytuacji",
+      "mot": "Zrozumienie",
+      "situation": "Spotkanie wydawało się jasne. A jednak każdy wyszedł z niego z innym rozumieniem.",
+      "reponse": "Przygotowanie międzykulturowe do rozmów"
+    }
+  },
+  "message": {
+    "lignes": [
+      "Dla Państwa – wiele potrzeb.",
+      "Dla JANUS – jeden projekt."
+    ],
+    "texte": "Ten sam kontekst, ten sam partner, mniej przerw w komunikacji między Państwa spotkaniami, zespołami i partnerami we Francji.",
+    "expertises": {
+      "label": "Dostępne kompetencje",
+      "items": [
+        {
+          "label": "Tłumaczenia ustne",
+          "href": "/pl/services#tlumaczenia-ustne"
+        },
+        {
+          "label": "Tłumaczenia pisemne",
+          "href": "/pl/services#tlumaczenia-pisemne"
+        },
+        {
+          "label": "Przygotowanie spotkań i negocjacji",
+          "href": null
+        },
+        {
+          "label": "Komunikacja międzykulturowa",
+          "href": null
+        },
+        {
+          "label": "Szkolenia językowe",
+          "href": "/pl/services#szkolenia"
+        },
+        {
+          "label": "Przygotowanie zespołów",
+          "href": null
+        }
+      ],
+      "polonais": {
+        "label": "Wszystkie nasze języki robocze →",
+        "href": "/pl/langues"
+      }
+    },
+    "cta": {
+      "label": "Porozmawiajmy o projekcie →",
+      "href": "/pl/contact"
+    }
+  },
+  "preuves": {
+    "h2": "Zrealizowane projekty JANUS",
+    "principale": {
+      "chiffre": "4 miesiące",
+      "titre": "Wsparcie językowe i międzykulturowe",
+      "texte": "w ramach francusko-polskiej transakcji fuzji i przejęć (M&A)"
+    },
+    "secondaire": {
+      "chiffre": "5 dni · 18 techników",
+      "titre": "Misja przemysłowa Niemcy–Polska",
+      "texte": "Wsparcie zespołów na miejscu"
+    },
+    "parcours": "JANUS powstała w 2021 roku z inicjatywy Agaty Mich. Jej doświadczenie obejmuje pracę w finansach w Paryżu od 2002 roku, przy transakcjach fuzji i przejęć między firmami francuskimi i polskimi, a następnie działalność w branży językowej w Lyonie. Agata Mich pracuje po polsku, francusku i angielsku.",
+    "lien": {
+      "label": "O JANUS →",
+      "href": "/pl/a-propos"
+    }
+  },
+  "acquisition": {
+    "h2": "Transakcja z udziałem firmy polskiej i francuskiej?",
+    "texte": "Spotkania ze sprzedającymi lub nowym właścicielem, wizyty, dokumenty, integracja zespołów: JANUS wspiera językowe i międzykulturowe aspekty transakcji, obok Państwa doradców.",
+    "lien": {
+      "label": "Porozmawiajmy o Państwa transakcji →",
+      "href": "/pl/contact"
+    }
+  },
+  "faq": {
+    "h2": "Najczęściej zadawane pytania o współpracę polsko-francuską",
+    "items": [
+      {
+        "q": "Czy JANUS może zapewnić tłumacza polsko-francuskiego na spotkanie, wizytę lub wideokonferencję z francuskim partnerem?",
+        "r": "Tak. Tłumaczenia odbywają się na miejscu – w Polsce lub we Francji – albo zdalnie. Tłumacz jest dobierany do kontekstu i wcześniej przygotowywany pod kątem słownictwa spotkania lub wizyty. Nie każde spotkanie wymaga tłumacza: zakres wsparcia zależy od tego, o co toczy się rozmowa."
+      },
+      {
+        "q": "Czy JANUS tłumaczy dokumenty firmowe z polskiego na francuski i z francuskiego na polski?",
+        "r": "Tak: prezentacje, materiały na spotkania, komunikację wewnętrzną i dokumenty operacyjne, w parze polski–francuski w obu kierunkach, a jeśli wymaga tego projekt – także polski–angielski. JANUS pomaga też ustalić, co naprawdę trzeba przetłumaczyć."
+      },
+      {
+        "q": "Czy JANUS zajmuje się wyłącznie tłumaczeniami ustnymi?",
+        "r": "Nie. Tłumaczenie ustne może być częścią szerszego wsparcia: przygotowania rozmów i negocjacji, przygotowania kadry zarządzającej, komunikacji międzykulturowej i koordynacji potrzeb językowych projektu."
+      },
+      {
+        "q": "Czy JANUS może przygotować Państwa zespół do współpracy z Francuzami?",
+        "r": "Tak. JANUS przygotowuje polskie zespoły współpracujące z kolegami lub klientami we Francji, pracowników wyjeżdżających na delegację lub obejmujących stanowisko we Francji, a także francuskich pracowników przyjeżdżających do Polski: komunikacja, słownictwo branżowe, przygotowanie międzykulturowe i realne sytuacje zawodowe."
+      },
+      {
+        "q": "Czy JANUS może przygotować menedżera do wystąpienia w języku obcym?",
+        "r": "Tak. JANUS może przygotować menedżera lub członka zarządu do prezentacji, negocjacji lub wystąpienia w kontekście międzynarodowym, zwłaszcza w języku angielskim we współpracy z partnerami z Francji."
+      },
+      {
+        "q": "Czy JANUS wspiera firmy przy transakcjach z udziałem partnera francuskiego?",
+        "r": "Tak, ale wyłącznie w zakresie językowych i międzykulturowych aspektów transakcji, jako uzupełnienie pracy Państwa doradców finansowych, prawnych i podatkowych: przygotowanie spotkań, tłumaczenia ustne i pisemne oraz przygotowanie zespołów po transakcji. JANUS nie świadczy doradztwa w zakresie fuzji i przejęć (M&A), doradztwa prawnego ani podatkowego."
+      },
+      {
+        "q": "Czy rozmowy są poufne?",
+        "r": "Tak. Poufność jest częścią każdej współpracy, a w razie potrzeby można podpisać umowę o zachowaniu poufności (NDA)."
+      }
+    ]
+  },
+  "annexes": [
+    {
+      "label": "Wszystkie nasze usługi →",
+      "href": "/pl/services"
+    },
+    {
+      "label": "Wszystkie nasze języki robocze →",
+      "href": "/pl/langues"
+    }
+  ],
+  "ctaFinal": {
+    "h2": "Projekt z partnerem we Francji?",
+    "texte": "Prosimy opisać sytuację, rozmówców i cel współpracy.",
+    "cta": {
+      "label": "Porozmawiajmy o projekcie →",
+      "href": "/pl/contact"
+    },
+    "telephone": {
+      "label": "+33 9 67 05 68 31",
+      "href": "tel:+33967056831"
+    },
+    "note": "Rozmawiamy po polsku."
+  }
+}

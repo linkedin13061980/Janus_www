@@ -1,13 +1,11 @@
 ---
-// Page pilier de l'expertise France–Pologne (et page d'atterrissage Google Ads).
-// Contenu : /src/content/fr/pologne.json.
-// Versions EN/PL : /en/poland et /pl/francja-polska (équivalence et hreflang dans src/i18n/routes.ts) ;
-// la canonical est la page elle-même, sans barre finale.
+// Wersja polska strony France–Pologne (/fr/pologne = référence) : même architecture, écrite du point de vue d'une entreprise polonaise.
+// Contenu : /src/content/pl/francja-polska.json. Équivalences FR/EN/PL déclarées dans src/i18n/routes.ts (hreflang).
 // Principe : la page se comprend en scrollant (mots-clés, situations → réponses, chiffres) ; les paragraphes sont secondaires.
 import Layout from '../../layouts/Layout.astro';
 import Flag from '../../components/ui/Flag.astro';
 import Tracking from '../../components/ui/Tracking.astro';
-import p from '../../content/fr/pologne.json';
+import p from '../../content/pl/francja-polska.json';
 
 const m = p.microBesoins;
 const msg = p.message;
@@ -19,8 +17,12 @@ const faqLd = {
   '@type': 'FAQPage',
   mainEntity: p.faq.items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.r } })),
 };
-// Espace insécable avant « ? ; : ! », « France–Pologne » insécable (le tiret ne doit pas couper la ligne), flèche finale insécable.
-const fr = (s: string) => s.replace(/ ([?;:!])/g, ' $1').replace(/(France|Allemagne)–Pologne/g, '$1⁠–⁠Pologne').replace(/ →/g, ' →');
+// Typographie polonaise : pas de mot d'une lettre (a, i, o, u, w, z) en fin de ligne ; « Polska–Francja » insécable ; flèche finale insécable.
+const ty = (s: string) => s
+  .replace(/(\p{Lu}\p{Ll}+)–(\p{Lu}\p{Ll}+)/gu, '$1\u2060–\u2060$2')
+  .replace(/(^|[\s(])([aiouwzAIOUWZ]) /g, '$1$2\u00A0')
+  .replace(/(^|[\s(\u00A0])([aiouwzAIOUWZ]) /g, '$1$2\u00A0')
+  .replace(/ →/g, '\u00A0→');
 const num = (i: number) => String(i + 1).padStart(2, '0');
 
 ---
@@ -28,9 +30,9 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
 <Layout
   title={p.meta.title}
   description={p.meta.description}
-  locale="fr"
-  currentPath="/pologne"
-  canonical="https://agence-janus.fr/fr/pologne"
+  locale="pl"
+  currentPath="/francja-polska"
+  canonical="https://agence-janus.fr/pl/francja-polska"
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
@@ -70,33 +72,33 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
           <Flag code="pl" class="w-8 h-5" />
           <p class="fp-sans text-xs uppercase tracking-[0.3em]" style="color:#c9a84c">{p.hero.surtitre}</p>
         </div>
-        <h1 class="fp-serif font-light leading-[1.05] mb-6 max-w-4xl" style="font-size:clamp(2.4rem,5.5vw,4.25rem);color:#f7f5f2">{fr(p.hero.h1)}</h1>
+        <h1 class="fp-serif font-light leading-[1.05] mb-6 max-w-4xl" style="font-size:clamp(2.4rem,5.5vw,4.25rem);color:#f7f5f2">{ty(p.hero.h1)}</h1>
         <p class="fp-sans text-xs md:text-sm uppercase tracking-[0.22em] leading-[1.9] mb-5" style="color:#c9a84c">
           {p.hero.motsCles.map((k, i) => (
             <>{i > 0 && <span aria-hidden="true" style="color:rgba(247,245,242,0.35)">{' · '}</span>}<span class="whitespace-nowrap">{k}</span></>
           ))}
         </p>
-        <p class="fp-sans text-base md:text-lg max-w-2xl leading-[1.7] mb-9" style="color:rgba(247,245,242,0.8)">{p.hero.accroche}</p>
-        <a href={p.hero.cta.href} data-track="cta_principal" data-track-position="hero" class="fp-sans block sm:inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(p.hero.cta.label)}</a>
+        <p class="fp-sans text-base md:text-lg max-w-2xl leading-[1.7] mb-9" style="color:rgba(247,245,242,0.8)">{ty(p.hero.accroche)}</p>
+        <a href={p.hero.cta.href} data-track="cta_principal" data-track-position="hero" class="fp-sans block sm:inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{ty(p.hero.cta.label)}</a>
       </div>
     </section>
 
     <!-- MICRO-BESOINS : 6 situations → réponses JANUS, puis bandeau transversal -->
     <section id="micro-besoins" style="background:#f7f5f2" class="px-6 py-14 md:py-24 scroll-mt-20">
       <div class="max-w-6xl mx-auto">
-        <h2 class="fp-serif fp-balance font-light leading-[1.1] mb-3 max-w-4xl" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{fr(m.h2)}</h2>
-        <p class="fp-sans text-base md:text-lg leading-[1.6] mb-8 md:mb-12" style="color:rgba(26,26,26,0.65)">{fr(m.intro)}</p>
+        <h2 class="fp-serif fp-balance font-light leading-[1.1] mb-3 max-w-4xl" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{ty(m.h2)}</h2>
+        <p class="fp-sans text-base md:text-lg leading-[1.6] mb-8 md:mb-12" style="color:rgba(26,26,26,0.65)">{ty(m.intro)}</p>
 
         <ol class="sit-list">
           {m.situations.map((x, i) => (
             <li class="sit">
               <p class="sit-mot fp-sans"><span class="sit-num" aria-hidden="true">{num(i)}</span>{x.mot}</p>
               <div>
-                <h3 class="sit-txt fp-serif">{fr(x.situation)}</h3>
+                <h3 class="sit-txt fp-serif">{ty(x.situation)}</h3>
                 {x.lieux && <p class="sit-lieux fp-sans">{x.lieux.join(' · ')}</p>}
                 {x.complement && <p class="sit-lieux fp-sans">{x.complement.map((c, j, all) => (<><span class="whitespace-nowrap">{c.replace(/ ↔ /g, '\u00A0↔\u00A0')}{j < all.length - 1 && '\u00A0·'}</span>{j < all.length - 1 && ' '}</>))}</p>}
               </div>
-              <p class="sit-rep fp-sans">{x.reponse}</p>
+              <p class="sit-rep fp-sans">{ty(x.reponse)}</p>
             </li>
           ))}
         </ol>
@@ -104,8 +106,8 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
         <div class="mt-10 md:mt-14 bg-white border-l-[3px] px-6 py-7 md:px-10 md:py-9" style="border-left-color:#c9a84c">
           <p class="fp-sans text-[11px] uppercase tracking-[0.22em] mb-2" style="color:rgba(26,26,26,0.55)">{m.transversal.surtitre}</p>
           <p class="sit-mot fp-sans mb-3">{m.transversal.mot}</p>
-          <h3 class="fp-serif italic font-light leading-snug mb-4 max-w-3xl" style="font-size:clamp(1.4rem,2.6vw,2rem);color:#1a1a1a">« {fr(m.transversal.situation)} »</h3>
-          <p class="sit-rep fp-sans">{m.transversal.reponse}</p>
+          <h3 class="fp-serif italic font-light leading-snug mb-4 max-w-3xl" style="font-size:clamp(1.4rem,2.6vw,2rem);color:#1a1a1a">« {ty(m.transversal.situation)} »</h3>
+          <p class="sit-rep fp-sans">{ty(m.transversal.reponse)}</p>
         </div>
       </div>
     </section>
@@ -117,7 +119,7 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
           <span class="block">{msg.lignes[0]}</span>
           <span class="block" style="color:#c9a84c">{msg.lignes[1]}</span>
         </h2>
-        <p class="fp-sans text-base md:text-lg leading-[1.7] max-w-2xl mx-auto mb-12" style="color:rgba(247,245,242,0.75)">{msg.texte}</p>
+        <p class="fp-sans text-base md:text-lg leading-[1.7] max-w-2xl mx-auto mb-12" style="color:rgba(247,245,242,0.75)">{ty(msg.texte)}</p>
 
         <details class="max-w-2xl mx-auto text-left border-y" style="border-color:rgba(247,245,242,0.18)">
           <summary class="py-5">
@@ -129,14 +131,16 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
           <div class="pb-6">
             <ul class="fp-sans grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-sm md:text-base mb-5">
               {msg.expertises.items.map((x) => (
-                <li><a href={x.href} class="fp-link border-b pb-0.5" style="color:rgba(247,245,242,0.88);border-color:rgba(201,168,76,0.5)">{x.label}</a></li>
+                <li>{x.href
+                  ? <a href={x.href} class="fp-link border-b pb-0.5" style="color:rgba(247,245,242,0.88);border-color:rgba(201,168,76,0.5)">{x.label}</a>
+                  : <span style="color:rgba(247,245,242,0.88)">{x.label}</span>}</li>
               ))}
             </ul>
-            <a href={msg.expertises.polonais.href} class="fp-sans fp-link text-sm leading-relaxed border-b pb-0.5" style="color:#c9a84c;border-color:rgba(201,168,76,0.5)">{fr(msg.expertises.polonais.label)}</a>
+            <a href={msg.expertises.polonais.href} class="fp-sans fp-link text-sm leading-relaxed border-b pb-0.5" style="color:#c9a84c;border-color:rgba(201,168,76,0.5)">{ty(msg.expertises.polonais.label)}</a>
           </div>
         </details>
 
-        <a href={msg.cta.href} data-track="cta_principal" data-track-position="micro-besoins" class="fp-sans block sm:inline-block text-center mt-12 px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(msg.cta.label)}</a>
+        <a href={msg.cta.href} data-track="cta_principal" data-track-position="micro-besoins" class="fp-sans block sm:inline-block text-center mt-12 px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{ty(msg.cta.label)}</a>
       </div>
     </section>
 
@@ -146,19 +150,19 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
         <h2 class="fp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-8 md:mb-12" style="color:#8a6d4b">{pr.h2}</h2>
         <div class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8 lg:gap-0">
           <div class="lg:pr-14">
-            <p class="fp-serif font-light uppercase leading-none mb-3" style="font-size:clamp(4.5rem,11vw,8.5rem);color:#b5936b">{pr.principale.chiffre}</p>
-            <h3 class="fp-serif text-2xl md:text-3xl leading-snug" style="color:#1a1a1a">{fr(pr.principale.titre)}</h3>
-            <p class="fp-sans text-sm mt-1" style="color:rgba(26,26,26,0.6)">{pr.principale.texte}</p>
+            <p class="fp-serif font-light uppercase leading-none mb-3" style="font-size:clamp(3.5rem,8vw,7rem);color:#b5936b">{pr.principale.chiffre}</p>
+            <h3 class="fp-serif text-2xl md:text-3xl leading-snug" style="color:#1a1a1a">{ty(pr.principale.titre)}</h3>
+            <p class="fp-sans text-sm mt-1" style="color:rgba(26,26,26,0.6)">{ty(pr.principale.texte)}</p>
           </div>
           <div class="border-t pt-8 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-14 lg:flex lg:flex-col lg:justify-end" style="border-color:#c9a84c">
             <p class="fp-serif font-light uppercase leading-[1.05] mb-3" style="font-size:clamp(2.1rem,4vw,3.25rem);color:#8a6d4b">{pr.secondaire.chiffre.split(' · ').map((c, i) => (<>{i > 0 && ' · '}<span class="whitespace-nowrap">{c}</span></>))}</p>
-            <h3 class="fp-serif text-xl md:text-2xl leading-snug" style="color:#1a1a1a">{fr(pr.secondaire.titre)}</h3>
-            <p class="fp-sans text-sm mt-1" style="color:rgba(26,26,26,0.6)">{pr.secondaire.texte}</p>
+            <h3 class="fp-serif text-xl md:text-2xl leading-snug" style="color:#1a1a1a">{ty(pr.secondaire.titre)}</h3>
+            <p class="fp-sans text-sm mt-1" style="color:rgba(26,26,26,0.6)">{ty(pr.secondaire.texte)}</p>
           </div>
         </div>
         <div class="max-w-2xl mt-12 md:mt-16">
-          <p class="fp-sans text-sm md:text-base leading-[1.75] mb-3" style="color:rgba(26,26,26,0.72)">{fr(pr.parcours)}</p>
-          <a href={pr.lien.href} class="fp-sans fp-link text-xs uppercase tracking-widest border-b py-1" style="border-color:#b5936b;color:#1a1a1a">{fr(pr.lien.label)}</a>
+          <p class="fp-sans text-sm md:text-base leading-[1.75] mb-3" style="color:rgba(26,26,26,0.72)">{ty(pr.parcours)}</p>
+          <a href={pr.lien.href} class="fp-sans fp-link text-xs uppercase tracking-widest border-b py-1" style="border-color:#b5936b;color:#1a1a1a">{ty(pr.lien.label)}</a>
         </div>
       </div>
     </section>
@@ -166,10 +170,10 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
     <!-- TEASER ACQUISITION (page détaillée : /fr/acquisition-entreprise-pologne) -->
     <section style="background:#f7f5f2" class="px-6 py-12 md:py-16">
       <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-16 lg:items-center">
-        <h2 class="fp-serif font-light leading-tight" style="font-size:clamp(1.8rem,3.4vw,2.6rem);color:#1a1a1a">{fr(p.acquisition.h2)}</h2>
+        <h2 class="fp-serif font-light leading-tight" style="font-size:clamp(1.8rem,3.4vw,2.6rem);color:#1a1a1a">{ty(p.acquisition.h2)}</h2>
         <div>
-          <p class="fp-sans text-sm md:text-base leading-[1.7] mb-4" style="color:rgba(26,26,26,0.72)">{fr(p.acquisition.texte)}</p>
-          <a href={p.acquisition.lien.href} class="fp-sans fp-link text-sm font-medium border-b pb-1" style="border-color:#b5936b;color:#1a1a1a">{fr(p.acquisition.lien.label)}</a>
+          <p class="fp-sans text-sm md:text-base leading-[1.7] mb-4" style="color:rgba(26,26,26,0.72)">{ty(p.acquisition.texte)}</p>
+          <a href={p.acquisition.lien.href} class="fp-sans fp-link text-sm font-medium border-b pb-1" style="border-color:#b5936b;color:#1a1a1a">{ty(p.acquisition.lien.label)}</a>
         </div>
       </div>
     </section>
@@ -177,21 +181,21 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
     <!-- FAQ + liens annexes -->
     <section class="bg-white px-6 py-14 md:py-24">
       <div class="max-w-3xl mx-auto">
-        <h2 class="fp-serif font-light leading-tight mb-8" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{fr(p.faq.h2)}</h2>
+        <h2 class="fp-serif font-light leading-tight mb-8" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{ty(p.faq.h2)}</h2>
         <div class="border-t" style="border-color:rgba(26,26,26,0.12)">
           {p.faq.items.map((f) => (
             <details class="border-b py-5" style="border-color:rgba(26,26,26,0.12)">
               <summary class="flex items-start justify-between gap-6">
-                <h3 class="fp-sans text-base md:text-lg font-medium leading-snug" style="color:#1a1a1a">{fr(f.q)}</h3>
+                <h3 class="fp-sans text-base md:text-lg font-medium leading-snug" style="color:#1a1a1a">{ty(f.q)}</h3>
                 <span class="fp-plus fp-sans text-xl leading-none flex-shrink-0" style="color:#b5936b" aria-hidden="true">+</span>
               </summary>
-              <p class="fp-sans text-sm md:text-base leading-[1.8] mt-3 pr-8" style="color:rgba(26,26,26,0.72)">{f.r}</p>
+              <p class="fp-sans text-sm md:text-base leading-[1.8] mt-3 pr-8" style="color:rgba(26,26,26,0.72)">{ty(f.r)}</p>
             </details>
           ))}
         </div>
         <ul class="fp-sans flex flex-wrap gap-x-6 gap-y-3 text-sm mt-10">
           {p.annexes.map((x) => (
-            <li><a href={x.href} class="fp-link border-b pb-0.5" style="border-color:rgba(181,147,107,0.6);color:#1a1a1a">{fr(x.label)}</a></li>
+            <li><a href={x.href} class="fp-link border-b pb-0.5" style="border-color:rgba(181,147,107,0.6);color:#1a1a1a">{ty(x.label)}</a></li>
           ))}
         </ul>
       </div>
@@ -200,12 +204,13 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
     <!-- CTA FINAL -->
     <section style="background:#1a1a1a" class="px-6 py-16 md:py-28 text-center">
       <div class="max-w-xl mx-auto">
-        <h2 class="fp-serif text-4xl md:text-5xl font-light leading-tight mb-5" style="color:#f7f5f2">{fr(p.ctaFinal.h2)}</h2>
-        <p class="fp-sans text-base leading-[1.8] mb-10" style="color:rgba(247,245,242,0.75)">{p.ctaFinal.texte}</p>
+        <h2 class="fp-serif text-4xl md:text-5xl font-light leading-tight mb-5" style="color:#f7f5f2">{ty(p.ctaFinal.h2)}</h2>
+        <p class="fp-sans text-base leading-[1.8] mb-10" style="color:rgba(247,245,242,0.75)">{ty(p.ctaFinal.texte)}</p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8">
-          <a href={p.ctaFinal.cta.href} data-track="cta_principal" data-track-position="final" class="fp-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{fr(p.ctaFinal.cta.label)}</a>
+          <a href={p.ctaFinal.cta.href} data-track="cta_principal" data-track-position="final" class="fp-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{ty(p.ctaFinal.cta.label)}</a>
           <a href={p.ctaFinal.telephone.href} data-track="clic_telephone" data-track-position="final" class="fp-sans fp-link text-sm tracking-wider border-b py-1" style="border-color:rgba(247,245,242,0.35);color:#f7f5f2">{p.ctaFinal.telephone.label}</a>
         </div>
+        {p.ctaFinal.note && <p class="fp-sans text-xs tracking-wider mt-6" style="color:rgba(247,245,242,0.6)">{p.ctaFinal.note}</p>}
       </div>
     </section>
   </div>

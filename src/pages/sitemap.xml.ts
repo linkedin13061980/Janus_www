@@ -20,7 +20,6 @@ const locales = ['fr', 'en', 'pl'];
 
 // Pages existant uniquement en français : une seule URL, sans variantes EN/PL (qui renverraient une 404).
 const frOnlyPages = [
-  { path: '/pologne', changefreq: 'monthly', priority: '0.9' },
   { path: '/acquisition-entreprise-pologne', changefreq: 'monthly', priority: '0.8' },
   { path: '/langues/anglais', changefreq: 'monthly', priority: '0.8' },
   { path: '/langues/polonais', changefreq: 'monthly', priority: '0.8' },
@@ -28,6 +27,24 @@ const frOnlyPages = [
   { path: '/langues/espagnol', changefreq: 'monthly', priority: '0.8' },
   { path: '/langues/italien', changefreq: 'monthly', priority: '0.8' },
 ];
+
+// Pages dont l'URL diffère selon la langue : chaque version, avec hreflang réciproques.
+const translatedPages = [
+  { paths: { fr: '/pologne', en: '/poland', pl: '/francja-polska' }, changefreq: 'monthly', priority: '0.9' },
+];
+
+function buildTranslatedUrls() {
+  return translatedPages.map(({ paths, changefreq, priority }) => {
+    const hreflangs = locales.map(l => `<xhtml:link rel="alternate" hreflang="${l}" href="${site}/${l}${paths[l as keyof typeof paths]}"/>`);
+    hreflangs.push(`<xhtml:link rel="alternate" hreflang="x-default" href="${site}/fr${paths.fr}"/>`);
+    return locales.map(l => `  <url>
+    <loc>${site}/${l}${paths[l as keyof typeof paths]}</loc>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+    ${hreflangs.join('\n    ')}
+  </url>`).join('\n');
+  }).join('\n');
+}
 
 function buildFrOnlyUrls() {
   return frOnlyPages.map(({ path, changefreq, priority }) => `
@@ -73,6 +90,7 @@ export const GET: APIRoute = () => {
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${buildUrls()}
+${buildTranslatedUrls()}
 ${buildFrOnlyUrls()}
 </urlset>`;
 
