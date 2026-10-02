@@ -3,7 +3,6 @@
 // /fr/pologne montre ce modèle en situations concrètes ; ici, lecture en 5–10 s par mots-clés, sans paragraphes.
 // Contenu : /src/content/fr/accueil.json.
 import Layout from '../../layouts/Layout.astro';
-import HeroVideo from '../../components/ui/HeroVideo.astro';
 import Tracking from '../../components/ui/Tracking.astro';
 import content from '../../content/fr/accueil.json';
 
@@ -33,24 +32,10 @@ const organisation = {
   knowsLanguage: ['fr', 'en', 'pl', 'de', 'es', 'it'],
 };
 
-// Vidéo du Hero (Adobe Stock n° 286167621, sous licence) — version web muette, boucle de 11 s.
-// Desktop : 1280×720 (WebM VP9 puis MP4 H.264). Mobile : recadrage portrait 540×960 (WebM VP9 puis MP4 H.264).
-const heroVideo = {
-  desktop: [
-    { src: '/video/hero-720p.webm', type: 'video/webm' },
-    { src: '/video/hero-720p.mp4',  type: 'video/mp4' },
-  ],
-  mobile: [
-    { src: '/video/hero-mobile.webm', type: 'video/webm' },
-    { src: '/video/hero-mobile.mp4',  type: 'video/mp4' },
-  ],
-  poster: {
-    avif: '/video/hero-poster.avif',
-    jpg: '/video/hero-poster.jpg',
-    mobileAvif: '/video/hero-poster-mobile.avif',
-    mobileJpg: '/video/hero-poster-mobile.jpg',
-  },
-};
+// Visuel du hero : panoramique 2000×744 (ratio 2,69:1), affiché en ratio natif sur toute la largeur, sans recadrage.
+// Versions web AVIF/WebP dans public/images/hero/. Image décorative (alt vide) : logo et signature intégrés, contenu essentiel en HTML.
+const heroWidths = [640, 960, 1440, 2000];
+const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-hero-${w}.${ext} ${w}w`).join(', ');
 ---
 
 <Layout
@@ -72,10 +57,6 @@ const heroVideo = {
     .hp details > summary::-webkit-details-marker { display: none; }
     .hp details[open] .hp-plus { transform: rotate(45deg); }
     .hp-plus { transition: transform .2s ease; }
-    /* Hero : vidéo réduite à un bandeau de 150 px sous 768 px, pour que le CTA soit visible au premier écran. */
-    @media (max-width: 767px) {
-      .hp-hero .hero-video__frame { aspect-ratio: auto; height: 150px; }
-    }
     /* Modèle JANUS : chaîne de besoins. Mobile : axe vertical doré ; desktop (≥ 1024 px) : frise horizontale en 6 colonnes. */
     .hp-chaine { list-style: none; margin: 0; padding: 0 0 0 26px; position: relative; }
     .hp-chaine::before { content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 1px; background: #c9a84c; }
@@ -123,25 +104,25 @@ const heroVideo = {
   </style>
 
   <div class="hp">
-    <!-- ① HERO VIDÉO -->
-    <HeroVideo
-      class="hp-hero"
-      desktop={heroVideo.desktop}
-      mobile={heroVideo.mobile}
-      poster={heroVideo.poster}
-      pauseLabel="Mettre la vidéo en pause"
-      playLabel="Lire la vidéo"
-    >
-      <div class="max-w-6xl mx-auto px-6 pt-6 pb-10 md:py-14">
-        <div class="md:max-w-[46vw] xl:max-w-[620px]">
-          <p class="hp-sans text-[11px] md:text-xs uppercase tracking-[0.3em] mb-4 md:mb-6 flex items-center gap-4" style="color:#c9a84c">
+    <!-- ① HERO : visuel panoramique en ratio natif (aucun recadrage), puis titre, texte et CTA en HTML sous l'image -->
+    <section class="hp-hero" style="background:#0d0d0d">
+      <picture>
+        <source type="image/avif" srcset={heroSrcset('avif')} sizes="100vw" />
+        <source type="image/webp" srcset={heroSrcset('webp')} sizes="100vw" />
+        <img src="/images/hero/janus-hero-1440.webp" width="2000" height="744" alt="" fetchpriority="high" class="block w-full h-auto" style="aspect-ratio:2000/744" />
+      </picture>
+      <div class="max-w-6xl mx-auto px-6 pt-7 pb-10 md:pt-10 md:pb-12 lg:grid lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:items-end">
+        <div>
+          <p class="hp-sans text-[11px] md:text-xs uppercase tracking-[0.3em] mb-4 md:mb-5 flex items-center gap-4" style="color:#c9a84c">
             <span class="hidden sm:inline-block w-10 h-px flex-shrink-0" style="background:#c9a84c" aria-hidden="true"></span>
             <span>{hero.surtitre}</span>
           </p>
-          <h1 class="hp-serif hp-balance font-light leading-[1.05] mb-5 md:mb-6" style="font-size:clamp(2.3rem,4.4vw,3.75rem);color:#f7f5f2">
+          <h1 class="hp-serif hp-balance font-light leading-[1.05] mb-5 lg:mb-0" style="font-size:clamp(2.3rem,4.4vw,3.75rem);color:#f7f5f2">
             {hero.h1}
           </h1>
-          <p class="hp-sans text-[15px] md:text-lg leading-[1.6] mb-7 md:mb-9" style="color:rgba(247,245,242,0.82)">
+        </div>
+        <div>
+          <p class="hp-sans text-[15px] md:text-lg leading-[1.6] mb-7" style="color:rgba(247,245,242,0.82)">
             {fr(hero.sousTexte)}
           </p>
           <a href={hero.cta.href} data-track="cta_principal" data-track-position="hero" class="hp-sans block sm:inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">
@@ -149,7 +130,7 @@ const heroVideo = {
           </a>
         </div>
       </div>
-    </HeroVideo>
+    </section>
 
     <!-- ② MODÈLE JANUS : un projet, plusieurs besoins, un contexte constant -->
     <section style="background:#f7f5f2" class="px-6 py-14 md:py-20">
