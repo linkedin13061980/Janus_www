@@ -2,6 +2,8 @@
 import type { Locale } from '../i18n/utils';
 import { t, localePath, localeNames } from '../i18n/utils';
 import { localizedPath } from '../i18n/routes';
+// Navigation EN/PL : /src/content/menu.json. Le FR garde son menu actuel (migration dans un chantier séparé).
+import menu from '../content/menu.json';
 
 interface Props {
   locale: Locale;
@@ -10,6 +12,7 @@ interface Props {
 
 const { locale, currentPath } = Astro.props;
 const locales: Locale[] = ['fr', 'en', 'pl'];
+const nav = locale === 'fr' ? null : menu[locale];
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-anthracite/95 backdrop-blur border-b border-gold/20">
@@ -25,6 +28,7 @@ const locales: Locale[] = ['fr', 'en', 'pl'];
       </a>
 
       <!-- Navigation desktop -->
+      {nav === null ? (
       <nav class="hidden xl:flex items-center gap-6">
         <a href={localePath(locale, '/')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.home')}</a>
         <a href={localePath(locale, '/services')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.services')}</a>
@@ -36,6 +40,13 @@ const locales: Locale[] = ['fr', 'en', 'pl'];
           {t(locale, 'nav.contact')}
         </a>
       </nav>
+      ) : (
+      <nav class="hidden xl:flex items-center gap-6">
+        {nav.header.map((item) => item.cta
+          ? <a href={item.url} class="px-4 py-2 bg-gold text-anthracite text-sm font-semibold uppercase tracking-wider whitespace-nowrap hover:bg-gold-light transition-colors">{item.label}</a>
+          : <a href={item.url} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{item.label}</a>)}
+      </nav>
+      )}
 
       <!-- Switcher de langue -->
       <div class="flex items-center gap-1 ml-4">
@@ -77,6 +88,7 @@ const locales: Locale[] = ['fr', 'en', 'pl'];
 
   <!-- Menu mobile -->
   <div id="mobile-menu" class="hidden xl:hidden border-t border-gold/20 bg-anthracite">
+    {nav === null ? (
     <nav class="px-4 py-4 flex flex-col gap-3">
       <a href={localePath(locale, '/')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.home')}</a>
       <a href={localePath(locale, '/services')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.services')}</a>
@@ -86,6 +98,13 @@ const locales: Locale[] = ['fr', 'en', 'pl'];
       <a href={localePath(locale, '/a-propos')} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.about')}</a>
       <a href={localePath(locale, '/contact')} class="text-sm text-gold hover:text-gold-light transition-colors uppercase tracking-wider whitespace-nowrap">{t(locale, 'nav.contact')}</a>
     </nav>
+    ) : (
+    <nav class="px-4 py-4 flex flex-col gap-3">
+      {nav.mobile.map((item) => item.cta
+        ? <a href={item.url} class="text-sm text-gold hover:text-gold-light transition-colors uppercase tracking-wider whitespace-nowrap">{item.label}</a>
+        : <a href={item.url} class="text-sm text-white/70 hover:text-white transition-colors uppercase tracking-wider whitespace-nowrap">{item.label}</a>)}
+    </nav>
+    )}
   </div>
 </header>
 

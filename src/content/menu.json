@@ -1,0 +1,36 @@
+{
+  "en": {
+    "footerTitles": { "navigation": "Navigation", "information": "Information" },
+    "header": [
+      { "label": "France–Poland", "url": "/en/poland", "children": [] },
+      { "label": "Contact", "url": "/en/contact", "cta": true, "children": [] }
+    ],
+    "mobile": [
+      { "label": "Home", "url": "/en/", "children": [] },
+      { "label": "France–Poland", "url": "/en/poland", "children": [] },
+      { "label": "Contact", "url": "/en/contact", "cta": true, "children": [] }
+    ],
+    "footer": [
+      { "label": "Home", "url": "/en/", "children": [] },
+      { "label": "France–Poland", "url": "/en/poland", "children": [] },
+      { "label": "Contact", "url": "/en/contact", "children": [] }
+    ]
+  },
+  "pl": {
+    "footerTitles": { "navigation": "Nawigacja", "information": "Informacje" },
+    "header": [
+      { "label": "Polska–Francja", "url": "/pl/francja-polska", "children": [] },
+      { "label": "Kontakt", "url": "/pl/contact", "cta": true, "children": [] }
+    ],
+    "mobile": [
+      { "label": "Strona główna", "url": "/pl/", "children": [] },
+      { "label": "Polska–Francja", "url": "/pl/francja-polska", "children": [] },
+      { "label": "Kontakt", "url": "/pl/contact", "cta": true, "children": [] }
+    ],
+    "footer": [
+      { "label": "Strona główna", "url": "/pl/", "children": [] },
+      { "label": "Polska–Francja", "url": "/pl/francja-polska", "children": [] },
+      { "label": "Kontakt", "url": "/pl/contact", "children": [] }
+    ]
+  }
+}

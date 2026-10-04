@@ -1,6 +1,8 @@
 ---
 import type { Locale } from '../i18n/utils';
 import { t, localePath } from '../i18n/utils';
+// Navigation EN/PL : /src/content/menu.json. Le FR garde ses liens actuels (migration dans un chantier séparé).
+import menu from '../content/menu.json';
 
 interface Props {
   locale: Locale;
@@ -8,6 +10,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const year = new Date().getFullYear();
+const nav = locale === 'fr' ? null : menu[locale];
 ---
 
 <footer class="bg-anthracite-light border-t border-gold/20 mt-20">
@@ -26,7 +29,12 @@ const year = new Date().getFullYear();
 
       <!-- Liens -->
       <div>
+        {nav === null ? (
         <h3 class="text-white/60 text-xs uppercase tracking-widest mb-4">Navigation</h3>
+        ) : (
+        <h3 class="text-white/60 text-xs uppercase tracking-widest mb-4">{nav.footerTitles.navigation}</h3>
+        )}
+        {nav === null ? (
         <nav class="flex flex-col gap-2">
           <a href={localePath(locale, '/services')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'nav.services')}</a>
           <a href={localePath(locale, '/langues')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'nav.langues')}</a>
@@ -35,11 +43,20 @@ const year = new Date().getFullYear();
           <a href={localePath(locale, '/a-propos')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'nav.about')}</a>
           <a href={localePath(locale, '/contact')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'nav.contact')}</a>
         </nav>
+        ) : (
+        <nav class="flex flex-col gap-2">
+          {nav.footer.map((item) => <a href={item.url} class="text-white/50 hover:text-gold text-sm transition-colors">{item.label}</a>)}
+        </nav>
+        )}
       </div>
 
       <!-- Légal -->
       <div>
+        {nav === null ? (
         <h3 class="text-white/60 text-xs uppercase tracking-widest mb-4">Informations</h3>
+        ) : (
+        <h3 class="text-white/60 text-xs uppercase tracking-widest mb-4">{nav.footerTitles.information}</h3>
+        )}
         <nav class="flex flex-col gap-2 mb-4">
           <a href={localePath(locale, '/mentions-legales')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'footer.legal')}</a>
           <a href={localePath(locale, '/cgv')} class="text-white/50 hover:text-gold text-sm transition-colors">{t(locale, 'footer.cgv')}</a>
