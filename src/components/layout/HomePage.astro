@@ -1,0 +1,295 @@
+---
+// Gabarit de homepage partagé (même architecture visuelle que /fr/). Utilisé par /en/ et /pl/.
+// /fr/index.astro reste autonome et inchangé ; il pourra adopter ce gabarit dans un chantier séparé.
+// Contenu : /src/content/{locale}/accueil.json, passé en prop.
+import Layout from '../../layouts/Layout.astro';
+import Tracking from '../ui/Tracking.astro';
+
+interface Props {
+  content: any;
+  locale: 'en' | 'pl';
+  heroBase: string;
+}
+
+const { content, locale, heroBase } = Astro.props;
+const currentPath = '/';
+
+// Typographie : « France–Poland » insécable et flèche finale insécable ;
+// en polonais, pas de mot d'une lettre (a, i, o, u, w, z) en fin de ligne et « Polska ↔ Francja » insécable.
+const ty = (s: string) => {
+  let r = s.replace(/(\p{Lu}\p{Ll}+)–(\p{Lu}\p{Ll}+)/gu, '$1\u2060–\u2060$2').replace(/ ↔ /g, '\u00A0↔\u00A0').replace(/ →/g, '\u00A0→');
+  if (locale === 'pl') r = r.replace(/(^|[\s(])([aiouwzAIOUWZ]) /g, '$1$2\u00A0').replace(/(^|[\s(\u00A0])([aiouwzAIOUWZ]) /g, '$1$2\u00A0');
+  return r;
+};
+
+// H1 polonais : « międzynarodowych » (17 lettres) déborde à 320 px avec le minimum FR ; minimum réduit pour PL uniquement.
+const h1Size = locale === 'pl' ? 'clamp(2rem,4.4vw,3.75rem)' : 'clamp(2.3rem,4.4vw,3.75rem)';
+
+// Chiffre principal : « 4 MONTHS » / « 4 MIESIĄCE » plus longs que « 4 MOIS » ; taille réduite pour tenir sur une ligne.
+const figSize = locale === 'pl' ? 'clamp(3.25rem,6vw,5.5rem)' : 'clamp(3.5rem,8vw,7rem)';
+
+const { hero, modele, message, methode, langues, pologne, preuves, pourQui, ctaFinal } = content;
+
+// Données structurées : uniquement des informations publiées sur le site (homepage, mentions légales, contact).
+const organisation = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'JANUS',
+  legalName: 'MICH',
+  url: `https://agence-janus.fr/${locale}/`,
+  logo: 'https://agence-janus.fr/favicon.png',
+  image: 'https://agence-janus.fr/og-image.jpg',
+  description: content.meta.description,
+  telephone: '+33 9 67 05 68 31',
+  email: 'contact@agence-janus.fr',
+  foundingDate: '2021',
+  address: { '@type': 'PostalAddress', streetAddress: '20 ter rue Julien', postalCode: '69003', addressLocality: 'Lyon', addressCountry: 'FR' },
+  founder: { '@type': 'Person', name: 'Agata Mich' },
+  knowsLanguage: ['fr', 'en', 'pl', 'de', 'es', 'it'],
+};
+
+// Visuel du hero : panoramique 2000×744 en ratio natif, sans recadrage. Variante sans slogan pour EN/PL (heroBase).
+const heroWidths = [640, 960, 1440, 2000];
+const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/${heroBase}-${w}.${ext} ${w}w`).join(', ');
+---
+
+
+<Layout
+  title={content.meta.title}
+  description={content.meta.description}
+  locale={locale}
+  currentPath={currentPath}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(organisation)} />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+  <style is:global>
+    .hp-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .hp-sans  { font-family: 'DM Sans', system-ui, sans-serif; }
+    .hp-link { transition: opacity .2s ease; }
+    .hp-link:hover { opacity: .7; }
+    .hp-balance { text-wrap: balance; }
+    .hp a { text-decoration: none; }
+    .hp details > summary { list-style: none; cursor: pointer; }
+    .hp details > summary::-webkit-details-marker { display: none; }
+    .hp details[open] .hp-plus { transform: rotate(45deg); }
+    .hp-plus { transition: transform .2s ease; }
+    /* Modèle JANUS : chaîne de besoins. Mobile : axe vertical doré ; desktop (≥ 1024 px) : frise horizontale en 6 colonnes. */
+    .hp-chaine { list-style: none; margin: 0; padding: 0 0 0 26px; position: relative; }
+    .hp-chaine::before { content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 1px; background: #c9a84c; }
+    .hp-besoin { position: relative; display: grid; grid-template-columns: 9.5rem minmax(0,1fr); gap: .75rem; align-items: baseline; padding: .6rem 0; }
+    .hp-besoin::before { content: ""; position: absolute; left: -26px; top: calc(.6rem + 3px); width: 11px; height: 11px; border-radius: 50%; background: #f7f5f2; border: 2px solid #c9a84c; }
+    .hp-mot { font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #8a6d4b; margin: 0; }
+    .hp-fleche { display: none; }
+    .hp-rep { font-size: .9rem; line-height: 1.4; color: #1a1a1a; margin: 0; }
+    /* Très petits écrans : mots longs (EN/PL), le besoin passe au-dessus de la réponse pour éviter tout débordement. */
+    @media (max-width: 379px) { .hp-besoin { grid-template-columns: minmax(0,1fr); gap: .15rem; } }
+    @media (min-width: 1024px) {
+      .hp-chaine { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 1.5rem; padding: 0; }
+      .hp-chaine::before { left: 0; right: 0; top: 2.35rem; bottom: auto; width: auto; height: 1px; }
+      .hp-besoin { display: block; padding: 0; }
+      .hp-besoin::before { left: 0; top: 2.35rem; margin-top: -5px; }
+      .hp-mot { font-size: 13px; height: 1.6rem; display: flex; align-items: center; gap: .6rem; }
+      .hp-fleche { display: inline; color: #b5936b; letter-spacing: 0; }
+      .hp-besoin:last-child .hp-fleche { display: none; }
+      .hp-rep { margin-top: 2.1rem; font-size: .95rem; }
+    }
+    /* Notre méthode : 3 temps (avant, pendant, dans la durée). Mobile : filet vertical ; desktop (≥ 1024 px) : 3 colonnes reliées par un filet fléché. */
+    .hp-methode { list-style: none; margin: 0; padding: 0 0 0 20px; position: relative; }
+    .hp-methode::before { content: ""; position: absolute; left: 3px; top: 6px; bottom: 6px; width: 1px; background: #c9a84c; }
+    .hp-etape + .hp-etape { margin-top: 1.4rem; }
+    .hp-repere { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(26,26,26,.5); margin: 0 0 .2rem; }
+    .hp-etape-tete { display: flex; align-items: baseline; gap: .7rem; }
+    .hp-num { font-size: 1.75rem; line-height: 1; color: #b5936b; }
+    .hp-trait { display: none; }
+    .hp-etape-titre { font-size: 13px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: #1a1a1a; margin: 0; }
+    .hp-etape-txt { font-size: .95rem; line-height: 1.5; color: rgba(26,26,26,.7); margin: .3rem 0 0; }
+    .hp-mobilite { display: grid; grid-template-columns: 1fr; gap: .3rem; }
+    @media (min-width: 1024px) {
+      .hp-methode { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 2.5rem; padding: 0; }
+      .hp-methode::before { content: none; }
+      .hp-etape + .hp-etape { margin-top: 0; }
+      .hp-repere { margin-bottom: .5rem; }
+      .hp-etape-tete { flex-wrap: wrap; align-items: center; gap: .9rem; }
+      .hp-num { font-size: 2.75rem; }
+      .hp-trait { display: block; flex: 1; height: 1px; background: #c9a84c; position: relative; margin-right: -1.6rem; }
+      .hp-trait::after { content: ""; position: absolute; right: 0; top: -4px; border: 4.5px solid transparent; border-left: 7px solid #c9a84c; border-right: 0; }
+      .hp-etape:last-child .hp-trait { visibility: hidden; }
+      .hp-etape-titre { flex-basis: 100%; margin-top: .4rem; }
+      .hp-etape-txt { margin-top: .5rem; }
+      .hp-mobilite { grid-template-columns: repeat(3, minmax(0,1fr)); column-gap: 2.5rem; align-items: baseline; }
+      .hp-mobilite > :last-child { grid-column: span 2; }
+    }
+  </style>
+
+  <div class="hp">
+    <!-- ① HERO : visuel panoramique en ratio natif (aucun recadrage), puis titre, texte et CTA en HTML sous l'image -->
+    <section class="hp-hero" style="background:#0d0d0d">
+      <picture>
+        <source type="image/avif" srcset={heroSrcset('avif')} sizes="100vw" />
+        <source type="image/webp" srcset={heroSrcset('webp')} sizes="100vw" />
+        <img src={`/images/hero/${heroBase}-1440.webp`} width="2000" height="744" alt="" fetchpriority="high" class="block w-full h-auto" style="aspect-ratio:2000/744" />
+      </picture>
+      <div class="max-w-6xl mx-auto px-6 pt-7 pb-10 md:pt-10 md:pb-12 lg:grid lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:items-end">
+        <div>
+          <p class="hp-sans text-[11px] md:text-xs uppercase tracking-[0.3em] mb-4 md:mb-5 flex items-center gap-4" style="color:#c9a84c">
+            <span class="hidden sm:inline-block w-10 h-px flex-shrink-0" style="background:#c9a84c" aria-hidden="true"></span>
+            <span>{hero.surtitre}</span>
+          </p>
+          <h1 class="hp-serif hp-balance font-light leading-[1.05] mb-5 lg:mb-0" style={`font-size:${h1Size};color:#f7f5f2`}>
+            {ty(hero.h1)}
+          </h1>
+        </div>
+        <div>
+          <p class="hp-sans text-[15px] md:text-lg leading-[1.6] mb-7" style="color:rgba(247,245,242,0.82)">
+            {ty(hero.sousTexte)}
+          </p>
+          <a href={hero.cta.href} data-track="cta_principal" data-track-position="hero" class="hp-sans block sm:inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">
+            {ty(hero.cta.label)}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② MODÈLE JANUS : un projet, plusieurs besoins, un contexte constant -->
+    <section style="background:#f7f5f2" class="px-6 py-14 md:py-20">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="hp-serif hp-balance font-light leading-[1.1] mb-8 md:mb-14" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{ty(modele.h2)}</h2>
+        <ol class="hp-chaine">
+          {modele.besoins.map((b) => (
+            <li class="hp-besoin">
+              <p class="hp-mot hp-sans">{b.mot}<span class="hp-fleche" aria-hidden="true">→</span></p>
+              <p class="hp-rep hp-sans">{ty(b.reponse)}</p>
+            </li>
+          ))}
+        </ol>
+        <p class="hp-serif italic font-light leading-[1.2] mt-10 md:mt-16 md:text-center" style="font-size:clamp(1.6rem,3.2vw,2.5rem);color:#1a1a1a">
+          <span class="block">{modele.conclusion[0]}</span>
+          <span class="block" style="color:#8a6d4b">{modele.conclusion[1]}</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ③ MESSAGE CENTRAL + périmètre + accordéon Expertises -->
+    <section style="background:#0d0d0d" class="px-6 py-16 md:py-24 lg:min-h-[80vh] flex items-center">
+      <div class="max-w-4xl mx-auto w-full text-center">
+        <h2 class="hp-serif hp-balance font-light leading-[1.1] mb-7" style="font-size:clamp(2.5rem,6vw,4.75rem);color:#f7f5f2">
+          <span class="block">{message.lignes[0]}</span>
+          <span class="block" style="color:#c9a84c">{message.lignes[1]}</span>
+        </h2>
+        <p class="hp-sans text-base md:text-lg leading-[1.7] max-w-2xl mx-auto mb-4" style="color:rgba(247,245,242,0.8)">{ty(message.texte)}</p>
+        <p class="hp-sans text-[13px] md:text-sm leading-[1.6] max-w-xl mx-auto mb-10 md:mb-12" style="color:rgba(247,245,242,0.55)">{ty(message.perimetre)}</p>
+
+        <details class="max-w-2xl mx-auto text-left border-y" style="border-color:rgba(247,245,242,0.18)">
+          <summary class="py-5">
+            <span class="flex items-center justify-between gap-6">
+              <span class="hp-sans text-xs md:text-sm font-medium uppercase tracking-[0.22em]" style="color:#f7f5f2">{message.expertises.label}</span>
+              <span class="hp-plus hp-sans text-2xl leading-none" style="color:#c9a84c" aria-hidden="true">+</span>
+            </span>
+          </summary>
+          <ul class="hp-sans grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-sm md:text-base pb-6">
+            {message.expertises.items.map((x) => (
+              <li>
+                {x.href
+                  ? <a href={x.href} class="hp-link border-b pb-0.5" style="color:rgba(247,245,242,0.88);border-color:rgba(201,168,76,0.5)">{x.label}</a>
+                  : <span style="color:rgba(247,245,242,0.88)">{x.label}</span>}
+              </li>
+            ))}
+          </ul>
+        </details>
+
+        <a href={message.cta.href} data-track="cta_principal" data-track-position="message" class="hp-sans block sm:inline-block text-center mt-10 md:mt-12 px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">
+          {ty(message.cta.label)}
+        </a>
+      </div>
+    </section>
+
+    <!-- ③ bis NOTRE MÉTHODE : comment JANUS travaille (sans liens ni CTA) -->
+    <section class="bg-white px-6 pt-12 md:pt-[72px]">
+      <div class="max-w-6xl mx-auto pb-12 md:pb-[72px] border-b" style="border-color:rgba(26,26,26,0.1)">
+        <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-6 md:mb-10" style="color:#8a6d4b">{methode.h2}</h2>
+        <ol class="hp-methode">
+          {methode.etapes.map((e) => (
+            <li class="hp-etape">
+              <p class="hp-repere hp-sans">{e.repere}</p>
+              <div class="hp-etape-tete">
+                <span class="hp-num hp-serif font-light" aria-hidden="true">{e.numero}</span>
+                <span class="hp-trait" aria-hidden="true"></span>
+                <h3 class="hp-etape-titre hp-sans">{e.titre}</h3>
+              </div>
+              <p class="hp-etape-txt hp-sans">{ty(e.texte)}</p>
+            </li>
+          ))}
+        </ol>
+        <div class="hp-mobilite hp-sans mt-8 md:mt-12 pt-6 md:pt-8 border-t" style="border-color:rgba(26,26,26,0.1)">
+          <p class="text-[11px] uppercase tracking-[0.22em]" style="color:rgba(26,26,26,0.55)">{methode.mobilite.titre}</p>
+          <p class="text-sm leading-[1.6]" style="color:rgba(26,26,26,0.62)">{ty(methode.mobilite.texte)}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ LANGUES DE TRAVAIL + EXPERTISE FRANCE–POLOGNE -->
+    <section class="bg-white px-6 py-14 md:py-20">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        <div>
+          <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-5" style="color:#8a6d4b">{langues.h2}</h2>
+          <p class="hp-serif font-light leading-[1.5] mb-5" style="font-size:clamp(1.4rem,2.4vw,1.75rem);color:#1a1a1a">
+            {langues.items.map((l, i) => (
+              <>{i > 0 && <span aria-hidden="true" style="color:#b5936b">{' · '}</span>}{l.href
+                ? <a href={l.href} class="hp-link whitespace-nowrap border-b" style="border-color:rgba(181,147,107,0.5);color:#1a1a1a">{l.nom}</a>
+                : <span class="whitespace-nowrap">{l.nom}</span>}</>
+            ))}
+          </p>
+          {langues.lien && <a href={langues.lien.href} class="hp-sans hp-link text-xs uppercase tracking-widest" style="color:#8a6d4b">{ty(langues.lien.label)}</a>}
+        </div>
+        <div class="border-t pt-10 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-16" style="border-color:rgba(181,147,107,0.4)">
+          <h2 class="hp-serif hp-balance font-light leading-tight mb-4" style="font-size:clamp(1.6rem,2.8vw,2.1rem);color:#1a1a1a">{ty(pologne.h2)}</h2>
+          <p class="hp-sans text-sm md:text-base leading-[1.7] mb-5" style="color:rgba(26,26,26,0.7)">{ty(pologne.texte)}</p>
+          <a href={pologne.lien.href} class="hp-sans hp-link text-sm font-medium border-b pb-1" style="border-color:#b5936b;color:#1a1a1a">{ty(pologne.lien.label)}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ PREUVES : lecture par chiffres (missions réelles confirmées uniquement) -->
+    <section class="bg-white px-6 pb-14 md:pb-24">
+      <div class="max-w-6xl mx-auto border-t pt-12 md:pt-16" style="border-color:rgba(26,26,26,0.1)">
+        <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-8 md:mb-12" style="color:#8a6d4b">{preuves.h2}</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-0">
+          <div class="lg:pr-14">
+            <p class="hp-serif font-light uppercase leading-none mb-4" style={`font-size:${figSize};color:#b5936b`}>{preuves.principale.chiffre}</p>
+            <p class="hp-serif text-xl md:text-2xl leading-snug max-w-lg" style="color:#1a1a1a">{ty(preuves.principale.texte)}</p>
+          </div>
+          <div class="border-t pt-8 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-14 lg:flex lg:flex-col lg:justify-end" style="border-color:#c9a84c">
+            <p class="hp-serif font-light uppercase leading-[1.05] mb-4" style="font-size:clamp(2.1rem,3.8vw,3.1rem);color:#8a6d4b">{preuves.secondaire.chiffre.split(' · ').map((c, i) => (<>{i > 0 && ' · '}<span class="whitespace-nowrap">{c}</span></>))}</p>
+            <p class="hp-serif text-lg md:text-xl leading-snug" style="color:#1a1a1a">{ty(preuves.secondaire.texte)}</p>
+          </div>
+        </div>
+        <p class="hp-sans text-sm md:text-base leading-[1.75] max-w-2xl mt-12 md:mt-14 mb-3" style="color:rgba(26,26,26,0.7)">{ty(preuves.parcours)}</p>
+        {preuves.lien && <a href={preuves.lien.href} class="hp-sans hp-link text-xs uppercase tracking-widest border-b py-1" style="border-color:#b5936b;color:#1a1a1a">{ty(preuves.lien.label)}</a>}
+      </div>
+    </section>
+
+    <!-- ⑥ POUR QUI : une ligne -->
+    <section style="background:#f7f5f2" class="px-6 py-8 md:py-10">
+      <div class="max-w-6xl mx-auto hp-sans text-sm leading-[1.7] flex flex-col lg:flex-row lg:items-baseline gap-1 lg:gap-6" style="color:rgba(26,26,26,0.72)">
+        <p class="text-[11px] uppercase tracking-[0.24em] font-medium lg:flex-shrink-0" style="color:#8a6d4b">{pourQui.titre}</p>
+        <p><span style="color:#1a1a1a">{pourQui.public}</span> — {ty(pourQui.directions)}</p>
+        <p class="lg:ml-auto">{pourQui.zones}</p>
+      </div>
+    </section>
+
+    <!-- ⑦ CTA FINAL -->
+    <section style="background:#1a1a1a" class="px-6 py-16 md:py-28 text-center">
+      <div class="max-w-xl mx-auto">
+        <h2 class="hp-serif hp-balance text-4xl md:text-5xl font-light leading-tight mb-5" style="color:#f7f5f2">{ty(ctaFinal.h2)}</h2>
+        <p class="hp-sans text-base leading-[1.8] mb-10" style="color:rgba(247,245,242,0.75)">{ty(ctaFinal.texte)}</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8">
+          <a href={ctaFinal.cta.href} data-track="cta_principal" data-track-position="final" class="hp-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{ty(ctaFinal.cta.label)}</a>
+          <a href={ctaFinal.telephone.href} data-track="clic_telephone" data-track-position="final" class="hp-sans hp-link whitespace-nowrap text-sm tracking-wider border-b py-1" style="border-color:rgba(247,245,242,0.35);color:#f7f5f2">{ctaFinal.telephone.label}</a>
+        </div>
+        {ctaFinal.note && <p class="hp-sans text-xs tracking-wider mt-6" style="color:rgba(247,245,242,0.6)">{ctaFinal.note}</p>}
+      </div>
+    </section>
+  </div>
+
+  <Tracking />
+</Layout>

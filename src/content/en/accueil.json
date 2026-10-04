@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "title": "Language & Intercultural Business Support | JANUS",
+    "description": "JANUS coordinates interpreting, translation, meeting preparation and intercultural support for companies running international projects."
+  },
+  "hero": {
+    "surtitre": "Language · Culture · People",
+    "h1": "One point of contact for your international projects.",
+    "sousTexte": "JANUS coordinates the language and intercultural side of your projects: interpreting, translation, meeting preparation, on-site support, and coaching for executives and teams.",
+    "cta": { "label": "Discuss your project →", "href": "/en/contact" }
+  },
+  "modele": {
+    "h2": "One international project. Many needs.",
+    "besoins": [
+      { "mot": "Negotiation", "reponse": "Preparation + interpreting" },
+      { "mot": "On site", "reponse": "On-site support" },
+      { "mot": "Meetings", "reponse": "On-site or remote interpreting" },
+      { "mot": "Documents", "reponse": "Professional translation" },
+      { "mot": "Teams", "reponse": "Language and intercultural training" },
+      { "mot": "Presenting", "reponse": "Presentation coaching in English" }
+    ],
+    "conclusion": ["Needs change.", "The context stays the same."]
+  },
+  "message": {
+    "lignes": ["For you, several needs.", "For JANUS, one project."],
+    "texte": "JANUS keeps the context of your project in mind and coordinates the language and intercultural expertise you need, from one meeting to the next.",
+    "perimetre": "JANUS works alongside your teams and advisers, without replacing legal, financial or industry expertise.",
+    "expertises": {
+      "label": "Expertise we can bring in",
+      "items": [
+        { "label": "Interpreting", "href": null },
+        { "label": "Translation", "href": null },
+        { "label": "Meeting and negotiation preparation", "href": null },
+        { "label": "On-site support", "href": null },
+        { "label": "Intercultural communication", "href": null },
+        { "label": "Language training", "href": null },
+        { "label": "Presentation coaching in English", "href": null }
+      ]
+    },
+    "cta": { "label": "Discuss your project →", "href": "/en/contact" }
+  },
+  "methode": {
+    "h2": "How we work",
+    "etapes": [
+      { "repere": "Before", "numero": "01", "titre": "Prepare", "texte": "Understand the context, prepare the meetings and the people involved." },
+      { "repere": "During", "numero": "02", "titre": "Support", "texte": "Remotely or on site, in France and abroad." },
+      { "repere": "Over time", "numero": "03", "titre": "Ensure continuity", "texte": "One point of contact coordinates the expertise needed throughout the project." }
+    ],
+    "mobilite": {
+      "titre": "Team mobility",
+      "texte": "Language and intercultural preparation before an assignment abroad, and support for international employees joining teams in France."
+    }
+  },
+  "langues": {
+    "h2": "Working languages",
+    "items": [
+      { "nom": "English", "href": null },
+      { "nom": "French", "href": null },
+      { "nom": "Polish", "href": null },
+      { "nom": "German", "href": null },
+      { "nom": "Spanish", "href": null },
+      { "nom": "Italian", "href": null }
+    ],
+    "lien": null
+  },
+  "pologne": {
+    "h2": "A specific strength: France–Poland",
+    "texte": "In-depth knowledge of the languages, business codes and on-the-ground realities on both sides.",
+    "lien": { "label": "Explore our France–Poland expertise →", "href": "/en/poland" }
+  },
+  "preuves": {
+    "h2": "Assignments delivered by JANUS",
+    "principale": {
+      "chiffre": "4 months",
+      "texte": "Language and intercultural support during a France–Poland M&A transaction."
+    },
+    "secondaire": {
+      "chiffre": "5 days · 18 technicians",
+      "texte": "On-site support for a Germany–Poland industrial assignment."
+    },
+    "parcours": "JANUS was founded in Lyon in 2021 by Agata Mich, following an international career in Paris and Geneva. Agata Mich works in French, Polish and English.",
+    "lien": null
+  },
+  "pourQui": {
+    "titre": "Who we work with",
+    "public": "SMEs · Mid-sized companies · Industry · Services",
+    "directions": "Executive management, procurement, sales and international teams",
+    "zones": "Lyon · Across France · Remote · Abroad"
+  },
+  "ctaFinal": {
+    "h2": "An international project in the pipeline?",
+    "texte": "Tell us about the context, the countries and the languages involved.",
+    "cta": { "label": "Discuss your project →", "href": "/en/contact" },
+    "telephone": { "label": "+33 9 67 05 68 31", "href": "tel:+33967056831" },
+    "note": null
+  }
+}

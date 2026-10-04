@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "title": "Obsługa projektów międzynarodowych | JANUS",
+    "description": "JANUS koordynuje tłumaczenia, przygotowanie spotkań, wsparcie międzykulturowe i działania na miejscu w międzynarodowych projektach firm."
+  },
+  "hero": {
+    "surtitre": "Język · Kultura · Ludzie",
+    "h1": "Jeden partner dla Państwa projektów międzynarodowych.",
+    "sousTexte": "JANUS koordynuje językową i międzykulturową stronę Państwa projektów międzynarodowych: tłumaczenia ustne i pisemne, przygotowanie spotkań, wsparcie na miejscu oraz coaching kadry zarządzającej i zespołów.",
+    "cta": { "label": "Porozmawiajmy o Państwa projekcie →", "href": "/pl/contact" }
+  },
+  "modele": {
+    "h2": "Jeden projekt międzynarodowy. Wiele potrzeb.",
+    "besoins": [
+      { "mot": "Negocjacje", "reponse": "Przygotowanie + tłumaczenie ustne" },
+      { "mot": "Wizyty", "reponse": "Wsparcie na miejscu" },
+      { "mot": "Spotkania", "reponse": "Tłumaczenie na miejscu lub zdalnie" },
+      { "mot": "Dokumenty", "reponse": "Profesjonalne tłumaczenia pisemne" },
+      { "mot": "Zespoły", "reponse": "Szkolenia z francuskiego lub angielskiego i przygotowanie międzykulturowe" },
+      { "mot": "Wystąpienia", "reponse": "Coaching wystąpień po francusku lub angielsku" }
+    ],
+    "conclusion": ["Potrzeby się zmieniają.", "Kontekst pozostaje ten sam."]
+  },
+  "message": {
+    "lignes": ["Dla Państwa – wiele potrzeb.", "Dla JANUS – jeden projekt."],
+    "texte": "JANUS zna kontekst Państwa projektu i koordynuje potrzebne kompetencje językowe i międzykulturowe – od jednego spotkania do kolejnego.",
+    "perimetre": "JANUS działa u boku Państwa zespołów i doradców, nie zastępując ekspertyz prawnych, finansowych ani branżowych.",
+    "expertises": {
+      "label": "Dostępne kompetencje",
+      "items": [
+        { "label": "Tłumaczenia ustne", "href": null },
+        { "label": "Tłumaczenia pisemne", "href": null },
+        { "label": "Przygotowanie spotkań i negocjacji", "href": null },
+        { "label": "Wsparcie na miejscu", "href": null },
+        { "label": "Komunikacja międzykulturowa", "href": null },
+        { "label": "Szkolenia językowe: francuski i angielski", "href": null },
+        { "label": "Coaching wystąpień po francusku lub angielsku", "href": null }
+      ]
+    },
+    "cta": { "label": "Porozmawiajmy o Państwa projekcie →", "href": "/pl/contact" }
+  },
+  "methode": {
+    "h2": "Jak pracujemy",
+    "etapes": [
+      { "repere": "Przed", "numero": "01", "titre": "Przygotowanie", "texte": "Poznajemy kontekst, przygotowujemy spotkania i uczestników." },
+      { "repere": "W trakcie", "numero": "02", "titre": "Wsparcie", "texte": "Zdalnie lub na miejscu – w Polsce, we Francji i w innych krajach." },
+      { "repere": "W dłuższej perspektywie", "numero": "03", "titre": "Ciągłość", "texte": "Jeden partner koordynuje potrzebne kompetencje przez cały projekt." }
+    ],
+    "mobilite": {
+      "titre": "Mobilność zespołów",
+      "texte": "Przygotowanie językowe i międzykulturowe pracowników wyjeżdżających za granicę, w tym do Francji, oraz wsparcie zespołów, które przyjmują zagranicznych współpracowników."
+    }
+  },
+  "langues": {
+    "h2": "Języki robocze",
+    "items": [
+      { "nom": "Polski", "href": null },
+      { "nom": "Francuski", "href": null },
+      { "nom": "Angielski", "href": null },
+      { "nom": "Niemiecki", "href": null },
+      { "nom": "Hiszpański", "href": null },
+      { "nom": "Włoski", "href": null }
+    ],
+    "lien": null
+  },
+  "pologne": {
+    "h2": "Nasza specjalizacja: Polska ↔ Francja",
+    "texte": "Znamy język, kulturę biznesu i realia pracy po obu stronach – w Polsce i we Francji.",
+    "lien": { "label": "Współpraca z Francją – dowiedz się więcej →", "href": "/pl/francja-polska" }
+  },
+  "preuves": {
+    "h2": "Zrealizowane projekty JANUS",
+    "principale": {
+      "chiffre": "4 miesiące",
+      "texte": "Wsparcie językowe i międzykulturowe przy polsko-francuskiej transakcji fuzji i przejęć (M&A)."
+    },
+    "secondaire": {
+      "chiffre": "5 dni · 18 techników",
+      "texte": "Wsparcie na miejscu podczas niemiecko-polskiego projektu przemysłowego."
+    },
+    "parcours": "Agencję JANUS założyła w 2021 roku w Lyonie Agata Mich, po międzynarodowej karierze w Paryżu i Genewie. Agata Mich pracuje po polsku, francusku i angielsku.",
+    "lien": null
+  },
+  "pourQui": {
+    "titre": "Dla kogo",
+    "public": "MŚP · Średnie i duże firmy · Przemysł · Usługi",
+    "directions": "Zarządy, działy HR, zakupów i sprzedaży, kierownicy projektów",
+    "zones": "Lyon · Francja · Polska · Inne kraje · Zdalnie"
+  },
+  "ctaFinal": {
+    "h2": "Przygotowują Państwo projekt międzynarodowy?",
+    "texte": "Prosimy krótko opisać kontekst, kraje i języki, których dotyczy projekt.",
+    "cta": { "label": "Porozmawiajmy o Państwa projekcie →", "href": "/pl/contact" },
+    "telephone": { "label": "+33 9 67 05 68 31", "href": "tel:+33967056831" },
+    "note": "Rozmawiamy po polsku."
+  }
+}
