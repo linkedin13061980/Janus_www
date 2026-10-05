@@ -44,6 +44,8 @@ export const server = {
         rgpd: z.literal('on', { error: 'Consentement RGPD requis' }),
         // Honeypot anti-spam — doit rester vide
         website: z.string().max(0).optional(),
+        // « 1 » si la mesure d'audience était acceptée au moment de l'envoi (formulaire FR) : conditionne la conversion.
+        mesure: z.literal('1').optional(),
       })
       .superRefine((d, ctx) => {
         if (d.variante === 'projet') {
@@ -207,7 +209,7 @@ export const server = {
           </div>
         `,
         });
-        return { success: true };
+        return { success: true, mesure: input.mesure === '1' };
       }
 
       // Email de confirmation à l'expéditeur
@@ -246,7 +248,7 @@ export const server = {
         `,
       });
 
-      return { success: true };
+      return { success: true, mesure: input.mesure === '1' };
     },
   }),
 };

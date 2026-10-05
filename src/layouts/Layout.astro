@@ -36,8 +36,13 @@ const hreflang = alternates ? hreflangPaths(currentPath) : null;
 const alternateLinks = hreflang
   ? (Object.entries(hreflang) as [Locale, string][]).map(([loc, path]) => [loc, `https://agence-janus.fr${path}`])
   : [];
-// Google Analytics 4 — propriété JANUS. ID fixé dans le code : aucune variable d'environnement ne peut réintroduire l'ancienne propriété.
-const GA_ID = 'G-DYN5KDTKK8';
+// Balises Google — configuration unique. ID fixés dans le code : aucune variable d'environnement ne peut réintroduire l'ancienne propriété.
+// Google Ads : à renseigner une fois l'action de conversion créée (ID « AW-… » et libellé) ; tant que null, rien n'est chargé ni envoyé.
+const TAGS = {
+  ga: 'G-DYN5KDTKK8',
+  ads: null as string | null,
+  adsConversionLabel: null as string | null,
+};
 ---
 
 <!doctype html>
@@ -49,6 +54,38 @@ const GA_ID = 'G-DYN5KDTKK8';
 
     <title>{title}</title>
     <meta name="description" content={description} />
+
+    <!-- Balises Google — Consent Mode v2 basique : aucun script Google avant consentement (bandeau cookies).
+         Chargé dans <head> pour que gtag existe avant tout événement de la page (ex. conversion sur /fr/merci). -->
+    <script is:inline define:vars={{ TAGS }}>
+      window.janusTags = TAGS;
+      function loadGoogleTags() {
+        if (window.gtag) return;
+        window.dataLayer = window.dataLayer || [];
+        // gtag.js n'interprète que l'objet `arguments` (un tableau serait ignoré).
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        // Tout est refusé par défaut, puis la mesure d'audience est accordée (consentement donné).
+        // Les signaux publicitaires restent refusés tant que le bandeau ne couvre pas la publicité.
+        window.gtag('consent', 'default', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+        });
+        window.gtag('consent', 'update', { analytics_storage: 'granted' });
+        window.gtag('js', new Date());
+        window.gtag('config', TAGS.ga);
+        if (TAGS.ads) window.gtag('config', TAGS.ads);
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + TAGS.ga;
+        s.async = true;
+        document.head.appendChild(s);
+      }
+      var consentement = null;
+      try { consentement = localStorage.getItem('cookie_consent'); } catch (e) {}
+      if (consentement === 'accepted') loadGoogleTags();
+      else window.addEventListener('cookie-accepted', loadGoogleTags, { once: true });
+    </script>
     <link rel="canonical" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex, follow" />}
 
@@ -95,35 +132,5 @@ const GA_ID = 'G-DYN5KDTKK8';
     <Footer locale={locale} />
     <CookieBanner locale={locale} />
 
-    <!-- Google Analytics 4 — aucun script Google n'est chargé avant le consentement (bandeau cookies) -->
-    {GA_ID && (
-      <script define:vars={{ GA_ID }}>
-        function loadGA() {
-          if (window.gtag) return;
-          window.dataLayer = window.dataLayer || [];
-          // gtag.js n'interprète que l'objet `arguments` (un tableau serait ignoré).
-          window.gtag = function () { window.dataLayer.push(arguments); };
-          // Consent Mode v2 : mesure d'audience acceptée ; aucun usage publicitaire.
-          window.gtag('consent', 'default', {
-            analytics_storage: 'granted',
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
-          });
-          window.gtag('js', new Date());
-          window.gtag('config', GA_ID);
-          const s = document.createElement('script');
-          s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-          s.async = true;
-          document.head.appendChild(s);
-        }
-
-        if (localStorage.getItem('cookie_consent') === 'accepted') {
-          loadGA();
-        } else {
-          window.addEventListener('cookie-accepted', loadGA, { once: true });
-        }
-      </script>
-    )}
   </body>
 </html>

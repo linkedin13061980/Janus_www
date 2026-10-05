@@ -10,8 +10,13 @@ const fr = (s: string) => s.replace(/ ([?;:!])/g, '\u00A0$1');
 
 // Après un envoi réussi du formulaire : redirection vers la page de remerciement,
 // qui sert de page de conversion mesurable (GA4 / Google Ads).
+// Si la mesure était acceptée lors de l'envoi, un cookie technique à usage unique (10 min, limité à /fr/merci)
+// prouve à la page de remerciement que l'envoi a réellement abouti côté serveur.
 const envoi = Astro.getActionResult(actions.sendContact);
 if (envoi?.data?.success) {
+  if (envoi.data.mesure) {
+    Astro.cookies.set('janus_conversion', '1', { path: '/fr/merci', maxAge: 600, httpOnly: true, sameSite: 'lax', secure: import.meta.env.PROD });
+  }
   return Astro.redirect('/fr/merci', 303);
 }
 ---
