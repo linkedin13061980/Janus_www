@@ -133,7 +133,7 @@
           "href": "/fr/services#interculturel"
         },
         {
-          "label": "Coaching de prise de parole",
+          "label": "Préparation des dirigeants",
           "href": "/fr/services#coaching"
         }
       ]
@@ -143,21 +143,18 @@
     "h2": "Notre méthode",
     "etapes": [
       {
-        "repere": "Avant",
         "numero": "01",
         "titre": "Préparer",
         "texte": "Le contexte, les échanges et les personnes."
       },
       {
-        "repere": "Pendant",
         "numero": "02",
         "titre": "Accompagner",
         "texte": "À distance ou sur le terrain, en France comme à l'étranger."
       },
       {
-        "repere": "Dans la durée",
         "numero": "03",
-        "titre": "Assurer la continuité",
+        "titre": "Assurer la continuité des échanges",
         "texte": "Un même interlocuteur, tout au long du projet."
       }
     ]
@@ -196,23 +193,50 @@
     }
   },
   "pologne": {
+    "surtitre": "France ↔ Pologne",
     "h2": "Une expertise particulière : France–Pologne",
-    "texte": "Une connaissance des langues, des codes professionnels et des réalités de terrain des deux côtés.",
-    "lien": {
-      "label": "Découvrir l'expertise France–Pologne →",
-      "href": "/fr/pologne"
-    }
+    "href": "/fr/pologne"
   },
   "preuves": {
     "h2": "Missions réalisées par JANUS",
-    "principale": {
-      "chiffre": "4 mois",
-      "texte": "Accompagnement linguistique et interculturel dans le cadre d'une opération M&A France–Pologne."
-    },
-    "secondaire": {
-      "chiffre": "5 jours · 18 techniciens",
-      "texte": "Accompagnement sur site d'une mission industrielle Allemagne–Pologne."
-    },
+    "missions": [
+      {
+        "chiffres": [
+          {
+            "nombre": "4",
+            "unite": "mois"
+          }
+        ],
+        "trajet": [
+          "France",
+          "Pologne"
+        ],
+        "reperes": [
+          "Opération M&A",
+          "Accompagnement linguistique et interculturel"
+        ]
+      },
+      {
+        "chiffres": [
+          {
+            "nombre": "5",
+            "unite": "jours"
+          },
+          {
+            "nombre": "18",
+            "unite": "techniciens"
+          }
+        ],
+        "trajet": [
+          "Allemagne",
+          "Pologne"
+        ],
+        "reperes": [
+          "Mission industrielle",
+          "Accompagnement sur site"
+        ]
+      }
+    ],
     "parcours": "JANUS a été fondée en 2021 à Lyon par Agata Mich, après un parcours international à Paris et à Genève. Agata Mich travaille en français, polonais, anglais et russe.",
     "lien": {
       "label": "Découvrir JANUS →",

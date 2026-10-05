@@ -126,29 +126,42 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
       }
     }
     @media (prefers-reduced-motion: reduce) { .hp-sits *, .hp-sits *::before { transition: none !important; animation: none !important; } }
-    /* Notre méthode : 3 temps (avant, pendant, dans la durée), visibles sans clic. Mobile : filet vertical ; desktop (≥ 1024 px) : 3 colonnes reliées par un filet fléché. */
-    .hp-methode { list-style: none; margin: 0; padding: 0 0 0 20px; position: relative; }
-    .hp-methode::before { content: ""; position: absolute; left: 3px; top: 6px; bottom: 6px; width: 1px; background: #c9a84c; }
-    .hp-etape + .hp-etape { margin-top: 1.4rem; }
-    .hp-repere { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(26,26,26,.5); margin: 0 0 .2rem; }
-    .hp-etape-tete { display: flex; align-items: baseline; gap: .7rem; }
-    .hp-num { font-size: 1.75rem; line-height: 1; color: #b5936b; }
-    .hp-trait { display: none; }
-    .hp-etape-titre { font-size: 13px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: #1a1a1a; margin: 0; }
-    .hp-etape-txt { font-size: .95rem; line-height: 1.5; color: rgba(26,26,26,.7); margin: .3rem 0 0; }
-    @media (min-width: 1024px) {
-      .hp-methode { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 2.5rem; padding: 0; }
-      .hp-methode::before { content: none; }
-      .hp-etape + .hp-etape { margin-top: 0; }
-      .hp-repere { margin-bottom: .5rem; }
-      .hp-etape-tete { flex-wrap: wrap; align-items: center; gap: .9rem; }
-      .hp-num { font-size: 2.75rem; }
-      .hp-trait { display: block; flex: 1; height: 1px; background: #c9a84c; position: relative; margin-right: -1.6rem; }
-      .hp-trait::after { content: ""; position: absolute; right: 0; top: -4px; border: 4.5px solid transparent; border-left: 7px solid #c9a84c; border-right: 0; }
-      .hp-etape:last-child .hp-trait { visibility: hidden; margin-right: 0; }
-      .hp-etape-titre { flex-basis: 100%; margin-top: .4rem; }
-      .hp-etape-txt { margin-top: .5rem; }
+    /* Notre méthode : bande compacte, 3 étapes visibles sans interaction. Desktop : sur une ligne, reliées par des flèches. */
+    .hp-met-list { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 18px; }
+    .hp-met-item { display: grid; grid-template-columns: 2.5rem minmax(0,1fr); column-gap: 12px; align-items: baseline; }
+    .hp-met-num { font-size: 1.6rem; line-height: 1; color: #b5936b; }
+    .hp-met-titre { font-weight: 400; font-size: 1.35rem; line-height: 1.2; color: #1a1a1a; margin: 0; }
+    .hp-met-txt { grid-column: 2; font-size: 14px; line-height: 1.5; color: rgba(26,26,26,.68); margin: 4px 0 0; }
+    .hp-met-fl { display: none; }
+    /* Missions : preuve sur fond sombre (faits publiés uniquement). */
+    .hp-mis-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .hp-mis-card { border: 1px solid rgba(247,245,242,.14); padding: 24px 22px; transition: border-color .25s ease; }
+    .hp-mis-fig { display: flex; flex-direction: column; gap: 2px; font-weight: 300; color: #c9a84c; line-height: .95; margin: 0 0 18px; }
+    .hp-mis-grp { display: flex; align-items: baseline; gap: 12px; white-space: nowrap; }
+    .hp-mis-big { font-size: clamp(3rem,6.5vw,5rem); }
+    .hp-mis-unit { font-size: clamp(1.15rem,2vw,1.7rem); color: #b5936b; text-transform: uppercase; letter-spacing: .04em; }
+    .hp-route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: #f7f5f2; margin: 0 0 16px; }
+    .hp-route-ligne { position: relative; height: 1px; background: rgba(201,168,76,.6); }
+    .hp-route-ligne::before, .hp-route-ligne::after { content: ""; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: #c9a84c; }
+    .hp-route-ligne::before { left: 0; } .hp-route-ligne::after { right: 0; }
+    .hp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; font-size: 12px; line-height: 1.4; }
+    .hp-tags li { border: 1px solid rgba(247,245,242,.2); color: rgba(247,245,242,.85); padding: 5px 10px; }
+    /* Passerelle France–Pologne. */
+    .hp-pass { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 20px; border: 1px solid rgba(181,147,107,.55); color: #1a1a1a; transition: background-color .25s ease, border-color .25s ease; }
+    .hp-pass-fl { color: #b5936b; font-size: 1.2rem; transition: transform .25s ease; }
+    @media (hover: hover) {
+      .hp-mis-card:hover { border-color: rgba(201,168,76,.55); }
+      .hp-pass:hover { background: #fbf9f6; border-color: #b5936b; }
+      .hp-pass:hover .hp-pass-fl { transform: translateX(3px); }
     }
+    @media (min-width: 1024px) {
+      .hp-met-wrap { display: grid; grid-template-columns: 12rem minmax(0,1fr); gap: 32px; align-items: start; }
+      .hp-met-list { margin: 0; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); gap: 24px; align-items: start; }
+      .hp-met-fl { display: block; color: #b5936b; padding-top: 4px; }
+      .hp-mis-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+      .hp-mis-card { padding: 44px 40px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .hp-mis-card, .hp-pass, .hp-pass-fl { transition: none !important; } }
   </style>
 
   <div class="hp">
@@ -277,64 +290,68 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
       </div>
     </section>
 
-    <!-- ③ bis NOTRE MÉTHODE : comment JANUS travaille (sans liens ni CTA) -->
-    <section class="bg-white px-6 pt-12 md:pt-[72px]">
-      <div class="max-w-6xl mx-auto pb-12 md:pb-[72px] border-b" style="border-color:rgba(26,26,26,0.1)">
-        <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-6 md:mb-10" style="color:#8a6d4b">{methode.h2}</h2>
-        <ol class="hp-methode">
-          {methode.etapes.map((e) => (
-            <li class="hp-etape">
-              <p class="hp-repere hp-sans">{e.repere}</p>
-              <div class="hp-etape-tete">
-                <span class="hp-num hp-serif font-light" aria-hidden="true">{e.numero}</span>
-                <span class="hp-trait" aria-hidden="true"></span>
-                <h3 class="hp-etape-titre hp-sans">{e.titre}</h3>
-              </div>
-              <p class="hp-etape-txt hp-sans">{e.texte}</p>
-            </li>
+    <!-- ③ bis NOTRE MÉTHODE : bande compacte, 3 étapes visibles (sans interaction) -->
+    <section class="bg-white px-6 pt-10 lg:pt-16">
+      <div class="max-w-6xl mx-auto pb-10 lg:pb-16 border-b hp-met-wrap" style="border-color:rgba(26,26,26,0.1)">
+        <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] m-0" style="color:#8a6d4b">{methode.h2}</h2>
+        <ol class="hp-met-list hp-sans">
+          {methode.etapes.map((e, i) => (
+            <>
+              {i > 0 && <li class="hp-met-fl" aria-hidden="true">→</li>}
+              <li class="hp-met-item">
+                <span class="hp-met-num hp-serif font-light" aria-hidden="true">{e.numero}</span>
+                <h3 class="hp-met-titre hp-serif">{e.titre}</h3>
+                <p class="hp-met-txt">{fr(e.texte)}</p>
+              </li>
+            </>
           ))}
         </ol>
       </div>
     </section>
 
-    <!-- ④ LANGUES DE TRAVAIL + EXPERTISE FRANCE–POLOGNE -->
-    <section class="bg-white px-6 py-14 md:py-20">
-      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-        <div>
-          <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-5" style="color:#8a6d4b">{langues.h2}</h2>
-          <p class="hp-serif font-light leading-[1.5] mb-5" style="font-size:clamp(1.4rem,2.4vw,1.75rem);color:#1a1a1a">
-            {langues.items.map((l, i) => (
-              <>{i > 0 && <span aria-hidden="true" style="color:#b5936b">{' · '}</span>}{l.href
-                ? <a href={l.href} class="hp-link whitespace-nowrap border-b" style="border-color:rgba(181,147,107,0.5);color:#1a1a1a">{l.nom}</a>
-                : <span class="whitespace-nowrap">{l.nom}</span>}</>
-            ))}
-          </p>
-          <a href={langues.lien.href} class="hp-sans hp-link text-xs uppercase tracking-widest" style="color:#8a6d4b">{fr(langues.lien.label)}</a>
+    <!-- ⑤ MISSIONS : preuve sur fond sombre (missions réelles confirmées uniquement) + parcours d'Agata Mich -->
+    <section class="px-6 py-14 lg:py-[88px]" style="background:#1a1a1a">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-6 lg:mb-8" style="color:#c9a84c">{preuves.h2}</h2>
+        <div class="hp-mis-grid">
+          {preuves.missions.map((m) => (
+            <article class="hp-mis-card">
+              <p class="hp-mis-fig hp-serif">
+                {m.chiffres.map((c) => <span class="hp-mis-grp"><span class="hp-mis-big">{c.nombre}</span><span class="hp-mis-unit">{c.unite}</span></span>)}
+              </p>
+              <p class="hp-route hp-sans"><span>{m.trajet[0]}</span><span class="hp-route-ligne" aria-hidden="true"></span><span>{m.trajet[1]}</span></p>
+              <ul class="hp-tags hp-sans">{m.reperes.map((r) => <li>{r}</li>)}</ul>
+            </article>
+          ))}
         </div>
-        <div class="border-t pt-10 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-16" style="border-color:rgba(181,147,107,0.4)">
-          <h2 class="hp-serif hp-balance font-light leading-tight mb-4" style="font-size:clamp(1.6rem,2.8vw,2.1rem);color:#1a1a1a">{fr(pologne.h2)}</h2>
-          <p class="hp-sans text-sm md:text-base leading-[1.7] mb-5" style="color:rgba(26,26,26,0.7)">{pologne.texte}</p>
-          <a href={pologne.lien.href} class="hp-sans hp-link text-sm font-medium border-b pb-1" style="border-color:#b5936b;color:#1a1a1a">{fr(pologne.lien.label)}</a>
+        <div class="mt-6 lg:mt-9 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-2.5 lg:gap-10 items-baseline hp-sans">
+          <p class="text-sm leading-[1.65] max-w-2xl m-0" style="color:rgba(247,245,242,0.7)">{preuves.parcours}</p>
+          <a href={preuves.lien.href} class="hp-link justify-self-start text-xs uppercase tracking-[0.2em] border-b pb-1" style="color:#f7f5f2;border-color:#b5936b">{fr(preuves.lien.label)}</a>
         </div>
       </div>
     </section>
 
-    <!-- ⑤ PREUVES : lecture par chiffres (missions réelles confirmées uniquement) -->
-    <section class="bg-white px-6 pb-14 md:pb-24">
-      <div class="max-w-6xl mx-auto border-t pt-12 md:pt-16" style="border-color:rgba(26,26,26,0.1)">
-        <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-8 md:mb-12" style="color:#8a6d4b">{preuves.h2}</h2>
-        <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-0">
-          <div class="lg:pr-14">
-            <p class="hp-serif font-light uppercase leading-none mb-4" style="font-size:clamp(4.5rem,10vw,8rem);color:#b5936b">{preuves.principale.chiffre}</p>
-            <p class="hp-serif text-xl md:text-2xl leading-snug max-w-lg" style="color:#1a1a1a">{fr(preuves.principale.texte)}</p>
-          </div>
-          <div class="border-t pt-8 lg:border-t-0 lg:pt-0 lg:border-l lg:pl-14 lg:flex lg:flex-col lg:justify-end" style="border-color:#c9a84c">
-            <p class="hp-serif font-light uppercase leading-[1.05] mb-4" style="font-size:clamp(2.1rem,3.8vw,3.1rem);color:#8a6d4b">{preuves.secondaire.chiffre.split(' · ').map((c, i) => (<>{i > 0 && ' · '}<span class="whitespace-nowrap">{c}</span></>))}</p>
-            <p class="hp-serif text-lg md:text-xl leading-snug" style="color:#1a1a1a">{fr(preuves.secondaire.texte)}</p>
-          </div>
+    <!-- ④ LANGUES DE TRAVAIL + passerelle courte vers /fr/pologne -->
+    <section class="bg-white px-6 py-10 lg:py-14">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-14 items-center">
+        <div>
+          <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-2.5" style="color:#8a6d4b">{langues.h2}</h2>
+          <p class="hp-serif font-light leading-[1.5] mb-2" style="font-size:clamp(1.25rem,2.2vw,1.6rem);color:#1a1a1a">
+            {langues.items.map((l, i) => (
+              <><span class="whitespace-nowrap">{l.href
+                ? <a href={l.href} class="hp-link border-b" style="border-color:rgba(181,147,107,0.5);color:#1a1a1a">{l.nom}</a>
+                : <span>{l.nom}</span>}{i < langues.items.length - 1 && <span aria-hidden="true" style="color:#b5936b">{' ·'}</span>}</span>{i < langues.items.length - 1 && ' '}</>
+            ))}
+          </p>
+          <a href={langues.lien.href} class="hp-sans hp-link text-xs uppercase tracking-widest" style="color:#8a6d4b">{fr(langues.lien.label)}</a>
         </div>
-        <p class="hp-sans text-sm md:text-base leading-[1.75] max-w-2xl mt-12 md:mt-14 mb-3" style="color:rgba(26,26,26,0.7)">{preuves.parcours}</p>
-        <a href={preuves.lien.href} class="hp-sans hp-link text-xs uppercase tracking-widest border-b py-1" style="border-color:#b5936b;color:#1a1a1a">{fr(preuves.lien.label)}</a>
+        <a href={pologne.href} class="hp-pass">
+          <span>
+            <span class="hp-sans block text-[11px] font-medium uppercase tracking-[0.22em] mb-1" style="color:#8a6d4b">{fr(pologne.surtitre)}</span>
+            <h2 class="hp-serif font-normal m-0" style="font-size:1.3rem;line-height:1.2">{fr(pologne.h2)}</h2>
+          </span>
+          <span class="hp-pass-fl hp-sans" aria-hidden="true">→</span>
+        </a>
       </div>
     </section>
 
