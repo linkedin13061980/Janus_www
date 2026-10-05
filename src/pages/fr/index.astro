@@ -1,7 +1,7 @@
 ---
 // Homepage FR : explique le modèle JANUS (un projet, plusieurs besoins, un seul interlocuteur qui garde le contexte).
-// Lecture rapide : situation du client → intervention de JANUS → action. Les situations sont repliables (<details>),
-// leur contenu reste dans le HTML initial ; une seule ouverte à la fois (attribut name), aucune ouverte au chargement.
+// Lecture rapide : situation du client → intervention de JANUS → action. Situations : boutons + panneaux ;
+// contenu dans le HTML initial (affiché sans JavaScript), une seule situation active, aucune au chargement.
 // Contenu : /src/content/fr/accueil.json.
 import Layout from '../../layouts/Layout.astro';
 import Tracking from '../../components/ui/Tracking.astro';
@@ -59,20 +59,73 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
     .hp details > summary::-webkit-details-marker { display: none; }
     .hp details[open] .hp-plus { transform: rotate(45deg); }
     .hp-plus { transition: transform .2s ease; }
-    /* Situations : liste verticale repliable. Mobile : contenu en une colonne ; desktop (≥ 768 px) : deux colonnes. */
-    .hp-sit summary { display: grid; grid-template-columns: 2.5rem minmax(0,1fr) auto; align-items: center; gap: 1rem; min-height: 64px; padding: 1.1rem 0; }
-    .hp-sit summary:focus-visible { outline: 2px solid #b5936b; outline-offset: 4px; }
-    .hp-sit-num { font-size: 1.35rem; line-height: 1; color: #b5936b; }
-    .hp-sit-titre { font-size: clamp(1.2rem, 2.1vw, 1.6rem); line-height: 1.25; font-weight: 300; color: #1a1a1a; margin: 0; }
-    .hp-sit summary:hover .hp-sit-titre { color: #8a6d4b; }
-    .hp-sit-corps { display: grid; grid-template-columns: minmax(0,1fr); gap: 1.5rem; padding: 0 0 2rem 3.5rem; }
-    .hp-sit-label { font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: #8a6d4b; margin: 0 0 .5rem; }
-    .hp-sit-liste { list-style: none; margin: 0 0 1.25rem; padding: 0; }
-    .hp-sit-liste li { position: relative; padding-left: 1.6rem; line-height: 1.5; }
-    .hp-sit-liste li + li { margin-top: .35rem; }
+    /* Situations. Mobile/tablette : cartes empilées, la carte choisie s'agrandit sur place.
+       Desktop (≥ 1024 px) : sélection à gauche, grand panneau associé à droite (hauteur stable). */
+    .hp-sits-grid { display: grid; gap: 12px; }
+    .hp-sit { background: #fff; border: 1px solid rgba(26,26,26,.08); transition: background-color .25s ease, border-color .25s ease, transform .25s ease; }
+    .hp-sit-h { margin: 0; font: inherit; }
+    .hp-sit-btn { appearance: none; border: 0; background: none; margin: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; width: 100%;
+      display: grid; grid-template-columns: 2.25rem minmax(0,1fr) auto; grid-template-areas: "num cat fl" "num titre fl"; column-gap: 12px; row-gap: 4px; align-items: start; padding: 20px; }
+    .hp-sit-btn:focus-visible { outline: 2px solid #b5936b; outline-offset: 3px; }
+    .hp-sit-num { grid-area: num; font-weight: 300; font-size: 1.6rem; line-height: 1; color: #b5936b; transition: color .25s; }
+    .hp-sit-cat { grid-area: cat; font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: #8a6d4b; transition: color .25s; }
+    .hp-sit-titre { grid-area: titre; font-weight: 400; font-size: 1.3rem; line-height: 1.25; color: #1a1a1a; transition: color .25s; }
+    .hp-sit-fleche { grid-area: fl; align-self: center; color: #b5936b; font-size: 1.1rem; transition: transform .25s ease, color .25s; }
+    .hp-sit.is-active { background: #1a1a1a; border-color: #1a1a1a; }
+    .hp-sit.is-active .hp-sit-num, .hp-sit.is-active .hp-sit-cat { color: #c9a84c; }
+    .hp-sit.is-active .hp-sit-titre { color: #f7f5f2; }
+    .hp-sit.is-active .hp-sit-fleche { transform: rotate(90deg); color: #c9a84c; }
+    .hp-sit-pad { padding: 0 20px 24px 68px; display: grid; gap: 20px; font-size: 15px; line-height: 1.6; color: rgba(26,26,26,.8); }
+    .hp-sit.is-active .hp-sit-pad { color: rgba(247,245,242,.82); }
+    .hp-sit-label { font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: #8a6d4b; margin: 0 0 8px; }
+    .hp-sit.is-active .hp-sit-label { color: #c9a84c; }
+    .hp-sit-enjeu { margin: 0; }
+    .hp-sit-liste { list-style: none; margin: 0 0 20px; padding: 0; line-height: 1.5; }
+    .hp-sit-liste li { position: relative; padding-left: 1.5rem; }
+    .hp-sit-liste li + li { margin-top: 6px; }
     .hp-sit-liste li::before { content: "—"; position: absolute; left: 0; color: #b5936b; }
-    @media (max-width: 479px) { .hp-sit summary { grid-template-columns: 1.75rem minmax(0,1fr) auto; gap: .75rem; } .hp-sit-corps { padding-left: 2.5rem; } }
-    @media (min-width: 768px) { .hp-sit-corps { grid-template-columns: minmax(0,1fr) minmax(0,1.2fr); gap: 3rem; } }
+    .hp-sit-cta { display: inline-block; font-size: 14px; font-weight: 500; color: #1a1a1a; border-bottom: 1px solid #b5936b; padding-bottom: 4px; transition: opacity .2s; }
+    .hp-sit.is-active .hp-sit-cta { color: #f7f5f2; }
+    .hp-sit-cta:hover { opacity: .75; }
+    .hp-sit-cta:focus-visible { outline: 2px solid #c9a84c; outline-offset: 3px; }
+    .hp-sits-vide { display: none; }
+    .hp-sits.js .hp-sit-panel { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows .3s ease, visibility 0s linear .3s; }
+    .hp-sits.js .hp-sit-panel-in { overflow: hidden; min-height: 0; }
+    .hp-sits.js .hp-sit-pad { opacity: 0; transition: opacity .2s ease; }
+    .hp-sits.js .hp-sit.is-active .hp-sit-panel { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .3s ease, visibility 0s; }
+    .hp-sits.js .hp-sit.is-active .hp-sit-pad { opacity: 1; transition: opacity .25s ease .1s; }
+    @media (hover: hover) {
+      .hp-sit:not(.is-active):hover { border-color: rgba(181,147,107,.55); background: #fffdf9; transform: translateY(-1px); }
+      .hp-sit:not(.is-active):hover .hp-sit-fleche { transform: translateX(3px); }
+    }
+    @media (min-width: 1024px) {
+      .hp-sits.js .hp-sits-grid { grid-template-columns: minmax(0,5fr) minmax(0,7fr); grid-template-rows: repeat(5, auto) 1fr; column-gap: 0; row-gap: 10px; }
+      .hp-sits.js .hp-sit { display: contents; }
+      .hp-sits.js .hp-sit-h { grid-column: 1; display: flex; }
+      .hp-sits.js .hp-sit:nth-child(1) .hp-sit-h { grid-row: 1; } .hp-sits.js .hp-sit:nth-child(2) .hp-sit-h { grid-row: 2; } .hp-sits.js .hp-sit:nth-child(3) .hp-sit-h { grid-row: 3; }
+      .hp-sits.js .hp-sit:nth-child(4) .hp-sit-h { grid-row: 4; } .hp-sits.js .hp-sit:nth-child(5) .hp-sit-h { grid-row: 5; }
+      .hp-sits.js .hp-sit-btn { flex: 1 1 auto; width: auto; background: #fff; border: 1px solid rgba(26,26,26,.08); margin-right: 28px; padding: 20px 24px; grid-template-columns: 2.5rem minmax(0,1fr) auto;
+        transition: background-color .25s ease, border-color .25s ease, margin .25s ease, transform .25s ease; }
+      /* Le bloc actif rejoint le panneau ; sa zone de texte garde la même largeur (pas de changement de hauteur). */
+      .hp-sits.js .hp-sit.is-active .hp-sit-btn { background: #1a1a1a; border-color: #1a1a1a; margin-right: 0; padding-right: 52px; }
+      .hp-sits.js .hp-sit.is-active .hp-sit-fleche { transform: none; }
+      /* Tous les panneaux occupent la même zone : la hauteur reste celle du plus long, sans saut vertical. */
+      .hp-sits.js .hp-sit-panel, .hp-sits.js .hp-sits-vide { grid-column: 2; grid-row: 1 / 7; }
+      .hp-sits.js .hp-sit-panel { display: block; background: #1a1a1a; opacity: 0; transition: opacity .25s ease, visibility 0s linear .25s; }
+      .hp-sits.js .hp-sit.is-active .hp-sit-panel { opacity: 1; transition: opacity .25s ease, visibility 0s; }
+      .hp-sits.js .hp-sit-panel-in { overflow: visible; }
+      .hp-sits.js .hp-sit-pad { opacity: 1; padding: 48px 56px; gap: 28px; font-size: 16px; color: rgba(247,245,242,.82); }
+      .hp-sits.js .hp-sit-label { color: #c9a84c; }
+      .hp-sits.js .hp-sit-cta { color: #f7f5f2; }
+      .hp-sits.js .hp-sit-enjeu { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.65rem; line-height: 1.35; font-weight: 300; color: #f7f5f2; }
+      .hp-sits.js .hp-sits-vide { display: flex; flex-direction: column; justify-content: center; padding: 48px 56px; border: 1px solid rgba(26,26,26,.12); transition: opacity .25s ease; }
+      .hp-sits.js.has-active .hp-sits-vide { opacity: 0; visibility: hidden; }
+      @media (hover: hover) {
+        .hp-sits.js .hp-sit:not(.is-active):hover { transform: none; }
+        .hp-sits.js .hp-sit:not(.is-active) .hp-sit-btn:hover { border-color: rgba(181,147,107,.55); background: #fffdf9; transform: translateX(2px); }
+      }
+    }
+    @media (prefers-reduced-motion: reduce) { .hp-sits *, .hp-sits *::before { transition: none !important; animation: none !important; } }
     /* Notre méthode : 3 temps (avant, pendant, dans la durée), visibles sans clic. Mobile : filet vertical ; desktop (≥ 1024 px) : 3 colonnes reliées par un filet fléché. */
     .hp-methode { list-style: none; margin: 0; padding: 0 0 0 20px; position: relative; }
     .hp-methode::before { content: ""; position: absolute; left: 3px; top: 6px; bottom: 6px; width: 1px; background: #c9a84c; }
@@ -127,35 +180,80 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
       </div>
     </section>
 
-    <!-- ② SITUATIONS : le visiteur choisit la sienne ; contenu présent dans le HTML, une seule ouverte à la fois -->
-    <section style="background:#f7f5f2" class="px-6 py-14 md:py-20" aria-labelledby="situations-titre">
-      <div class="max-w-5xl mx-auto">
+    <!-- ② SITUATIONS : le visiteur choisit la sienne. Contenus dans le HTML initial (lisibles sans JavaScript) ;
+         une seule situation active, aucune au chargement. Desktop : sélection à gauche, panneau à droite. -->
+    <section id="situations" class="hp-sits px-6 py-14 md:py-20" style="background:#f7f5f2" aria-labelledby="situations-titre">
+      <div class="max-w-6xl mx-auto">
         <h2 id="situations-titre" class="hp-serif hp-balance font-light leading-[1.1] mb-8 md:mb-12" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{fr(situations.h2)}</h2>
-        <div class="border-t" style="border-color:rgba(26,26,26,0.15)">
+        <div class="hp-sits-grid">
           {situations.items.map((x, i) => (
-            <details name="situations" id={`situation-${x.id}`} class="hp-sit border-b" style="border-color:rgba(26,26,26,0.15)">
-              <summary data-track="situation_ouverte" data-track-position={`situation-${num(i)}-${x.id}`}>
-                <span class="hp-sit-num hp-serif font-light" aria-hidden="true">{num(i)}</span>
-                <h3 class="hp-sit-titre hp-serif">{fr(x.titre)}</h3>
-                <span class="hp-plus hp-sans text-2xl leading-none" style="color:#b5936b" aria-hidden="true">+</span>
-              </summary>
-              <div class="hp-sit-corps hp-sans">
-                <div>
-                  <p class="hp-sit-label">{situations.labels.enjeu}</p>
-                  <p class="text-[15px] md:text-base leading-[1.6]" style="color:rgba(26,26,26,0.8)">{fr(x.enjeu)}</p>
-                </div>
-                <div>
-                  <p class="hp-sit-label">{situations.labels.intervient}</p>
-                  <ul class="hp-sit-liste text-[15px] md:text-base" style="color:#1a1a1a">
-                    {x.interventions.map((v) => <li>{v}</li>)}
-                  </ul>
-                  <a href={x.cta.href} data-track="cta_principal" data-track-position={`situation-${num(i)}`} class="hp-link text-sm font-medium border-b pb-1" style="border-color:#b5936b;color:#1a1a1a">{fr(x.cta.label)}</a>
-                </div>
+            <div class="hp-sit">
+              <h3 class="hp-sit-h">
+                <button type="button" class="hp-sit-btn" id={`situation-${x.id}`} aria-expanded="false" aria-controls={`situation-${x.id}-contenu`} data-track-open="situation_ouverte" data-track-position={`situation-${num(i)}-${x.id}`}>
+                  <span class="hp-sit-num hp-serif" aria-hidden="true">{num(i)}</span>
+                  <span class="hp-sit-cat hp-sans">{fr(x.categorie)}</span>
+                  <span class="hp-sit-titre hp-serif">{fr(x.titre)}</span>
+                  <span class="hp-sit-fleche hp-sans" aria-hidden="true">→</span>
+                </button>
+              </h3>
+              <div class="hp-sit-panel hp-sans" id={`situation-${x.id}-contenu`} role="region" aria-labelledby={`situation-${x.id}`}>
+                <div class="hp-sit-panel-in"><div class="hp-sit-pad">
+                  <div>
+                    <p class="hp-sit-label">{situations.labels.enjeu}</p>
+                    <p class="hp-sit-enjeu">{fr(x.enjeu)}</p>
+                  </div>
+                  <div>
+                    <p class="hp-sit-label">{situations.labels.intervient}</p>
+                    <ul class="hp-sit-liste">{x.interventions.map((v) => <li>{v}</li>)}</ul>
+                    <a href={x.cta.href} data-track="cta_principal" data-track-position={`situation-${num(i)}`} class="hp-sit-cta">{fr(x.cta.label)}</a>
+                  </div>
+                </div></div>
               </div>
-            </details>
+            </div>
           ))}
+          <div class="hp-sits-vide" aria-hidden="true">
+            <p class="hp-serif font-light m-0 mb-3" style="font-size:2rem;line-height:1.2;color:#1a1a1a">{situations.vide.titre}</p>
+            <p class="hp-sans m-0 text-sm md:text-base" style="color:rgba(26,26,26,0.65)">{situations.vide.texte}</p>
+          </div>
         </div>
       </div>
+      <script is:inline>
+        (function () {
+          // Activation synchrone (pas de saut au chargement). Mesure : situation_ouverte uniquement quand une situation devient active.
+          var root = document.getElementById('situations');
+          if (!root) return;
+          root.classList.add('js');
+          var sits = [].slice.call(root.querySelectorAll('.hp-sit'));
+          function set(active) {
+            sits.forEach(function (el) {
+              var on = el === active;
+              el.classList.toggle('is-active', on);
+              el.querySelector('.hp-sit-btn').setAttribute('aria-expanded', on ? 'true' : 'false');
+            });
+            root.classList.toggle('has-active', !!active);
+          }
+          sits.forEach(function (el) {
+            var btn = el.querySelector('.hp-sit-btn');
+            btn.addEventListener('click', function () {
+              if (el.classList.contains('is-active')) { set(null); return; }
+              set(el);
+              if (typeof window.janusTrack === 'function') {
+                window.janusTrack(btn.getAttribute('data-track-open'), {
+                  link_text: (btn.querySelector('.hp-sit-titre').textContent || '').trim().slice(0, 80),
+                  position: btn.getAttribute('data-track-position'),
+                });
+              }
+            });
+          });
+          root.addEventListener('keydown', function (e) {
+            if (e.key !== 'Escape') return;
+            var a = root.querySelector('.hp-sit.is-active');
+            if (!a) return;
+            set(null);
+            a.querySelector('.hp-sit-btn').focus();
+          });
+        })();
+      </script>
     </section>
 
     <!-- ③ MESSAGE CENTRAL + périmètre + compétences mobilisées (visibles) -->

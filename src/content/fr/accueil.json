@@ -18,9 +18,14 @@
       "enjeu": "Votre enjeu",
       "intervient": "JANUS intervient"
     },
+    "vide": {
+      "titre": "Sélectionnez votre situation",
+      "texte": "Découvrez comment JANUS peut intervenir."
+    },
     "items": [
       {
         "id": "negociation",
+        "categorie": "Négociation",
         "titre": "Je prépare une négociation importante",
         "enjeu": "Comprendre votre interlocuteur, éviter les malentendus et défendre votre position avec précision.",
         "interventions": [
@@ -37,6 +42,7 @@
       },
       {
         "id": "site-etranger",
+        "categorie": "Terrain",
         "titre": "Je dois intervenir sur un site à l'étranger",
         "enjeu": "Visite, réunion technique ou rencontre fournisseur : être compris sur place, sans perte de temps ni de précision.",
         "interventions": [
@@ -52,6 +58,7 @@
       },
       {
         "id": "equipes",
+        "categorie": "Équipes internationales",
         "titre": "Mes équipes de plusieurs pays doivent travailler ensemble",
         "enjeu": "Des équipes qui se comprennent au quotidien, au-delà de la langue : méthodes de travail, codes professionnels, façons de décider.",
         "interventions": [
@@ -67,7 +74,8 @@
       },
       {
         "id": "reunion",
-        "titre": "J'ai une réunion stratégique dans une autre langue",
+        "categorie": "Réunion stratégique",
+        "titre": "J'ai une réunion importante dans une autre langue",
         "enjeu": "Présenter, convaincre ou décider dans une langue qui n'est pas la vôtre, sans rien perdre en précision.",
         "interventions": [
           "Préparation de la réunion et des supports",
@@ -82,6 +90,7 @@
       },
       {
         "id": "pologne",
+        "categorie": "France ↔ Pologne",
         "titre": "J'ai un projet avec la Pologne",
         "enjeu": "Travailler avec des partenaires, des équipes ou des clients polonais en tenant compte de la langue et des codes professionnels des deux côtés.",
         "interventions": [
