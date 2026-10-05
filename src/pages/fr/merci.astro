@@ -5,6 +5,11 @@ import merci from '../../content/fr/merci.json';
 
 // Page de conversion (après envoi du formulaire FR) : exclue de l'indexation et du sitemap.
 // Page FR uniquement : EN/PL sont désactivés dans le sélecteur de langue.
+// Conversion « formulaire_envoye » uniquement si le marqueur posé par /fr/contact après un envoi réussi est présent ;
+// il est supprimé dès cette lecture : accès direct, rechargement ou retour arrière ne déclenchent rien.
+const conversion = Astro.cookies.get('janus_conversion')?.value === '1';
+if (conversion) Astro.cookies.delete('janus_conversion', { path: '/fr/merci' });
+Astro.response.headers.set('Cache-Control', 'private, no-store');
 ---
 
 <Layout
@@ -29,5 +34,5 @@ import merci from '../../content/fr/merci.json';
       </div>
     </div>
   </section>
-  <Tracking onLoad="formulaire_envoye" />
+  <Tracking conversion={conversion ? 'formulaire_envoye' : undefined} />
 </Layout>

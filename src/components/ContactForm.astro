@@ -122,6 +122,8 @@ const err = (field: string) => {
     {variante === 'projet' ? (
       <>
         <input type="hidden" name="variante" value="projet" />
+        <!-- Mesure : « 1 » uniquement si les cookies de mesure sont acceptés au moment de l'envoi -->
+        <input type="hidden" name="mesure" value="" data-mesure />
         <!-- Type de besoin / Pays concernés -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -275,6 +277,18 @@ const err = (field: string) => {
       {t(locale, 'contact.submit')}
     </button>
   </form>
+)}
+
+{variante === 'projet' && !success && (
+  <script is:inline>
+    document.querySelectorAll('input[data-mesure]').forEach(function (champ) {
+      champ.form && champ.form.addEventListener('submit', function () {
+        var accepte = false;
+        try { accepte = localStorage.getItem('cookie_consent') === 'accepted'; } catch (e) {}
+        champ.value = accepte ? '1' : '';
+      });
+    });
+  </script>
 )}
 
 <style>

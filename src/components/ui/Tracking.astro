@@ -1,18 +1,22 @@
 ---
 // Préparation du suivi des conversions (GA4 / Google Ads), sans configuration de compte.
 // - Tout élément portant data-track="nom_evenement" envoie cet événement au clic.
-// - onLoad="nom_evenement" envoie un événement au chargement (ex. page /fr/merci).
+// - onLoad="nom_evenement" envoie un événement au chargement.
+// - conversion="nom_evenement" envoie une conversion au chargement (ex. /fr/merci après un envoi réussi) :
+//   événement GA4 et, une fois configurée dans Layout.astro, conversion Google Ads (même point d'envoi).
+// Rien n'est transmis à Google sans consentement : gtag n'existe qu'après acceptation (Consent Mode v2 basique).
 // Les événements sont poussés dans window.dataLayer et transmis à gtag() s'il est chargé
 // (GA4 n'est chargé qu'après consentement aux cookies, cf. Layout.astro).
 // Événements prévus : cta_principal · clic_telephone · prise_rdv · formulaire_envoye · situation_ouverte
 interface Props {
   onLoad?: string;
+  conversion?: string;
 }
 
-const { onLoad } = Astro.props;
+const { onLoad, conversion } = Astro.props;
 ---
 
-<script is:inline define:vars={{ onLoad }}>
+<script is:inline define:vars={{ onLoad, conversion }}>
   (function () {
     window.dataLayer = window.dataLayer || [];
     function send(name, params) {
@@ -33,5 +37,12 @@ const { onLoad } = Astro.props;
       });
     });
     if (onLoad) send(onLoad);
+    if (conversion) {
+      send(conversion);
+      var tags = window.janusTags || {};
+      if (tags.ads && tags.adsConversionLabel && typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', { send_to: tags.ads + '/' + tags.adsConversionLabel });
+      }
+    }
   })();
 </script>
