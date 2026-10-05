@@ -1,6 +1,7 @@
 ---
 // Homepage FR : explique le modèle JANUS (un projet, plusieurs besoins, un seul interlocuteur qui garde le contexte).
-// /fr/pologne montre ce modèle en situations concrètes ; ici, lecture en 5–10 s par mots-clés, sans paragraphes.
+// Lecture rapide : situation du client → intervention de JANUS → action. Les situations sont repliables (<details>),
+// leur contenu reste dans le HTML initial ; une seule ouverte à la fois (attribut name), aucune ouverte au chargement.
 // Contenu : /src/content/fr/accueil.json.
 import Layout from '../../layouts/Layout.astro';
 import Tracking from '../../components/ui/Tracking.astro';
@@ -10,9 +11,10 @@ const locale = 'fr';
 const currentPath = '/';
 
 // Typographie française : espace insécable avant « ? ; : ! » et « → », « France–Pologne » / « Allemagne–Pologne » insécables.
+const num = (i: number) => String(i + 1).padStart(2, '0');
 const fr = (s: string) => s.replace(/ ([?;:!])/g, ' $1').replace(/(France|Allemagne)–Pologne/g, '$1⁠–⁠Pologne').replace(/ →/g, ' →');
 
-const { hero, modele, message, methode, langues, pologne, preuves, pourQui, ctaFinal } = content;
+const { hero, situations, message, methode, langues, pologne, preuves, pourQui, ctaFinal } = content;
 
 // Données structurées : uniquement des informations publiées sur le site (homepage, mentions légales, contact).
 const organisation = {
@@ -57,25 +59,21 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
     .hp details > summary::-webkit-details-marker { display: none; }
     .hp details[open] .hp-plus { transform: rotate(45deg); }
     .hp-plus { transition: transform .2s ease; }
-    /* Modèle JANUS : chaîne de besoins. Mobile : axe vertical doré ; desktop (≥ 1024 px) : frise horizontale en 6 colonnes. */
-    .hp-chaine { list-style: none; margin: 0; padding: 0 0 0 26px; position: relative; }
-    .hp-chaine::before { content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 1px; background: #c9a84c; }
-    .hp-besoin { position: relative; display: grid; grid-template-columns: 9.5rem minmax(0,1fr); gap: .75rem; align-items: baseline; padding: .6rem 0; }
-    .hp-besoin::before { content: ""; position: absolute; left: -26px; top: calc(.6rem + 3px); width: 11px; height: 11px; border-radius: 50%; background: #f7f5f2; border: 2px solid #c9a84c; }
-    .hp-mot { font-size: 12px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #8a6d4b; margin: 0; }
-    .hp-fleche { display: none; }
-    .hp-rep { font-size: .9rem; line-height: 1.4; color: #1a1a1a; margin: 0; }
-    @media (min-width: 1024px) {
-      .hp-chaine { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 1.5rem; padding: 0; }
-      .hp-chaine::before { left: 0; right: 0; top: 2.35rem; bottom: auto; width: auto; height: 1px; }
-      .hp-besoin { display: block; padding: 0; }
-      .hp-besoin::before { left: 0; top: 2.35rem; margin-top: -5px; }
-      .hp-mot { font-size: 13px; height: 1.6rem; display: flex; align-items: center; gap: .6rem; }
-      .hp-fleche { display: inline; color: #b5936b; letter-spacing: 0; }
-      .hp-besoin:last-child .hp-fleche { display: none; }
-      .hp-rep { margin-top: 2.1rem; font-size: .95rem; }
-    }
-    /* Notre méthode : 3 temps (avant, pendant, dans la durée). Mobile : filet vertical ; desktop (≥ 1024 px) : 3 colonnes reliées par un filet fléché. */
+    /* Situations : liste verticale repliable. Mobile : contenu en une colonne ; desktop (≥ 768 px) : deux colonnes. */
+    .hp-sit summary { display: grid; grid-template-columns: 2.5rem minmax(0,1fr) auto; align-items: center; gap: 1rem; min-height: 64px; padding: 1.1rem 0; }
+    .hp-sit summary:focus-visible { outline: 2px solid #b5936b; outline-offset: 4px; }
+    .hp-sit-num { font-size: 1.35rem; line-height: 1; color: #b5936b; }
+    .hp-sit-titre { font-size: clamp(1.2rem, 2.1vw, 1.6rem); line-height: 1.25; font-weight: 300; color: #1a1a1a; margin: 0; }
+    .hp-sit summary:hover .hp-sit-titre { color: #8a6d4b; }
+    .hp-sit-corps { display: grid; grid-template-columns: minmax(0,1fr); gap: 1.5rem; padding: 0 0 2rem 3.5rem; }
+    .hp-sit-label { font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: #8a6d4b; margin: 0 0 .5rem; }
+    .hp-sit-liste { list-style: none; margin: 0 0 1.25rem; padding: 0; }
+    .hp-sit-liste li { position: relative; padding-left: 1.6rem; line-height: 1.5; }
+    .hp-sit-liste li + li { margin-top: .35rem; }
+    .hp-sit-liste li::before { content: "—"; position: absolute; left: 0; color: #b5936b; }
+    @media (max-width: 479px) { .hp-sit summary { grid-template-columns: 1.75rem minmax(0,1fr) auto; gap: .75rem; } .hp-sit-corps { padding-left: 2.5rem; } }
+    @media (min-width: 768px) { .hp-sit-corps { grid-template-columns: minmax(0,1fr) minmax(0,1.2fr); gap: 3rem; } }
+    /* Notre méthode : 3 temps (avant, pendant, dans la durée), visibles sans clic. Mobile : filet vertical ; desktop (≥ 1024 px) : 3 colonnes reliées par un filet fléché. */
     .hp-methode { list-style: none; margin: 0; padding: 0 0 0 20px; position: relative; }
     .hp-methode::before { content: ""; position: absolute; left: 3px; top: 6px; bottom: 6px; width: 1px; background: #c9a84c; }
     .hp-etape + .hp-etape { margin-top: 1.4rem; }
@@ -85,7 +83,6 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
     .hp-trait { display: none; }
     .hp-etape-titre { font-size: 13px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: #1a1a1a; margin: 0; }
     .hp-etape-txt { font-size: .95rem; line-height: 1.5; color: rgba(26,26,26,.7); margin: .3rem 0 0; }
-    .hp-mobilite { display: grid; grid-template-columns: 1fr; gap: .3rem; }
     @media (min-width: 1024px) {
       .hp-methode { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 2.5rem; padding: 0; }
       .hp-methode::before { content: none; }
@@ -95,11 +92,9 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
       .hp-num { font-size: 2.75rem; }
       .hp-trait { display: block; flex: 1; height: 1px; background: #c9a84c; position: relative; margin-right: -1.6rem; }
       .hp-trait::after { content: ""; position: absolute; right: 0; top: -4px; border: 4.5px solid transparent; border-left: 7px solid #c9a84c; border-right: 0; }
-      .hp-etape:last-child .hp-trait { visibility: hidden; }
+      .hp-etape:last-child .hp-trait { visibility: hidden; margin-right: 0; }
       .hp-etape-titre { flex-basis: 100%; margin-top: .4rem; }
       .hp-etape-txt { margin-top: .5rem; }
-      .hp-mobilite { grid-template-columns: repeat(3, minmax(0,1fr)); column-gap: 2.5rem; align-items: baseline; }
-      .hp-mobilite > :last-child { grid-column: span 2; }
     }
   </style>
 
@@ -132,27 +127,39 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
       </div>
     </section>
 
-    <!-- ② MODÈLE JANUS : un projet, plusieurs besoins, un contexte constant -->
-    <section style="background:#f7f5f2" class="px-6 py-14 md:py-20">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="hp-serif hp-balance font-light leading-[1.1] mb-8 md:mb-14" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{modele.h2}</h2>
-        <ol class="hp-chaine">
-          {modele.besoins.map((b) => (
-            <li class="hp-besoin">
-              <p class="hp-mot hp-sans">{b.mot}<span class="hp-fleche" aria-hidden="true">→</span></p>
-              <p class="hp-rep hp-sans">{b.reponse}</p>
-            </li>
+    <!-- ② SITUATIONS : le visiteur choisit la sienne ; contenu présent dans le HTML, une seule ouverte à la fois -->
+    <section style="background:#f7f5f2" class="px-6 py-14 md:py-20" aria-labelledby="situations-titre">
+      <div class="max-w-5xl mx-auto">
+        <h2 id="situations-titre" class="hp-serif hp-balance font-light leading-[1.1] mb-8 md:mb-12" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{fr(situations.h2)}</h2>
+        <div class="border-t" style="border-color:rgba(26,26,26,0.15)">
+          {situations.items.map((x, i) => (
+            <details name="situations" id={`situation-${x.id}`} class="hp-sit border-b" style="border-color:rgba(26,26,26,0.15)">
+              <summary data-track="situation_ouverte" data-track-position={`situation-${num(i)}-${x.id}`}>
+                <span class="hp-sit-num hp-serif font-light" aria-hidden="true">{num(i)}</span>
+                <h3 class="hp-sit-titre hp-serif">{fr(x.titre)}</h3>
+                <span class="hp-plus hp-sans text-2xl leading-none" style="color:#b5936b" aria-hidden="true">+</span>
+              </summary>
+              <div class="hp-sit-corps hp-sans">
+                <div>
+                  <p class="hp-sit-label">{situations.labels.enjeu}</p>
+                  <p class="text-[15px] md:text-base leading-[1.6]" style="color:rgba(26,26,26,0.8)">{fr(x.enjeu)}</p>
+                </div>
+                <div>
+                  <p class="hp-sit-label">{situations.labels.intervient}</p>
+                  <ul class="hp-sit-liste text-[15px] md:text-base" style="color:#1a1a1a">
+                    {x.interventions.map((v) => <li>{v}</li>)}
+                  </ul>
+                  <a href={x.cta.href} data-track="cta_principal" data-track-position={`situation-${num(i)}`} class="hp-link text-sm font-medium border-b pb-1" style="border-color:#b5936b;color:#1a1a1a">{fr(x.cta.label)}</a>
+                </div>
+              </div>
+            </details>
           ))}
-        </ol>
-        <p class="hp-serif italic font-light leading-[1.2] mt-10 md:mt-16 md:text-center" style="font-size:clamp(1.6rem,3.2vw,2.5rem);color:#1a1a1a">
-          <span class="block">{modele.conclusion[0]}</span>
-          <span class="block" style="color:#8a6d4b">{modele.conclusion[1]}</span>
-        </p>
+        </div>
       </div>
     </section>
 
-    <!-- ③ MESSAGE CENTRAL + périmètre + accordéon Expertises -->
-    <section style="background:#0d0d0d" class="px-6 py-16 md:py-24 lg:min-h-[80vh] flex items-center">
+    <!-- ③ MESSAGE CENTRAL + périmètre + compétences mobilisées (visibles) -->
+    <section style="background:#0d0d0d" class="px-6 py-16 md:py-24 flex items-center">
       <div class="max-w-4xl mx-auto w-full text-center">
         <h2 class="hp-serif hp-balance font-light leading-[1.1] mb-7" style="font-size:clamp(2.5rem,6vw,4.75rem);color:#f7f5f2">
           <span class="block">{message.lignes[0]}</span>
@@ -161,27 +168,14 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
         <p class="hp-sans text-base md:text-lg leading-[1.7] max-w-2xl mx-auto mb-4" style="color:rgba(247,245,242,0.8)">{message.texte}</p>
         <p class="hp-sans text-[13px] md:text-sm leading-[1.6] max-w-xl mx-auto mb-10 md:mb-12" style="color:rgba(247,245,242,0.55)">{message.perimetre}</p>
 
-        <details class="max-w-2xl mx-auto text-left border-y" style="border-color:rgba(247,245,242,0.18)">
-          <summary class="py-5">
-            <span class="flex items-center justify-between gap-6">
-              <span class="hp-sans text-xs md:text-sm font-medium uppercase tracking-[0.22em]" style="color:#f7f5f2">{message.expertises.label}</span>
-              <span class="hp-plus hp-sans text-2xl leading-none" style="color:#c9a84c" aria-hidden="true">+</span>
-            </span>
-          </summary>
-          <ul class="hp-sans grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-sm md:text-base pb-6">
-            {message.expertises.items.map((x) => (
-              <li>
-                {x.href
-                  ? <a href={x.href} class="hp-link border-b pb-0.5" style="color:rgba(247,245,242,0.88);border-color:rgba(201,168,76,0.5)">{x.label}</a>
-                  : <span style="color:rgba(247,245,242,0.88)">{x.label}</span>}
-              </li>
+        <div class="max-w-2xl mx-auto border-t pt-6" style="border-color:rgba(247,245,242,0.18)">
+          <p class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.22em] mb-3" style="color:#c9a84c">{message.expertises.label}</p>
+          <p class="hp-sans text-sm md:text-base leading-[1.9]">
+            {message.expertises.items.map((x, i) => (
+              <>{i > 0 && <span aria-hidden="true" style="color:#b5936b">{' · '}</span>}<a href={x.href} class="hp-link whitespace-nowrap border-b pb-0.5" style="color:rgba(247,245,242,0.88);border-color:rgba(201,168,76,0.5)">{x.label}</a></>
             ))}
-          </ul>
-        </details>
-
-        <a href={message.cta.href} data-track="cta_principal" data-track-position="message" class="hp-sans block sm:inline-block text-center mt-10 md:mt-12 px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">
-          {fr(message.cta.label)}
-        </a>
+          </p>
+        </div>
       </div>
     </section>
 
@@ -202,10 +196,6 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
             </li>
           ))}
         </ol>
-        <div class="hp-mobilite hp-sans mt-8 md:mt-12 pt-6 md:pt-8 border-t" style="border-color:rgba(26,26,26,0.1)">
-          <p class="text-[11px] uppercase tracking-[0.22em]" style="color:rgba(26,26,26,0.55)">{methode.mobilite.titre}</p>
-          <p class="text-sm leading-[1.6]" style="color:rgba(26,26,26,0.62)">{methode.mobilite.texte}</p>
-        </div>
       </div>
     </section>
 

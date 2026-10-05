@@ -4,7 +4,7 @@
 // - onLoad="nom_evenement" envoie un événement au chargement (ex. page /fr/merci).
 // Les événements sont poussés dans window.dataLayer et transmis à gtag() s'il est chargé
 // (GA4 n'est chargé qu'après consentement aux cookies, cf. Layout.astro).
-// Événements prévus : cta_principal · clic_telephone · prise_rdv · formulaire_envoye
+// Événements prévus : cta_principal · clic_telephone · prise_rdv · formulaire_envoye · situation_ouverte
 interface Props {
   onLoad?: string;
 }
@@ -24,6 +24,8 @@ const { onLoad } = Astro.props;
     document.addEventListener('click', function (e) {
       var el = e.target instanceof Element ? e.target.closest('[data-track]') : null;
       if (!el) return;
+      // <summary> d'un <details> : l'événement n'est envoyé qu'à l'ouverture (pas à la fermeture).
+      if (el.tagName === 'SUMMARY' && el.parentElement && el.parentElement.open) return;
       send(el.getAttribute('data-track'), {
         link_url: el.getAttribute('href') || undefined,
         link_text: (el.textContent || '').trim().slice(0, 80),

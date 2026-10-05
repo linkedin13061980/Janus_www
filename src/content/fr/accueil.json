@@ -6,67 +6,193 @@
   "hero": {
     "surtitre": "Linguistique · Interculturel · Humain",
     "h1": "Vos échanges internationaux, un seul interlocuteur.",
-    "sousTexte": "JANUS coordonne les dimensions linguistiques et interculturelles de vos projets : interprétation, traduction, préparation des échanges, accompagnement terrain et coaching des dirigeants et équipes.",
-    "cta": { "label": "Échanger sur votre projet →", "href": "/fr/contact" }
+    "sousTexte": "Interprétation, traduction, préparation des échanges et accompagnement terrain : JANUS coordonne ce dont votre projet a besoin.",
+    "cta": {
+      "label": "Échanger sur votre projet →",
+      "href": "/fr/contact"
+    }
   },
-  "modele": {
-    "h2": "Un projet international. Plusieurs besoins.",
-    "besoins": [
-      { "mot": "Négociation", "reponse": "Préparation + interprétation" },
-      { "mot": "Terrain", "reponse": "Accompagnement sur place" },
-      { "mot": "Réunions", "reponse": "Interprétation sur place ou à distance" },
-      { "mot": "Documents", "reponse": "Traduction professionnelle" },
-      { "mot": "Équipes", "reponse": "Formation et préparation interculturelle" },
-      { "mot": "Prise de parole", "reponse": "Coaching en anglais" }
-    ],
-    "conclusion": ["Les besoins changent.", "Le contexte, lui, reste le même."]
+  "situations": {
+    "h2": "Dans quelle situation êtes-vous ?",
+    "labels": {
+      "enjeu": "Votre enjeu",
+      "intervient": "JANUS intervient"
+    },
+    "items": [
+      {
+        "id": "negociation",
+        "titre": "Je prépare une négociation importante",
+        "enjeu": "Comprendre votre interlocuteur, éviter les malentendus et défendre votre position avec précision.",
+        "interventions": [
+          "Préparation des échanges",
+          "Briefing linguistique et interculturel",
+          "Préparation du dirigeant",
+          "Interprétation si nécessaire",
+          "Présence pendant la négociation"
+        ],
+        "cta": {
+          "label": "Parler de votre négociation →",
+          "href": "/fr/contact"
+        }
+      },
+      {
+        "id": "site-etranger",
+        "titre": "Je dois intervenir sur un site à l'étranger",
+        "enjeu": "Visite, réunion technique ou rencontre fournisseur : être compris sur place, sans perte de temps ni de précision.",
+        "interventions": [
+          "Préparation de la visite et du vocabulaire technique",
+          "Accompagnement sur place",
+          "Interprétation pendant les réunions et les visites",
+          "Traduction des documents utiles"
+        ],
+        "cta": {
+          "label": "Préparer votre intervention sur site →",
+          "href": "/fr/contact"
+        }
+      },
+      {
+        "id": "equipes",
+        "titre": "Mes équipes de plusieurs pays doivent travailler ensemble",
+        "enjeu": "Des équipes qui se comprennent au quotidien, au-delà de la langue : méthodes de travail, codes professionnels, façons de décider.",
+        "interventions": [
+          "Préparation interculturelle des équipes",
+          "Formation linguistique centrée sur le métier",
+          "Préparation d'une mission ou d'une prise de poste à l'étranger",
+          "Accompagnement de l'intégration de collaborateurs étrangers en France"
+        ],
+        "cta": {
+          "label": "Parler de vos équipes →",
+          "href": "/fr/contact"
+        }
+      },
+      {
+        "id": "reunion",
+        "titre": "J'ai une réunion stratégique dans une autre langue",
+        "enjeu": "Présenter, convaincre ou décider dans une langue qui n'est pas la vôtre, sans rien perdre en précision.",
+        "interventions": [
+          "Préparation de la réunion et des supports",
+          "Traduction des documents",
+          "Interprétation sur place ou à distance",
+          "Coaching de prise de parole en anglais"
+        ],
+        "cta": {
+          "label": "Préparer votre réunion →",
+          "href": "/fr/contact"
+        }
+      },
+      {
+        "id": "pologne",
+        "titre": "J'ai un projet avec la Pologne",
+        "enjeu": "Travailler avec des partenaires, des équipes ou des clients polonais en tenant compte de la langue et des codes professionnels des deux côtés.",
+        "interventions": [
+          "Interprétation et traduction français-polonais",
+          "Préparation des rencontres et des négociations",
+          "Accompagnement lors des visites en Pologne",
+          "Préparation des équipes françaises et polonaises"
+        ],
+        "cta": {
+          "label": "Découvrir l'accompagnement France–Pologne →",
+          "href": "/fr/pologne"
+        }
+      }
+    ]
   },
   "message": {
-    "lignes": ["Pour vous, plusieurs besoins.", "Pour JANUS, un seul projet."],
-    "texte": "JANUS garde le contexte de votre projet et coordonne les expertises linguistiques et interculturelles nécessaires d'un échange à l'autre.",
+    "lignes": [
+      "Pour vous, plusieurs besoins.",
+      "Pour JANUS, un seul projet."
+    ],
+    "texte": "JANUS garde le contexte de votre projet et coordonne les compétences nécessaires, d'un échange à l'autre.",
     "perimetre": "JANUS intervient aux côtés de vos équipes et de vos conseils, sans se substituer aux expertises juridiques, financières ou métier.",
     "expertises": {
-      "label": "Expertises mobilisables",
+      "label": "Compétences mobilisées selon la mission",
       "items": [
-        { "label": "Interprétation", "href": "/fr/services#interpretation" },
-        { "label": "Traduction", "href": "/fr/services#traduction" },
-        { "label": "Préparation de réunions et négociations", "href": "/fr/services#negociation" },
-        { "label": "Accompagnement terrain", "href": null },
-        { "label": "Communication interculturelle", "href": "/fr/services#interculturel" },
-        { "label": "Formation linguistique", "href": "/fr/services#formation" },
-        { "label": "Coaching de prise de parole en anglais", "href": null }
+        {
+          "label": "Interprétation",
+          "href": "/fr/services#interpretation"
+        },
+        {
+          "label": "Traduction",
+          "href": "/fr/services#traduction"
+        },
+        {
+          "label": "Formation linguistique",
+          "href": "/fr/services#formation"
+        },
+        {
+          "label": "Communication interculturelle",
+          "href": "/fr/services#interculturel"
+        },
+        {
+          "label": "Coaching de prise de parole",
+          "href": "/fr/services#coaching"
+        }
       ]
-    },
-    "cta": { "label": "Échanger sur votre projet →", "href": "/fr/contact" }
+    }
   },
   "methode": {
     "h2": "Notre méthode",
     "etapes": [
-      { "repere": "Avant", "numero": "01", "titre": "Préparer", "texte": "Comprendre le contexte, préparer les échanges et les personnes." },
-      { "repere": "Pendant", "numero": "02", "titre": "Accompagner", "texte": "Intervenir à distance ou sur le terrain, en France comme à l'étranger." },
-      { "repere": "Dans la durée", "numero": "03", "titre": "Assurer la continuité", "texte": "Un même interlocuteur coordonne les expertises nécessaires au fil du projet." }
-    ],
-    "mobilite": {
-      "titre": "Mobilité des équipes",
-      "texte": "Préparation linguistique et interculturelle au départ, et accompagnement de l'intégration des collaborateurs étrangers en France."
-    }
+      {
+        "repere": "Avant",
+        "numero": "01",
+        "titre": "Préparer",
+        "texte": "Le contexte, les échanges et les personnes."
+      },
+      {
+        "repere": "Pendant",
+        "numero": "02",
+        "titre": "Accompagner",
+        "texte": "À distance ou sur le terrain, en France comme à l'étranger."
+      },
+      {
+        "repere": "Dans la durée",
+        "numero": "03",
+        "titre": "Assurer la continuité",
+        "texte": "Un même interlocuteur, tout au long du projet."
+      }
+    ]
   },
   "langues": {
     "h2": "Langues de travail",
     "items": [
-      { "nom": "Français", "href": null },
-      { "nom": "Anglais", "href": "/fr/langues/anglais" },
-      { "nom": "Polonais", "href": "/fr/langues/polonais" },
-      { "nom": "Allemand", "href": "/fr/langues/allemand" },
-      { "nom": "Espagnol", "href": "/fr/langues/espagnol" },
-      { "nom": "Italien", "href": "/fr/langues/italien" }
+      {
+        "nom": "Français",
+        "href": null
+      },
+      {
+        "nom": "Anglais",
+        "href": "/fr/langues/anglais"
+      },
+      {
+        "nom": "Polonais",
+        "href": "/fr/langues/polonais"
+      },
+      {
+        "nom": "Allemand",
+        "href": "/fr/langues/allemand"
+      },
+      {
+        "nom": "Espagnol",
+        "href": "/fr/langues/espagnol"
+      },
+      {
+        "nom": "Italien",
+        "href": "/fr/langues/italien"
+      }
     ],
-    "lien": { "label": "Toutes nos langues →", "href": "/fr/langues" }
+    "lien": {
+      "label": "Toutes nos langues →",
+      "href": "/fr/langues"
+    }
   },
   "pologne": {
     "h2": "Une expertise particulière : France–Pologne",
     "texte": "Une connaissance des langues, des codes professionnels et des réalités de terrain des deux côtés.",
-    "lien": { "label": "Découvrir l'expertise France–Pologne →", "href": "/fr/pologne" }
+    "lien": {
+      "label": "Découvrir l'expertise France–Pologne →",
+      "href": "/fr/pologne"
+    }
   },
   "preuves": {
     "h2": "Missions réalisées par JANUS",
@@ -79,7 +205,10 @@
       "texte": "Accompagnement sur site d'une mission industrielle Allemagne–Pologne."
     },
     "parcours": "JANUS a été fondée en 2021 à Lyon par Agata Mich, après un parcours international à Paris et à Genève. Agata Mich travaille en français, polonais, anglais et russe.",
-    "lien": { "label": "Découvrir JANUS →", "href": "/fr/a-propos" }
+    "lien": {
+      "label": "Découvrir JANUS →",
+      "href": "/fr/a-propos"
+    }
   },
   "pourQui": {
     "titre": "Pour qui",
@@ -90,7 +219,13 @@
   "ctaFinal": {
     "h2": "Un projet international en préparation ?",
     "texte": "Présentez-nous le contexte, les pays et les langues concernés.",
-    "cta": { "label": "Échanger sur votre projet →", "href": "/fr/contact" },
-    "telephone": { "label": "+33 9 67 05 68 31", "href": "tel:+33967056831" }
+    "cta": {
+      "label": "Échanger sur votre projet →",
+      "href": "/fr/contact"
+    },
+    "telephone": {
+      "label": "+33 9 67 05 68 31",
+      "href": "tel:+33967056831"
+    }
   }
 }
