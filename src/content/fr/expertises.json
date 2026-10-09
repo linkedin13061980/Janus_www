@@ -75,6 +75,12 @@
           "Interprétation consécutive, de liaison ou en visioconférence",
           "Français ↔ anglais, polonais, allemand, espagnol",
           "Confidentialité et NDA selon les exigences de la mission"
+        ],
+        "liens": [
+          {
+            "label": "Interprétation français–polonais pour entreprises",
+            "href": "/fr/interprete-francais-polonais"
+          }
         ]
       },
       {

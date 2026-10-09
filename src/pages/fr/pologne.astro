@@ -186,6 +186,9 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
                 <span class="fp-plus fp-sans text-xl leading-none flex-shrink-0" style="color:#b5936b" aria-hidden="true">+</span>
               </summary>
               <p class="fp-sans text-sm md:text-base leading-[1.8] mt-3 pr-8" style="color:rgba(26,26,26,0.72)">{f.r}</p>
+              {'lien' in f && f.lien && (
+                <a href={f.lien.href} class="fp-sans fp-link inline-block text-sm mt-4 border-b pb-0.5" style="border-color:#b5936b;color:#1a1a1a">{fr(f.lien.label)}</a>
+              )}
             </details>
           ))}
         </div>

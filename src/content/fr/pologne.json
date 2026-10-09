@@ -66,7 +66,7 @@
     "expertises": {
       "label": "Expertises mobilisables",
       "items": [
-        { "label": "Interprétation", "href": "/fr/services#interpretation" },
+        { "label": "Interprétation", "href": "/fr/interprete-francais-polonais" },
         { "label": "Traduction", "href": "/fr/services#traduction" },
         { "label": "Préparation de réunions et négociations", "href": "/fr/services#negociation" },
         { "label": "Communication interculturelle", "href": "/fr/services#interculturel" },
@@ -114,7 +114,8 @@
     "items": [
       {
         "q": "JANUS peut-elle fournir un interprète français-polonais pour une réunion, une visite professionnelle ou une visioconférence ?",
-        "r": "Oui. Les interventions ont lieu sur site, en France ou en Pologne, ou à distance. L'interprète est choisi selon le contexte et préparé en amont sur le vocabulaire de la réunion ou de la visite. Toutes les réunions ne nécessitent pas un interprète : le niveau d'accompagnement dépend de l'enjeu."
+        "r": "Oui. Les interventions ont lieu sur site, en France ou en Pologne, ou à distance. L'interprète est choisi selon le contexte et préparé en amont sur le vocabulaire de la réunion ou de la visite. Toutes les réunions ne nécessitent pas un interprète : le niveau d'accompagnement dépend de l'enjeu.",
+        "lien": { "label": "Découvrir notre service d'interprétation français–polonais →", "href": "/fr/interprete-francais-polonais" }
       },
       {
         "q": "JANUS traduit-elle des documents professionnels du français vers le polonais ?",

@@ -12,7 +12,7 @@ interface Props {
     nom: string;
     code: FlagCode;
     hero: { surtitre: string; h1: string; intro: string };
-    services: { titre: string; texte: string }[];
+    services: { titre: string; texte: string; href?: string }[];
     situations: string[];
     formation: { titre: string; intro: string };
     marche: { titre: string; texte: string; points: string[]; liens: Lien[] };
@@ -67,10 +67,13 @@ const autres = commun.langues.filter((l) => l.slug !== data.slug);
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {data.services.map((s, i) => (
-          <article class={`flex flex-col border p-7 ${i === 0 ? 'bg-[#1a1a1a] border-[#b5936b]' : 'bg-[#f7f5f2] border-[#1a1a1a]/5'}`}>
+          <article class={`flex flex-col border p-7 ${i === 0 ? 'bg-[#1a1a1a] border-[#b5936b]' : 'bg-[#f7f5f2] border-[#1a1a1a]/5'}${s.href ? ' relative lp-card' : ''}`}>
             <p class="lp-serif font-light leading-none mb-5" style={`font-size:2rem;color:${i === 0 ? '#c9a84c' : '#b5936b'}`}>0{i + 1}</p>
-            <h3 class="lp-sans text-sm font-medium uppercase tracking-[0.15em] leading-snug mb-4" style={`color:${i === 0 ? '#f7f5f2' : '#1a1a1a'}`}>{s.titre}</h3>
+            <h3 class="lp-sans text-sm font-medium uppercase tracking-[0.15em] leading-snug mb-4" style={`color:${i === 0 ? '#f7f5f2' : '#1a1a1a'}`}>
+              {s.href ? <a href={s.href} class="lp-card-link">{s.titre}</a> : s.titre}
+            </h3>
             <p class="lp-sans text-sm leading-[1.75]" style={`color:${i === 0 ? 'rgba(247,245,242,0.75)' : 'rgba(26,26,26,0.68)'}`}>{s.texte}</p>
+            {s.href && <span class="lp-sans text-base leading-none mt-auto pt-5" style="color:#b5936b" aria-hidden="true">→</span>}
           </article>
         ))}
       </div>
@@ -177,4 +180,9 @@ const autres = commun.langues.filter((l) => l.slug !== data.slug);
   .lp-link:hover { opacity: .7; }
   .lp-card { transition: border-color .2s ease; }
   .lp-card:hover { border-color: rgba(181,147,107,.7) !important; }
+  /* Carte de service liée (href facultatif) : toute la carte est cliquable via le lien du titre. */
+  .lp-card-link { color: inherit; }
+  .lp-card-link::after { content: ''; position: absolute; inset: 0; }
+  .lp-card:has(.lp-card-link:focus-visible) { outline: 2px solid #b5936b; outline-offset: 3px; }
+  .lp-card-link:focus-visible { outline: none; }
 </style>
