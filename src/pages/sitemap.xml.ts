@@ -22,6 +22,7 @@ const locales = ['fr', 'en', 'pl'];
 const frOnlyPages = [
   { path: '/acquisition-entreprise-pologne', changefreq: 'monthly', priority: '0.8' },
   { path: '/interprete-francais-polonais', changefreq: 'monthly', priority: '0.8' },
+  { path: '/preparation-dirigeants-pologne', changefreq: 'monthly', priority: '0.8' },
   { path: '/langues/anglais', changefreq: 'monthly', priority: '0.8' },
   { path: '/langues/polonais', changefreq: 'monthly', priority: '0.8' },
   { path: '/langues/allemand', changefreq: 'monthly', priority: '0.8' },

@@ -50,6 +50,9 @@ const { hero, principales, complementaires, pologne, ctaFinal } = content;
               <h2 class="hp-serif font-light leading-tight mb-5" style={`font-size:clamp(1.7rem,3vw,2.4rem);color:${i === 0 ? '#f7f5f2' : '#1a1a1a'}`}>{x.titre}</h2>
               <p class="hp-sans text-base leading-[1.75] mb-8" style={`color:${i === 0 ? 'rgba(247,245,242,0.75)' : 'rgba(26,26,26,0.65)'}`}>{fr(x.texte)}</p>
               <a href={x.cta.href} class="hp-sans hp-link inline-block text-xs uppercase tracking-widest border-b py-2" style={`border-color:#b5936b;color:${i === 0 ? '#c9a84c' : '#1a1a1a'}`}>{fr(`${x.cta.label} →`)}</a>
+              {'lien' in x && x.lien && (
+                <p class="mt-5 mb-0"><a href={x.lien.href} class="hp-sans hp-link text-sm border-b pb-0.5" style={`border-color:rgba(181,147,107,0.6);color:${i === 0 ? '#f7f5f2' : '#1a1a1a'}`}>{fr(x.lien.label)}</a></p>
+              )}
             </div>
             <div>
               <ul class="border-t" style={`border-color:${i === 0 ? 'rgba(247,245,242,0.12)' : 'rgba(26,26,26,0.1)'}`}>

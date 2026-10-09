@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "title": "Préparer une négociation avec des partenaires polonais | JANUS",
+    "description": "Préparation des dirigeants en anglais et préparation interculturelle France–Pologne pour vos réunions, présentations et négociations avec des partenaires polonais."
+  },
+  "hero": {
+    "surtitre": "Préparation des dirigeants · France ↔ Pologne",
+    "h1": "Préparer vos réunions et négociations avec des partenaires polonais",
+    "reperes": ["Préparation en anglais", "Préparation interculturelle", "À distance, en France ou en Pologne"],
+    "intro": "Une négociation fournisseur, un comité de pilotage, la présentation d'un projet à un partenaire polonais : ces rendez-vous se jouent souvent en anglais, entre deux cultures professionnelles. JANUS prépare les dirigeants et les responsables de projet à ces échanges, sur la langue comme sur la manière de communiquer.",
+    "cta": { "label": "Parlons de votre projet", "href": "/fr/contact" },
+    "aide": "Indiquez l'échéance, vos interlocuteurs et la langue de travail."
+  },
+  "pourQui": {
+    "h2": "Pour les décideurs qui travaillent avec la Pologne",
+    "texte": "Dirigeants, directeurs de projet, responsables achats, industriels ou opérations : la préparation s'adresse à ceux qui portent un message devant des interlocuteurs polonais, dans des secteurs comme l'industrie ou l'énergie.",
+    "label": "Échéances types",
+    "echeances": [
+      "Première rencontre avec un partenaire ou un fournisseur polonais",
+      "Négociation commerciale ou contractuelle",
+      "Présentation d'un projet, d'une offre ou de résultats",
+      "Comité de pilotage ou réunion de suivi avec une équipe en Pologne",
+      "Échange délicat : désaccord, retard, demande de changement"
+    ]
+  },
+  "preparations": {
+    "surtitre": "Préparation des dirigeants",
+    "h2": "Deux préparations, un même objectif : être compris comme vous le souhaitez",
+    "intro": "La préparation est construite autour d'une échéance précise. Elle peut porter sur la langue, sur la dimension interculturelle, ou sur les deux.",
+    "items": [
+      {
+        "code": "EN",
+        "repere": "01 · Langue",
+        "titre": "Préparation linguistique en anglais",
+        "accroche": "Quand l'anglais est la langue commune, mais pas la langue maternelle de chacun.",
+        "points": [
+          "Structurer une présentation ou un argumentaire en anglais",
+          "Formuler une proposition, une demande, un refus",
+          "Préparer les objections et les questions difficiles",
+          "Travailler le vocabulaire propre à votre projet",
+          "S'entraîner par des simulations proches de la réunion réelle"
+        ]
+      },
+      {
+        "code": "FR ↔ PL",
+        "repere": "02 · Codes",
+        "titre": "Préparation interculturelle France–Pologne",
+        "accroche": "Quand chacun pense avoir été clair, et ressort avec une compréhension différente.",
+        "points": [
+          "Comprendre les écarts possibles dans les styles de communication",
+          "Préparer la conduite d'une réunion avec des interlocuteurs polonais",
+          "Formuler un désaccord ou une demande sans bloquer l'échange",
+          "Repérer les signaux d'un malentendu avant qu'il ne s'installe",
+          "Adapter son message au niveau hiérarchique et au contexte"
+        ]
+      }
+    ],
+    "modalites": [
+      { "label": "À distance", "texte": "Préparation à distance" },
+      { "label": "Sur place", "texte": "En France ou en Pologne, selon les besoins de la mission et les disponibilités" },
+      { "label": "Durée", "texte": "Préparation courte avant une échéance, ou accompagnement sur la durée d'un projet" },
+      { "label": "Formule", "texte": "Les deux préparations, séparément ou combinées" }
+    ]
+  },
+  "cas": {
+    "surtitre": "Cas de mission",
+    "chiffre": "4 mois",
+    "contexteCourt": "Projet d'acquisition d'une entreprise en Pologne par un groupe international",
+    "h2": "Quatre mois aux côtés d'un dirigeant, de la préparation aux négociations",
+    "contexte": "Pendant quatre mois, dans le cadre d'un projet d'acquisition d'une entreprise en Pologne par un groupe international, JANUS a accompagné un dirigeant appelé à négocier en anglais avec ses interlocuteurs polonais.",
+    "etapes": [
+      {
+        "titre": "Avant les négociations",
+        "texte": "Une préparation individuelle en anglais a permis de travailler la communication du dirigeant et de l'entraîner aux échanges à venir."
+      },
+      {
+        "titre": "Sur le terrain, en Pologne",
+        "texte": "Le dirigeant conduisait les discussions. L'accompagnement de JANUS portait sur deux dimensions complémentaires :",
+        "dimensions": [
+          { "titre": "Interprétation linguistique", "texte": "Faciliter la compréhension des échanges en français, en anglais et en polonais." },
+          { "titre": "Interprétation des codes interculturels", "texte": "Éclairer les nuances, les codes professionnels et les implicites qui pèsent sur la compréhension des discussions." }
+        ]
+      },
+      {
+        "titre": "Ce que cela apporte",
+        "texte": "Une continuité entre la préparation du dirigeant et les échanges sur place, avec le même regard sur la langue et sur les codes de communication."
+      }
+    ],
+    "citation": "Dans une opération internationale sensible, traduire les mots ne suffit pas. Il faut aussi comprendre ce qui se joue dans la communication.",
+    "mention": "Mission présentée de manière anonymisée.",
+    "cta": { "label": "Parlons de votre projet →", "href": "/fr/contact" }
+  },
+  "deroule": {
+    "h2": "Une préparation reliée à votre calendrier",
+    "etapes": [
+      { "titre": "Avant", "texte": "Analyse de l'échéance : objectifs, interlocuteurs, points sensibles, langue de travail. Construction du message et entraînement." },
+      { "titre": "Le jour J", "texte": "Selon le format, la réunion se tient en anglais, avec un interprète organisé par JANUS, ou avec un accompagnement de JANUS sur place." },
+      { "titre": "Après", "texte": "Retour sur l'échange et préparation de l'étape suivante : réunion complémentaire, compte rendu, nouvelle négociation." }
+    ]
+  },
+  "complements": [
+    {
+      "titre": "Et vos équipes ?",
+      "texte": "Lorsque vos équipes françaises et polonaises collaborent dans la durée, la préparation peut s'étendre aux équipes : codes de communication, conduite de réunions communes, attentes réciproques."
+    },
+    {
+      "titre": "Si votre projet demande d'autres compétences",
+      "texte": "Pendant la mission, JANUS peut aussi organiser l'interprétation français–polonais de vos réunions et visites, ainsi que la traduction de vos supports, en tenant compte de ce qui a été préparé avec vous.",
+      "lien": { "label": "Interprétation français–polonais pour entreprises →", "href": "/fr/interprete-francais-polonais" }
+    },
+    {
+      "titre": "Périmètre",
+      "texte": "JANUS intervient sur la communication, la langue et la dimension interculturelle des échanges. Les sujets techniques, juridiques ou financiers restent du ressort de vos équipes et de vos conseils.",
+      "discret": true
+    }
+  ],
+  "qui": {
+    "surtitre": "Qui vous prépare",
+    "nom": "Agata Mich",
+    "role": "Fondatrice de JANUS",
+    "langues": ["FR", "EN", "PL"],
+    "texte": "Les préparations sont assurées par Agata Mich, fondatrice de JANUS, qui travaille en français, en anglais et en polonais, et, selon les missions, par des intervenants spécialisés choisis pour la langue et le contexte concernés. Son parcours commence en 2002 à Paris, dans les fusions-acquisitions entre entreprises françaises et polonaises ; elle fonde JANUS à Lyon en 2021.",
+    "reference": { "chiffre": "5 jours · 18 techniciens", "texte": "Accompagnement sur site d'une mission industrielle Allemagne–Pologne" }
+  },
+  "faq": {
+    "h2": "Questions fréquentes",
+    "items": [
+      {
+        "q": "Comment se préparer à une négociation en anglais avec des partenaires polonais ?",
+        "r": "En partant de l'échéance : objectifs, interlocuteurs, points sensibles. La préparation combine la construction de l'argumentaire en anglais, l'entraînement aux objections et, si nécessaire, une préparation interculturelle sur la conduite de la discussion."
+      },
+      {
+        "q": "Combien de temps faut-il prévoir ?",
+        "r": "Cela dépend de l'échéance et du point de départ. Une préparation peut tenir en quelques séances avant une réunion précise, ou accompagner un projet sur plusieurs mois."
+      },
+      {
+        "q": "La préparation peut-elle se faire à distance ?",
+        "r": "Oui. La préparation se fait à distance ; des séances en présentiel, en France ou en Pologne, peuvent être organisées selon les besoins de la mission et les disponibilités."
+      },
+      {
+        "q": "Faut-il parler polonais pour travailler avec des partenaires polonais ?",
+        "r": "Non. Les échanges peuvent se dérouler en anglais. Lorsque la réunion le justifie, JANUS peut organiser une interprétation français–polonais."
+      },
+      {
+        "q": "Comment la confidentialité est-elle assurée ?",
+        "r": "Les informations transmises servent à préparer votre échéance et sont traitées avec discrétion. Lorsque le projet le nécessite, un accord de confidentialité peut être signé avant le début de la mission."
+      }
+    ]
+  },
+  "ctaFinal": {
+    "h2": "Une réunion importante avec la Pologne approche ?",
+    "texte": "Indiquez-nous l'échéance, vos interlocuteurs et ce que vous souhaitez obtenir.",
+    "cta": { "label": "Parlons de votre projet", "href": "/fr/contact" },
+    "telephone": { "label": "+33 9 67 05 68 31", "href": "tel:+33967056831" }
+  }
+}

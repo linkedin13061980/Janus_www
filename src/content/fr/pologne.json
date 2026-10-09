@@ -95,7 +95,7 @@
       "titre": "Mission industrielle Allemagne–Pologne",
       "texte": "Accompagnement sur site des équipes"
     },
-    "parcours": "JANUS a été fondée en 2021 par Agata Mich : fusions-acquisitions entre entreprises françaises et polonaises à Paris dès 2002, puis le secteur linguistique à Lyon. Agata Mich travaille en français et en polonais.",
+    "parcours": "JANUS a été fondée en 2021 par Agata Mich : fusions-acquisitions entre entreprises françaises et polonaises à Paris dès 2002, puis le secteur linguistique à Lyon. Agata Mich travaille en français, en anglais et en polonais.",
     "lien": {
       "label": "En savoir plus sur JANUS →",
       "href": "/fr/a-propos"
@@ -130,7 +130,8 @@
       },
       {
         "q": "JANUS peut-elle préparer un dirigeant à intervenir dans une langue étrangère ?",
-        "r": "Oui. JANUS peut préparer un dirigeant à une présentation, une négociation ou une intervention en contexte international, notamment en anglais dans le cadre d'échanges France–Pologne."
+        "r": "Oui. JANUS peut préparer un dirigeant à une présentation, une négociation ou une intervention en contexte international, notamment en anglais dans le cadre d'échanges France–Pologne.",
+        "lien": { "label": "Découvrir la préparation des dirigeants France–Pologne →", "href": "/fr/preparation-dirigeants-pologne" }
       },
       {
         "q": "JANUS accompagne-t-elle les entreprises lors d'une acquisition en Pologne ?",

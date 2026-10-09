@@ -1,0 +1,265 @@
+---
+// Page « Préparation des dirigeants » aux réunions et négociations avec des partenaires polonais :
+// préparation linguistique en anglais + préparation interculturelle France–Pologne, cas de mission anonymisé.
+// Distincte de /fr/pologne (page pilier) et de /fr/interprete-francais-polonais (simple lien sortant).
+// Contenu : /src/content/fr/preparation-dirigeants-pologne.json.
+// Page FR uniquement : aucune équivalence dans src/i18n/routes.ts, donc aucun hreflang et EN/PL désactivés
+// dans le sélecteur de langue. Canonical : la page elle-même.
+import Layout from '../../layouts/Layout.astro';
+import Flag from '../../components/ui/Flag.astro';
+import Tracking from '../../components/ui/Tracking.astro';
+import p from '../../content/fr/preparation-dirigeants-pologne.json';
+
+const currentPath = '/preparation-dirigeants-pologne';
+const url = `https://agence-janus.fr/fr${currentPath}`;
+
+// Typographie française : espace insécable avant « ? ; : ! » et « → », « France–Pologne » insécable.
+const fr = (s: string) => s.replace(/ ([?;:!])/g, ' $1').replace(/(France)–Pologne/g, '$1⁠–⁠Pologne').replace(/ →/g, ' →');
+
+// Données structurées : uniquement des informations publiées sur cette page et sur le site.
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Préparation des dirigeants aux réunions et négociations avec des partenaires polonais',
+  description: p.meta.description,
+  url,
+  serviceType: 'Préparation linguistique et interculturelle des dirigeants',
+  areaServed: [{ '@type': 'Country', name: 'France' }, { '@type': 'Country', name: 'Pologne' }],
+  provider: { '@type': 'Organization', name: 'JANUS', legalName: 'MICH', url: 'https://agence-janus.fr/fr/', telephone: '+33 9 67 05 68 31' },
+};
+// FAQ : reprend exactement les questions/réponses publiées sur la page.
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: p.faq.items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.r } })),
+};
+---
+
+<Layout
+  title={p.meta.title}
+  description={p.meta.description}
+  locale="fr"
+  currentPath={currentPath}
+  canonical={url}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(service)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+  <style is:global>
+    .pd-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .pd-sans { font-family: 'DM Sans', system-ui, sans-serif; }
+    .pd a { text-decoration: none; }
+    .pd-link { transition: opacity .2s ease; }
+    .pd-link:hover { opacity: .7; }
+    .pd-balance { text-wrap: balance; }
+    .pd details > summary { list-style: none; cursor: pointer; }
+    .pd details > summary::-webkit-details-marker { display: none; }
+    .pd details[open] .pd-plus { transform: rotate(45deg); }
+    .pd-plus { transition: transform .2s ease; }
+    .pd summary:focus-visible, .pd a:focus-visible { outline: 2px solid #b5936b; outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) { .pd-plus, .pd-link { transition: none; } }
+  </style>
+
+  <div class="pd">
+    <!-- 1. HERO -->
+    <section style="background:#1a1a1a" class="px-6 pt-9 pb-14 md:pt-20 md:pb-22">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-center gap-3 mb-5">
+          <Flag code="fr" class="w-8 h-5 flex-shrink-0" />
+          <Flag code="pl" class="w-8 h-5 flex-shrink-0" />
+          <p class="pd-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.26em]" style="color:#c9a84c">{p.hero.surtitre}</p>
+        </div>
+        <h1 class="pd-serif pd-balance font-light leading-[1.05] mb-5 max-w-4xl" style="font-size:clamp(2.1rem,5.4vw,4.25rem);color:#f7f5f2">{p.hero.h1}</h1>
+        <p class="pd-sans text-xs md:text-sm uppercase tracking-[0.22em] leading-[1.9] mb-5" style="color:#c9a84c">
+          {p.hero.reperes.map((r, i) => (
+            <>{i > 0 && <span aria-hidden="true" style="color:rgba(247,245,242,0.35)">{' · '}</span>}<span class="min-[360px]:whitespace-nowrap">{r}</span></>
+          ))}
+        </p>
+        <p class="pd-sans text-[15px] md:text-lg max-w-2xl leading-[1.65] mb-8 md:mb-9" style="color:rgba(247,245,242,0.82)">{fr(p.hero.intro)}</p>
+        <a href={p.hero.cta.href} data-track="cta_principal" data-track-position="hero" class="pd-sans block sm:inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{p.hero.cta.label}</a>
+        <p class="pd-sans text-sm mt-4" style="color:rgba(247,245,242,0.6)">{p.hero.aide}</p>
+      </div>
+    </section>
+
+    <!-- 2. POUR QUI -->
+    <section style="background:#f7f5f2" class="px-6 py-12 md:py-18">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-7 lg:gap-16 lg:items-start">
+        <div>
+          <h2 class="pd-serif pd-balance font-light leading-[1.12] mb-3.5" style="font-size:clamp(1.8rem,3.2vw,2.5rem);color:#1a1a1a">{p.pourQui.h2}</h2>
+          <p class="pd-sans text-[15px] md:text-base leading-[1.65] m-0" style="color:rgba(26,26,26,0.72)">{fr(p.pourQui.texte)}</p>
+        </div>
+        <div>
+          <p class="pd-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.26em] mb-2.5" style="color:#8a6d4b">{p.pourQui.label}</p>
+          <ul class="list-none m-0 p-0">
+            {p.pourQui.echeances.map((e) => (
+              <li class="pd-sans flex gap-3 text-[15px] leading-[1.6] py-2.5 border-b" style="border-color:rgba(26,26,26,0.08);color:#1a1a1a"><span aria-hidden="true" style="color:#b5936b">—</span><span>{fr(e)}</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. LES DEUX PRÉPARATIONS -->
+    <section class="bg-white px-6 py-14 md:py-24">
+      <div class="max-w-6xl mx-auto">
+        <div class="max-w-3xl mb-9 md:mb-14">
+          <p class="pd-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.26em] mb-3.5" style="color:#b5936b">{p.preparations.surtitre}</p>
+          <h2 class="pd-serif pd-balance font-light leading-[1.1] mb-4" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{fr(p.preparations.h2)}</h2>
+          <p class="pd-sans text-[15px] md:text-base leading-[1.65] m-0" style="color:rgba(26,26,26,0.68)">{p.preparations.intro}</p>
+        </div>
+        <div class="grid grid-cols-1 min-[900px]:grid-cols-2 gap-4 min-[900px]:gap-0">
+          {p.preparations.items.map((x, i) => {
+            const sombre = i === 1;
+            return (
+              <div class="px-6 py-8 md:px-11 md:py-12" style={`background:${sombre ? '#0d0d0d' : '#f7f5f2'};border-top:2px solid ${sombre ? '#c9a84c' : '#b5936b'}`}>
+                <div class="flex items-center gap-2.5 mb-5" style={`color:${sombre ? '#c9a84c' : '#b5936b'}`}>
+                  <span class="pd-sans text-[11px] font-medium tracking-[0.18em] border px-2 py-1">{x.code}</span>
+                  <span class="pd-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.26em]">{x.repere}</span>
+                </div>
+                <h3 class="pd-serif font-normal leading-[1.12] mb-2.5" style={`font-size:clamp(1.6rem,2.6vw,2.1rem);color:${sombre ? '#f7f5f2' : '#1a1a1a'}`}>{fr(x.titre)}</h3>
+                <p class="pd-serif italic font-light text-xl leading-[1.4] mb-5" style={`color:${sombre ? '#c9a84c' : '#8a6d4b'}`}>{x.accroche}</p>
+                <ul class="list-none m-0 p-0">
+                  {x.points.map((pt) => (
+                    <li class="pd-sans flex gap-3 text-[15px] leading-[1.6] py-[11px] border-t" style={`border-color:${sombre ? 'rgba(247,245,242,0.12)' : 'rgba(26,26,26,0.08)'};color:${sombre ? 'rgba(247,245,242,0.85)' : '#1a1a1a'}`}><span aria-hidden="true" style="color:#b5936b">—</span><span>{pt}</span></li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+        <ul class="list-none m-0 p-0 mt-7 md:mt-10 grid grid-cols-1 md:grid-cols-4 border-t" style="border-color:rgba(26,26,26,0.1)">
+          {p.preparations.modalites.map((m) => (
+            <li class="pd-sans flex md:flex-col gap-3 md:gap-2 text-sm leading-[1.55] py-3.5 md:pt-5 md:pb-0 md:pr-6 border-b md:border-b-0" style="border-color:rgba(26,26,26,0.08);color:rgba(26,26,26,0.72)">
+              <span class="text-[11px] font-medium uppercase tracking-[0.22em] flex-shrink-0 min-w-[84px] pt-0.5" style="color:#b5936b">{m.label}</span>
+              <span>{m.texte}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. CAS DE MISSION (anonymisé) -->
+    <section style="background:#0d0d0d" class="px-6 py-14 md:py-24">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-8 lg:gap-18">
+          <div>
+            <p class="pd-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.26em]" style="color:#c9a84c">{p.cas.surtitre}</p>
+            <p class="pd-serif font-light leading-[0.95] mt-2" style="font-size:clamp(4rem,9vw,7.5rem);color:#c9a84c">{p.cas.chiffre}</p>
+            <p class="pd-serif italic font-light leading-[1.35] mt-3.5 max-w-sm" style="font-size:clamp(1.25rem,2.2vw,1.6rem);color:rgba(247,245,242,0.7)">{p.cas.contexteCourt}</p>
+          </div>
+          <div>
+            <h2 class="pd-serif pd-balance font-light leading-[1.12] mb-4" style="font-size:clamp(1.8rem,3.4vw,2.7rem);color:#f7f5f2">{p.cas.h2}</h2>
+            <p class="pd-sans text-[15px] md:text-base leading-[1.65] m-0" style="color:rgba(247,245,242,0.8)">{p.cas.contexte}</p>
+            {p.cas.etapes.map((e) => (
+              <div class="border-t pt-4.5 mt-6" style="border-color:rgba(247,245,242,0.16)">
+                <h3 class="pd-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.26em] mb-2.5" style="color:#c9a84c">{e.titre}</h3>
+                <p class="pd-sans text-[15px] md:text-base leading-[1.65] m-0" style="color:rgba(247,245,242,0.8)">{fr(e.texte)}</p>
+                {'dimensions' in e && e.dimensions && (
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-3.5">
+                    {e.dimensions.map((d) => (
+                      <div class="border-l-2 pl-4 py-0.5" style="border-color:#c9a84c">
+                        <h4 class="pd-serif font-normal text-[1.35rem] leading-tight mb-1.5" style="color:#f7f5f2">{d.titre}</h4>
+                        <p class="pd-sans text-sm leading-[1.6] m-0" style="color:rgba(247,245,242,0.72)">{d.texte}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        <blockquote class="mx-0 mb-0 mt-12 md:mt-18 pt-9 md:pt-12 border-t" style="border-color:rgba(201,168,76,0.35)">
+          <p class="pd-serif pd-balance italic font-light leading-[1.3] max-w-4xl m-0" style="font-size:clamp(1.5rem,3vw,2.35rem);color:#c9a84c">{p.cas.citation}</p>
+        </blockquote>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4.5 mt-7">
+          <p class="pd-sans text-[13px] m-0" style="color:rgba(247,245,242,0.5)">{p.cas.mention}</p>
+          <a href={p.cas.cta.href} data-track="cta_principal" data-track-position="cas" class="pd-sans pd-link self-start text-sm font-medium border-b pt-2 pb-1" style="border-color:#b5936b;color:#f7f5f2">{fr(p.cas.cta.label)}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. AVANT / LE JOUR J / APRÈS -->
+    <section class="bg-white px-6 py-14 md:py-24">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="pd-serif pd-balance font-light leading-[1.1] m-0" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{p.deroule.h2}</h2>
+        <ol class="list-none m-0 p-0 mt-9 min-[900px]:mt-14 grid grid-cols-1 min-[900px]:grid-cols-3 min-[900px]:border-t" style="border-color:rgba(26,26,26,0.12)">
+          {p.deroule.etapes.map((e) => (
+            <li class="relative pl-8 pb-7 last:pb-0 border-l min-[900px]:border-l-0 min-[900px]:pl-0 min-[900px]:pr-10 min-[900px]:pt-8 min-[900px]:pb-0" style="border-color:rgba(26,26,26,0.12)">
+              <span aria-hidden="true" class="absolute -left-[5px] top-1.5 min-[900px]:left-0 min-[900px]:-top-[5px] w-[9px] h-[9px] rounded-full" style="background:#b5936b"></span>
+              <h3 class="pd-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.26em] mb-2.5" style="color:#b5936b">{e.titre}</h3>
+              <p class="pd-sans text-[15px] md:text-base leading-[1.65] m-0" style="color:rgba(26,26,26,0.72)">{fr(e.texte)}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6-8. ÉQUIPES · SERVICES COMPLÉMENTAIRES · PÉRIMÈTRE (discret) -->
+    <section style="background:#f7f5f2" class="px-6 py-12 md:py-16">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 min-[900px]:grid-cols-3 gap-7 min-[900px]:gap-12">
+        {p.complements.map((c) => (
+          <div>
+            <h2 class="pd-sans text-xs font-medium uppercase tracking-[0.22em] mb-2.5" style="color:#8a6d4b">{fr(c.titre)}</h2>
+            <p class={`pd-sans leading-[1.65] m-0 ${'discret' in c && c.discret ? 'text-[13px]' : 'text-sm'}`} style={`color:${'discret' in c && c.discret ? 'rgba(26,26,26,0.55)' : 'rgba(26,26,26,0.68)'}`}>{fr(c.texte)}</p>
+            {'lien' in c && c.lien && (
+              <a href={c.lien.href} class="pd-sans pd-link inline-block mt-2 text-sm font-medium border-b pt-1 pb-1" style="border-color:#b5936b;color:#1a1a1a">{fr(c.lien.label)}</a>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 9. QUI VOUS PRÉPARE -->
+    <section class="bg-white px-6 py-14 md:py-24">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-7 lg:gap-18 lg:items-start">
+        <div>
+          <h2 class="pd-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.26em] m-0" style="color:#b5936b">{p.qui.surtitre}</h2>
+          <p class="pd-serif font-light leading-[1.1] mt-3 mb-1.5" style="font-size:clamp(1.8rem,3vw,2.4rem);color:#1a1a1a">{p.qui.nom}</p>
+          <p class="pd-sans text-[13px] uppercase tracking-[0.12em] m-0" style="color:rgba(26,26,26,0.55)">{p.qui.role}</p>
+          <ul class="list-none m-0 p-0 mt-4.5 flex flex-wrap gap-2">
+            {p.qui.langues.map((l) => <li class="pd-sans text-xs tracking-[0.14em] px-2.5 py-1.5 border" style="border-color:rgba(26,26,26,0.18);color:#1a1a1a">{l}</li>)}
+          </ul>
+        </div>
+        <div>
+          <p class="pd-sans text-[15px] md:text-base leading-[1.65] m-0" style="color:rgba(26,26,26,0.72)">{fr(p.qui.texte)}</p>
+          <div class="mt-7 pt-4.5 border-t flex flex-wrap items-baseline gap-x-5 gap-y-1" style="border-color:rgba(26,26,26,0.1)">
+            <span class="pd-serif font-light text-[1.6rem] whitespace-nowrap" style="color:#b5936b">{p.qui.reference.chiffre}</span>
+            <p class="pd-sans text-sm m-0" style="color:rgba(26,26,26,0.68)">{p.qui.reference.texte}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. FAQ -->
+    <section style="background:#f7f5f2" class="px-6 py-14 md:py-24">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="pd-serif font-light leading-tight mb-8" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{p.faq.h2}</h2>
+        <div class="border-t" style="border-color:rgba(26,26,26,0.12)">
+          {p.faq.items.map((f) => (
+            <details class="border-b py-5" style="border-color:rgba(26,26,26,0.12)">
+              <summary class="flex items-start justify-between gap-6 min-h-6">
+                <h3 class="pd-sans text-base md:text-lg font-medium leading-snug m-0" style="color:#1a1a1a">{fr(f.q)}</h3>
+                <span class="pd-plus pd-sans text-xl leading-none flex-shrink-0" style="color:#b5936b" aria-hidden="true">+</span>
+              </summary>
+              <p class="pd-sans text-sm md:text-base leading-[1.8] mt-3 pr-8 mb-0" style="color:rgba(26,26,26,0.72)">{fr(f.r)}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. CONTACT -->
+    <section style="background:#1a1a1a" class="px-6 py-16 md:py-28 text-center">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="pd-serif pd-balance text-3xl md:text-5xl font-light leading-tight mb-5" style="color:#f7f5f2">{fr(p.ctaFinal.h2)}</h2>
+        <p class="pd-sans text-base leading-[1.8] mb-10" style="color:rgba(247,245,242,0.75)">{fr(p.ctaFinal.texte)}</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8">
+          <a href={p.ctaFinal.cta.href} data-track="cta_principal" data-track-position="final" class="pd-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{p.ctaFinal.cta.label}</a>
+          <a href={p.ctaFinal.telephone.href} data-track="clic_telephone" data-track-position="final" class="pd-sans pd-link inline-block text-sm tracking-wider border-b py-3" style="border-color:rgba(247,245,242,0.35);color:#f7f5f2">{p.ctaFinal.telephone.label}</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <Tracking />
+</Layout>
