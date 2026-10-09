@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "Interprète français-polonais pour entreprises | JANUS",
+    "description": "Réunions, négociations, visites de sites, visioconférences : JANUS organise votre interprète français-polonais, en France, en Pologne ou à distance."
+  },
+  "hero": {
+    "surtitre": "Interprétation · Français ↔ Polonais",
+    "h1": "Interprète français-polonais pour les entreprises",
+    "lieux": ["En France", "En Pologne", "À distance"],
+    "intro": "Vous préparez une réunion, une négociation ou une visite de site avec des partenaires polonais ? JANUS organise votre interprétation français–polonais, en présentiel ou à distance, selon les besoins de votre mission.",
+    "cta": { "label": "Demander un devis", "href": "/fr/contact" },
+    "aide": "Indiquez la date, le lieu et le type de réunion."
+  },
+  "situations": {
+    "h2": "Dans quelles situations intervenons-nous ?",
+    "items": [
+      {
+        "titre": "Réunions et négociations commerciales",
+        "texte": "Rendez-vous fournisseur, discussion de prix ou de conditions : l'interprétation permet à chacun de s'exprimer dans sa langue et de suivre le fil de la discussion."
+      },
+      {
+        "titre": "Visites d'usines et de sites professionnels",
+        "texte": "Visite de production, rencontre d'un fournisseur, salon professionnel : l'interprétation de liaison accompagne votre délégation au fil du parcours."
+      },
+      {
+        "titre": "Réunions techniques et audits",
+        "texte": "Échanges entre équipes techniques, réunion qualité ou d'audit fournisseur : la préparation s'appuie sur l'ordre du jour et les documents que vous transmettez."
+      },
+      {
+        "titre": "Visioconférences professionnelles",
+        "texte": "Réunion à distance avec un partenaire ou une filiale en Pologne : l'interprète rejoint votre visioconférence, avec des modalités définies avant la réunion."
+      },
+      {
+        "titre": "Réunions stratégiques et acquisitions",
+        "texte": "Comité de direction, rencontre avec des cédants, réunion liée à une acquisition : l'interprétation intervient aux côtés de vos conseils, et JANUS peut proposer un accord de confidentialité lorsque le contexte le nécessite.",
+        "lien": { "label": "Acquisition d'entreprise en Pologne →", "href": "/fr/acquisition-entreprise-pologne" }
+      },
+      {
+        "titre": "Échanges entre équipes françaises et polonaises",
+        "texte": "Réunion de lancement, point d'avancement, accueil d'un collaborateur : l'interprétation facilite les échanges directs entre les équipes des deux pays."
+      }
+    ]
+  },
+  "modalites": {
+    "h2": "Une interprétation adaptée à votre réunion",
+    "intro": "Le mode d'interprétation dépend du nombre de participants, du lieu et du rythme de la réunion. JANUS vous aide à choisir le plus adapté.",
+    "items": [
+      {
+        "titre": "Interprétation de liaison",
+        "texte": "Phrase par phrase, pour un petit groupe : rendez-vous, visites, échanges sur site."
+      },
+      {
+        "titre": "Interprétation consécutive",
+        "texte": "L'orateur s'exprime, puis l'interprète restitue : réunions, présentations, négociations."
+      },
+      {
+        "titre": "Interprétation simultanée",
+        "texte": "En temps réel, pour les conférences et les réunions plus larges. Son organisation dépend du format de l'événement, des moyens techniques et des ressources nécessaires."
+      },
+      {
+        "titre": "Interprétation à distance",
+        "texte": "Par visioconférence, pour les réunions en ligne ou lorsqu'un déplacement n'est pas justifié."
+      }
+    ]
+  },
+  "pourquoi": {
+    "h2": "Pourquoi confier votre mission à JANUS ?",
+    "intro": "Avec JANUS, vous confiez l'organisation de l'interprétation, pas seulement la réservation d'un interprète.",
+    "items": [
+      {
+        "titre": "Un seul contact",
+        "texte": "Vous présentez votre besoin à JANUS, qui coordonne la préparation et l'organisation de l'interprétation. Un seul interlocuteur pour suivre votre mission, du premier échange à sa réalisation."
+      },
+      {
+        "titre": "Une organisation coordonnée",
+        "texte": "Mode d'interprétation, horaires, lieu, déroulé de la visite, accès à la visioconférence : les aspects pratiques sont cadrés avant le jour de la réunion."
+      },
+      {
+        "titre": "Une préparation adaptée au contexte",
+        "texte": "La préparation porte sur le sujet, les interlocuteurs et le vocabulaire de la réunion. Sa précision dépend des documents que vous transmettez et des compétences disponibles pour la mission."
+      },
+      {
+        "titre": "Plusieurs besoins, un même projet",
+        "texte": "Si votre projet demande aussi une traduction ou une préparation des équipes, JANUS les organise avec la même connaissance du contexte, sans que vous ayez à tout réexpliquer à chaque intervenant."
+      }
+    ]
+  },
+  "auDela": {
+    "h2": "Un besoin qui dépasse l'interprétation ?",
+    "accroche": "Un projet. Une multitude de micro-besoins.",
+    "intro": "Une réunion en Pologne s'accompagne souvent d'autres besoins :",
+    "besoins": [
+      "Traduction de documents",
+      "Préparation de négociation",
+      "Accompagnement sur le terrain",
+      "Préparation interculturelle des équipes"
+    ],
+    "liens": [
+      { "label": "Découvrir l'accompagnement France–Pologne →", "href": "/fr/pologne" },
+      { "label": "Tous nos services →", "href": "/fr/services" }
+    ]
+  },
+  "faq": {
+    "h2": "Questions fréquentes",
+    "items": [
+      {
+        "q": "Peut-on faire intervenir un interprète français-polonais pour une réunion d'entreprise ?",
+        "r": "Oui. Indiquez la date, le lieu ou le format à distance, la durée, le nombre de participants et le sujet de la réunion : JANUS vous propose une organisation adaptée et un devis, selon les disponibilités."
+      },
+      {
+        "q": "JANUS organise-t-elle l'interprétation lors de visites d'usines en Pologne ?",
+        "r": "Oui, selon les dates et le lieu de la visite. L'interprète accompagne votre délégation sur le site. La préparation technique s'appuie sur les documents transmis et sur les compétences disponibles pour la mission."
+      },
+      {
+        "q": "L'interprétation peut-elle se dérouler à distance ?",
+        "r": "Oui, pour les visioconférences et les réunions en ligne. L'outil, les participants et la durée sont définis avant la réunion."
+      },
+      {
+        "q": "Quelle différence entre interprétation consécutive et simultanée ?",
+        "r": "En consécutive, l'interprète restitue après chaque prise de parole : c'est le mode le plus courant pour les réunions et les négociations. En simultanée, la restitution se fait en temps réel ; elle convient surtout aux conférences, et son organisation dépend du format de l'événement, des moyens techniques et des ressources nécessaires."
+      },
+      {
+        "q": "Quelles informations fournir pour obtenir un devis ?",
+        "r": "La date et la durée, le lieu ou le format à distance, le type de réunion, le nombre de participants et, si possible, l'ordre du jour ou les documents de travail."
+      },
+      {
+        "q": "Peut-on organiser plusieurs interventions dans le cadre d'un même projet ?",
+        "r": "Oui. Lorsque des réunions, des visites ou des documents s'enchaînent, JANUS peut organiser l'ensemble avec un même interlocuteur, qui garde le contexte du projet d'une intervention à l'autre."
+      }
+    ]
+  },
+  "ctaFinal": {
+    "h2": "Vous préparez une réunion ou une mission avec des partenaires polonais ?",
+    "texte": "Décrivez votre mission : date, lieu, durée et contexte professionnel. JANUS étudie votre demande et vous propose une solution adaptée aux besoins et aux disponibilités.",
+    "cta": { "label": "Demander un devis", "href": "/fr/contact" },
+    "telephone": { "label": "+33 9 67 05 68 31", "href": "tel:+33967056831" }
+  }
+}

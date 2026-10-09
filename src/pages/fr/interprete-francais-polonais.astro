@@ -1,0 +1,191 @@
+---
+// Page SEO « Interprète français-polonais pour entreprises » : demande concrète d'interprétation,
+// la coordination JANUS apparaissant comme avantage complémentaire (renvoi vers /fr/pologne).
+// Contenu : /src/content/fr/interprete-francais-polonais.json.
+// Page FR uniquement : aucune équivalence dans src/i18n/routes.ts, donc aucun hreflang et EN/PL désactivés
+// dans le sélecteur de langue (comme /fr/acquisition-entreprise-pologne). Canonical : la page elle-même.
+import Layout from '../../layouts/Layout.astro';
+import Flag from '../../components/ui/Flag.astro';
+import Tracking from '../../components/ui/Tracking.astro';
+import p from '../../content/fr/interprete-francais-polonais.json';
+
+const currentPath = '/interprete-francais-polonais';
+const url = `https://agence-janus.fr/fr${currentPath}`;
+
+// Typographie française : espace insécable avant « ? ; : ! » et « → », « France–Pologne » insécable.
+const fr = (s: string) => s.replace(/ ([?;:!])/g, ' $1').replace(/(France)–Pologne/g, '$1⁠–⁠Pologne').replace(/ →/g, ' →');
+const num = (i: number) => String(i + 1).padStart(2, '0');
+// H1 : « français-polonais » ne doit pas se couper au trait d'union sur petit écran (texte du H1 inchangé).
+const h1Langues = 'français-polonais';
+const [h1Avant, h1Apres] = p.hero.h1.split(h1Langues);
+
+// Données structurées : uniquement des informations publiées sur cette page et sur le site.
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Interprétation français-polonais pour les entreprises',
+  description: p.meta.description,
+  url,
+  serviceType: 'Interprétation',
+  areaServed: [{ '@type': 'Country', name: 'France' }, { '@type': 'Country', name: 'Pologne' }],
+  provider: { '@type': 'Organization', name: 'JANUS', legalName: 'MICH', url: 'https://agence-janus.fr/fr/', telephone: '+33 9 67 05 68 31' },
+};
+// FAQ : reprend exactement les questions/réponses publiées sur la page (même convention que /fr/pologne).
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: p.faq.items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.r } })),
+};
+---
+
+<Layout
+  title={p.meta.title}
+  description={p.meta.description}
+  locale="fr"
+  currentPath={currentPath}
+  canonical={url}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(service)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" />
+  <style is:global>
+    .ip-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .ip-sans { font-family: 'DM Sans', system-ui, sans-serif; }
+    .ip a { text-decoration: none; }
+    .ip-link { transition: opacity .2s ease; }
+    .ip-link:hover { opacity: .7; }
+    .ip-balance { text-wrap: balance; }
+    .ip-card { transition: border-color .25s ease; }
+    .ip details > summary { list-style: none; cursor: pointer; }
+    .ip details > summary::-webkit-details-marker { display: none; }
+    .ip details[open] .ip-plus { transform: rotate(45deg); }
+    .ip-plus { transition: transform .2s ease; }
+    .ip summary:focus-visible, .ip a:focus-visible { outline: 2px solid #b5936b; outline-offset: 3px; }
+    @media (hover: hover) { .ip-card:hover { border-color: rgba(181,147,107,.6); } }
+    @media (prefers-reduced-motion: reduce) { .ip-card, .ip-plus, .ip-link { transition: none; } }
+  </style>
+
+  <div class="ip">
+    <!-- 1. HERO : la demande d'interprétation français–polonais, tout de suite -->
+    <section style="background:#1a1a1a" class="px-6 pt-9 pb-14 md:pt-20 md:pb-20">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex items-center gap-3 mb-5 md:mb-6">
+          <Flag code="fr" class="w-8 h-5" />
+          <Flag code="pl" class="w-8 h-5" />
+          <p class="ip-sans text-xs uppercase tracking-[0.3em]" style="color:#c9a84c">{p.hero.surtitre}</p>
+        </div>
+        <h1 class="ip-serif ip-balance font-light leading-[1.05] mb-5 max-w-4xl" style="font-size:clamp(2rem,5.5vw,4.25rem);color:#f7f5f2">{h1Avant}<span class="whitespace-nowrap">{h1Langues}</span>{h1Apres}</h1>
+        <p class="ip-sans text-xs md:text-sm uppercase tracking-[0.22em] leading-[1.9] mb-5" style="color:#c9a84c">
+          {p.hero.lieux.map((l, i) => (
+            <>{i > 0 && <span aria-hidden="true" style="color:rgba(247,245,242,0.35)">{' · '}</span>}<span class="whitespace-nowrap">{l}</span></>
+          ))}
+        </p>
+        <p class="ip-sans text-[15px] md:text-lg max-w-2xl leading-[1.65] mb-7 md:mb-9" style="color:rgba(247,245,242,0.82)">{fr(p.hero.intro)}</p>
+        <a href={p.hero.cta.href} data-track="cta_principal" data-track-position="hero" class="ip-sans block sm:inline-block text-center px-8 sm:px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{p.hero.cta.label}</a>
+        <p class="ip-sans text-sm mt-4" style="color:rgba(247,245,242,0.6)">{p.hero.aide}</p>
+      </div>
+    </section>
+
+    <!-- 2. SITUATIONS : six cas concrets -->
+    <section style="background:#f7f5f2" class="px-6 py-14 md:py-24">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="ip-serif ip-balance font-light leading-[1.1] mb-8 md:mb-12" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{fr(p.situations.h2)}</h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5 list-none m-0 p-0">
+          {p.situations.items.map((x, i) => (
+            <li class="ip-card bg-white border p-6 md:p-8 flex flex-col" style="border-color:rgba(26,26,26,0.08);border-top:2px solid #b5936b">
+              <p class="ip-serif font-light text-2xl leading-none mb-4" style="color:#b5936b" aria-hidden="true">{num(i)}</p>
+              <h3 class="ip-serif font-normal leading-tight mb-3" style="font-size:1.45rem;color:#1a1a1a">{x.titre}</h3>
+              <p class="ip-sans text-[15px] leading-[1.65] m-0" style="color:rgba(26,26,26,0.72)">{fr(x.texte)}</p>
+              {x.lien && <a href={x.lien.href} class="ip-sans ip-link self-start mt-4 text-sm font-medium border-b pb-0.5" style="border-color:#b5936b;color:#1a1a1a">{fr(x.lien.label)}</a>}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. MODALITÉS : quatre modes d'interprétation -->
+    <section class="bg-white px-6 py-14 md:py-24">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="ip-serif ip-balance font-light leading-[1.1] mb-4" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{p.modalites.h2}</h2>
+        <p class="ip-sans text-base md:text-lg leading-[1.6] max-w-2xl mb-8 md:mb-12" style="color:rgba(26,26,26,0.68)">{p.modalites.intro}</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-7 md:gap-y-10">
+          {p.modalites.items.map((x) => (
+            <div class="border-l-2 pl-5 md:pl-6" style="border-color:#c9a84c">
+              <h3 class="ip-serif font-normal leading-tight mb-2" style="font-size:1.45rem;color:#1a1a1a">{x.titre}</h3>
+              <p class="ip-sans text-[15px] leading-[1.65] m-0" style="color:rgba(26,26,26,0.72)">{fr(x.texte)}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. POURQUOI JANUS : ce que gagne le client -->
+    <section style="background:#0d0d0d" class="px-6 py-14 md:py-24">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="ip-serif ip-balance font-light leading-[1.1] mb-4" style="font-size:clamp(2rem,4vw,3.25rem);color:#f7f5f2">{fr(p.pourquoi.h2)}</h2>
+        <p class="ip-serif italic font-light leading-snug max-w-3xl mb-10 md:mb-14" style="font-size:clamp(1.3rem,2.4vw,1.75rem);color:#c9a84c">{fr(p.pourquoi.intro)}</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-8 md:gap-y-12">
+          {p.pourquoi.items.map((x) => (
+            <div class="border-t pt-5" style="border-color:rgba(247,245,242,0.16)">
+              <h3 class="ip-sans text-xs md:text-sm font-medium uppercase tracking-[0.2em] mb-3" style="color:#c9a84c">{x.titre}</h3>
+              <p class="ip-sans text-[15px] md:text-base leading-[1.7] m-0" style="color:rgba(247,245,242,0.8)">{fr(x.texte)}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. AU-DELÀ DE L'INTERPRÉTATION : passerelle vers la coordination (/fr/pologne) -->
+    <section style="background:#f7f5f2" class="px-6 py-12 md:py-20">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-6 lg:gap-16 lg:items-start">
+        <div>
+          <h2 class="ip-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-4" style="color:#8a6d4b">{fr(p.auDela.h2)}</h2>
+          <p class="ip-serif font-light leading-[1.15] m-0" style="font-size:clamp(1.8rem,3.4vw,2.6rem);color:#1a1a1a">{p.auDela.accroche}</p>
+        </div>
+        <div>
+          <p class="ip-sans text-base leading-[1.7] mb-3" style="color:rgba(26,26,26,0.72)">{fr(p.auDela.intro)}</p>
+          <ul class="ip-sans list-none m-0 p-0 mb-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-[15px]" style="color:#1a1a1a">
+            {p.auDela.besoins.map((b) => <li class="flex gap-3"><span aria-hidden="true" style="color:#b5936b">—</span><span>{b}</span></li>)}
+          </ul>
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-8">
+            {p.auDela.liens.map((l, i) => (
+              <a href={l.href} class={`ip-sans ip-link self-start border-b pb-1 ${i === 0 ? 'text-sm font-medium' : 'text-sm'}`} style={`border-color:${i === 0 ? '#b5936b' : 'rgba(181,147,107,0.5)'};color:#1a1a1a`}>{fr(l.label)}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FAQ -->
+    <section class="bg-white px-6 py-14 md:py-24">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="ip-serif font-light leading-tight mb-8" style="font-size:clamp(1.8rem,3.5vw,2.75rem);color:#1a1a1a">{p.faq.h2}</h2>
+        <div class="border-t" style="border-color:rgba(26,26,26,0.12)">
+          {p.faq.items.map((f) => (
+            <details class="border-b py-5" style="border-color:rgba(26,26,26,0.12)">
+              <summary class="flex items-start justify-between gap-6">
+                <h3 class="ip-sans text-base md:text-lg font-medium leading-snug m-0" style="color:#1a1a1a">{fr(f.q)}</h3>
+                <span class="ip-plus ip-sans text-xl leading-none flex-shrink-0" style="color:#b5936b" aria-hidden="true">+</span>
+              </summary>
+              <p class="ip-sans text-sm md:text-base leading-[1.8] mt-3 pr-8 mb-0" style="color:rgba(26,26,26,0.72)">{fr(f.r)}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CONTACT : demande de devis -->
+    <section style="background:#1a1a1a" class="px-6 py-16 md:py-28 text-center">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="ip-serif ip-balance text-3xl md:text-5xl font-light leading-tight mb-5" style="color:#f7f5f2">{fr(p.ctaFinal.h2)}</h2>
+        <p class="ip-sans text-base leading-[1.8] mb-10" style="color:rgba(247,245,242,0.75)">{fr(p.ctaFinal.texte)}</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8">
+          <a href={p.ctaFinal.cta.href} data-track="cta_principal" data-track-position="final" class="ip-sans inline-block px-12 py-5 text-xs md:text-sm font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#b5936b;color:#0d0d0d">{p.ctaFinal.cta.label}</a>
+          <a href={p.ctaFinal.telephone.href} data-track="clic_telephone" data-track-position="final" class="ip-sans ip-link inline-block text-sm tracking-wider border-b py-3" style="border-color:rgba(247,245,242,0.35);color:#f7f5f2">{p.ctaFinal.telephone.label}</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <Tracking />
+</Layout>
