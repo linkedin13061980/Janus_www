@@ -208,27 +208,31 @@
     "conclusion": "Vous conservez un interlocuteur de coordination pour les dimensions linguistiques et interculturelles tout au long de la mission."
   },
   "cas": {
-    "surtitre": "Cas réel",
+    "surtitre": "Expérience de la fondatrice",
     "h2": "Expérience France–Pologne en contexte M&A",
     "lignes": [
       {
         "label": "Type de projet",
-        "valeur": "Opération M&A France–Pologne"
+        "valeur": "Opération M&A France–Pologne : acquisition d'une entreprise polonaise par un acquéreur français"
       },
       {
         "label": "Durée",
         "valeur": "4 mois"
       },
       {
-        "label": "Nature de l'intervention",
-        "valeur": "Accompagnement linguistique et interculturel"
+        "label": "Rôle d'Agata Mich",
+        "valeur": "Préparation du dirigeant aux négociations en anglais, accompagnement en Pologne, interprétation pendant les négociations, facilitation des échanges interculturels"
       },
       {
         "label": "Contexte",
         "valeur": "Échanges professionnels entre interlocuteurs français et polonais dans le cadre de l'opération"
+      },
+      {
+        "label": "Cadre",
+        "valeur": "Parcours professionnel d'Agata Mich, avant la création de JANUS"
       }
     ],
-    "confidentialite": "Certaines informations relatives à cette mission ne sont pas publiées afin de préserver la confidentialité de l'opération et des entreprises concernées.",
+    "confidentialite": "Certaines informations relatives à cette opération ne sont pas publiées afin de préserver la confidentialité des entreprises concernées.",
     "cta": {
       "label": "Nous parler d'une opération confidentielle →",
       "href": "/fr/contact"
