@@ -63,11 +63,11 @@
     ]
   },
   "cas": {
-    "surtitre": "Cas de mission",
+    "surtitre": "Expérience de la fondatrice",
     "chiffre": "4 mois",
-    "contexteCourt": "Projet d'acquisition d'une entreprise en Pologne par un groupe international",
+    "contexteCourt": "Acquisition d'une entreprise polonaise par un acquéreur français, avant la création de JANUS",
     "h2": "Quatre mois aux côtés d'un dirigeant, de la préparation aux négociations",
-    "contexte": "Pendant quatre mois, dans le cadre d'un projet d'acquisition d'une entreprise en Pologne par un groupe international, JANUS a accompagné un dirigeant appelé à négocier en anglais avec ses interlocuteurs polonais.",
+    "contexte": "Avant de créer JANUS, Agata Mich a participé pendant quatre mois à l'acquisition d'une entreprise polonaise par un acquéreur français. Elle y a préparé le dirigeant aux négociations en anglais, puis l'a accompagné en Pologne.",
     "etapes": [
       {
         "titre": "Avant les négociations",
@@ -75,19 +75,19 @@
       },
       {
         "titre": "Sur le terrain, en Pologne",
-        "texte": "Le dirigeant conduisait les discussions. L'accompagnement de JANUS portait sur deux dimensions complémentaires :",
+        "texte": "Le dirigeant conduisait les discussions. Agata Mich assurait l'interprétation et facilitait les échanges sur deux dimensions complémentaires :",
         "dimensions": [
           { "titre": "Interprétation linguistique", "texte": "Faciliter la compréhension des échanges en français, en anglais et en polonais." },
           { "titre": "Interprétation des codes interculturels", "texte": "Éclairer les nuances, les codes professionnels et les implicites qui pèsent sur la compréhension des discussions." }
         ]
       },
       {
-        "titre": "Ce que cela apporte",
-        "texte": "Une continuité entre la préparation du dirigeant et les échanges sur place, avec le même regard sur la langue et sur les codes de communication."
+        "titre": "Une expérience au cœur de notre méthode",
+        "texte": "La continuité entre la préparation du dirigeant et les échanges sur place, avec le même regard sur la langue et sur les codes de communication : c'est le principe des préparations proposées aujourd'hui par JANUS."
       }
     ],
     "citation": "Dans une opération internationale sensible, traduire les mots ne suffit pas. Il faut aussi comprendre ce qui se joue dans la communication.",
-    "mention": "Mission présentée de manière anonymisée.",
+    "mention": "Expérience professionnelle d'Agata Mich, antérieure à la création de JANUS, présentée de manière anonymisée.",
     "cta": { "label": "Parlons de votre projet →", "href": "/fr/contact" }
   },
   "deroule": {
@@ -119,7 +119,7 @@
     "nom": "Agata Mich",
     "role": "Fondatrice de JANUS",
     "langues": ["FR", "EN", "PL"],
-    "texte": "Les préparations sont assurées par Agata Mich, fondatrice de JANUS, qui travaille en français, en anglais et en polonais, et, selon les missions, par des intervenants spécialisés choisis pour la langue et le contexte concernés. Son parcours commence en 2002 à Paris, dans les fusions-acquisitions entre entreprises françaises et polonaises ; elle fonde JANUS à Lyon en 2021.",
+    "texte": "Les préparations sont assurées par Agata Mich, fondatrice de JANUS, qui travaille en français, en anglais et en polonais, et, selon les missions, par des intervenants spécialisés choisis pour la langue et le contexte concernés. Son parcours commence en 2002 à Paris, dans les fusions-acquisitions entre entreprises françaises et polonaises ; elle fonde JANUS à Lyon en 2021. Depuis sa création, JANUS prépare des dirigeants à leurs missions et échanges internationaux et les accompagne ponctuellement sur le terrain.",
     "reference": { "chiffre": "5 jours · 18 techniciens", "texte": "Accompagnement sur site d'une mission industrielle Allemagne–Pologne" }
   },
   "faq": {
@@ -131,7 +131,7 @@
       },
       {
         "q": "Combien de temps faut-il prévoir ?",
-        "r": "Cela dépend de l'échéance et du point de départ. Une préparation peut tenir en quelques séances avant une réunion précise, ou accompagner un projet sur plusieurs mois."
+        "r": "Cela dépend de l'échéance et du point de départ. Une préparation peut tenir en quelques séances avant une réunion précise, ou accompagner un projet sur la durée."
       },
       {
         "q": "La préparation peut-elle se faire à distance ?",
