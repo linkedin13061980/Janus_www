@@ -59,6 +59,10 @@
         "cta": {
           "label": "Échanger sur votre besoin",
           "href": "/fr/contact"
+        },
+        "lien": {
+          "label": "Préparation des dirigeants aux échanges France–Pologne →",
+          "href": "/fr/preparation-dirigeants-pologne"
         }
       }
     ]
