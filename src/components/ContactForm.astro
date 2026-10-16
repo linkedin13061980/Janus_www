@@ -7,16 +7,18 @@ interface Props {
   locale: Locale;
   // « projet » : formulaire orienté projet international (FR). « classique » : ancien formulaire (EN/PL, en attente d'harmonisation).
   variante?: 'projet' | 'classique';
+  // Envoi confirmé par la page après redirection (EN/PL) : affiche le message de confirmation.
+  envoye?: boolean;
 }
 
-const { locale, variante = 'classique' } = Astro.props;
+const { locale, variante = 'classique', envoye = false } = Astro.props;
 const besoins = ['coordination', 'accompagnement', 'negociation', 'coaching', 'interpretation', 'traduction', 'interculturel', 'formation', 'autre'];
 const services = ['accompagnement', 'interpretation', 'traduction', 'negociation', 'equipes', 'coaching', 'formation', 'autre'];
 const langues = ['francais', 'anglais', 'polonais', 'allemand', 'espagnol', 'italien', 'plusieurs'];
 
 const result = Astro.getActionResult(actions.sendContact);
 const inputErrors = isInputError(result?.error) ? result.error.fields : {};
-const success = result?.data?.success === true;
+const success = result?.data?.success === true || envoye;
 // Message d'erreur dans la langue du formulaire ; repli sur le message du serveur si aucune traduction n'existe.
 const err = (field: string) => {
   const msg = t(locale, `contact.errors.${field}`);
@@ -50,6 +52,8 @@ const err = (field: string) => {
     </div>
     <!-- Langue de la page : messages et e-mail de confirmation dans cette langue -->
     <input type="hidden" name="locale" value={locale} />
+    <!-- Mesure : « 1 » uniquement si les cookies de mesure sont acceptés au moment de l'envoi -->
+    <input type="hidden" name="mesure" value="" data-mesure />
 
     <!-- Prénom / Nom -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -122,8 +126,6 @@ const err = (field: string) => {
     {variante === 'projet' ? (
       <>
         <input type="hidden" name="variante" value="projet" />
-        <!-- Mesure : « 1 » uniquement si les cookies de mesure sont acceptés au moment de l'envoi -->
-        <input type="hidden" name="mesure" value="" data-mesure />
         <!-- Type de besoin / Pays concernés -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -279,7 +281,7 @@ const err = (field: string) => {
   </form>
 )}
 
-{variante === 'projet' && !success && (
+{!success && (
   <script is:inline>
     document.querySelectorAll('input[data-mesure]').forEach(function (champ) {
       champ.form && champ.form.addEventListener('submit', function () {

@@ -1,9 +1,25 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import Tracking from '../../components/ui/Tracking.astro';
+import { actions } from 'astro:actions';
 
 const locale = 'pl';
 const currentPath = '/contact';
+
+// Après un envoi réussi : marqueur technique à usage unique (10 min, limité à cette page), puis redirection
+// vers la page elle-même. Le message de confirmation s'affiche ; un rechargement ne renvoie pas le formulaire.
+// « mesure » : la mesure d'audience était acceptée lors de l'envoi → conversion formulaire_envoye (langue pl).
+const envoi = Astro.getActionResult(actions.sendContact);
+if (envoi?.data?.success) {
+  Astro.cookies.set('janus_envoi', envoi.data.mesure ? 'mesure' : 'ok', { path: '/pl/contact', maxAge: 600, httpOnly: true, sameSite: 'lax', secure: import.meta.env.PROD });
+  return Astro.redirect('/pl/contact', 303);
+}
+const confirme = Astro.cookies.get('janus_envoi')?.value;
+if (confirme) {
+  Astro.cookies.delete('janus_envoi', { path: '/pl/contact' });
+  Astro.response.headers.set('Cache-Control', 'private, no-store');
+}
 ---
 
 <Layout
@@ -52,6 +68,7 @@ const currentPath = '/contact';
       </div>
     </div>
 
-    <ContactForm locale={locale} />
+    <ContactForm locale={locale} envoye={confirme !== undefined} />
   </section>
+  {confirme === 'mesure' && <Tracking conversion="formulaire_envoye" params={{ langue: locale }} />}
 </Layout>

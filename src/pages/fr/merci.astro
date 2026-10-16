@@ -34,5 +34,5 @@ Astro.response.headers.set('Cache-Control', 'private, no-store');
       </div>
     </div>
   </section>
-  <Tracking conversion={conversion ? 'formulaire_envoye' : undefined} />
+  <Tracking conversion={conversion ? 'formulaire_envoye' : undefined} params={{ langue: 'fr' }} />
 </Layout>
