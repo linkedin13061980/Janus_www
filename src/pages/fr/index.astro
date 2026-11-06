@@ -212,17 +212,17 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
 
     <!-- ①ter SPÉCIALISATION FRANCE–POLOGNE : remontée sous les expertises, encadré mis en valeur, lien vers /fr/pologne -->
     <section class="bg-white px-6 pb-12 md:pb-20" aria-labelledby="pologne-titre">
-      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-5 lg:gap-12 lg:items-center p-6 md:p-10 lg:px-12" style="background:#f7f5f2;border:1px solid rgba(201,168,76,0.55);border-left:4px solid #c9a84c">
-        <div class="flex items-center gap-3" aria-hidden="true">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-5 lg:gap-12 lg:items-start p-6 md:p-10 lg:px-12" style="background:#f7f5f2;border:1px solid rgba(201,168,76,0.55);border-left:4px solid #c9a84c">
+        <div class="flex items-center gap-3 lg:pt-2" aria-hidden="true">
           <Flag code="fr" class="w-11 h-7 md:w-14 md:h-9" />
           <Flag code="pl" class="w-11 h-7 md:w-14 md:h-9" />
         </div>
         <div>
           <p class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-2 md:mb-3" style="color:#846847">{pologne.surtitre}</p>
           <h2 id="pologne-titre" class="hp-serif hp-balance font-light leading-tight mb-3 md:mb-4" style="font-size:clamp(1.85rem,3.6vw,2.8rem);color:#1a1a1a">{fr(pologne.h2)}</h2>
-          <p class="hp-sans text-sm md:text-base leading-[1.65] max-w-2xl" style="color:rgba(26,26,26,0.75)">{pologne.texte}</p>
+          <p class="hp-sans text-sm md:text-base leading-[1.65] max-w-3xl mb-6 md:mb-7" style="color:rgba(26,26,26,0.75)">{pologne.texte}</p>
+          <a href={pologne.lien.href} class="hp-sans block sm:inline-block text-center px-7 py-4 text-xs font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#1a1a1a;color:#f7f5f2">{fr(pologne.lien.label)}</a>
         </div>
-        <a href={pologne.lien.href} class="hp-sans block sm:inline-block text-center self-start lg:self-center px-7 py-4 text-xs font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#1a1a1a;color:#f7f5f2">{fr(pologne.lien.label)}</a>
       </div>
     </section>
 
