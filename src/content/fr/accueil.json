@@ -16,22 +16,59 @@
     "h2": "Nos expertises",
     "items": [
       {
+        "id": "preparation",
+        "onglet": "Préparation interculturelle",
         "titre": "Préparation interculturelle",
         "texte": "Comprendre les codes professionnels, les attentes et les façons de décider de vos interlocuteurs avant les moments clés : premiers rendez-vous, négociations, déplacements.",
+        "points": [
+          "Briefing sur les codes professionnels de vos interlocuteurs",
+          "Préparation des rendez-vous et des messages clés",
+          "Préparation du dirigeant aux moments décisifs"
+        ],
+        "exemple": "Avant un premier rendez-vous avec un distributeur étranger, le dirigeant sait comment se déroulera la réunion, comment aborder les points sensibles et quels signaux observer chez son interlocuteur.",
         "lien": {
-          "label": "Communication interculturelle →",
+          "label": "Découvrir la communication interculturelle →",
           "href": "/fr/services#interculturel"
         }
       },
       {
+        "id": "relations",
+        "onglet": "Relations d'affaires",
         "titre": "Facilitation des relations d'affaires",
-        "texte": "Être aux côtés de vos équipes pendant les réunions, les négociations et les visites pour fluidifier les échanges et éviter les malentendus."
+        "texte": "Être aux côtés de vos équipes pendant les réunions, les négociations et les visites pour fluidifier les échanges et éviter les malentendus.",
+        "points": [
+          "Préparation des échanges et des négociations",
+          "Présence pendant les réunions et les visites",
+          "Interprétation si nécessaire"
+        ],
+        "exemple": "Lors d'une négociation avec un fournisseur polonais, les échanges sont préparés en amont, puis JANUS reste présent pendant la réunion pour lever les malentendus au moment où ils apparaissent.",
+        "lien": {
+          "label": "Découvrir la négociation et les réunions stratégiques →",
+          "href": "/fr/services#negociation"
+        }
       },
       {
+        "id": "cooperation",
+        "onglet": "Coopération internationale",
         "titre": "Coopération internationale",
-        "texte": "Faire travailler ensemble, dans la durée, des équipes et des partenaires de plusieurs pays : méthodes de travail, communication, intégration de collaborateurs."
+        "texte": "Faire travailler ensemble, dans la durée, des équipes et des partenaires de plusieurs pays : méthodes de travail, communication, intégration de collaborateurs.",
+        "points": [
+          "Préparation interculturelle des équipes",
+          "Préparation d'une mission ou d'une prise de poste à l'étranger",
+          "Accompagnement de l'intégration de collaborateurs étrangers en France"
+        ],
+        "exemple": "Une équipe française et une équipe espagnole travaillent chaque semaine ensemble : chaque côté apprend à comprendre la façon de décider et de communiquer de l'autre, pour des réunions plus efficaces.",
+        "lien": {
+          "label": "Découvrir l'accompagnement international →",
+          "href": "/fr/services#accompagnement"
+        }
       }
-    ]
+    ],
+    "intro": "Choisissez une expertise pour découvrir comment JANUS intervient.",
+    "labels": {
+      "intervient": "JANUS intervient",
+      "exemple": "Exemple de situation"
+    }
   },
   "situations": {
     "h2": "Dans quelle situation êtes-vous ?",
