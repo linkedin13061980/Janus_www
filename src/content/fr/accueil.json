@@ -1,16 +1,37 @@
 {
   "meta": {
-    "title": "Accompagnement linguistique et interculturel en Europe | JANUS",
-    "description": "JANUS accompagne les PME françaises dans leurs relations d'affaires en Europe : préparation des échanges, interculturel et accompagnement linguistique."
+    "title": "Accompagnement interculturel des entreprises en Europe | JANUS",
+    "description": "JANUS accompagne les PME françaises dans leurs relations d'affaires en Europe : préparation interculturelle, facilitation des échanges et coopération."
   },
   "hero": {
-    "surtitre": "Agence européenne · Linguistique · Interculturel",
-    "h1": "Vos relations d'affaires en Europe, au-delà des frontières linguistiques et culturelles.",
-    "sousTexte": "Vous développez vos activités en Europe ou travaillez avec des partenaires étrangers ? JANUS prépare vos échanges, accompagne votre communication interculturelle et mobilise l'accompagnement linguistique adapté à chaque situation.",
+    "surtitre": "Agence européenne · Interculturel · Relations d'affaires",
+    "h1": "Facilitez vos relations d'affaires en Europe.",
+    "sousTexte": "JANUS accompagne les PME françaises dans leurs projets et coopérations internationales, en facilitant les échanges, la compréhension interculturelle et les relations entre partenaires européens.",
     "cta": {
       "label": "Échanger sur votre projet →",
       "href": "/fr/contact"
     }
+  },
+  "expertisesPrincipales": {
+    "h2": "Nos expertises",
+    "items": [
+      {
+        "titre": "Préparation interculturelle",
+        "texte": "Comprendre les codes professionnels, les attentes et les façons de décider de vos interlocuteurs avant les moments clés : premiers rendez-vous, négociations, déplacements.",
+        "lien": {
+          "label": "Communication interculturelle →",
+          "href": "/fr/services#interculturel"
+        }
+      },
+      {
+        "titre": "Facilitation des relations d'affaires",
+        "texte": "Être aux côtés de vos équipes pendant les réunions, les négociations et les visites pour fluidifier les échanges et éviter les malentendus."
+      },
+      {
+        "titre": "Coopération internationale",
+        "texte": "Faire travailler ensemble, dans la durée, des équipes et des partenaires de plusieurs pays : méthodes de travail, communication, intégration de collaborateurs."
+      }
+    ]
   },
   "situations": {
     "h2": "Dans quelle situation êtes-vous ?",
@@ -95,7 +116,7 @@
         "enjeu": "Des équipes qui se comprennent au quotidien, au-delà de la langue : méthodes de travail, codes professionnels, façons de décider.",
         "interventions": [
           "Préparation interculturelle des équipes",
-          "Formation linguistique centrée sur le métier",
+          "Préparation à la communication au quotidien, centrée sur le métier",
           "Préparation d'une mission ou d'une prise de poste à l'étranger",
           "Accompagnement de l'intégration de collaborateurs étrangers en France"
         ],
@@ -112,9 +133,9 @@
       "Pour JANUS, un seul projet."
     ],
     "texte": "JANUS garde le contexte de votre projet et coordonne les compétences nécessaires, d'un échange à l'autre.",
-    "perimetre": "JANUS intervient sur les dimensions linguistiques et interculturelles, aux côtés de vos équipes et de vos conseils. Nous ne réalisons ni conseil juridique ou financier, ni due diligence, ni implantation opérationnelle.",
+    "perimetre": "JANUS intervient sur la dimension interculturelle et relationnelle de vos projets, aux côtés de vos équipes et de vos conseils. Nous ne réalisons ni conseil juridique ou financier, ni due diligence, ni implantation opérationnelle.",
     "expertises": {
-      "label": "Compétences mobilisées selon la mission",
+      "label": "Services complémentaires, selon la mission",
       "items": [
         {
           "label": "Interprétation",
@@ -125,15 +146,7 @@
           "href": "/fr/services#traduction"
         },
         {
-          "label": "Formation linguistique",
-          "href": "/fr/services#formation"
-        },
-        {
-          "label": "Communication interculturelle",
-          "href": "/fr/services#interculturel"
-        },
-        {
-          "label": "Coaching de prise de parole",
+          "label": "Coaching linguistique professionnel",
           "href": "/fr/services#coaching"
         }
       ]
@@ -163,7 +176,7 @@
     ]
   },
   "langues": {
-    "h2": "Langues de travail",
+    "h2": "Langues d'intervention",
     "items": [
       {
         "nom": "Français",
@@ -196,9 +209,9 @@
     }
   },
   "pologne": {
-    "surtitre": "Notre spécialisation phare",
-    "h2": "Relations d'affaires France–Pologne",
-    "texte": "Les relations franco-polonaises sont au cœur de l'expertise de JANUS : la langue, les codes professionnels et les réalités de terrain des deux côtés. Négociations, visites de sites, équipes franco-polonaises : un accompagnement dédié.",
+    "surtitre": "Spécialisation géographique",
+    "h2": "Notre spécialisation : France–Pologne",
+    "texte": "Les relations d'affaires franco-polonaises sont au cœur de l'expertise de JANUS : codes professionnels, façons de négocier et réalités de terrain des deux côtés. Avec une ouverture vers l'Europe centrale, notamment dans les relations entre l'Allemagne et la Pologne.",
     "lien": {
       "label": "Découvrir l'accompagnement France–Pologne →",
       "href": "/fr/pologne"
@@ -206,7 +219,7 @@
   },
   "europe": {
     "h2": "Notre périmètre : l'Europe",
-    "texte": "JANUS accompagne les entreprises françaises qui s'implantent ou travaillent dans d'autres pays européens, ainsi que des entreprises de nombreux pays européens, notamment espagnoles, italiennes, allemandes et britanniques, qui développent leurs activités en France. Notre rôle porte sur la dimension linguistique et interculturelle de ces projets, sans remplacer une connaissance locale de chaque marché."
+    "texte": "JANUS accompagne les entreprises françaises qui s'implantent ou travaillent dans d'autres pays européens, ainsi que des entreprises de nombreux pays européens, notamment espagnoles, italiennes, allemandes et britanniques, qui développent leurs activités en France. Notre rôle porte sur la dimension interculturelle de ces projets et la qualité des échanges, sans remplacer une connaissance locale de chaque marché."
   },
   "preuves": {
     "h2": "Une expertise issue du terrain international",
@@ -226,13 +239,13 @@
   },
   "pourQui": {
     "titre": "Pour qui",
-    "public": "PME et ETI françaises · Entreprises européennes en France · Industrie · Services",
+    "public": "PME et PMI françaises · Entreprises européennes en France · Industrie · Services",
     "directions": "Directions générales, achats, commerciales et internationales",
     "zones": "Lyon · Partout en France · En Europe · À distance"
   },
   "ctaFinal": {
     "h2": "Un projet en Europe en préparation ?",
-    "texte": "Présentez-nous le contexte, les pays et les langues concernés.",
+    "texte": "Présentez-nous votre projet, les pays et les interlocuteurs concernés.",
     "cta": {
       "label": "Échanger sur votre projet →",
       "href": "/fr/contact"

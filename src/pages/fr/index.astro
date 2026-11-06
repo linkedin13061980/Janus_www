@@ -1,5 +1,5 @@
 ---
-// Homepage FR : accompagnement linguistique et interculturel des relations d'affaires en Europe, sur le modèle JANUS
+// Homepage FR : accompagnement interculturel et facilitation des relations d'affaires en Europe, sur le modèle JANUS
 // (un projet, plusieurs besoins, un seul interlocuteur qui garde le contexte). France–Pologne : spécialisation phare (bloc dédié).
 // Lecture rapide : situation du client → intervention de JANUS → action. Situations : boutons + panneaux ;
 // contenu dans le HTML initial (affiché sans JavaScript), une seule situation active, aucune au chargement.
@@ -16,7 +16,7 @@ const currentPath = '/';
 const num = (i: number) => String(i + 1).padStart(2, '0');
 const fr = (s: string) => s.replace(/ ([?;:!])/g, ' $1').replace(/(France|Allemagne)–Pologne/g, '$1⁠–⁠Pologne').replace(/ →/g, ' →');
 
-const { hero, situations, message, methode, langues, pologne, europe, preuves, pourQui, ctaFinal } = content;
+const { hero, expertisesPrincipales, situations, message, methode, langues, pologne, europe, preuves, pourQui, ctaFinal } = content;
 
 // Données structurées : uniquement des informations publiées sur le site (homepage, mentions légales, contact).
 const organisation = {
@@ -183,6 +183,23 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
       </div>
     </section>
 
+    <!-- ①bis TROIS EXPERTISES PRINCIPALES (texte, sans cartes) -->
+    <section class="bg-white px-6 py-14 md:py-20" aria-labelledby="expertises-titre">
+      <div class="max-w-6xl mx-auto">
+        <h2 id="expertises-titre" class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-8 md:mb-12" style="color:#8a6d4b">{expertisesPrincipales.h2}</h2>
+        <ol class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+          {expertisesPrincipales.items.map((x, i) => (
+            <li class="border-t pt-6" style="border-color:#c9a84c">
+              <p class="hp-serif font-light leading-none mb-4" style="font-size:1.75rem;color:#8a6d4b" aria-hidden="true">{num(i)}</p>
+              <h3 class="hp-serif hp-balance font-light leading-tight mb-3" style="font-size:clamp(1.5rem,2.4vw,1.85rem);color:#1a1a1a">{fr(x.titre)}</h3>
+              <p class="hp-sans text-sm md:text-base leading-[1.7]" style="color:rgba(26,26,26,0.72)">{fr(x.texte)}</p>
+              {x.lien && <a href={x.lien.href} class="hp-sans hp-link inline-block mt-4 text-sm font-medium border-b pb-0.5" style="border-color:#8a6d4b;color:#1a1a1a">{fr(x.lien.label)}</a>}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
     <!-- ② SITUATIONS : le visiteur choisit la sienne. Contenus dans le HTML initial (lisibles sans JavaScript) ;
          une seule situation active, aucune au chargement. Desktop : sélection à gauche, panneau à droite. -->
     <section id="situations" class="hp-sits px-6 py-14 md:py-20" style="background:#f7f5f2" aria-labelledby="situations-titre">
@@ -321,7 +338,7 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
       <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
         <div>
           <h2 class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-5" style="color:#8a6d4b">{langues.h2}</h2>
-          <p class="hp-serif font-light leading-[1.5] mb-5" style="font-size:clamp(1.4rem,2.4vw,1.75rem);color:#1a1a1a">
+          <p class="hp-serif font-light leading-[1.6] mb-5" style="font-size:clamp(1.2rem,1.8vw,1.4rem);color:#1a1a1a">
             {langues.items.map((l, i) => (
               <>{i > 0 && <span aria-hidden="true" style="color:#8a6d4b">{' · '}</span>}{l.href
                 ? <a href={l.href} class="hp-link whitespace-nowrap border-b" style="border-color:rgba(181,147,107,0.5);color:#1a1a1a">{l.nom}</a>
