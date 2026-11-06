@@ -92,6 +92,14 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
     .hp-sit-cta:hover { opacity: .75; }
     .hp-sit-cta:focus-visible { outline: 2px solid #c9a84c; outline-offset: 3px; }
     .hp-sits-vide { display: none; }
+    @media (max-width: 1023.98px) {
+      .hp-sits-grid { gap: 8px; }
+      .hp-sit-btn { grid-template-columns: 1.75rem minmax(0,1fr) auto; column-gap: 10px; row-gap: 2px; padding: 14px 16px; min-height: 56px; }
+      .hp-sit-num { font-size: 1.3rem; }
+      .hp-sit-titre { font-size: 1.15rem; }
+      .hp-sit-pad { padding: 0 16px 20px 54px; gap: 16px; }
+      .hp-sit-liste { margin-bottom: 16px; }
+    }
     .hp-sits.js .hp-sit-panel { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows .3s ease, visibility 0s linear .3s; }
     .hp-sits.js .hp-sit-panel-in { overflow: hidden; min-height: 0; }
     .hp-sits.js .hp-sit-pad { opacity: 0; transition: opacity .2s ease; }
@@ -152,41 +160,6 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
       .hp-etape-titre { flex-basis: 100%; margin-top: .4rem; }
       .hp-etape-txt { margin-top: .5rem; }
     }
-    /* Expertises en onglets — identité JANUS : panneau anthracite, accents or ; mobile : choix empilés au-dessus du panneau */
-    .hp-xp:not(.js) .hp-xp-intro { display: none; }
-    .hp-xp-tabs { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 12px; }
-    .hp-xp-tabs[hidden], .hp-xp-panel[hidden] { display: none; }
-    .hp-xp-tab { appearance: none; font: inherit; cursor: pointer; display: flex; align-items: center; gap: 14px; width: 100%; min-height: 56px; margin: 0; padding: 14px 18px; text-align: left;
-      background: #fff; color: #1a1a1a; border: 1px solid rgba(26,26,26,.14); transition: background-color .25s ease, color .25s ease, border-color .25s ease; }
-    .hp-xp-tab:hover { border-color: rgba(138,109,75,.7); background: #fffdf9; }
-    .hp-xp-tab:focus-visible { outline: 2px solid #8a6d4b; outline-offset: 3px; }
-    .hp-xp-tab[aria-selected="true"] { background: #1a1a1a; border-color: #1a1a1a; color: #f7f5f2; }
-    .hp-xp-num { font-size: 1.45rem; font-weight: 300; line-height: 1; color: #8a6d4b; transition: color .25s ease; }
-    .hp-xp-tab[aria-selected="true"] .hp-xp-num { color: #c9a84c; }
-    .hp-xp-label { font-size: 13px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
-    .hp-xp-panel { background: #1a1a1a; padding: 28px 22px 32px; }
-    .hp-xp:not(.js) .hp-xp-panel + .hp-xp-panel { margin-top: 12px; }
-    .hp-xp-grid { display: grid; grid-template-columns: minmax(0,1fr); gap: 32px; }
-    .hp-xp-cap { font-size: 11px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: #c9a84c; margin: 0 0 10px; }
-    .hp-xp-points { list-style: none; margin: 0; padding: 0; color: rgba(247,245,242,.88); font-size: 15px; line-height: 1.6; }
-    .hp-xp-points li { position: relative; padding: 5px 0 5px 26px; }
-    .hp-xp-points li::before { content: "—"; position: absolute; left: 0; color: #c9a84c; }
-    .hp-xp-ex { border-left: 2px solid #c9a84c; padding-left: 20px; }
-    .hp-xp.js .hp-xp-panel.is-entering { animation: hpXpIn .32s ease both; }
-    @keyframes hpXpIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-    @media (min-width: 768px) {
-      .hp-xp-tabs { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0; margin-bottom: 0; }
-      .hp-xp-tab { min-height: 76px; padding: 20px 24px; border-width: 1px 1px 0; border-color: rgba(26,26,26,.12); }
-      .hp-xp-tab + .hp-xp-tab { border-left-width: 0; }
-      .hp-xp-tab[aria-selected="true"] { border-color: #1a1a1a; box-shadow: inset 0 3px 0 #c9a84c; }
-      .hp-xp-panel { padding: 48px 56px 52px; }
-      .hp-xp-grid { grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: 56px; align-items: start; }
-      .hp-xp-ex { padding-left: 32px; margin-top: 6px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hp-xp-tab, .hp-xp-num { transition: none; }
-      .hp-xp.js .hp-xp-panel.is-entering { animation: none; }
-    }
   </style>
 
   <div class="hp">
@@ -218,100 +191,46 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
       </div>
     </section>
 
-    <!-- ①bis EXPERTISES : navigation par onglets (sans rechargement). Les trois contenus sont dans le HTML initial :
-         sans JavaScript ils s'affichent l'un sous l'autre ; avec JavaScript, un seul panneau est visible (motif ARIA « tabs »). -->
-    <section id="expertises" class="hp-xp bg-white px-6 py-14 md:py-20 scroll-mt-20" aria-labelledby="expertises-titre" data-xp>
+    <!-- ①bis TROIS EXPERTISES PRINCIPALES : présentations courtes et statiques (seule la section « situations » est interactive) -->
+    <section id="expertises" class="bg-white px-6 pt-10 pb-8 md:py-20 scroll-mt-20" aria-labelledby="expertises-titre">
       <div class="max-w-6xl mx-auto">
-        <h2 id="expertises-titre" class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-3" style="color:#8a6d4b">{expertisesPrincipales.h2}</h2>
-        <p class="hp-xp-intro hp-serif font-light leading-snug mb-8 md:mb-10" style="font-size:clamp(1.5rem,2.6vw,2rem);color:#1a1a1a">{expertisesPrincipales.intro}</p>
-        <div class="hp-xp-tabs" aria-label={expertisesPrincipales.h2} hidden>
+        <h2 id="expertises-titre" class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-6 md:mb-12" style="color:#8a6d4b">{expertisesPrincipales.h2}</h2>
+        <ol class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
           {expertisesPrincipales.items.map((x, i) => (
-            <button type="button" class="hp-xp-tab" id={`xp-tab-${x.id}`} aria-controls={`xp-${x.id}`} aria-selected={i === 0 ? 'true' : 'false'} data-track-position={`expertise-${num(i)}-${x.id}`}>
-              <span class="hp-xp-num hp-serif" aria-hidden="true">{num(i)}</span>
-              <span class="hp-xp-label hp-sans">{x.onglet}</span>
-            </button>
+            <li class="border-t pt-5 md:pt-6" style="border-color:#c9a84c">
+              <h3 class="flex items-baseline gap-3 md:block mb-2 md:mb-3">
+                <span class="hp-serif font-light leading-none md:block md:mb-4" style="font-size:clamp(1.3rem,2.2vw,1.75rem);color:#8a6d4b" aria-hidden="true">{num(i)}</span>
+                <span class="hp-serif hp-balance font-light leading-tight" style="font-size:clamp(1.4rem,2.4vw,1.85rem);color:#1a1a1a">{fr(x.titre)}</span>
+              </h3>
+              <p class="hp-sans text-sm md:text-base leading-[1.65]" style="color:rgba(26,26,26,0.72)">{fr(x.texte)}</p>
+              {x.lien && <a href={x.lien.href} class="hp-sans hp-link inline-block mt-3 md:mt-4 text-sm font-medium border-b pb-0.5" style="border-color:#8a6d4b;color:#1a1a1a">{fr(x.lien.label)}</a>}
+            </li>
           ))}
-        </div>
-        <div class="hp-xp-panels">
-          {expertisesPrincipales.items.map((x) => (
-            <div class="hp-xp-panel" id={`xp-${x.id}`}>
-              <div class="hp-xp-grid">
-                <div>
-                  <h3 class="hp-serif hp-balance font-light leading-tight mb-4" style="font-size:clamp(1.7rem,3vw,2.3rem);color:#f7f5f2">{fr(x.titre)}</h3>
-                  <p class="hp-sans text-[15px] md:text-base leading-[1.7] mb-6" style="color:rgba(247,245,242,0.82)">{fr(x.texte)}</p>
-                  <p class="hp-xp-cap hp-sans">{expertisesPrincipales.labels.intervient}</p>
-                  <ul class="hp-xp-points hp-sans">
-                    {x.points.map((pt) => <li>{fr(pt)}</li>)}
-                  </ul>
-                </div>
-                <div class="hp-xp-ex">
-                  <p class="hp-xp-cap hp-sans">{expertisesPrincipales.labels.exemple}</p>
-                  <p class="hp-serif italic font-light leading-snug mb-6" style="font-size:clamp(1.2rem,1.9vw,1.45rem);color:#f7f5f2">{fr(x.exemple)}</p>
-                  <a href={x.lien.href} class="hp-sans hp-link inline-block text-sm font-medium border-b pb-0.5" style="border-color:#c9a84c;color:#f7f5f2">{fr(x.lien.label)}</a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        </ol>
       </div>
     </section>
 
-    <script>
-      // Onglets « Nos expertises » : un panneau visible à la fois, clavier (flèches, Début, Fin), événement GA4 « expertise_ouverte »
-      // via window.janusTrack (soumis au consentement). Sans JavaScript, tout le contenu reste affiché.
-      (function () {
-        var root = document.querySelector('[data-xp]');
-        if (!root) return;
-        var list = root.querySelector('.hp-xp-tabs');
-        var tabs = Array.prototype.slice.call(root.querySelectorAll('.hp-xp-tab'));
-        var panel = function (t) { return document.getElementById(t.getAttribute('aria-controls')); };
-        root.classList.add('js');
-        list.hidden = false;
-        list.setAttribute('role', 'tablist');
-        tabs.forEach(function (t) {
-          var p = panel(t);
-          t.setAttribute('role', 'tab');
-          p.setAttribute('role', 'tabpanel');
-          p.setAttribute('aria-labelledby', t.id);
-          p.tabIndex = 0;
-        });
-        function select(i, focus, user) {
-          tabs.forEach(function (t, k) {
-            var on = k === i, p = panel(t);
-            t.setAttribute('aria-selected', on ? 'true' : 'false');
-            t.tabIndex = on ? 0 : -1;
-            p.hidden = !on;
-            p.classList.remove('is-entering');
-            if (on && user) { void p.offsetWidth; p.classList.add('is-entering'); }
-          });
-          if (focus) tabs[i].focus();
-          if (user && window.janusTrack) {
-            window.janusTrack('expertise_ouverte', {
-              link_text: (tabs[i].querySelector('.hp-xp-label').textContent || '').trim(),
-              position: tabs[i].getAttribute('data-track-position'),
-            });
-          }
-        }
-        tabs.forEach(function (t, i) {
-          t.addEventListener('click', function () { if (t.getAttribute('aria-selected') !== 'true') select(i, false, true); });
-          t.addEventListener('keydown', function (e) {
-            var n = tabs.length, j = null;
-            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') j = (i + 1) % n;
-            else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') j = (i - 1 + n) % n;
-            else if (e.key === 'Home') j = 0;
-            else if (e.key === 'End') j = n - 1;
-            if (j !== null) { e.preventDefault(); select(j, true, true); }
-          });
-        });
-        select(0, false, false);
-      })();
-    </script>
+    <!-- ①ter SPÉCIALISATION FRANCE–POLOGNE : remontée sous les expertises, encadré mis en valeur, lien vers /fr/pologne -->
+    <section class="bg-white px-6 pb-12 md:pb-20" aria-labelledby="pologne-titre">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-5 lg:gap-12 lg:items-center p-6 md:p-10 lg:px-12" style="background:#f7f5f2;border:1px solid rgba(201,168,76,0.55);border-left:4px solid #c9a84c">
+        <div class="flex items-center gap-3" aria-hidden="true">
+          <Flag code="fr" class="w-11 h-7 md:w-14 md:h-9" />
+          <Flag code="pl" class="w-11 h-7 md:w-14 md:h-9" />
+        </div>
+        <div>
+          <p class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-2 md:mb-3" style="color:#846847">{pologne.surtitre}</p>
+          <h2 id="pologne-titre" class="hp-serif hp-balance font-light leading-tight mb-3 md:mb-4" style="font-size:clamp(1.85rem,3.6vw,2.8rem);color:#1a1a1a">{fr(pologne.h2)}</h2>
+          <p class="hp-sans text-sm md:text-base leading-[1.65] max-w-2xl" style="color:rgba(26,26,26,0.75)">{pologne.texte}</p>
+        </div>
+        <a href={pologne.lien.href} class="hp-sans block sm:inline-block text-center self-start lg:self-center px-7 py-4 text-xs font-medium uppercase tracking-widest hover:opacity-85 transition-opacity" style="background:#1a1a1a;color:#f7f5f2">{fr(pologne.lien.label)}</a>
+      </div>
+    </section>
 
     <!-- ② SITUATIONS : le visiteur choisit la sienne. Contenus dans le HTML initial (lisibles sans JavaScript) ;
          une seule situation active, aucune au chargement. Desktop : sélection à gauche, panneau à droite. -->
-    <section id="situations" class="hp-sits px-6 py-14 md:py-20" style="background:#f7f5f2" aria-labelledby="situations-titre">
+    <section id="situations" class="hp-sits px-6 py-10 md:py-20" style="background:#f7f5f2" aria-labelledby="situations-titre">
       <div class="max-w-6xl mx-auto">
-        <h2 id="situations-titre" class="hp-serif hp-balance font-light leading-[1.1] mb-8 md:mb-12" style="font-size:clamp(2rem,4vw,3.25rem);color:#1a1a1a">{fr(situations.h2)}</h2>
+        <h2 id="situations-titre" class="hp-serif hp-balance font-light leading-[1.1] mb-6 md:mb-12" style="font-size:clamp(1.85rem,4vw,3.25rem);color:#1a1a1a">{fr(situations.h2)}</h2>
         <div class="hp-sits-grid">
           {situations.items.map((x, i) => (
             <div class="hp-sit">
@@ -421,22 +340,6 @@ const heroSrcset = (ext: string) => heroWidths.map((w) => `/images/hero/janus-he
             </li>
           ))}
         </ol>
-      </div>
-    </section>
-
-    <!-- ④ SPÉCIALISATION PHARE : FRANCE–POLOGNE (bloc dédié, lien vers /fr/pologne) -->
-    <section style="background:#f7f5f2" class="px-6 py-14 md:py-20">
-      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-6 lg:gap-14 lg:items-center">
-        <div class="flex items-center gap-3" aria-hidden="true">
-          <Flag code="fr" class="w-10 h-6" />
-          <Flag code="pl" class="w-10 h-6" />
-        </div>
-        <div>
-          <p class="hp-sans text-[11px] md:text-xs font-medium uppercase tracking-[0.24em] mb-3" style="color:#846847">{pologne.surtitre}</p>
-          <h2 class="hp-serif hp-balance font-light leading-tight mb-4" style="font-size:clamp(1.9rem,3.4vw,2.6rem);color:#1a1a1a">{fr(pologne.h2)}</h2>
-          <p class="hp-sans text-sm md:text-base leading-[1.7] max-w-2xl" style="color:rgba(26,26,26,0.72)">{pologne.texte}</p>
-        </div>
-        <a href={pologne.lien.href} class="hp-sans hp-link self-start lg:self-center text-sm font-medium border-b pb-1" style="border-color:#8a6d4b;color:#1a1a1a">{fr(pologne.lien.label)}</a>
       </div>
     </section>
 
