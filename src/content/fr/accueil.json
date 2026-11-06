@@ -1,12 +1,12 @@
 {
   "meta": {
-    "title": "Accompagnement linguistique & interculturel | JANUS",
-    "description": "JANUS coordonne interprétation, traduction, préparation des échanges et accompagnement interculturel pour les projets internationaux des entreprises."
+    "title": "Accompagnement linguistique et interculturel en Europe | JANUS",
+    "description": "JANUS accompagne les PME françaises dans leurs relations d'affaires en Europe : préparation des échanges, interculturel et accompagnement linguistique."
   },
   "hero": {
-    "surtitre": "Linguistique · Interculturel · Humain",
-    "h1": "Vos échanges internationaux, un seul interlocuteur.",
-    "sousTexte": "Interprétation, traduction, préparation des échanges et accompagnement terrain : JANUS coordonne ce dont votre projet a besoin.",
+    "surtitre": "Agence européenne · Linguistique · Interculturel",
+    "h1": "Vos relations d'affaires en Europe, au-delà des frontières linguistiques et culturelles.",
+    "sousTexte": "Vous développez vos activités en Europe ou travaillez avec des partenaires étrangers ? JANUS prépare vos échanges, accompagne votre communication interculturelle et mobilise l'accompagnement linguistique adapté à chaque situation.",
     "cta": {
       "label": "Échanger sur votre projet →",
       "href": "/fr/contact"
@@ -23,6 +23,38 @@
       "texte": "Découvrez comment JANUS peut intervenir."
     },
     "items": [
+      {
+        "id": "premiere-collaboration",
+        "categorie": "Première collaboration",
+        "titre": "Je démarre une première collaboration à l'international",
+        "enjeu": "Premiers rendez-vous avec un client, un distributeur ou un partenaire étranger : comprendre ses attentes et poser les bases d'une relation solide.",
+        "interventions": [
+          "Préparation des rendez-vous et des messages clés",
+          "Briefing interculturel sur les codes professionnels de vos interlocuteurs",
+          "Interprétation lors des premières rencontres",
+          "Traduction de vos supports de présentation"
+        ],
+        "cta": {
+          "label": "Préparer vos premiers échanges →",
+          "href": "/fr/contact"
+        }
+      },
+      {
+        "id": "partenaires",
+        "categorie": "Partenaires étrangers",
+        "titre": "Je travaille déjà avec un fournisseur ou un partenaire étranger",
+        "enjeu": "Réunions régulières, visioconférences, échanges écrits : éviter que les malentendus ne s'installent dans la relation.",
+        "interventions": [
+          "Assistance linguistique adaptée à l'enjeu de chaque réunion",
+          "Interprétation sur place ou à distance",
+          "Traduction des documents utiles",
+          "Préparation interculturelle de vos interlocuteurs"
+        ],
+        "cta": {
+          "label": "Parler de votre relation partenaire →",
+          "href": "/fr/contact"
+        }
+      },
       {
         "id": "negociation",
         "categorie": "Négociation",
@@ -41,9 +73,9 @@
         }
       },
       {
-        "id": "site-etranger",
-        "categorie": "Terrain",
-        "titre": "Je dois intervenir sur un site à l'étranger",
+        "id": "deplacement",
+        "categorie": "Déplacements",
+        "titre": "Je dois me rendre chez un partenaire ou sur un site à l'étranger",
         "enjeu": "Visite, réunion technique ou rencontre fournisseur : être compris sur place, sans perte de temps ni de précision.",
         "interventions": [
           "Préparation de la visite et du vocabulaire technique",
@@ -52,13 +84,13 @@
           "Traduction des documents utiles"
         ],
         "cta": {
-          "label": "Préparer votre intervention sur site →",
+          "label": "Préparer votre déplacement →",
           "href": "/fr/contact"
         }
       },
       {
         "id": "equipes",
-        "categorie": "Équipes internationales",
+        "categorie": "Équipes multiculturelles",
         "titre": "Mes équipes de plusieurs pays doivent travailler ensemble",
         "enjeu": "Des équipes qui se comprennent au quotidien, au-delà de la langue : méthodes de travail, codes professionnels, façons de décider.",
         "interventions": [
@@ -71,38 +103,6 @@
           "label": "Parler de vos équipes →",
           "href": "/fr/contact"
         }
-      },
-      {
-        "id": "reunion",
-        "categorie": "Réunion stratégique",
-        "titre": "J'ai une réunion importante dans une autre langue",
-        "enjeu": "Présenter, convaincre ou décider dans une langue qui n'est pas la vôtre, sans rien perdre en précision.",
-        "interventions": [
-          "Préparation de la réunion et des supports",
-          "Traduction des documents",
-          "Interprétation sur place ou à distance",
-          "Coaching de prise de parole en anglais"
-        ],
-        "cta": {
-          "label": "Préparer votre réunion →",
-          "href": "/fr/contact"
-        }
-      },
-      {
-        "id": "pologne",
-        "categorie": "France ↔ Pologne",
-        "titre": "J'ai un projet avec la Pologne",
-        "enjeu": "Travailler avec des partenaires, des équipes ou des clients polonais en tenant compte de la langue et des codes professionnels des deux côtés.",
-        "interventions": [
-          "Interprétation et traduction français-polonais",
-          "Préparation des rencontres et des négociations",
-          "Accompagnement lors des visites en Pologne",
-          "Préparation des équipes françaises et polonaises"
-        ],
-        "cta": {
-          "label": "Découvrir l'accompagnement France–Pologne →",
-          "href": "/fr/pologne"
-        }
       }
     ]
   },
@@ -112,7 +112,7 @@
       "Pour JANUS, un seul projet."
     ],
     "texte": "JANUS garde le contexte de votre projet et coordonne les compétences nécessaires, d'un échange à l'autre.",
-    "perimetre": "JANUS intervient aux côtés de vos équipes et de vos conseils, sans se substituer aux expertises juridiques, financières ou métier.",
+    "perimetre": "JANUS intervient sur les dimensions linguistiques et interculturelles, aux côtés de vos équipes et de vos conseils. Nous ne réalisons ni conseil juridique ou financier, ni due diligence, ni implantation opérationnelle.",
     "expertises": {
       "label": "Compétences mobilisées selon la mission",
       "items": [
@@ -196,12 +196,17 @@
     }
   },
   "pologne": {
-    "h2": "Une expertise particulière : France–Pologne",
-    "texte": "Une connaissance des langues, des codes professionnels et des réalités de terrain des deux côtés.",
+    "surtitre": "Notre spécialisation phare",
+    "h2": "Relations d'affaires France–Pologne",
+    "texte": "Les relations franco-polonaises sont au cœur de l'expertise de JANUS : la langue, les codes professionnels et les réalités de terrain des deux côtés. Négociations, visites de sites, équipes franco-polonaises : un accompagnement dédié.",
     "lien": {
-      "label": "Découvrir l'expertise France–Pologne →",
+      "label": "Découvrir l'accompagnement France–Pologne →",
       "href": "/fr/pologne"
     }
+  },
+  "europe": {
+    "h2": "Notre périmètre : l'Europe",
+    "texte": "JANUS accompagne les entreprises françaises qui s'implantent ou travaillent dans d'autres pays européens, ainsi que des entreprises de nombreux pays européens, notamment espagnoles, italiennes, allemandes et britanniques, qui développent leurs activités en France. Notre rôle porte sur la dimension linguistique et interculturelle de ces projets, sans remplacer une connaissance locale de chaque marché."
   },
   "preuves": {
     "h2": "Une expertise issue du terrain international",
@@ -221,12 +226,12 @@
   },
   "pourQui": {
     "titre": "Pour qui",
-    "public": "PME · ETI · Industrie · Services",
+    "public": "PME et ETI françaises · Entreprises européennes en France · Industrie · Services",
     "directions": "Directions générales, achats, commerciales et internationales",
-    "zones": "Lyon · Partout en France · À distance · À l'étranger"
+    "zones": "Lyon · Partout en France · En Europe · À distance"
   },
   "ctaFinal": {
-    "h2": "Un projet international en préparation ?",
+    "h2": "Un projet en Europe en préparation ?",
     "texte": "Présentez-nous le contexte, les pays et les langues concernés.",
     "cta": {
       "label": "Échanger sur votre projet →",
